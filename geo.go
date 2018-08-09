@@ -7,6 +7,8 @@ import (
 	"github.com/golang/geo/s2"
 )
 
+// How to add more cities: https://gis.stackexchange.com/a/192298
+
 var sfPoints = []s2.Point{
 	s2.Point{r3.Vector{-122.617, 37.811, 0}},
 	s2.Point{r3.Vector{-122.618, 37.815, 0}},

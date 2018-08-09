@@ -14,13 +14,13 @@ type Trip struct {
 
 	StartStationID        int
 	StartStationName      string
-	StartStationLatitude  float64
 	StartStationLongitude float64
+	StartStationLatitude  float64
 
 	EndStationID        int
 	EndStationName      string
-	EndStationLatitude  float64
 	EndStationLongitude float64
+	EndStationLatitude  float64
 
 	BikeID              int64
 	UserType            string
@@ -89,6 +89,23 @@ func parseTrip(record []string) (*Trip, error) {
 	}
 	t.BikeID = id
 	t.UserType = record[12]
+	if record[13] != "" {
+		birthYear, err := strconv.Atoi(record[13])
+		if err != nil {
+			return nil, err
+		}
+		t.MemberBirthYear = birthYear
+	}
+	t.MemberGender = record[14]
+	switch record[15] {
+	case "No":
+		t.BikeShareForAllTrip = false
+	case "Yes":
+		t.BikeShareForAllTrip = true
+	default:
+		panic("unknown record 15 " + record[15])
+	}
+
 	return t, nil
 }
 

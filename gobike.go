@@ -97,13 +97,16 @@ func parseTrip(record []string) (*Trip, error) {
 		t.MemberBirthYear = birthYear
 	}
 	t.MemberGender = record[14]
-	switch record[15] {
-	case "No":
-		t.BikeShareForAllTrip = false
-	case "Yes":
-		t.BikeShareForAllTrip = true
-	default:
-		panic("unknown record 15 " + record[15])
+
+	if len(record) == 16 {
+		switch record[15] {
+		case "No":
+			t.BikeShareForAllTrip = false
+		case "Yes":
+			t.BikeShareForAllTrip = true
+		default:
+			panic("unknown record 15 " + record[15])
+		}
 	}
 
 	return t, nil

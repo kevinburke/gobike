@@ -39,6 +39,7 @@ type dayData struct {
 }
 
 func main() {
+	cityFlag := flag.String("city", "sf", "City to use (sf, oak/oakland)")
 	loc, err := time.LoadLocation("America/Los_Angeles")
 	if err != nil {
 		log.Fatal(err)
@@ -56,13 +57,22 @@ func main() {
 		}
 		trips = append(trips, fileTrips...)
 	}
+	var city gobike.City
+	switch *cityFlag {
+	case "sf":
+		city = gobike.SF
+	case "oak", "oakland":
+		city = gobike.Oakland
+	default:
+		log.Fatalf("unknown city %q", *cityFlag)
+	}
 	m := make(map[Day]*dayData, 0)
 	var d Day
 	earliest := Day{Year: 3000, Month: time.January, Day: 0}
 	bikeIDs := make(map[int64]bool, 0)
 	for i := 0; i < len(trips); i++ {
-		inSF := gobike.SF.ContainsPoint(trips[i].StartStationLatitude, trips[i].StartStationLongitude)
-		if !inSF {
+		inCity := city.ContainsPoint(trips[i].StartStationLatitude, trips[i].StartStationLongitude)
+		if !inCity {
 			continue
 		}
 		bikeIDs[trips[i].BikeID] = true

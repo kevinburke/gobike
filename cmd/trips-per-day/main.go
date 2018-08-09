@@ -61,7 +61,7 @@ func main() {
 	earliest := Day{Year: 3000, Month: time.January, Day: 0}
 	bikeIDs := make(map[int64]bool, 0)
 	for i := 0; i < len(trips); i++ {
-		inSF := gobike.InSF(trips[i].StartStationLatitude, trips[i].StartStationLongitude)
+		inSF := gobike.SF.ContainsPoint(trips[i].StartStationLatitude, trips[i].StartStationLongitude)
 		if !inSF {
 			continue
 		}

@@ -41,6 +41,16 @@ var sfPoints = []s2.Point{
 	s2.Point{r3.Vector{-122.617, 37.811, 0}},
 }
 
+type City struct {
+	once   sync.Once
+	loop   *s2.Loop
+	points []s2.Point
+}
+
+var SF = City{
+	points: sfPoints,
+}
+
 var sfLoop *s2.Loop
 var sfLoopOnce sync.Once
 
@@ -48,7 +58,9 @@ func makeSFLoop() {
 	sfLoop = s2.LoopFromPoints(sfPoints)
 }
 
-func InSF(lat, long float64) bool {
-	sfLoopOnce.Do(makeSFLoop)
-	return sfLoop.ContainsPoint(s2.Point{r3.Vector{long, lat, 0}})
+func (c *City) ContainsPoint(lat, long float64) bool {
+	c.once.Do(func() {
+		c.loop = s2.LoopFromPoints(c.points)
+	})
+	return c.loop.ContainsPoint(s2.Point{r3.Vector{long, lat, 0}})
 }

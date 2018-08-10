@@ -63,6 +63,8 @@ func main() {
 		city = gobike.SF
 	case "oak", "oakland":
 		city = gobike.Oakland
+	case "sj", "sjc", "sanjose", "san jose":
+		city = gobike.SanJose
 	default:
 		log.Fatalf("unknown city %q", *cityFlag)
 	}

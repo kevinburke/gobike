@@ -876,6 +876,10 @@ var Oakland = City{
 	points: oaklandPoints,
 }
 
+var SanJose = City{
+	points: sanJosePoints,
+}
+
 func (c *City) ContainsPoint(lat, long float64) bool {
 	c.once.Do(func() {
 		c.loop = s2.LoopFromPoints(c.points)

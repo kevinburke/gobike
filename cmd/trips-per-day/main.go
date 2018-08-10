@@ -92,13 +92,20 @@ func main() {
 		}
 	}
 	start := time.Date(earliest.Year, earliest.Month, earliest.Day, 0, 0, 0, 0, loc)
+	thisyear := time.Now().Year()
 	for {
 		d := Day{start.Year(), start.Month(), start.Day()}
 		data := m[d]
 		if data == nil {
 			break
 		}
-		fmt.Printf("%s: %d trips, %d bikes\n", start.Format("January 2, 2006 (Monday)"), data.Trips, len(data.Bikes))
+		var timeFmt string
+		if thisyear == start.Year() {
+			timeFmt = "January 2 (Monday)"
+		} else {
+			timeFmt = "January 2, 2006 (Monday)"
+		}
+		fmt.Printf("%s: %d trips, %d bikes\n", start.Format(timeFmt), data.Trips, len(data.Bikes))
 		start = start.Add(24 * time.Hour)
 	}
 }

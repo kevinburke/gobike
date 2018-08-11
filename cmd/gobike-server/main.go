@@ -23,7 +23,7 @@ import (
 	"time"
 
 	log "github.com/inconshreveable/log15"
-	"github.com/kevinburke/gobike/assets"
+	"github.com/kevinburke/gobike/server/assets"
 	"github.com/kevinburke/handlers"
 	"github.com/kevinburke/nacl"
 	"github.com/kevinburke/rest"
@@ -166,7 +166,7 @@ func main() {
 	start := time.Now()
 	flag.Parse()
 	if *version {
-		fmt.Fprintf(os.Stderr, "go-html-boilerplate version %s\n", Version)
+		fmt.Fprintf(os.Stderr, "gobike version %s\n", Version)
 		os.Exit(0)
 	}
 	data, err := ioutil.ReadFile(*cfg)

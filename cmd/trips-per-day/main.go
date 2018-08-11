@@ -57,7 +57,7 @@ func main() {
 		}
 		trips = append(trips, fileTrips...)
 	}
-	var city gobike.City
+	var city *gobike.City
 	switch *cityFlag {
 	case "sf":
 		city = gobike.SF
@@ -68,10 +68,10 @@ func main() {
 	default:
 		log.Fatalf("unknown city %q", *cityFlag)
 	}
-	m := make(map[Day]*dayData, 0)
+	m := make(map[Day]*dayData)
 	var d Day
 	earliest := Day{Year: 3000, Month: time.January, Day: 0}
-	bikeIDs := make(map[int64]bool, 0)
+	bikeIDs := make(map[int64]bool)
 	for i := 0; i < len(trips); i++ {
 		inCity := city.ContainsPoint(trips[i].StartStationLatitude, trips[i].StartStationLongitude)
 		if !inCity {
@@ -84,7 +84,7 @@ func main() {
 		if ok {
 			m[d].Trips++
 		} else {
-			m[d] = &dayData{Bikes: make(map[int64]bool, 0), Trips: 1}
+			m[d] = &dayData{Bikes: make(map[int64]bool), Trips: 1}
 		}
 		m[d].Bikes[trips[i].BikeID] = true
 		if d.Before(earliest) {

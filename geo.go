@@ -868,15 +868,15 @@ type City struct {
 	points []s2.Point
 }
 
-var SF = City{
+var SF = &City{
 	points: sfPoints,
 }
 
-var Oakland = City{
+var Oakland = &City{
 	points: oaklandPoints,
 }
 
-var SanJose = City{
+var SanJose = &City{
 	points: sanJosePoints,
 }
 

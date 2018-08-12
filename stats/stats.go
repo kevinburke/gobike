@@ -87,3 +87,77 @@ func UniqueStationsPerWeek(trips []*gobike.Trip) TimeSeries {
 	}
 	return result
 }
+
+func UniqueBikesPerWeek(trips []*gobike.Trip) TimeSeries {
+	mp := make(map[string]map[int64]bool)
+	earliest := time.Date(3000, time.January, 1, 0, 0, 0, 0, time.Local)
+	for i := 0; i < len(trips); i++ {
+		start := trips[i].StartTime
+		wday := start.Weekday()
+		sunday := time.Date(start.Year(), start.Month(), start.Day()-int(wday), 0, 0, 0, 0, time.Local)
+		sundayfmt := sunday.Format("2006-01-02")
+		_, ok := mp[sundayfmt]
+		if !ok {
+			mp[sundayfmt] = make(map[int64]bool)
+		}
+		mp[sundayfmt][trips[i].BikeID] = true
+		if sunday.Before(earliest) {
+			earliest = sunday
+		}
+	}
+	seen := 1
+	result := make([]*TimeStat, 0)
+	for i := earliest; ; i = time.Date(i.Year(), i.Month(), i.Day()+7, 0, 0, 0, 0, time.Local) {
+		weekMap, ok := mp[i.Format("2006-01-02")]
+		if ok {
+			seen++
+		}
+		result = append(result, &TimeStat{Date: i, Data: float64(len(weekMap))})
+		if seen >= len(mp) {
+			break
+		}
+	}
+	return result
+}
+
+func TripsPerBikePerWeek(trips []*gobike.Trip) TimeSeries {
+	mp := make(map[string]map[int64]int)
+	earliest := time.Date(3000, time.January, 1, 0, 0, 0, 0, time.Local)
+	for i := 0; i < len(trips); i++ {
+		start := trips[i].StartTime
+		wday := start.Weekday()
+		sunday := time.Date(start.Year(), start.Month(), start.Day()-int(wday), 0, 0, 0, 0, time.Local)
+		sundayfmt := sunday.Format("2006-01-02")
+		_, ok := mp[sundayfmt]
+		if !ok {
+			mp[sundayfmt] = make(map[int64]int)
+		}
+		_, hasBike := mp[sundayfmt][trips[i].BikeID]
+		if hasBike {
+			mp[sundayfmt][trips[i].BikeID]++
+		} else {
+			mp[sundayfmt][trips[i].BikeID] = 1
+		}
+		if sunday.Before(earliest) {
+			earliest = sunday
+		}
+	}
+	seen := 1
+	result := make([]*TimeStat, 0)
+	for i := earliest; ; i = time.Date(i.Year(), i.Month(), i.Day()+7, 0, 0, 0, 0, time.Local) {
+		weekMap, ok := mp[i.Format("2006-01-02")]
+		if ok {
+			seen++
+		}
+		numTrips := float64(0)
+		for j := range weekMap {
+			numTrips += float64(weekMap[j])
+		}
+		avg := numTrips / float64(len(weekMap))
+		result = append(result, &TimeStat{Date: i, Data: avg})
+		if seen >= len(mp) {
+			break
+		}
+	}
+	return result
+}

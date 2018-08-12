@@ -35,8 +35,18 @@
       </div>
       <div class="row">
         <div class="col-md-8">
-          Unique stations per week: {{ .StationsPerWeekCount }}
+          Number of stations, last week: {{ .StationsPerWeekCount }}
           <div id="placeholder-2" class="chart">
+          </div>
+        </div>
+        <div class="col-md-8">
+          Bikes ridden last week: {{ .BikesPerWeekCount }}
+          <div id="placeholder-3" class="chart">
+          </div>
+        </div>
+        <div class="col-md-8">
+          Trips per bike per week: {{ .TripsPerBikePerWeekCount }}
+          <div id="placeholder-4" class="chart">
           </div>
         </div>
       </div>
@@ -48,10 +58,18 @@
     <script>
       var tripsPerWeek = {{ .TripsPerWeek }};
       var stationsPerWeek = {{ .StationsPerWeek }};
+      var bikesPerWeek = {{ .BikesPerWeek }};
+      var tripsPerBikePerWeek = {{ .TripsPerBikePerWeek }};
       $.plot("#placeholder", [tripsPerWeek], {
         xaxis: { mode: "time" }
       });
       $.plot("#placeholder-2", [stationsPerWeek], {
+        xaxis: { mode: "time" }
+      });
+      $.plot("#placeholder-3", [bikesPerWeek], {
+        xaxis: { mode: "time" }
+      });
+      $.plot("#placeholder-4", [tripsPerBikePerWeek], {
         xaxis: { mode: "time" }
       });
     </script>

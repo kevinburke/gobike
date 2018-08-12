@@ -117,11 +117,15 @@ func main() {
 		server.Logger.Error("Could not load trips", "err", err, "directory", *tripDirectory)
 		os.Exit(2)
 	}
-	mux := server.NewServeMux(trips)
-	mux = handlers.UUID(mux)                                   // add UUID header
-	mux = handlers.Server(mux, "go-html-boilerplate/"+Version) // add Server header
-	mux = handlers.Log(mux)                                    // log requests/responses
-	mux = handlers.Duration(mux)                               // add Duration header
+	mux, err := server.NewServeMux(trips)
+	if err != nil {
+		server.Logger.Error("Could not initialize server", "err", err)
+		os.Exit(2)
+	}
+	mux = handlers.UUID(mux)                             // add UUID header
+	mux = handlers.Server(mux, "gobike-server/"+Version) // add Server header
+	mux = handlers.Log(mux)                              // log requests/responses
+	mux = handlers.Duration(mux)                         // add Duration header
 	addr := ":" + strconv.Itoa(*c.Port)
 	if c.HTTPOnly {
 		ln, err := net.Listen("tcp", addr)

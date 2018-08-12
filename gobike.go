@@ -3,7 +3,11 @@ package gobike
 import (
 	"encoding/csv"
 	"io"
+	"io/ioutil"
+	"os"
+	"path/filepath"
 	"strconv"
+	"strings"
 	"time"
 )
 
@@ -110,6 +114,33 @@ func parseTrip(record []string) (*Trip, error) {
 	}
 
 	return t, nil
+}
+
+func LoadDir(directory string) ([]*Trip, error) {
+	files, err := ioutil.ReadDir(directory)
+	if err != nil {
+		return nil, err
+	}
+
+	trips := make([]*Trip, 0)
+	for _, file := range files {
+		if !strings.HasSuffix(file.Name(), "-fordgobike-tripdata.csv") {
+			continue
+		}
+		f, err := os.Open(filepath.Join(directory, file.Name()))
+		if err != nil {
+			return nil, err
+		}
+		fileTrips, err := Load(f)
+		if err != nil {
+			return nil, err
+		}
+		if err := f.Close(); err != nil {
+			return nil, err
+		}
+		trips = append(trips, fileTrips...)
+	}
+	return trips, nil
 }
 
 func Load(rdr io.Reader) ([]*Trip, error) {

@@ -3,11 +3,7 @@ package main
 import (
 	"database/sql"
 	"fmt"
-	"io/ioutil"
 	"log"
-	"os"
-	"path/filepath"
-	"strings"
 
 	"github.com/kevinburke/gobike"
 	_ "github.com/lib/pq"
@@ -82,25 +78,9 @@ func run() error {
 		return err
 	}
 
-	files, err := ioutil.ReadDir("../../testdata")
+	trips, err := gobike.LoadDir("../../testdata")
 	if err != nil {
 		return err
-	}
-
-	trips := make([]*gobike.Trip, 0)
-	for _, file := range files {
-		if !strings.HasSuffix(file.Name(), "-fordgobike-tripdata.csv") {
-			continue
-		}
-		f, err := os.Open(filepath.Join("../../testdata", file.Name()))
-		if err != nil {
-			return err
-		}
-		fileTrips, err := gobike.Load(f)
-		if err != nil {
-			return err
-		}
-		trips = append(trips, fileTrips...)
 	}
 
 	geolocate := func(lat, long float64) string {

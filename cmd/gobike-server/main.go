@@ -7,124 +7,27 @@
 package main
 
 import (
-	"bytes"
-	"crypto/sha256"
-	"encoding/base64"
 	"flag"
 	"fmt"
-	"html/template"
 	"io/ioutil"
 	"net"
 	"net/http"
 	"os"
-	"regexp"
 	"strconv"
-	"strings"
 	"time"
 
-	log "github.com/inconshreveable/log15"
-	"github.com/kevinburke/gobike/server/assets"
+	"github.com/kevinburke/gobike"
+	"github.com/kevinburke/gobike/server"
 	"github.com/kevinburke/handlers"
 	"github.com/kevinburke/nacl"
-	"github.com/kevinburke/rest"
 	yaml "gopkg.in/yaml.v2"
 )
 
 // DefaultPort is the listening port if no other port is specified.
-var DefaultPort = 7065
+var DefaultPort = 8333
 
 // The server's Version.
 const Version = "0.7"
-
-var homepageTpl *template.Template
-var logger log.Logger
-var digests map[string][sha256.Size]byte
-
-// hashurl returns a hash of the resource with the given key
-func hashurl(key string) template.URL {
-	d, ok := digests[strings.TrimPrefix(key, "/")]
-	if !ok {
-		return ""
-	}
-	// we don't actually need the whole hash.
-	return template.URL("s=" + b64(d[:12]))
-}
-
-func b64(digest []byte) string {
-	return strings.TrimRight(base64.URLEncoding.EncodeToString(digest), "=")
-}
-
-func init() {
-	var err error
-	digests, err = assets.Digests()
-	if err != nil {
-		panic(err)
-	}
-	homepageHTML := assets.MustAssetString("templates/index.html")
-	homepageTpl = template.Must(
-		template.New("homepage").Option("missingkey=error").Funcs(template.FuncMap{
-			"hashurl": hashurl,
-		}).Parse(homepageHTML),
-	)
-	logger = handlers.Logger
-
-	// Add more templates here.
-}
-
-// A HTTP server for static files. All assets are packaged up in the assets
-// directory with the go-bindata binary. Run "make assets" to rerun the
-// go-bindata binary.
-type static struct {
-	modTime time.Time
-}
-
-var expires = time.Date(2050, time.January, 1, 0, 0, 0, 0, time.UTC).Format(time.RFC1123)
-
-func (s *static) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path == "/favicon.ico" {
-		r.URL.Path = "/static/favicon.ico"
-	}
-	bits, err := assets.Asset(strings.TrimPrefix(r.URL.Path, "/"))
-	if err != nil {
-		rest.NotFound(w, r)
-		return
-	}
-	// with the hashurl implementation below, we can set a super-long content
-	// expiry and ensure content is never stale.
-	if query := r.URL.Query(); query.Get("s") != "" {
-		w.Header().Set("Expires", expires)
-	}
-	http.ServeContent(w, r, r.URL.Path, s.modTime, bytes.NewReader(bits))
-}
-
-// Render a template, or a server error.
-func render(w http.ResponseWriter, r *http.Request, tpl *template.Template, name string, data interface{}) {
-	buf := new(bytes.Buffer)
-	if err := tpl.ExecuteTemplate(buf, name, data); err != nil {
-		rest.ServerError(w, r, err)
-		return
-	}
-	w.Write(buf.Bytes())
-}
-
-// NewServeMux returns a HTTP handler that covers all routes known to the
-// server.
-func NewServeMux() http.Handler {
-	staticServer := &static{
-		modTime: time.Now().UTC(),
-	}
-
-	r := new(handlers.Regexp)
-	r.Handle(regexp.MustCompile(`(^/static|^/favicon.ico$)`), []string{"GET"}, handlers.GZip(staticServer))
-	r.HandleFunc(regexp.MustCompile(`^/$`), []string{"GET"}, func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Content-Type", "text/html; charset=utf-8")
-		render(w, r, homepageTpl, "homepage", nil)
-	})
-	// Add more routes here. Routes not matched will get a 404 error page.
-	// Call rest.RegisterHandler(404, http.HandlerFunc) to provide your own 404
-	// page instead of the default.
-	return r
-}
 
 // FileConfig represents the data in a config file.
 type FileConfig struct {
@@ -159,10 +62,10 @@ type FileConfig struct {
 	// Add other configuration settings here.
 }
 
-var cfg = flag.String("config", "config.yml", "Path to a config file")
-var version = flag.Bool("version", false, "Print the version string and exit")
-
 func main() {
+	cfg := flag.String("config", "config.yml", "Path to a config file")
+	version := flag.Bool("version", false, "Print the version string and exit")
+	tripDirectory := flag.String("trip-directory", "data", "Directory holding trip data")
 	start := time.Now()
 	flag.Parse()
 	if *version {
@@ -173,21 +76,21 @@ func main() {
 	c := new(FileConfig)
 	if err == nil {
 		if err := yaml.Unmarshal(data, c); err != nil {
-			logger.Error("Couldn't parse config file", "err", err)
+			server.Logger.Error("Couldn't parse config file", "err", err)
 			os.Exit(2)
 		}
 	} else {
-		logger.Error("Couldn't find config file", "err", err)
+		server.Logger.Error("Couldn't find config file", "err", err)
 		os.Exit(2)
 	}
 	var key nacl.Key
 	if c.SecretKey == "" {
-		logger.Warn("No secret key specified, generating a random one")
+		server.Logger.Warn("No secret key specified, generating a random one")
 		key = nacl.NewKey()
 	} else {
 		key, err = nacl.Load(c.SecretKey)
 		if err != nil {
-			logger.Error("Error getting secret key", "err", err)
+			server.Logger.Error("Error getting secret key", "err", err)
 			os.Exit(2)
 		}
 	}
@@ -201,7 +104,7 @@ func main() {
 		if ok {
 			iPort, err := strconv.Atoi(port)
 			if err != nil {
-				logger.Error("Invalid port", "err", err, "port", port)
+				server.Logger.Error("Invalid port", "err", err, "port", port)
 				os.Exit(2)
 			}
 			c.Port = &iPort
@@ -209,7 +112,12 @@ func main() {
 			c.Port = &DefaultPort
 		}
 	}
-	mux := NewServeMux()
+	trips, err := gobike.LoadDir(*tripDirectory)
+	if err != nil {
+		server.Logger.Error("Could not load trips", "err", err, "directory", *tripDirectory)
+		os.Exit(2)
+	}
+	mux := server.NewServeMux(trips)
 	mux = handlers.UUID(mux)                                   // add UUID header
 	mux = handlers.Server(mux, "go-html-boilerplate/"+Version) // add Server header
 	mux = handlers.Log(mux)                                    // log requests/responses
@@ -218,10 +126,10 @@ func main() {
 	if c.HTTPOnly {
 		ln, err := net.Listen("tcp", addr)
 		if err != nil {
-			logger.Error("Error listening", "addr", addr, "err", err)
+			server.Logger.Error("Error listening", "addr", addr, "err", err)
 			os.Exit(2)
 		}
-		logger.Info("Started server", "time", time.Since(start).Round(100*time.Microsecond),
+		server.Logger.Info("Started server", "time", time.Since(start).Round(100*time.Microsecond),
 			"protocol", "http", "port", *c.Port)
 		http.Serve(ln, mux)
 	} else {
@@ -230,18 +138,18 @@ func main() {
 			c.CertFile = "certs/leaf.pem"
 		}
 		if _, err := os.Stat(c.CertFile); os.IsNotExist(err) {
-			logger.Error("Could not find a cert file; generate using 'make generate_cert'", "file", c.CertFile)
+			server.Logger.Error("Could not find a cert file; generate using 'make generate_cert'", "file", c.CertFile)
 			os.Exit(2)
 		}
 		if c.KeyFile == "" {
 			c.KeyFile = "certs/leaf.key"
 		}
 		if _, err := os.Stat(c.KeyFile); os.IsNotExist(err) {
-			logger.Error("Could not find a key file; generate using 'make generate_cert'", "file", c.KeyFile)
+			server.Logger.Error("Could not find a key file; generate using 'make generate_cert'", "file", c.KeyFile)
 			os.Exit(2)
 		}
-		logger.Info("Starting server", "time", time.Since(start).Round(100*time.Microsecond), "protocol", "https", "port", *c.Port)
+		server.Logger.Info("Starting server", "time", time.Since(start).Round(100*time.Microsecond), "protocol", "https", "port", *c.Port)
 		listenErr := http.ListenAndServeTLS(addr, c.CertFile, c.KeyFile, mux)
-		logger.Error("server shut down", "err", listenErr)
+		server.Logger.Error("server shut down", "err", listenErr)
 	}
 }

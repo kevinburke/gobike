@@ -5,12 +5,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Go HTML Template</title>
+    <title>GoBike Status</title>
+    <link rel="stylesheet" href="/static/bootstrap.min.css?{{ hashurl "/static/bootstrap.min.css" }}">
     <link rel="stylesheet" href="/static/style.css?{{ hashurl "/static/style.css" }}">
   </head>
   <body>
-    <h1>Hello World!</h1>
-    <p>
-    </p>
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="#">GoBike</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <!--<li class="nav-item active">-->
+            <!--<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>-->
+          <!--</li>-->
+        </ul>
+      </div>
+    </nav>
+
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8">
+          Trips per week: {{ .TripsPerWeekCount }}
+          <div id="placeholder">
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script type="text/javascript" src="/static/jquery.min.js?{{ hashurl "/static/jquery.min.js" }}"></script>
+    <script type="text/javascript" src="/static/flot.min.js?{{ hashurl "/static/flot.min.js" }}"></script>
+    <script type="text/javascript" src="/static/flot.time.min.js?{{ hashurl "/static/flot.time.min.js" }}"></script>
+    <script>
+      var tripsPerWeek = {{ .TripsPerWeek }};
+      $.plot("#placeholder", [tripsPerWeek], {
+        xaxis: { mode: "time" }
+      });
+    </script>
   </body>
 </html>

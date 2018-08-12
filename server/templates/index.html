@@ -29,7 +29,14 @@
       <div class="row">
         <div class="col-md-8">
           Trips per week: {{ .TripsPerWeekCount }}
-          <div id="placeholder">
+          <div id="placeholder" class="chart">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          Unique stations per week: {{ .StationsPerWeekCount }}
+          <div id="placeholder-2" class="chart">
           </div>
         </div>
       </div>
@@ -40,7 +47,11 @@
     <script type="text/javascript" src="/static/flot.time.min.js?{{ hashurl "/static/flot.time.min.js" }}"></script>
     <script>
       var tripsPerWeek = {{ .TripsPerWeek }};
+      var stationsPerWeek = {{ .StationsPerWeek }};
       $.plot("#placeholder", [tripsPerWeek], {
+        xaxis: { mode: "time" }
+      });
+      $.plot("#placeholder-2", [stationsPerWeek], {
         xaxis: { mode: "time" }
       });
     </script>

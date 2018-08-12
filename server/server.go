@@ -90,8 +90,10 @@ func render(w http.ResponseWriter, r *http.Request, tpl *template.Template, name
 }
 
 type homepageData struct {
-	TripsPerWeek      template.JS
-	TripsPerWeekCount int64
+	TripsPerWeek         template.JS
+	TripsPerWeekCount    int64
+	StationsPerWeek      template.JS
+	StationsPerWeekCount int64
 }
 
 var homepageTpl *template.Template
@@ -106,6 +108,12 @@ func NewServeMux(trips []*gobike.Trip) http.Handler {
 	r := new(handlers.Regexp)
 	r.Handle(regexp.MustCompile(`(^/static|^/favicon.ico$)`), []string{"GET"}, handlers.GZip(staticServer))
 	r.HandleFunc(regexp.MustCompile(`^/$`), []string{"GET"}, func(w http.ResponseWriter, r *http.Request) {
+		stationsPerWeek := stats.UniqueStationsPerWeek(trips)
+		stationData, err := json.Marshal(stationsPerWeek)
+		if err != nil {
+			rest.ServerError(w, r, err)
+			return
+		}
 		tripsPerWeek := stats.TripsPerWeek(trips)
 		data, err := json.Marshal(tripsPerWeek)
 		if err != nil {
@@ -114,8 +122,10 @@ func NewServeMux(trips []*gobike.Trip) http.Handler {
 		}
 		w.Header().Set("Content-Type", "text/html; charset=utf-8")
 		render(w, r, homepageTpl, "homepage", &homepageData{
-			TripsPerWeek:      template.JS(string(data)),
-			TripsPerWeekCount: int64(tripsPerWeek[len(tripsPerWeek)-1].Data),
+			TripsPerWeek:         template.JS(string(data)),
+			TripsPerWeekCount:    int64(tripsPerWeek[len(tripsPerWeek)-1].Data),
+			StationsPerWeek:      template.JS(string(stationData)),
+			StationsPerWeekCount: int64(stationsPerWeek[len(stationsPerWeek)-1].Data),
 		})
 	})
 	// Add more routes here. Routes not matched will get a 404 error page.

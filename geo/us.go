@@ -171,5 +171,5 @@ var alaskaPoints = []s2.Point{
 }
 
 var US = &City{
-	points: usPoints,
+	points: append(usPoints, alaskaPoints...),
 }

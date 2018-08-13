@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>GoBike Status</title>
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="#">GoBike</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav">
+          <li class="nav-item {{if eq .Area "bayarea"}}active{{end}}">
+            <a class="nav-link" href="/">Bay Area</span></a>
+          </li>
+          <li class="nav-item {{if eq .Area "oakland"}}active{{end}}">
+            <a class="nav-link" href="/oakland/">Oakland</a>
+          </li>
+          <li class="nav-item {{if eq .Area "sf"}}active{{end}}">
+            <a class="nav-link" href="/sf/">San Francisco</a>
+          </li>
+          <li class="nav-item {{if eq .Area "sj"}}active{{end}}">
+            <a class="nav-link" href="/sj/">San Jose</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8">
+          Trips per week: {{ .TripsPerWeekCount }}
+          <div id="placeholder" class="chart">
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-md-8">
+          Number of stations, last week: {{ .StationsPerWeekCount }}
+          <div id="placeholder-2" class="chart">
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-md-8">
+          Bikes ridden last week: {{ .BikesPerWeekCount }}
+          <div id="placeholder-3" class="chart">
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-md-8">
+          Trips per bike per week: {{ .TripsPerBikePerWeekCount }}
+          <div id="placeholder-4" class="chart">
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script type="text/javascript" src="/static/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/flot.min.js"></script>
+    <script type="text/javascript" src="/static/flot.time.min.js"></script>
+    <script>
+      var plotOptions = {
+        xaxis: { mode: "time" },
+        legend: {position: "nw"},
+        grid: {
+          hoverable: true,
+          borderWidth: 0,
+        },
+      };
+      var color = '#002267';
+      var tripsPerWeek = {{ .TripsPerWeek }};
+      var stationsPerWeek = {{ .StationsPerWeek }};
+      var bikesPerWeek = {{ .BikesPerWeek }};
+      var tripsPerBikePerWeek = {{ .TripsPerBikePerWeek }};
+      var plotTooltip = function(event, pos, item) {
+        if (item) {
+          var x = item.datapoint[0].toFixed(0);
+          var y = item.datapoint[1].toFixed(0);
+          $("#tooltip").html(y + " " + item.series.label).css({top: item.pageY+5, left: item.pageX+5}).show();
+        } else {
+          $("#tooltip").hide();
+        }
+      };
+      $.plot("#placeholder", [{color: color, data: tripsPerWeek, label: "trips"}], plotOptions);
+      
+      $("<div id='tooltip'></div>").css({
+        position: "absolute",
+        display: "none",
+        border: "1px solid #fdd",
+        padding: "2px",
+        "background-color": "#fee",
+        opacity: 0.80,
+      }).appendTo("body");
+      $("#placeholder").bind("plothover", plotTooltip);
+      $.plot("#placeholder-2", [{color: color, data: stationsPerWeek, label: "stations"}], plotOptions);
+      $("#placeholder-2").bind("plothover", plotTooltip);
+      $.plot("#placeholder-3", [{color: color, data: bikesPerWeek, label: "bikes"}], plotOptions);
+      $("#placeholder-3").bind("plothover", plotTooltip);
+      $.plot("#placeholder-4", [{color: color, data: tripsPerBikePerWeek, label: "trips/bike"}], plotOptions);
+      $.plot("#placeholder-4", [{color: color, data: tripsPerBikePerWeek, label: "trips/bike"}], plotOptions);
+      $("#placeholder-4").bind("plothover", plotTooltip);
+    </script>
+  </body>
+</html>

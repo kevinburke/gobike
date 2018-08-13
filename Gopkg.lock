@@ -51,34 +51,12 @@
   version = "0.39"
 
 [[projects]]
-  digest = "1:332bad23ac55e99aa00cc8fe29caff05e90009158aea9c0c655555196df3401f"
-  name = "github.com/kevinburke/nacl"
-  packages = [
-    ".",
-    "randombytes",
-  ]
-  pruneopts = "UT"
-  revision = "247b7cfd826641547b7ee8b89c785901c4e94b0b"
-  version = "0.5"
-
-[[projects]]
   digest = "1:845499a098466583d495702a2945c19da6b5c6c436397726f00b4da1aee3da2e"
   name = "github.com/kevinburke/rest"
   packages = ["."]
   pruneopts = "UT"
   revision = "54a8b110959553907c102f05f4182840d8f1c92c"
   version = "2.1"
-
-[[projects]]
-  branch = "master"
-  digest = "1:37ce7d7d80531b227023331002c0d42b4b4b291a96798c82a049d03a54ba79e4"
-  name = "github.com/lib/pq"
-  packages = [
-    ".",
-    "oid",
-  ]
-  pruneopts = "UT"
-  revision = "90697d60dd844d5ef6ff15135d0203f65d2f53b8"
 
 [[projects]]
   digest = "1:c658e84ad3916da105a761660dcaeb01e63416c8ec7bc62256a9b411a05fcd67"
@@ -95,14 +73,6 @@
   pruneopts = "UT"
   revision = "0360b2af4f38e8d38c7fce2a9f4e702702d73a39"
   version = "v0.0.3"
-
-[[projects]]
-  branch = "master"
-  digest = "1:c492a0e6ac62221d52e588b4439ef87e351d0c195a48e9591e49924fb3a30624"
-  name = "golang.org/x/crypto"
-  packages = ["salsa20/salsa"]
-  pruneopts = "UT"
-  revision = "de0752318171da717af4ce24d0a2e8626afaeb11"
 
 [[projects]]
   branch = "master"
@@ -128,27 +98,14 @@
   pruneopts = "UT"
   revision = "98c5dad5d1a0e8a73845ecc8897d0bd56586511d"
 
-[[projects]]
-  digest = "1:342378ac4dcb378a5448dd723f0784ae519383532f5e70ade24132c4c8693202"
-  name = "gopkg.in/yaml.v2"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "5420a8b6744d3b0345ab293f6fcba19c978f1183"
-  version = "v2.2.1"
-
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
     "github.com/golang/geo/r3",
     "github.com/golang/geo/s2",
-    "github.com/inconshreveable/log15",
     "github.com/kevinburke/handlers",
-    "github.com/kevinburke/nacl",
-    "github.com/kevinburke/rest",
-    "github.com/lib/pq",
     "golang.org/x/sync/errgroup",
-    "gopkg.in/yaml.v2",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1

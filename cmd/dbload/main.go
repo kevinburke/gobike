@@ -96,7 +96,7 @@ func run() error {
 		}
 	}
 
-	stations := make(map[int]Station, 0)
+	stations := make(map[int]Station)
 	for _, trip := range trips {
 		if _, ok := stations[trip.StartStationID]; !ok {
 			stations[trip.StartStationID] = Station{

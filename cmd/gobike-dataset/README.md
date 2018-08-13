@@ -37,5 +37,3 @@ CREATE TABLE trips (
 ```sql
 COPY trips FROM '/path/to/trips.csv' CSV HEADER;
 ```
-
-

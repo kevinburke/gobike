@@ -5,8 +5,8 @@ In addition to server, we've made the Ford GoBike datasets available online.
 ## BigQuery
 
 All trip data lives in the
-[ford_gobike](https://bigquery.cloud.google.com/table/kjc-datasets:ford_gobike.trips)
-dataset, which is availably publicly.
+[ford_gobike](https://bigquery.cloud.google.com/table/bay-area-public-data:ford_gobike.trips)
+dataset, which is available publicly.
 
 ### Trips per week
 
@@ -14,7 +14,7 @@ dataset, which is availably publicly.
 SELECT
   DATE_TRUNC(DATE(start_time), WEEK) as week,
   COUNT(*) as trips
-FROM `kjc-datasets.ford_gobike.trips`
+FROM `bay-area-public-data.ford_gobike.trips`
 GROUP BY 1
 ORDER BY 1
 ```
@@ -25,7 +25,7 @@ ORDER BY 1
 SELECT
   DATE_TRUNC(DATE(start_time), WEEK) as week,
   COUNT(distinct bike_id) as bikes
-FROM `kjc-datasets.ford_gobike.trips`
+FROM `bay-area-public-data.ford_gobike.trips`
 GROUP BY 1
 ORDER BY 1
 ```
@@ -38,7 +38,7 @@ SELECT
   DATE_TRUNC(DATE(start_time), WEEK) as week,
   bike_id,
   count(*) as trips
-FROM `kjc-datasets.ford_gobike.trips`
+FROM `bay-area-public-data.ford_gobike.trips`
 GROUP BY 1, 2
 ORDER BY 1
 )

@@ -5,6 +5,7 @@ import (
 	"crypto/sha256"
 	"encoding/base64"
 	"encoding/json"
+	"fmt"
 	"html/template"
 	"net/http"
 	"regexp"
@@ -97,12 +98,21 @@ type homepageData struct {
 	BikesPerWeek             template.JS
 	BikesPerWeekCount        int64
 	TripsPerBikePerWeek      template.JS
-	TripsPerBikePerWeekCount float64
+	TripsPerBikePerWeekCount string
 }
 
 var homepageTpl *template.Template
 
-func renderHomepage(trips []*gobike.Trip) (http.Handler, error) {
+func renderCityPage(city *gobike.City, allTrips []*gobike.Trip) (http.Handler, error) {
+	trips := make([]*gobike.Trip, 0)
+	for i := range allTrips {
+		if city.ContainsPoint(allTrips[i].StartStationLatitude, allTrips[i].StartStationLongitude) {
+			trips = append(trips, allTrips[i])
+		}
+	}
+	if len(trips) == 0 {
+		panic("no trips")
+	}
 	stationsPerWeek := stats.UniqueStationsPerWeek(trips)
 	stationData, err := json.Marshal(stationsPerWeek)
 	if err != nil {
@@ -133,7 +143,7 @@ func renderHomepage(trips []*gobike.Trip) (http.Handler, error) {
 			BikesPerWeek:             template.JS(string(bikeData)),
 			BikesPerWeekCount:        int64(bikeTripsPerWeek[len(bikeTripsPerWeek)-1].Data),
 			TripsPerBikePerWeek:      template.JS(string(tripPerBikeData)),
-			TripsPerBikePerWeekCount: tripsPerBikePerWeek[len(tripsPerBikePerWeek)-1].Data,
+			TripsPerBikePerWeekCount: fmt.Sprintf("%.1f", tripsPerBikePerWeek[len(tripsPerBikePerWeek)-1].Data),
 		})
 	}), nil
 }
@@ -147,11 +157,26 @@ func NewServeMux(trips []*gobike.Trip) (http.Handler, error) {
 
 	r := new(handlers.Regexp)
 	r.Handle(regexp.MustCompile(`(^/static|^/favicon.ico$)`), []string{"GET"}, handlers.GZip(staticServer))
-	homepageHandler, err := renderHomepage(trips)
+	homepageHandler, err := renderCityPage(gobike.All, trips)
+	if err != nil {
+		return nil, err
+	}
+	sfHandler, err := renderCityPage(gobike.SF, trips)
+	if err != nil {
+		return nil, err
+	}
+	oakHandler, err := renderCityPage(gobike.Oakland, trips)
+	if err != nil {
+		return nil, err
+	}
+	sjHandler, err := renderCityPage(gobike.SanJose, trips)
 	if err != nil {
 		return nil, err
 	}
 	r.Handle(regexp.MustCompile(`^/$`), []string{"GET"}, homepageHandler)
+	r.Handle(regexp.MustCompile(`^/sf$`), []string{"GET"}, sfHandler)
+	r.Handle(regexp.MustCompile(`^/oakland$`), []string{"GET"}, oakHandler)
+	r.Handle(regexp.MustCompile(`^/sj$`), []string{"GET"}, sjHandler)
 	// Add more routes here. Routes not matched will get a 404 error page.
 	// Call rest.RegisterHandler(404, http.HandlerFunc) to provide your own 404
 	// page instead of the default.

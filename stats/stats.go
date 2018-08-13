@@ -67,8 +67,9 @@ func UniqueStationsPerWeek(trips []*gobike.Trip) TimeSeries {
 		if !ok {
 			mp[sundayfmt] = make(map[int]bool)
 		}
+		// only count start station since end station might be in a different
+		// city
 		mp[sundayfmt][trips[i].StartStationID] = true
-		mp[sundayfmt][trips[i].EndStationID] = true
 		if sunday.Before(earliest) {
 			earliest = sunday
 		}

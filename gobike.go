@@ -1,6 +1,7 @@
 package gobike
 
 import (
+	"context"
 	"encoding/csv"
 	"io"
 	"io/ioutil"
@@ -8,7 +9,10 @@ import (
 	"path/filepath"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
+
+	"golang.org/x/sync/errgroup"
 )
 
 type Trip struct {
@@ -121,24 +125,36 @@ func LoadDir(directory string) ([]*Trip, error) {
 	if err != nil {
 		return nil, err
 	}
+	group, errctx := errgroup.WithContext(context.Background())
 
 	trips := make([]*Trip, 0)
+	var mu sync.Mutex
 	for _, file := range files {
 		if !strings.HasSuffix(file.Name(), "-fordgobike-tripdata.csv") {
 			continue
 		}
-		f, err := os.Open(filepath.Join(directory, file.Name()))
-		if err != nil {
-			return nil, err
-		}
-		fileTrips, err := Load(f)
-		if err != nil {
-			return nil, err
-		}
-		if err := f.Close(); err != nil {
-			return nil, err
-		}
-		trips = append(trips, fileTrips...)
+		file := file
+		group.Go(func() error {
+			f, err := os.Open(filepath.Join(directory, file.Name()))
+			if err != nil {
+				return err
+			}
+			fileTrips, err := Load(f)
+			if err != nil {
+				return err
+			}
+			if err := f.Close(); err != nil {
+				return err
+			}
+			mu.Lock()
+			defer mu.Unlock()
+			trips = append(trips, fileTrips...)
+			_ = errctx
+			return nil
+		})
+	}
+	if err := group.Wait(); err != nil {
+		return nil, err
 	}
 	return trips, nil
 }

@@ -6,6 +6,7 @@ import (
 	"log"
 
 	"github.com/kevinburke/gobike"
+	"github.com/kevinburke/gobike/geo"
 	_ "github.com/lib/pq"
 )
 
@@ -85,11 +86,11 @@ func run() error {
 
 	geolocate := func(lat, long float64) string {
 		switch {
-		case gobike.SF.ContainsPoint(lat, long):
+		case geo.SF.ContainsPoint(lat, long):
 			return "San Francisco"
-		case gobike.Oakland.ContainsPoint(lat, long):
+		case geo.Oakland.ContainsPoint(lat, long):
 			return "Oakland"
-		case gobike.SanJose.ContainsPoint(lat, long):
+		case geo.SanJose.ContainsPoint(lat, long):
 			return "San Jose"
 		default:
 			return "Other"

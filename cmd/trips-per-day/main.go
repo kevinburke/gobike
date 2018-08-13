@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"github.com/kevinburke/gobike"
+	"github.com/kevinburke/gobike/geo"
 )
 
 type Day struct {
@@ -57,14 +58,14 @@ func main() {
 		}
 		trips = append(trips, fileTrips...)
 	}
-	var city *gobike.City
+	var city *geo.City
 	switch *cityFlag {
 	case "sf":
-		city = gobike.SF
+		city = geo.SF
 	case "oak", "oakland":
-		city = gobike.Oakland
+		city = geo.Oakland
 	case "sj", "sjc", "sanjose", "san jose":
-		city = gobike.SanJose
+		city = geo.SanJose
 	default:
 		log.Fatalf("unknown city %q", *cityFlag)
 	}

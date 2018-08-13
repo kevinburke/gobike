@@ -6,7 +6,7 @@ In addition to server, we've made the Ford GoBike datasets available online.
 
 All trip data lives in the
 [ford_gobike](https://bigquery.cloud.google.com/table/kjc-datasets:ford_gobike.trips)
-dataset, which is availably publicly.
+dataset, which is available publicly.
 
 ### Trips per week
 

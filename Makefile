@@ -33,8 +33,17 @@ assets: server/assets/bindata.go
 serve: $(GOPATH)/bin/gobike-server
 	$(GOPATH)/bin/gobike-server
 
+dataset: $(GOPATH)/bin/gobike-dataset
+	$(GOPATH)/bin/gobike-dataset data/ data/trips.csv
+
 $(GOPATH)/bin/gobike-server: $(GO_FILES)
 	go install ./cmd/gobike-server
+
+$(GOPATH)/bin/gobike-stats: $(GO_FILES)
+	go install ./cmd/gobike-stats
+
+$(GOPATH)/bin/gobike-dataset: $(GO_FILES)
+	go install ./cmd/gobike-dataset
 
 $(GENERATE_TLS_CERT):
 	go get -u github.com/kevinburke/generate-tls-cert

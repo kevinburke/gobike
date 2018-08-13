@@ -1,4 +1,4 @@
-package gobike
+package geo
 
 import (
 	"github.com/golang/geo/r3"
@@ -7915,4 +7915,8 @@ var sanJosePoints = []s2.Point{
 	s2.Point{r3.Vector{-122.045384, 37.455673, 0}},
 	s2.Point{r3.Vector{-122.045326, 37.458024, 0}},
 	s2.Point{r3.Vector{-122.0453575, 37.460417, 0}},
+}
+
+var SanJose = &City{
+	points: sanJosePoints,
 }

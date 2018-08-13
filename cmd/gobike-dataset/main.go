@@ -120,7 +120,10 @@ func run() error {
 			return fmt.Errorf("error writing record %d: %s", i, err)
 		}
 	}
-	return nil
+
+	// Write any buffered data to the underlying writer (standard output).
+	w.Flush()
+	return w.Error()
 }
 
 func main() {

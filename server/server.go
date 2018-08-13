@@ -14,6 +14,7 @@ import (
 
 	log "github.com/inconshreveable/log15"
 	"github.com/kevinburke/gobike"
+	"github.com/kevinburke/gobike/geo"
 	"github.com/kevinburke/gobike/server/assets"
 	"github.com/kevinburke/gobike/stats"
 	"github.com/kevinburke/handlers"
@@ -103,7 +104,7 @@ type homepageData struct {
 
 var homepageTpl *template.Template
 
-func renderCityPage(city *gobike.City, allTrips []*gobike.Trip) (http.Handler, error) {
+func renderCityPage(city *geo.City, allTrips []*gobike.Trip) (http.Handler, error) {
 	trips := make([]*gobike.Trip, 0)
 	for i := range allTrips {
 		if city.ContainsPoint(allTrips[i].StartStationLatitude, allTrips[i].StartStationLongitude) {
@@ -157,19 +158,19 @@ func NewServeMux(trips []*gobike.Trip) (http.Handler, error) {
 
 	r := new(handlers.Regexp)
 	r.Handle(regexp.MustCompile(`(^/static|^/favicon.ico$)`), []string{"GET"}, handlers.GZip(staticServer))
-	homepageHandler, err := renderCityPage(gobike.All, trips)
+	homepageHandler, err := renderCityPage(geo.US, trips)
 	if err != nil {
 		return nil, err
 	}
-	sfHandler, err := renderCityPage(gobike.SF, trips)
+	sfHandler, err := renderCityPage(geo.SF, trips)
 	if err != nil {
 		return nil, err
 	}
-	oakHandler, err := renderCityPage(gobike.Oakland, trips)
+	oakHandler, err := renderCityPage(geo.Oakland, trips)
 	if err != nil {
 		return nil, err
 	}
-	sjHandler, err := renderCityPage(gobike.SanJose, trips)
+	sjHandler, err := renderCityPage(geo.SanJose, trips)
 	if err != nil {
 		return nil, err
 	}

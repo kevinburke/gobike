@@ -15,7 +15,6 @@ import (
 )
 
 func run() error {
-	var format = flag.String("format", "csv", "CSV format")
 	flag.Parse()
 
 	trips, err := gobike.LoadDir(flag.Arg(0))
@@ -47,30 +46,26 @@ func run() error {
 		return ""
 	}
 
-	switch *format {
-	case "postgres":
-	default:
-		w.Write([]string{
-			"duration",
-			"start_time",
-			"end_time",
-			"start_station_id",
-			"start_station_name",
-			"start_station_latitude",
-			"start_station_longitude",
-			"start_station_city",
-			"end_station_id",
-			"end_station_name",
-			"end_station_latitude",
-			"end_station_longitude",
-			"end_station_city",
-			"bike_id",
-			"user_type",
-			"member_birth_year",
-			"member_gender",
-			"bike_share_for_all",
-		})
-	}
+	w.Write([]string{
+		"duration",
+		"start_time",
+		"end_time",
+		"start_station_id",
+		"start_station_name",
+		"start_station_latitude",
+		"start_station_longitude",
+		"start_station_city",
+		"end_station_id",
+		"end_station_name",
+		"end_station_latitude",
+		"end_station_longitude",
+		"end_station_city",
+		"bike_id",
+		"user_type",
+		"member_birth_year",
+		"member_gender",
+		"bike_share_for_all",
+	})
 
 	for i, trip := range trips {
 		if trip.EndTime.Before(trip.StartTime) {
@@ -83,37 +78,30 @@ func run() error {
 			bikeshare = "true"
 		}
 
-		var record []string
+		record := []string{
+			strconv.Itoa(int(trip.Duration.Seconds())),
+			trip.StartTime.Format(time.RFC3339),
+			trip.EndTime.Format(time.RFC3339),
 
-		// TODO: Handle null values correctly
-		switch *format {
-		case "postgres":
-		default:
-			record = []string{
-				strconv.Itoa(int(trip.Duration.Seconds())),
-				trip.StartTime.Format(time.RFC3339),
-				trip.EndTime.Format(time.RFC3339),
+			// Start station
+			strconv.Itoa(trip.StartStationID),
+			trip.StartStationName,
+			fmt.Sprint(trip.StartStationLatitude),
+			fmt.Sprint(trip.StartStationLongitude),
+			geolocate(trip.StartStationLatitude, trip.StartStationLongitude),
 
-				// Start station
-				strconv.Itoa(trip.StartStationID),
-				trip.StartStationName,
-				fmt.Sprint(trip.StartStationLatitude),
-				fmt.Sprint(trip.StartStationLongitude),
-				geolocate(trip.StartStationLatitude, trip.StartStationLongitude),
+			// End Station
+			strconv.Itoa(trip.EndStationID),
+			trip.EndStationName,
+			fmt.Sprint(trip.EndStationLatitude),
+			fmt.Sprint(trip.EndStationLongitude),
+			geolocate(trip.EndStationLatitude, trip.EndStationLongitude),
 
-				// End Station
-				strconv.Itoa(trip.EndStationID),
-				trip.EndStationName,
-				fmt.Sprint(trip.EndStationLatitude),
-				fmt.Sprint(trip.EndStationLongitude),
-				geolocate(trip.EndStationLatitude, trip.EndStationLongitude),
-
-				strconv.Itoa(int(trip.BikeID)),
-				trip.UserType,
-				strconv.Itoa(trip.MemberBirthYear),
-				trip.MemberGender,
-				bikeshare,
-			}
+			strconv.Itoa(int(trip.BikeID)),
+			trip.UserType,
+			strconv.Itoa(trip.MemberBirthYear),
+			trip.MemberGender,
+			bikeshare,
 		}
 
 		if err := w.Write(record); err != nil {

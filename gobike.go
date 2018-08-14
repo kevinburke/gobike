@@ -15,6 +15,17 @@ import (
 	"golang.org/x/sync/errgroup"
 )
 
+var tz *time.Location
+var tzOnce sync.Once
+
+func populateTZ() {
+	var err error
+	tz, err = time.LoadLocation("America/Los_Angeles")
+	if err != nil {
+		panic(err)
+	}
+}
+
 type Trip struct {
 	Duration  time.Duration
 	StartTime time.Time
@@ -39,18 +50,19 @@ type Trip struct {
 
 func parseTrip(record []string) (*Trip, error) {
 	// "duration_sec","start_time","end_time","start_station_id","start_station_name","start_station_latitude","start_station_longitude","end_station_id","end_station_name","end_station_latitude","end_station_longitude","bike_id","user_type","member_birth_year","member_gender","bike_share_for_all_trip"
+	tzOnce.Do(populateTZ)
 	t := new(Trip)
 	sec, err := strconv.Atoi(record[0])
 	if err != nil {
 		return nil, err
 	}
 	t.Duration = time.Duration(sec) * time.Second
-	startTime, err := time.Parse("2006-01-02 15:04:05", record[1])
+	startTime, err := time.ParseInLocation("2006-01-02 15:04:05", record[1], tz)
 	if err != nil {
 		return nil, err
 	}
 	t.StartTime = startTime
-	endTime, err := time.Parse("2006-01-02 15:04:05", record[2])
+	endTime, err := time.ParseInLocation("2006-01-02 15:04:05", record[2], tz)
 	if err != nil {
 		return nil, err
 	}

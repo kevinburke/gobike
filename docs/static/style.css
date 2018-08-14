@@ -1,7 +1,8 @@
 body {
-  font-family: 'Helvetica Neue';
+  font-family: system, -apple-system, BlinkMacSystemFont,
+    "Helvetica Neue", "Lucida Grande", sans-serif;
+  -webkit-font-smoothing: antialiased;
   min-height: 75rem;
-  padding-top: 4.5rem;
 }
 
 .chart {

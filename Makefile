@@ -42,24 +42,27 @@ $(GOPATH)/bin/gobike-site: $(GO_FILES)
 $(GOPATH)/bin/gobike-dataset: $(GO_FILES)
 	go install ./cmd/gobike-dataset
 
+$(GOPATH)/bin/gobike-rewind: $(GO_FILES)
+	go install ./cmd/gobike-rewind
+
 $(GOPATH)/bin/gobike-geo: cmd/gobike-geo/main.go
 	go install ./cmd/gobike-geo
 
 # Geojson mappings
-geo/berkeley.go: geojson/2833528.geojson $(GOPATH)/bin/gobike-geo
-	$(GOPATH)/bin/gobike-geo geojson/2833528.geojson geo/berkeley.go Berkeley
+geo/berkeley.go: geojson/berkeley.geojson $(GOPATH)/bin/gobike-geo
+	$(GOPATH)/bin/gobike-geo geojson/berkeley.geojson geo/berkeley.go Berkeley
 
-geo/sanfrancisco.go: geojson/111968.geojson $(GOPATH)/bin/gobike-geo
-	$(GOPATH)/bin/gobike-geo geojson/111968.geojson geo/sanfrancisco.go SF
+geo/sanfrancisco.go: geojson/sanfrancisco.geojson $(GOPATH)/bin/gobike-geo
+	$(GOPATH)/bin/gobike-geo geojson/sanfrancisco.geojson geo/sanfrancisco.go SF
 
-geo/oakland.go: geojson/2833530.geojson $(GOPATH)/bin/gobike-geo
-	$(GOPATH)/bin/gobike-geo geojson/2833530.geojson geo/oakland.go Oakland
+geo/oakland.go: geojson/oakland.geojson $(GOPATH)/bin/gobike-geo
+	$(GOPATH)/bin/gobike-geo geojson/oakland.geojson geo/oakland.go Oakland
 
-geo/emeryville.go: geojson/2833529.geojson $(GOPATH)/bin/gobike-geo
-	$(GOPATH)/bin/gobike-geo geojson/2833529.geojson geo/emeryville.go Emeryville
+geo/emeryville.go: geojson/emeryville.geojson $(GOPATH)/bin/gobike-geo
+	$(GOPATH)/bin/gobike-geo geojson/emeryville.geojson geo/emeryville.go Emeryville
 
-geo/sanjose.go: geojson/112143.geojson $(GOPATH)/bin/gobike-geo
-	$(GOPATH)/bin/gobike-geo geojson/112143.geojson geo/sanjose.go SanJose
+geo/sanjose.go: geojson/sanjose.geojson $(GOPATH)/bin/gobike-geo
+	$(GOPATH)/bin/gobike-geo geojson/sanjose.geojson geo/sanjose.go SanJose
 
 watch: | $(JUSTRUN)
 	$(JUSTRUN) -v --delay=100ms -c 'make stats serve' $(WATCH_TARGETS)

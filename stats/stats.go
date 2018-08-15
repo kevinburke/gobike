@@ -170,7 +170,10 @@ func TripsPerBikePerWeek(trips []*gobike.Trip) TimeSeries {
 		for j := range weekMap {
 			numTrips += float64(weekMap[j])
 		}
-		avg := numTrips / float64(len(weekMap))
+		var avg float64
+		if numTrips+float64(len(weekMap)) > 0.0005 {
+			avg = numTrips / float64(len(weekMap))
+		}
 		result = append(result, &TimeStat{Date: i, Data: avg})
 		if seen >= len(mp) {
 			break

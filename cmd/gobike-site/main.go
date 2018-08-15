@@ -99,10 +99,12 @@ func main() {
 	}
 
 	cities := map[string]*geo.City{
-		"bayarea": nil,
-		"sf":      geo.SF,
-		"oakland": geo.Oakland,
-		"sj":      geo.SanJose,
+		"bayarea":    nil,
+		"berkeley":   geo.Berkeley,
+		"emeryville": geo.Emeryville,
+		"sf":         geo.SF,
+		"oakland":    geo.Oakland,
+		"sj":         geo.SanJose,
 	}
 
 	homepageTpl := template.Must(template.ParseFiles("templates/city.html"))

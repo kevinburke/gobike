@@ -37,11 +37,17 @@ func run() error {
 		if geo.SF.ContainsPoint(lat, long) {
 			return "San Francisco"
 		}
+		if geo.Berkeley.ContainsPoint(lat, long) {
+			return "Berkeley"
+		}
 		if geo.Oakland.ContainsPoint(lat, long) {
 			return "Oakland"
 		}
 		if geo.SanJose.ContainsPoint(lat, long) {
 			return "San Jose"
+		}
+		if geo.Emeryville.ContainsPoint(lat, long) {
+			return "Emeryville"
 		}
 		return ""
 	}

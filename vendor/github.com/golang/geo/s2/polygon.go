@@ -743,8 +743,18 @@ func (p *Polygon) Edge(e int) Edge {
 	} else {
 		// When the number of loops is small, use linear search. Most often
 		// there is exactly one loop and the code below executes zero times.
-		for i = 0; e >= len(p.Loop(i).vertices); i++ {
-			e -= len(p.Loop(i).vertices)
+		//
+		// for i = 0; e >= len(p.Loop(i).vertices); i++ {
+		//	   e -= len(p.Loop(i).vertices)
+		// }
+		for {
+			if e >= len(p.Loop(i).vertices) {
+				e -= len(p.Loop(i).vertices)
+			}
+			if i+1 == p.NumLoops() {
+				break
+			}
+			i += 1
 		}
 	}
 

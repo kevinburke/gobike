@@ -40,6 +40,25 @@ $(GOPATH)/bin/gobike-site: $(GO_FILES)
 $(GOPATH)/bin/gobike-dataset: $(GO_FILES)
 	go install ./cmd/gobike-dataset
 
+$(GOPATH)/bin/gobike-geo:
+	go install ./cmd/gobike-geo
+
+# Geojson mappings
+geo/berkeley.go: geojson/2833528.json $(GOPATH)/bin/gobike-geo
+	$(GOPATH)/bin/gobike-geo geojson/2833528.json geo/berkeley.go Berkeley
+
+geo/sanfrancisco.go: geojson/111968.json $(GOPATH)/bin/gobike-geo
+	$(GOPATH)/bin/gobike-geo geojson/111968.json geo/sanfrancisco.go SF
+
+geo/oakland.go: geojson/2833530.json $(GOPATH)/bin/gobike-geo
+	$(GOPATH)/bin/gobike-geo geojson/2833530.json geo/oakland.go Oakland
+
+geo/emeryville.go: geojson/2833529.json $(GOPATH)/bin/gobike-geo
+	$(GOPATH)/bin/gobike-geo geojson/2833529.json geo/emeryville.go Emeryville
+
+geo/sanjose.go: geojson/112143.json $(GOPATH)/bin/gobike-geo
+	$(GOPATH)/bin/gobike-geo geojson/112143.json geo/sanjose.go SanJose
+
 watch: | $(JUSTRUN)
 	$(JUSTRUN) -v --delay=100ms -c 'make stats serve' $(WATCH_TARGETS)
 

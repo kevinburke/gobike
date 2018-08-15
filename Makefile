@@ -48,6 +48,19 @@ $(GOPATH)/bin/gobike-rewind: $(GO_FILES)
 $(GOPATH)/bin/gobike-geo: cmd/gobike-geo/main.go
 	go install ./cmd/gobike-geo
 
+sf-districts:
+	$(GOPATH)/bin/gobike-geo geojson/sf-districts/1.geojson geo/sfdistrict1.go SFD1
+	$(GOPATH)/bin/gobike-geo geojson/sf-districts/2.geojson geo/sfdistrict2.go SFD2
+	$(GOPATH)/bin/gobike-geo geojson/sf-districts/3.geojson geo/sfdistrict3.go SFD3
+	$(GOPATH)/bin/gobike-geo geojson/sf-districts/4.geojson geo/sfdistrict4.go SFD4
+	$(GOPATH)/bin/gobike-geo geojson/sf-districts/5.geojson geo/sfdistrict5.go SFD5
+	$(GOPATH)/bin/gobike-geo geojson/sf-districts/6.geojson geo/sfdistrict6.go SFD6
+	$(GOPATH)/bin/gobike-geo geojson/sf-districts/7.geojson geo/sfdistrict7.go SFD7
+	$(GOPATH)/bin/gobike-geo geojson/sf-districts/8.geojson geo/sfdistrict8.go SFD8
+	$(GOPATH)/bin/gobike-geo geojson/sf-districts/9.geojson geo/sfdistrict9.go SFD9
+	$(GOPATH)/bin/gobike-geo geojson/sf-districts/10.geojson geo/sfdistrict10.go SFD10
+	$(GOPATH)/bin/gobike-geo geojson/sf-districts/11.geojson geo/sfdistrict11.go SFD11
+
 # Geojson mappings
 geo/berkeley.go: geojson/berkeley.geojson $(GOPATH)/bin/gobike-geo
 	$(GOPATH)/bin/gobike-geo geojson/berkeley.geojson geo/berkeley.go Berkeley

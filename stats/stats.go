@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/kevinburke/gobike"
+	"github.com/kevinburke/gobike/geo"
 )
 
 var tz *time.Location
@@ -307,7 +308,7 @@ func PopularStationsLast7Days(trips []*gobike.Trip, numStations int) []*StationC
 	return stationCounts[:numStations]
 }
 
-func PopularBS4AStationsLast7Days(trips []*gobike.Trip, numStations int) []*StationCount {
+func sevenDaysBeforeDataEnd(trips []*gobike.Trip) time.Time {
 	tzOnce.Do(populateTZ)
 	latestDay := time.Date(1000, time.January, 1, 0, 0, 0, 0, tz)
 	for i := 0; i < len(trips); i++ {
@@ -315,7 +316,11 @@ func PopularBS4AStationsLast7Days(trips []*gobike.Trip, numStations int) []*Stat
 			latestDay = trips[i].StartTime
 		}
 	}
-	weekAgo := time.Date(latestDay.Year(), latestDay.Month(), latestDay.Day()-7, 0, 0, 0, 0, tz)
+	return time.Date(latestDay.Year(), latestDay.Month(), latestDay.Day()-7, 0, 0, 0, 0, tz)
+}
+
+func PopularBS4AStationsLast7Days(trips []*gobike.Trip, numStations int) []*StationCount {
+	weekAgo := sevenDaysBeforeDataEnd(trips)
 	stationCounts := stationCounter(trips, func(trip *gobike.Trip) bool {
 		if trip.StartTime.Before(weekAgo) {
 			return false
@@ -335,4 +340,22 @@ func PopularBS4AStationsLast7Days(trips []*gobike.Trip, numStations int) []*Stat
 		return stationCounts
 	}
 	return stationCounts[:numStations]
+}
+
+func TripsLastWeekPerDistrict(trips []*gobike.Trip) [11]int {
+	weekAgo := sevenDaysBeforeDataEnd(trips)
+	var counts [11]int
+	for i := range geo.SFDistricts {
+		district := geo.SFDistricts[i]
+		for j := range trips {
+			if trips[j].StartTime.Before(weekAgo) {
+				continue
+			}
+			if !district.ContainsPoint(trips[j].StartStationLatitude, trips[j].StartStationLongitude) {
+				continue
+			}
+			counts[i]++
+		}
+	}
+	return counts
 }

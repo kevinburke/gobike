@@ -54,16 +54,59 @@
         </div>
         <div class="col-md-4">
           <h4>Most Popular Stations</h4>
-          <p>
+          <table class="table table-sm">
+            <tbody>
             {{ range .PopularStations -}}
+            <tr>
               {{- if lt .Count 6 -}}
-              <a href="https://www.openstreetmap.org/?mlat={{ .Station.Latitude }}&mlon={{ .Station.Longitude }}&zoom=14">{{ .Station.Name }}</a> (5 or fewer)
+              <th scope="row">(5 or fewer)</th><td><a href="https://www.openstreetmap.org/?mlat={{ .Station.Latitude }}&mlon={{ .Station.Longitude }}&zoom=14">{{ .Station.Name }}</a></td>
               {{ else -}}
-              <a href="https://www.openstreetmap.org/?mlat={{ .Station.Latitude }}&mlon={{ .Station.Longitude }}&zoom=14">{{ .Station.Name }}</a> ({{ .Count }})
+              <th scope="row">{{ .Count }}</th><td><a href="https://www.openstreetmap.org/?mlat={{ .Station.Latitude }}&mlon={{ .Station.Longitude }}&zoom=14">{{ .Station.Name }}</a> </td>
               {{- end }}
-              <br />
-            {{ end }}
-          </p>
+            </tr>
+            {{- end }}
+            </tbody>
+          </table>
+          {{ if eq .Area "sf" }}
+          <h5>Trips By Supervisor District</h5>
+          <table class="table table-sm">
+            <tbody>
+              <tr>
+                <th scope="row">D1</th><td>{{ index .TripsByDistrict 0 }}</td><td>Sandra Lee Fewer</td>
+              </tr>
+              <tr>
+                <th scope="row">D2</th><td>{{ index .TripsByDistrict 1 }}</td><td>Catherine Stefani</td>
+              </tr>
+              <tr>
+                <th scope="row">D3</th><td>{{ index .TripsByDistrict 2 }}</td><td>Aaron Peskin</td>
+              </tr>
+              <tr>
+                <th scope="row">D4</th><td>{{ index .TripsByDistrict 3 }}</td><td>Katy Tang</td>
+              </tr>
+              <tr>
+                <th scope="row">D5</th><td>{{ index .TripsByDistrict 4 }}</td><td>Vallie Brown</td>
+              </tr>
+              <tr>
+                <th scope="row">D6</th><td>{{ index .TripsByDistrict 5 }}</td><td>Jane Kim</td>
+              </tr>
+              <tr>
+                <th scope="row">D7</th><td>{{ index .TripsByDistrict 6 }}</td><td>Norman Yee</td>
+              </tr>
+              <tr>
+                <th scope="row">D8</th><td>{{ index .TripsByDistrict 7 }}</td><td>Rafael Mandelman</td>
+              </tr>
+              <tr>
+                <th scope="row">D9</th><td>{{ index .TripsByDistrict 8 }}</td><td>Hillary Ronen</td>
+              </tr>
+              <tr>
+                <th scope="row">D10</th><td>{{ index .TripsByDistrict 9 }}</td><td>Malia Cohen</td>
+              </tr>
+              <tr>
+                <th scope="row">D11</th><td>{{ index .TripsByDistrict 10 }}</td><td>Ahsha Safaí</td>
+              </tr>
+            </tbody>
+          </table>
+          {{ end }}
         </div>
       </div>
       <div class="row">
@@ -88,15 +131,19 @@
         </div>
         <div class="col-md-4">
           <h4>Popular BS4A Stations</h4>
-          <p>
+          <table class="table table-sm">
+            <tbody>
             {{ range .PopularBS4AStations -}}
+            <tr>
               {{- if lt .BS4ACount 6 -}}
-              <a href="https://www.openstreetmap.org/?mlat={{ .Station.Latitude }}&mlon={{ .Station.Longitude }}&zoom=14">{{ .Station.Name }}</a> (5 or fewer)
+              <th scope="row">(5 or fewer)</th><td></td><td><a href="https://www.openstreetmap.org/?mlat={{ .Station.Latitude }}&mlon={{ .Station.Longitude }}&zoom=14">{{ .Station.Name }}</a></td>
               {{- else -}}
-              <a href="https://www.openstreetmap.org/?mlat={{ .Station.Latitude }}&mlon={{ .Station.Longitude }}&zoom=14">{{ .Station.Name }}</a> ({{ .BS4ACount }} trips, {{ .BS4APct }}% of total)
-              {{- end }}
-              <br />
-            {{ end }}
+              <th scope="row">{{ .BS4ACount }}</th><td><a href="https://www.openstreetmap.org/?mlat={{ .Station.Latitude }}&mlon={{ .Station.Longitude }}&zoom=14">{{ .Station.Name }}</a> </td><td>{{ .BS4APct }}%</td>
+              {{ end -}}
+            </tr>
+            {{ end -}}
+            </tbody>
+          </table>
           </p>
         </div>
       </div>

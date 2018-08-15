@@ -29,6 +29,7 @@ type homepageData struct {
 	BS4ATripPct              string
 	PopularStations          []*stats.StationCount
 	PopularBS4AStations      []*stats.StationCount
+	TripsByDistrict          [11]int
 	Area                     string
 }
 
@@ -48,6 +49,14 @@ func renderCity(name string, city *geo.City, tpl *template.Template, allTrips []
 	var stationsPerWeek, tripsPerWeek, bikeTripsPerWeek, tripsPerBikePerWeek, bs4aTripsPerWeek stats.TimeSeries
 	var stationData, data, bikeData, tripPerBikeData, bs4aData []byte
 	var mostPopularStations, popularBS4AStations []*stats.StationCount
+	var tripsByDistrict [11]int
+	if name == "sf" {
+		group.Go(func() error {
+			tripsByDistrict = stats.TripsLastWeekPerDistrict(trips)
+			return nil
+		})
+	}
+
 	group.Go(func() error {
 		stationsPerWeek = stats.UniqueStationsPerWeek(trips)
 		var err error
@@ -121,6 +130,7 @@ func renderCity(name string, city *geo.City, tpl *template.Template, allTrips []
 		BS4ATripsPerWeek:         template.JS(string(bs4aData)),
 		BS4ATripsPerWeekCount:    int64(bs4aTripsPerWeekCountf64),
 		BS4ATripPct:              fmt.Sprintf("%.1f", 100*bs4aTripsPerWeekCountf64/tripsPerWeekCountf64),
+		TripsByDistrict:          tripsByDistrict,
 	}); err != nil {
 		return err
 	}

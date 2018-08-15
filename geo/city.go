@@ -42,6 +42,17 @@ func init() {
 	Oakland.Name = "Oakland"
 	SF.Name = "San Francisco"
 	SanJose.Name = "San Jose"
+	SFD1.Name = "SFD1"
+	SFD2.Name = "SFD2"
+	SFD3.Name = "SFD3"
+	SFD4.Name = "SFD4"
+	SFD5.Name = "SFD5"
+	SFD6.Name = "SFD6"
+	SFD7.Name = "SFD7"
+	SFD8.Name = "SFD8"
+	SFD9.Name = "SFD9"
+	SFD10.Name = "SFD10"
+	SFD11.Name = "SFD11"
 }
 
 type City struct {
@@ -50,6 +61,20 @@ type City struct {
 	once   sync.Once
 	poly   *s2.Polygon
 	points [][][][]float64
+}
+
+var SFDistricts = [...]*City{
+	SFD1,
+	SFD2,
+	SFD3,
+	SFD4,
+	SFD5,
+	SFD6,
+	SFD7,
+	SFD8,
+	SFD9,
+	SFD10,
+	SFD11,
 }
 
 func (c *City) ContainsPoint(lat, long float64) bool {

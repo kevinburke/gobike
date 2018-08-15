@@ -5,17 +5,9 @@ import (
 	"flag"
 	"io/ioutil"
 	"log"
+
+	"github.com/kevinburke/gobike/geo"
 )
-
-type GeometryCollection struct {
-	Type       string         `json:"type"`
-	Geometries []MultiPolygon `json:"geometries"`
-}
-
-type MultiPolygon struct {
-	Type        string          `json:"type"`
-	Coordinates [][][][]float64 `json:"coordinates"`
-}
 
 func rewind(in, out string) error {
 	blob, err := ioutil.ReadFile(in)
@@ -23,7 +15,7 @@ func rewind(in, out string) error {
 		return err
 	}
 
-	var gc GeometryCollection
+	var gc geo.GeometryCollection
 	if err := json.Unmarshal(blob, &gc); err != nil {
 		return err
 	}
@@ -32,14 +24,7 @@ func rewind(in, out string) error {
 
 	// The GeoJSON we get from OpenStreetMaps is wound in the incorrect
 	// direction. Rewind all the polygons to ensure they work corectly with golang/geo
-	for k, _ := range g {
-		for j, _ := range g[k] {
-			for i := len(g[k][j])/2 - 1; i >= 0; i-- {
-				opp := len(g[k][j]) - 1 - i
-				g[k][j][i], g[k][j][opp] = g[k][j][opp], g[k][j][i]
-			}
-		}
-	}
+	geo.Rewind(g)
 
 	output, err := json.Marshal(gc)
 	if err != nil {

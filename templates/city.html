@@ -41,12 +41,12 @@
         <div class="col-md-8">
           <div class="row">
             <div class="col-md-12">
-              Trips per week: {{ .TripsPerWeekCount }}
+              <h4>Trips per week: {{ .TripsPerWeekCount }}</h4>
               <div id="placeholder" class="chart">
               </div>
             </div>
             <div class="col-md-12">
-              Number of stations used last week: {{ .StationsPerWeekCount }}
+              <h4>Number of stations used last week: {{ .StationsPerWeekCount }}</h4>
               <div id="placeholder-2" class="chart">
               </div>
             </div>
@@ -56,31 +56,28 @@
           <h4>Most Popular Stations</h4>
           <ul>
             {{ range .MostPopularStations -}}
-            <li>{{ .Station.Name }} ({{ .Count }})</li>
+            <li><a href="https://www.openstreetmap.org/?mlat={{ .Station.Latitude }}&mlon={{ .Station.Longitude }}&zoom=14">{{ .Station.Name }}</a> ({{ .Count }})</li>
             {{ end -}}
           </ul>
         </div>
       </div>
-      <br />
       <div class="row">
         <div class="col-md-8">
-          Bikes in circulation last week: {{ .BikesPerWeekCount }}
+          <h4>Bikes in circulation last week: {{ .BikesPerWeekCount }}</h4>
           <div id="placeholder-3" class="chart">
           </div>
         </div>
       </div>
-      <br />
       <div class="row">
         <div class="col-md-8">
-          Trips per bike last week: {{ .TripsPerBikePerWeekCount }}
+          <h4>Trips per bike last week: {{ .TripsPerBikePerWeekCount }}</h4>
           <div id="placeholder-4" class="chart">
           </div>
         </div>
       </div>
-      <br />
       <div class="row">
         <div class="col-md-8">
-          <a href="https://www.fordgobike.com/pricing/bikeshareforall">Bike Share For All</a> trips last week: {{ .BS4ATripsPerWeekCount }}
+          <h4><a href="https://www.fordgobike.com/pricing/bikeshareforall">Bike Share For All</a> trips last week: {{ .BS4ATripsPerWeekCount }}</h4>
           <div id="placeholder-5" class="chart">
           </div>
         </div>
@@ -88,7 +85,7 @@
       <br />
       <br />
       <div class="row">
-        <div class="col-6">
+        <div class="col-md-8">
           <p>This website is not affiliated with GoBike, Motivate, the
           MTC, or any of the listed cities. All use is subject to the <a
           href="https://assets.fordgobike.com/data-license-agreement.html">Motiv

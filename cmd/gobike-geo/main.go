@@ -61,7 +61,18 @@ func build(in, out, name string) error {
 		return err
 	}
 
-	g := gc.Geometries[0]
+	g := gc.Geometries[0].Coordinates
+
+	// The GeoJSON we get from OpenStreetMaps is wound in the incorrect
+	// direction. Rewind all the polygons to ensure they work corectly with golang/geo
+	for k, _ := range g {
+		for j, _ := range g[k] {
+			for i := len(g[k][j])/2 - 1; i >= 0; i-- {
+				opp := len(g[k][j]) - 1 - i
+				g[k][j][i], g[k][j][opp] = g[k][j][opp], g[k][j][i]
+			}
+		}
+	}
 
 	w, err := os.Create(out)
 	if err != nil {
@@ -72,7 +83,7 @@ func build(in, out, name string) error {
 	data := &tmplData{
 		ExportedCity:     name,
 		UnexportedPoints: fmt.Sprintf("%sPoints", strings.ToLower(name)),
-		Points:           g.Coordinates,
+		Points:           g,
 	}
 	return tmpl.ExecuteTemplate(w, "city", data)
 }

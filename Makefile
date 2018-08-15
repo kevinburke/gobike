@@ -31,6 +31,8 @@ dataset: $(GOPATH)/bin/gobike-dataset
 site: $(GOPATH)/bin/gobike-site
 	$(GOPATH)/bin/gobike-site data/
 
+polygons: geo/berkeley.go geo/sanfrancisco.go geo/oakland.go geo/emeryville.go geo/sanjose.go
+
 $(GOPATH)/bin/gobike-server: $(GO_FILES)
 	go install ./cmd/gobike-server
 
@@ -40,7 +42,7 @@ $(GOPATH)/bin/gobike-site: $(GO_FILES)
 $(GOPATH)/bin/gobike-dataset: $(GO_FILES)
 	go install ./cmd/gobike-dataset
 
-$(GOPATH)/bin/gobike-geo:
+$(GOPATH)/bin/gobike-geo: cmd/gobike-geo/main.go
 	go install ./cmd/gobike-geo
 
 # Geojson mappings

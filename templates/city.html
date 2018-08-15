@@ -89,10 +89,10 @@
           <h4>Popular BS4A Stations</h4>
           <ul>
             {{ range .PopularBS4AStations -}}
-              {{- if lt .Count 6 -}}
+              {{- if lt .BS4ACount 6 -}}
               <li><a href="https://www.openstreetmap.org/?mlat={{ .Station.Latitude }}&mlon={{ .Station.Longitude }}&zoom=14">{{ .Station.Name }}</a> (5 or fewer)</li>
               {{ else -}}
-              <li><a href="https://www.openstreetmap.org/?mlat={{ .Station.Latitude }}&mlon={{ .Station.Longitude }}&zoom=14">{{ .Station.Name }}</a> ({{ .Count }})</li>
+              <li><a href="https://www.openstreetmap.org/?mlat={{ .Station.Latitude }}&mlon={{ .Station.Longitude }}&zoom=14">{{ .Station.Name }}</a> ({{ .BS4ACount }} trips, {{ .BS4APct }}% of total)</li>
               {{- end }}
             {{ end }}
           </ul>

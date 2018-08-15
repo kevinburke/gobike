@@ -2,6 +2,7 @@ package stats
 
 import (
 	"encoding/json"
+	"fmt"
 	"sort"
 	"sync"
 	"time"
@@ -220,12 +221,18 @@ func TripsPerBikePerWeek(trips []*gobike.Trip) TimeSeries {
 }
 
 type StationCount struct {
-	Station *gobike.Station `json:"station"`
-	Count   int             `json:"count"`
+	Station   *gobike.Station `json:"station"`
+	Count     int             `json:"count"`
+	BS4ACount int             `json:"bike_share_for_all_count"`
+}
+
+func (s StationCount) BS4APct() string {
+	return fmt.Sprintf("%.1f", float64(s.BS4ACount)*100/float64(s.Count))
 }
 
 func stationCounter(trips []*gobike.Trip, f func(t *gobike.Trip) bool) []*StationCount {
 	mp := make(map[int]int)
+	bmp := make(map[int]int)
 	stations := make(map[int]*gobike.Station)
 	for i := range trips {
 		if trips[i].Dockless() {
@@ -248,25 +255,25 @@ func stationCounter(trips []*gobike.Trip, f func(t *gobike.Trip) bool) []*Statio
 		} else {
 			mp[stationID] = 1
 		}
+		if !trips[i].BikeShareForAllTrip {
+			continue
+		}
+		if _, ok := bmp[stationID]; ok {
+			bmp[stationID]++
+		} else {
+			bmp[stationID] = 1
+		}
 	}
 	stationCounts := make([]*StationCount, len(mp))
 	i := 0
 	for id := range mp {
 		stationCounts[i] = &StationCount{
-			Station: stations[id],
-			Count:   mp[id],
+			Station:   stations[id],
+			Count:     mp[id],
+			BS4ACount: bmp[id],
 		}
 		i++
 	}
-	sort.Slice(stationCounts, func(i, j int) bool {
-		if stationCounts[i].Count > stationCounts[j].Count {
-			return true
-		}
-		if stationCounts[i].Count < stationCounts[j].Count {
-			return false
-		}
-		return stationCounts[i].Station.Name > stationCounts[j].Station.Name
-	})
 	return stationCounts
 }
 
@@ -284,6 +291,15 @@ func PopularStationsLast7Days(trips []*gobike.Trip, numStations int) []*StationC
 			return false
 		}
 		return true
+	})
+	sort.Slice(stationCounts, func(i, j int) bool {
+		if stationCounts[i].Count > stationCounts[j].Count {
+			return true
+		}
+		if stationCounts[i].Count < stationCounts[j].Count {
+			return false
+		}
+		return stationCounts[i].Station.Name > stationCounts[j].Station.Name
 	})
 	if numStations > len(stationCounts) {
 		return stationCounts
@@ -304,10 +320,16 @@ func PopularBS4AStationsLast7Days(trips []*gobike.Trip, numStations int) []*Stat
 		if trip.StartTime.Before(weekAgo) {
 			return false
 		}
-		if !trip.BikeShareForAllTrip {
+		return true
+	})
+	sort.Slice(stationCounts, func(i, j int) bool {
+		if stationCounts[i].BS4ACount > stationCounts[j].BS4ACount {
+			return true
+		}
+		if stationCounts[i].BS4ACount < stationCounts[j].BS4ACount {
 			return false
 		}
-		return true
+		return stationCounts[i].Station.Name > stationCounts[j].Station.Name
 	})
 	if numStations > len(stationCounts) {
 		return stationCounts

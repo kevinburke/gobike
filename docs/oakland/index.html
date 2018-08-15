@@ -43,6 +43,21 @@
           <div id="placeholder" class="chart">
           </div>
         </div>
+        <div class="col-md-4">
+          <h4>Most Popular Stations</h4>
+          <ul>
+            <li>19th Street BART Station (475)</li>
+            <li>MacArthur BART Station (324)</li>
+            <li>El Embarcadero at Grand Ave (278)</li>
+            <li>Lake Merritt BART Station (271)</li>
+            <li>West Oakland BART Station (263)</li>
+            <li>Grand Ave at Perkins St (255)</li>
+            <li>Grand Ave at Webster St (239)</li>
+            <li>Frank H Ogawa Plaza (238)</li>
+            <li>Bay Pl at Vernon St (235)</li>
+            <li>Rockridge BART Station (217)</li>
+            </ul>
+        </div>
       </div>
       <br />
       <div class="row">
@@ -97,7 +112,7 @@
         }
       };
       $.plot("#placeholder", [{color: color, data: tripsPerWeek, label: "trips"}], plotOptions);
-      
+
       $("<div id='tooltip'></div>").css({
         position: "absolute",
         display: "none",

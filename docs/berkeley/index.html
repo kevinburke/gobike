@@ -43,6 +43,21 @@
           <div id="placeholder" class="chart">
           </div>
         </div>
+        <div class="col-md-4">
+          <h4>Most Popular Stations</h4>
+          <ul>
+            <li>Bancroft Way at College Ave (346)</li>
+            <li>Bancroft Way at Telegraph Ave (331)</li>
+            <li>Downtown Berkeley BART (278)</li>
+            <li>Haste St at College Ave (246)</li>
+            <li>Ashby BART Station (246)</li>
+            <li>Haste St at Telegraph Ave (213)</li>
+            <li>Hearst Ave at Euclid Ave (191)</li>
+            <li>Parker St at Fulton St (191)</li>
+            <li>Berkeley Civic Center (174)</li>
+            <li>Derby St at College Ave (132)</li>
+            </ul>
+        </div>
       </div>
       <br />
       <div class="row">
@@ -97,7 +112,7 @@
         }
       };
       $.plot("#placeholder", [{color: color, data: tripsPerWeek, label: "trips"}], plotOptions);
-      
+
       $("<div id='tooltip'></div>").css({
         position: "absolute",
         display: "none",

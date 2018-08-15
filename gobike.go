@@ -26,6 +26,13 @@ func populateTZ() {
 	}
 }
 
+type Station struct {
+	ID        int     `json:"id"`
+	Name      string  `json:"name"`
+	Longitude float64 `json:"longitude"`
+	Latitude  float64 `json:"latitude"`
+}
+
 type Trip struct {
 	Duration  time.Duration
 	StartTime time.Time
@@ -46,6 +53,11 @@ type Trip struct {
 	MemberBirthYear     int
 	MemberGender        string
 	BikeShareForAllTrip bool
+}
+
+func (t Trip) Dockless() bool {
+	return t.StartStationID == 0 || t.StartStationName == "NULL" ||
+		t.EndStationID == 0 || t.EndStationName == "NULL"
 }
 
 func parseTrip(record []string) (*Trip, error) {

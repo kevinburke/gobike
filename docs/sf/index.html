@@ -43,6 +43,21 @@
           <div id="placeholder" class="chart">
           </div>
         </div>
+        <div class="col-md-4">
+          <h4>Most Popular Stations</h4>
+          <ul>
+            <li>San Francisco Ferry Building (Harry Bridges Plaza) (1203)</li>
+            <li>San Francisco Caltrain Station 2  (Townsend St at 4th St) (1121)</li>
+            <li>San Francisco Caltrain (Townsend St at 4th St) (1062)</li>
+            <li>The Embarcadero at Sansome St (1012)</li>
+            <li>Montgomery St BART Station (Market St at 2nd St) (967)</li>
+            <li>Berry St at 4th St (910)</li>
+            <li>Steuart St at Market St (904)</li>
+            <li>Market St at 10th St (897)</li>
+            <li>Powell St BART Station (Market St at 4th St) (817)</li>
+            <li>Howard St at Beale St (779)</li>
+            </ul>
+        </div>
       </div>
       <br />
       <div class="row">
@@ -97,7 +112,7 @@
         }
       };
       $.plot("#placeholder", [{color: color, data: tripsPerWeek, label: "trips"}], plotOptions);
-      
+
       $("<div id='tooltip'></div>").css({
         position: "absolute",
         display: "none",

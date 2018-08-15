@@ -23,6 +23,7 @@ type homepageData struct {
 	BikesPerWeekCount        int64
 	TripsPerBikePerWeek      template.JS
 	TripsPerBikePerWeekCount string
+	MostPopularStations      []*stats.StationCount
 	Area                     string
 }
 
@@ -58,6 +59,7 @@ func renderCity(name string, city *geo.City, tpl *template.Template, allTrips []
 	if err != nil {
 		return err
 	}
+	mostPopularStations := stats.PopularStationsLast7Days(trips, 10)
 
 	dir := filepath.Join("docs", name)
 	if city == nil {
@@ -72,9 +74,8 @@ func renderCity(name string, city *geo.City, tpl *template.Template, allTrips []
 	if err != nil {
 		return err
 	}
-	defer w.Close()
 
-	return tpl.ExecuteTemplate(w, "city.html", &homepageData{
+	if err := tpl.ExecuteTemplate(w, "city.html", &homepageData{
 		Area:                     name,
 		TripsPerWeek:             template.JS(string(data)),
 		TripsPerWeekCount:        int64(tripsPerWeek[len(tripsPerWeek)-1].Data),
@@ -84,7 +85,14 @@ func renderCity(name string, city *geo.City, tpl *template.Template, allTrips []
 		BikesPerWeekCount:        int64(bikeTripsPerWeek[len(bikeTripsPerWeek)-1].Data),
 		TripsPerBikePerWeek:      template.JS(string(tripPerBikeData)),
 		TripsPerBikePerWeekCount: fmt.Sprintf("%.1f", tripsPerBikePerWeek[len(tripsPerBikePerWeek)-1].Data),
-	})
+		MostPopularStations:      mostPopularStations,
+	}); err != nil {
+		return err
+	}
+	if err := w.Close(); err != nil {
+		return err
+	}
+	return nil
 }
 
 func main() {

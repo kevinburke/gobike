@@ -2,10 +2,22 @@ package stats
 
 import (
 	"encoding/json"
+	"sync"
 	"time"
 
 	"github.com/kevinburke/gobike"
 )
+
+var tz *time.Location
+var tzOnce sync.Once
+
+func populateTZ() {
+	var err error
+	tz, err = time.LoadLocation("America/Los_Angeles")
+	if err != nil {
+		panic(err)
+	}
+}
 
 type TimeSeries []*TimeStat
 
@@ -25,11 +37,12 @@ type TimeStat struct {
 
 func TripsPerWeek(trips []*gobike.Trip) TimeSeries {
 	mp := make(map[string]int)
-	earliest := time.Date(3000, time.January, 1, 0, 0, 0, 0, time.Local)
+	tzOnce.Do(populateTZ)
+	earliest := time.Date(3000, time.January, 1, 0, 0, 0, 0, tz)
 	for i := 0; i < len(trips); i++ {
 		start := trips[i].StartTime
 		wday := start.Weekday()
-		sunday := time.Date(start.Year(), start.Month(), start.Day()-int(wday), 0, 0, 0, 0, time.Local)
+		sunday := time.Date(start.Year(), start.Month(), start.Day()-int(wday), 0, 0, 0, 0, tz)
 		_, ok := mp[sunday.Format("2006-01-02")]
 		if ok {
 			mp[sunday.Format("2006-01-02")] += 1
@@ -42,7 +55,7 @@ func TripsPerWeek(trips []*gobike.Trip) TimeSeries {
 	}
 	seen := 1
 	result := make([]*TimeStat, 0)
-	for i := earliest; ; i = time.Date(i.Year(), i.Month(), i.Day()+7, 0, 0, 0, 0, time.Local) {
+	for i := earliest; ; i = time.Date(i.Year(), i.Month(), i.Day()+7, 0, 0, 0, 0, tz) {
 		count, ok := mp[i.Format("2006-01-02")]
 		if ok {
 			seen++
@@ -57,11 +70,12 @@ func TripsPerWeek(trips []*gobike.Trip) TimeSeries {
 
 func UniqueStationsPerWeek(trips []*gobike.Trip) TimeSeries {
 	mp := make(map[string]map[int]bool)
-	earliest := time.Date(3000, time.January, 1, 0, 0, 0, 0, time.Local)
+	tzOnce.Do(populateTZ)
+	earliest := time.Date(3000, time.January, 1, 0, 0, 0, 0, tz)
 	for i := 0; i < len(trips); i++ {
 		start := trips[i].StartTime
 		wday := start.Weekday()
-		sunday := time.Date(start.Year(), start.Month(), start.Day()-int(wday), 0, 0, 0, 0, time.Local)
+		sunday := time.Date(start.Year(), start.Month(), start.Day()-int(wday), 0, 0, 0, 0, tz)
 		sundayfmt := sunday.Format("2006-01-02")
 		_, ok := mp[sundayfmt]
 		if !ok {
@@ -76,7 +90,7 @@ func UniqueStationsPerWeek(trips []*gobike.Trip) TimeSeries {
 	}
 	seen := 1
 	result := make([]*TimeStat, 0)
-	for i := earliest; ; i = time.Date(i.Year(), i.Month(), i.Day()+7, 0, 0, 0, 0, time.Local) {
+	for i := earliest; ; i = time.Date(i.Year(), i.Month(), i.Day()+7, 0, 0, 0, 0, tz) {
 		weekMap, ok := mp[i.Format("2006-01-02")]
 		if ok {
 			seen++
@@ -91,11 +105,12 @@ func UniqueStationsPerWeek(trips []*gobike.Trip) TimeSeries {
 
 func UniqueBikesPerWeek(trips []*gobike.Trip) TimeSeries {
 	mp := make(map[string]map[int64]bool)
-	earliest := time.Date(3000, time.January, 1, 0, 0, 0, 0, time.Local)
+	tzOnce.Do(populateTZ)
+	earliest := time.Date(3000, time.January, 1, 0, 0, 0, 0, tz)
 	for i := 0; i < len(trips); i++ {
 		start := trips[i].StartTime
 		wday := start.Weekday()
-		sunday := time.Date(start.Year(), start.Month(), start.Day()-int(wday), 0, 0, 0, 0, time.Local)
+		sunday := time.Date(start.Year(), start.Month(), start.Day()-int(wday), 0, 0, 0, 0, tz)
 		sundayfmt := sunday.Format("2006-01-02")
 		_, ok := mp[sundayfmt]
 		if !ok {
@@ -108,7 +123,7 @@ func UniqueBikesPerWeek(trips []*gobike.Trip) TimeSeries {
 	}
 	seen := 1
 	result := make([]*TimeStat, 0)
-	for i := earliest; ; i = time.Date(i.Year(), i.Month(), i.Day()+7, 0, 0, 0, 0, time.Local) {
+	for i := earliest; ; i = time.Date(i.Year(), i.Month(), i.Day()+7, 0, 0, 0, 0, tz) {
 		weekMap, ok := mp[i.Format("2006-01-02")]
 		if ok {
 			seen++
@@ -123,11 +138,12 @@ func UniqueBikesPerWeek(trips []*gobike.Trip) TimeSeries {
 
 func TripsPerBikePerWeek(trips []*gobike.Trip) TimeSeries {
 	mp := make(map[string]map[int64]int)
-	earliest := time.Date(3000, time.January, 1, 0, 0, 0, 0, time.Local)
+	tzOnce.Do(populateTZ)
+	earliest := time.Date(3000, time.January, 1, 0, 0, 0, 0, tz)
 	for i := 0; i < len(trips); i++ {
 		start := trips[i].StartTime
 		wday := start.Weekday()
-		sunday := time.Date(start.Year(), start.Month(), start.Day()-int(wday), 0, 0, 0, 0, time.Local)
+		sunday := time.Date(start.Year(), start.Month(), start.Day()-int(wday), 0, 0, 0, 0, tz)
 		sundayfmt := sunday.Format("2006-01-02")
 		_, ok := mp[sundayfmt]
 		if !ok {
@@ -145,7 +161,7 @@ func TripsPerBikePerWeek(trips []*gobike.Trip) TimeSeries {
 	}
 	seen := 1
 	result := make([]*TimeStat, 0)
-	for i := earliest; ; i = time.Date(i.Year(), i.Month(), i.Day()+7, 0, 0, 0, 0, time.Local) {
+	for i := earliest; ; i = time.Date(i.Year(), i.Month(), i.Day()+7, 0, 0, 0, 0, tz) {
 		weekMap, ok := mp[i.Format("2006-01-02")]
 		if ok {
 			seen++

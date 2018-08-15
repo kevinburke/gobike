@@ -54,15 +54,16 @@
         </div>
         <div class="col-md-4">
           <h4>Most Popular Stations</h4>
-          <ul>
+          <p>
             {{ range .PopularStations -}}
               {{- if lt .Count 6 -}}
-              <li><a href="https://www.openstreetmap.org/?mlat={{ .Station.Latitude }}&mlon={{ .Station.Longitude }}&zoom=14">{{ .Station.Name }}</a> (5 or fewer)</li>
+              <a href="https://www.openstreetmap.org/?mlat={{ .Station.Latitude }}&mlon={{ .Station.Longitude }}&zoom=14">{{ .Station.Name }}</a> (5 or fewer)
               {{ else -}}
-              <li><a href="https://www.openstreetmap.org/?mlat={{ .Station.Latitude }}&mlon={{ .Station.Longitude }}&zoom=14">{{ .Station.Name }}</a> ({{ .Count }})</li>
+              <a href="https://www.openstreetmap.org/?mlat={{ .Station.Latitude }}&mlon={{ .Station.Longitude }}&zoom=14">{{ .Station.Name }}</a> ({{ .Count }})
               {{- end }}
+              <br />
             {{ end }}
-          </ul>
+          </p>
         </div>
       </div>
       <div class="row">
@@ -87,15 +88,16 @@
         </div>
         <div class="col-md-4">
           <h4>Popular BS4A Stations</h4>
-          <ul>
+          <p>
             {{ range .PopularBS4AStations -}}
               {{- if lt .BS4ACount 6 -}}
-              <li><a href="https://www.openstreetmap.org/?mlat={{ .Station.Latitude }}&mlon={{ .Station.Longitude }}&zoom=14">{{ .Station.Name }}</a> (5 or fewer)</li>
-              {{ else -}}
-              <li><a href="https://www.openstreetmap.org/?mlat={{ .Station.Latitude }}&mlon={{ .Station.Longitude }}&zoom=14">{{ .Station.Name }}</a> ({{ .BS4ACount }} trips, {{ .BS4APct }}% of total)</li>
+              <a href="https://www.openstreetmap.org/?mlat={{ .Station.Latitude }}&mlon={{ .Station.Longitude }}&zoom=14">{{ .Station.Name }}</a> (5 or fewer)
+              {{- else -}}
+              <a href="https://www.openstreetmap.org/?mlat={{ .Station.Latitude }}&mlon={{ .Station.Longitude }}&zoom=14">{{ .Station.Name }}</a> ({{ .BS4ACount }} trips, {{ .BS4APct }}% of total)
               {{- end }}
+              <br />
             {{ end }}
-          </ul>
+          </p>
         </div>
       </div>
       <br />

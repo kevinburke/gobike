@@ -20,14 +20,18 @@ func TestStationCityMapping(t *testing.T) {
 	}
 
 	// Make sure the points don't fall into any other cities
-	// cities := []*City{Berkeley, Emeryville, Oakland, SanJose, SF}
+	cities := []*City{Berkeley, Emeryville, Oakland, SanJose, SF}
 
-	// Station #21
 	for _, station := range stations {
 		test := station
 		t.Run(test.name, func(t *testing.T) {
-			if !test.city.ContainsPoint(test.lat, test.long) {
-				t.Errorf("%s is in the wrong city", test.name)
+			for _, city := range cities {
+				contains := city.ContainsPoint(test.lat, test.long)
+				if test.city == city && !contains {
+					t.Errorf("%s should be in %s", test.name, city.Name)
+				} else if test.city != city && contains {
+					t.Errorf("%s should not be in %s", test.name, city.Name)
+				}
 			}
 		})
 	}

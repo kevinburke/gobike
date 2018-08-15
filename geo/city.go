@@ -1,7 +1,6 @@
 package geo
 
 import (
-	"fmt"
 	"sync"
 
 	"github.com/golang/geo/s2"
@@ -14,7 +13,17 @@ import (
 // paste the ID in http://polygons.openstreetmap.fr/index.py and download the geojson polygon
 // https://www.openstreetmap.org/relation/{id}
 
+func init() {
+	Berkeley.Name = "Berkeley"
+	Emeryville.Name = "Emeryville"
+	Oakland.Name = "Oakland"
+	SF.Name = "San Francisco"
+	SanJose.Name = "San Jose"
+}
+
 type City struct {
+	Name string
+
 	once   sync.Once
 	poly   *s2.Polygon
 	points [][][][]float64
@@ -42,8 +51,5 @@ func (c *City) ContainsPoint(lat, long float64) bool {
 		}
 		c.poly = poly
 	})
-	fmt.Println("count", len(c.poly.Loops()))
-	fmt.Println("edges", c.poly.Loop(0).NumEdges())
-	fmt.Println("verts", c.poly.Loop(0).NumVertices())
 	return c.poly.ContainsPoint(s2.PointFromLatLng(s2.LatLngFromDegrees(lat, long)))
 }

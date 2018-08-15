@@ -102,7 +102,6 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
-    "github.com/golang/geo/r3",
     "github.com/golang/geo/s2",
     "github.com/kevinburke/handlers",
     "golang.org/x/sync/errgroup",

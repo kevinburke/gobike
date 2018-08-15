@@ -23,6 +23,8 @@ type homepageData struct {
 	BikesPerWeekCount        int64
 	TripsPerBikePerWeek      template.JS
 	TripsPerBikePerWeekCount string
+	BS4ATripsPerWeek         template.JS
+	BS4ATripsPerWeekCount    int64
 	MostPopularStations      []*stats.StationCount
 	Area                     string
 }
@@ -44,6 +46,7 @@ func renderCity(name string, city *geo.City, tpl *template.Template, allTrips []
 	if err != nil {
 		return err
 	}
+	mostPopularStations := stats.PopularStationsLast7Days(trips, 10)
 	tripsPerWeek := stats.TripsPerWeek(trips)
 	data, err := json.Marshal(tripsPerWeek)
 	if err != nil {
@@ -59,7 +62,11 @@ func renderCity(name string, city *geo.City, tpl *template.Template, allTrips []
 	if err != nil {
 		return err
 	}
-	mostPopularStations := stats.PopularStationsLast7Days(trips, 10)
+	bs4aTripsPerWeek := stats.BikeShareForAllTripsPerWeek(trips)
+	bs4aData, err := json.Marshal(bs4aTripsPerWeek)
+	if err != nil {
+		return err
+	}
 
 	dir := filepath.Join("docs", name)
 	if city == nil {
@@ -86,6 +93,8 @@ func renderCity(name string, city *geo.City, tpl *template.Template, allTrips []
 		TripsPerBikePerWeek:      template.JS(string(tripPerBikeData)),
 		TripsPerBikePerWeekCount: fmt.Sprintf("%.1f", tripsPerBikePerWeek[len(tripsPerBikePerWeek)-1].Data),
 		MostPopularStations:      mostPopularStations,
+		BS4ATripsPerWeek:         template.JS(string(bs4aData)),
+		BS4ATripsPerWeekCount:    int64(bs4aTripsPerWeek[len(bs4aTripsPerWeek)-1].Data),
 	}); err != nil {
 		return err
 	}

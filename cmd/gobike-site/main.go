@@ -12,6 +12,7 @@ import (
 	"github.com/kevinburke/gobike"
 	"github.com/kevinburke/gobike/geo"
 	"github.com/kevinburke/gobike/stats"
+	"golang.org/x/sync/errgroup"
 )
 
 type homepageData struct {
@@ -25,7 +26,8 @@ type homepageData struct {
 	TripsPerBikePerWeekCount string
 	BS4ATripsPerWeek         template.JS
 	BS4ATripsPerWeekCount    int64
-	MostPopularStations      []*stats.StationCount
+	PopularStations          []*stats.StationCount
+	PopularBS4AStations      []*stats.StationCount
 	Area                     string
 }
 
@@ -41,30 +43,49 @@ func renderCity(name string, city *geo.City, tpl *template.Template, allTrips []
 		}
 	}
 
-	stationsPerWeek := stats.UniqueStationsPerWeek(trips)
-	stationData, err := json.Marshal(stationsPerWeek)
-	if err != nil {
+	var group errgroup.Group
+	var stationsPerWeek, tripsPerWeek, bikeTripsPerWeek, tripsPerBikePerWeek, bs4aTripsPerWeek stats.TimeSeries
+	var stationData, data, bikeData, tripPerBikeData, bs4aData []byte
+	var mostPopularStations, popularBS4AStations []*stats.StationCount
+	group.Go(func() error {
+		stationsPerWeek = stats.UniqueStationsPerWeek(trips)
+		var err error
+		stationData, err = json.Marshal(stationsPerWeek)
 		return err
-	}
-	mostPopularStations := stats.PopularStationsLast7Days(trips, 10)
-	tripsPerWeek := stats.TripsPerWeek(trips)
-	data, err := json.Marshal(tripsPerWeek)
-	if err != nil {
+	})
+	group.Go(func() error {
+		mostPopularStations = stats.PopularStationsLast7Days(trips, 10)
+		return nil
+	})
+	group.Go(func() error {
+		popularBS4AStations = stats.PopularBS4AStationsLast7Days(trips, 10)
+		return nil
+	})
+	group.Go(func() error {
+		tripsPerWeek = stats.TripsPerWeek(trips)
+		var err error
+		data, err = json.Marshal(tripsPerWeek)
 		return err
-	}
-	bikeTripsPerWeek := stats.UniqueBikesPerWeek(trips)
-	bikeData, err := json.Marshal(bikeTripsPerWeek)
-	if err != nil {
+	})
+	group.Go(func() error {
+		bikeTripsPerWeek = stats.UniqueBikesPerWeek(trips)
+		var err error
+		bikeData, err = json.Marshal(bikeTripsPerWeek)
 		return err
-	}
-	tripsPerBikePerWeek := stats.TripsPerBikePerWeek(trips)
-	tripPerBikeData, err := json.Marshal(tripsPerBikePerWeek)
-	if err != nil {
+	})
+	group.Go(func() error {
+		tripsPerBikePerWeek = stats.TripsPerBikePerWeek(trips)
+		var err error
+		tripPerBikeData, err = json.Marshal(tripsPerBikePerWeek)
 		return err
-	}
-	bs4aTripsPerWeek := stats.BikeShareForAllTripsPerWeek(trips)
-	bs4aData, err := json.Marshal(bs4aTripsPerWeek)
-	if err != nil {
+	})
+	group.Go(func() error {
+		bs4aTripsPerWeek = stats.BikeShareForAllTripsPerWeek(trips)
+		var err error
+		bs4aData, err = json.Marshal(bs4aTripsPerWeek)
+		return err
+	})
+	if err := group.Wait(); err != nil {
 		return err
 	}
 
@@ -92,7 +113,8 @@ func renderCity(name string, city *geo.City, tpl *template.Template, allTrips []
 		BikesPerWeekCount:        int64(bikeTripsPerWeek[len(bikeTripsPerWeek)-1].Data),
 		TripsPerBikePerWeek:      template.JS(string(tripPerBikeData)),
 		TripsPerBikePerWeekCount: fmt.Sprintf("%.1f", tripsPerBikePerWeek[len(tripsPerBikePerWeek)-1].Data),
-		MostPopularStations:      mostPopularStations,
+		PopularStations:          mostPopularStations,
+		PopularBS4AStations:      popularBS4AStations,
 		BS4ATripsPerWeek:         template.JS(string(bs4aData)),
 		BS4ATripsPerWeekCount:    int64(bs4aTripsPerWeek[len(bs4aTripsPerWeek)-1].Data),
 	}); err != nil {

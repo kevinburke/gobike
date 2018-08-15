@@ -224,21 +224,14 @@ type StationCount struct {
 	Count   int             `json:"count"`
 }
 
-func PopularStationsLast7Days(trips []*gobike.Trip, numStations int) []*StationCount {
-	latestDay := time.Date(1000, time.January, 1, 0, 0, 0, 0, tz)
-	for i := 0; i < len(trips); i++ {
-		if trips[i].StartTime.After(latestDay) {
-			latestDay = trips[i].StartTime
-		}
-	}
-	weekAgo := time.Date(latestDay.Year(), latestDay.Month(), latestDay.Day()-7, 0, 0, 0, 0, tz)
+func stationCounter(trips []*gobike.Trip, f func(t *gobike.Trip) bool) []*StationCount {
 	mp := make(map[int]int)
 	stations := make(map[int]*gobike.Station)
 	for i := range trips {
-		if trips[i].StartTime.Before(weekAgo) {
+		if trips[i].Dockless() {
 			continue
 		}
-		if trips[i].Dockless() {
+		if !f(trips[i]) {
 			continue
 		}
 		stationID := trips[i].StartStationID
@@ -273,6 +266,48 @@ func PopularStationsLast7Days(trips []*gobike.Trip, numStations int) []*StationC
 			return false
 		}
 		return stationCounts[i].Station.Name > stationCounts[j].Station.Name
+	})
+	return stationCounts
+}
+
+func PopularStationsLast7Days(trips []*gobike.Trip, numStations int) []*StationCount {
+	tzOnce.Do(populateTZ)
+	latestDay := time.Date(1000, time.January, 1, 0, 0, 0, 0, tz)
+	for i := 0; i < len(trips); i++ {
+		if trips[i].StartTime.After(latestDay) {
+			latestDay = trips[i].StartTime
+		}
+	}
+	weekAgo := time.Date(latestDay.Year(), latestDay.Month(), latestDay.Day()-7, 0, 0, 0, 0, tz)
+	stationCounts := stationCounter(trips, func(trip *gobike.Trip) bool {
+		if trip.StartTime.Before(weekAgo) {
+			return false
+		}
+		return true
+	})
+	if numStations > len(stationCounts) {
+		return stationCounts
+	}
+	return stationCounts[:numStations]
+}
+
+func PopularBS4AStationsLast7Days(trips []*gobike.Trip, numStations int) []*StationCount {
+	tzOnce.Do(populateTZ)
+	latestDay := time.Date(1000, time.January, 1, 0, 0, 0, 0, tz)
+	for i := 0; i < len(trips); i++ {
+		if trips[i].StartTime.After(latestDay) {
+			latestDay = trips[i].StartTime
+		}
+	}
+	weekAgo := time.Date(latestDay.Year(), latestDay.Month(), latestDay.Day()-7, 0, 0, 0, 0, tz)
+	stationCounts := stationCounter(trips, func(trip *gobike.Trip) bool {
+		if trip.StartTime.Before(weekAgo) {
+			return false
+		}
+		if !trip.BikeShareForAllTrip {
+			return false
+		}
+		return true
 	})
 	if numStations > len(stationCounts) {
 		return stationCounts

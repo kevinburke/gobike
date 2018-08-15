@@ -55,9 +55,13 @@
         <div class="col-md-4">
           <h4>Most Popular Stations</h4>
           <ul>
-            {{ range .MostPopularStations -}}
-            <li><a href="https://www.openstreetmap.org/?mlat={{ .Station.Latitude }}&mlon={{ .Station.Longitude }}&zoom=14">{{ .Station.Name }}</a> ({{ .Count }})</li>
-            {{ end -}}
+            {{ range .PopularStations -}}
+              {{- if lt .Count 6 -}}
+              <li><a href="https://www.openstreetmap.org/?mlat={{ .Station.Latitude }}&mlon={{ .Station.Longitude }}&zoom=14">{{ .Station.Name }}</a> (5 or fewer)</li>
+              {{ else -}}
+              <li><a href="https://www.openstreetmap.org/?mlat={{ .Station.Latitude }}&mlon={{ .Station.Longitude }}&zoom=14">{{ .Station.Name }}</a> ({{ .Count }})</li>
+              {{- end }}
+            {{ end }}
           </ul>
         </div>
       </div>
@@ -80,6 +84,18 @@
           <h4><a href="https://www.fordgobike.com/pricing/bikeshareforall">Bike Share For All</a> trips last week: {{ .BS4ATripsPerWeekCount }}</h4>
           <div id="placeholder-5" class="chart">
           </div>
+        </div>
+        <div class="col-md-4">
+          <h4>Popular BS4A Stations</h4>
+          <ul>
+            {{ range .PopularBS4AStations -}}
+              {{- if lt .Count 6 -}}
+              <li><a href="https://www.openstreetmap.org/?mlat={{ .Station.Latitude }}&mlon={{ .Station.Longitude }}&zoom=14">{{ .Station.Name }}</a> (5 or fewer)</li>
+              {{ else -}}
+              <li><a href="https://www.openstreetmap.org/?mlat={{ .Station.Latitude }}&mlon={{ .Station.Longitude }}&zoom=14">{{ .Station.Name }}</a> ({{ .Count }})</li>
+              {{- end }}
+            {{ end }}
+          </ul>
         </div>
       </div>
       <br />

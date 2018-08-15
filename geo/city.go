@@ -1,9 +1,9 @@
 package geo
 
 import (
+	"fmt"
 	"sync"
 
-	"github.com/golang/geo/r3"
 	"github.com/golang/geo/s2"
 )
 
@@ -24,15 +24,26 @@ func (c *City) ContainsPoint(lat, long float64) bool {
 	c.once.Do(func() {
 		loops := []*s2.Loop{}
 		for _, loop := range c.points {
-			points := []s2.Point{}
+			pts := []s2.Point{}
 			for _, n1 := range loop {
-				for _, p := range n1 {
-					points = append(points, s2.Point{r3.Vector{p[0], p[1], 0}})
+				for i, p := range n1 {
+					// golang/geo does not like having the polygon end in the same point
+					if i == len(n1)-1 {
+						continue
+					}
+					pts = append(pts, s2.PointFromLatLng(s2.LatLngFromDegrees(p[1], p[0])))
 				}
 			}
-			loops = append(loops, s2.LoopFromPoints(points))
+			loops = append(loops, s2.LoopFromPoints(pts))
 		}
-		c.poly = s2.PolygonFromLoops(loops)
+		poly := s2.PolygonFromOrientedLoops(loops)
+		if err := poly.Validate(); err != nil {
+			panic(err)
+		}
+		c.poly = poly
 	})
-	return c.poly.ContainsPoint(s2.Point{r3.Vector{long, lat, 0}})
+	fmt.Println("count", len(c.poly.Loops()))
+	fmt.Println("edges", c.poly.Loop(0).NumEdges())
+	fmt.Println("verts", c.poly.Loop(0).NumVertices())
+	return c.poly.ContainsPoint(s2.PointFromLatLng(s2.LatLngFromDegrees(lat, long)))
 }

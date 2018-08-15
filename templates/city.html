@@ -56,7 +56,7 @@
           <h4>Most Popular Stations</h4>
           <ul>
             {{ range .MostPopularStations -}}
-            <li><a href="http://www.openstreetmap.org/?mlat={{ .Station.Latitude }}&mlon={{ .Station.Longitude }}&zoom=14">{{ .Station.Name }}</a> ({{ .Count }})</li>
+            <li><a href="https://www.openstreetmap.org/?mlat={{ .Station.Latitude }}&mlon={{ .Station.Longitude }}&zoom=14">{{ .Station.Name }}</a> ({{ .Count }})</li>
             {{ end -}}
           </ul>
         </div>

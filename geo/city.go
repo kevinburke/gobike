@@ -6,12 +6,35 @@ import (
 	"github.com/golang/geo/s2"
 )
 
-// Adding more cities:
-// You can get polygon coordenates in json for using with googlemaps using openstreetmap. Go to http://nominatim.openstreetmap.org/ search a place like "Partido de Ituzaingó"
-// Click on "details"
-// Look for OSM ID and copy it (control+c), example: 2018776
-// paste the ID in http://polygons.openstreetmap.fr/index.py and download the geojson polygon
-// https://www.openstreetmap.org/relation/{id}
+// We generate city polygons using processed OpenStreetMaps GeoJSON data.
+//
+// The process for adding a new city is as follows:
+// - Go to http://nominatim.openstreetmap.org/ and search for the city
+// - Click the "details" button in list of search results on the left
+// - Look for OSM ID and copy it (control+c), example: 2018776
+// - Go to http://polygons.openstreetmap.fr/index.py
+// - Paste the ID download the GeoJSON polygon
+// - Use gobike-rewind to rewind the polygon (see below for instructions)
+// - Validate your GeoJSON using http://geojsonlint.com/.
+//   - You should see the following error: "GeometryCollection with a single geometry should be avoided in favor of single part or a single object of multi-part type". This is expected and okay
+//   - That should be the only error. If there are more errors, please ask for help.
+// - Add a new entry to the Makefile for your city. Use `geo/oakland.go` as a example
+// - Regenerate the city Go files in the geo package with `make polygons`
+// - Update cmd/gobike-dataset/main.go with the new city
+// - Update cmd/gobike-site/main.go with the new city
+// - Regenerate the site with `make site`
+// - Optionally, regenerate the dataset with `make dataset`
+//
+// Your new city should now be ready to use.
+//
+// A note on rewinding GeoJSON files. The official GeoJSON standard requires
+// that all polygons follow the right-hand rule with respect to the area it
+// bounds, i.e., exterior rings are counterclockwise, and holes are clockwise.
+// The GeoJSON files from OpenStreetMap are defined in clockwise fashion and
+// must be reversed to work. The gobike-rewind tool does this automatically
+//
+//     make $GOPATH/bin/gobike-rewind
+//     $GOPATH/bin/gobike-rewind ~/Downloads/osm.geojson geojson/city.geojson
 
 func init() {
 	Berkeley.Name = "Berkeley"

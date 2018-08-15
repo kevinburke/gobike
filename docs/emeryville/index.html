@@ -43,6 +43,21 @@
           <div id="placeholder" class="chart">
           </div>
         </div>
+        <div class="col-md-4">
+          <h4>Most Popular Stations</h4>
+          <ul>
+            <li>65th St at Hollis St (80)</li>
+            <li>Adeline St at 40th St (64)</li>
+            <li>Emeryville Public Market (57)</li>
+            <li>Stanford Ave at Hollis St (47)</li>
+            <li>Horton St at 40th St (47)</li>
+            <li>Emeryville Town Hall (42)</li>
+            <li>59th St at Horton St (41)</li>
+            <li>Doyle St at 59th St (38)</li>
+            <li>47th St at San Pablo Ave (27)</li>
+            <li>53rd St at Hollis St (22)</li>
+            </ul>
+        </div>
       </div>
       <br />
       <div class="row">
@@ -97,7 +112,7 @@
         }
       };
       $.plot("#placeholder", [{color: color, data: tripsPerWeek, label: "trips"}], plotOptions);
-      
+
       $("<div id='tooltip'></div>").css({
         position: "absolute",
         display: "none",

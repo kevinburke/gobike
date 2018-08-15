@@ -43,6 +43,14 @@
           <div id="placeholder" class="chart">
           </div>
         </div>
+        <div class="col-md-4">
+          <h4>Most Popular Stations</h4>
+          <ul>
+            {{ range .MostPopularStations -}}
+            <li>{{ .Station.Name }} ({{ .Count }})</li>
+            {{ end -}}
+          </ul>
+        </div>
       </div>
       <br />
       <div class="row">
@@ -97,7 +105,7 @@
         }
       };
       $.plot("#placeholder", [{color: color, data: tripsPerWeek, label: "trips"}], plotOptions);
-      
+
       $("<div id='tooltip'></div>").css({
         position: "absolute",
         display: "none",

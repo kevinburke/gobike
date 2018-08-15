@@ -2,6 +2,7 @@ package stats
 
 import (
 	"encoding/json"
+	"sort"
 	"sync"
 	"time"
 
@@ -180,4 +181,59 @@ func TripsPerBikePerWeek(trips []*gobike.Trip) TimeSeries {
 		}
 	}
 	return result
+}
+
+type StationCount struct {
+	Station *gobike.Station `json:"station"`
+	Count   int             `json:"count"`
+}
+
+func PopularStationsLast7Days(trips []*gobike.Trip, numStations int) []*StationCount {
+	latestDay := time.Date(1000, time.January, 1, 0, 0, 0, 0, tz)
+	for i := 0; i < len(trips); i++ {
+		if trips[i].StartTime.After(latestDay) {
+			latestDay = trips[i].StartTime
+		}
+	}
+	weekAgo := time.Date(latestDay.Year(), latestDay.Month(), latestDay.Day()-7, 0, 0, 0, 0, tz)
+	mp := make(map[int]int)
+	stations := make(map[int]*gobike.Station)
+	for i := range trips {
+		if trips[i].StartTime.Before(weekAgo) {
+			continue
+		}
+		if trips[i].Dockless() {
+			continue
+		}
+		stationID := trips[i].StartStationID
+		if _, ok := stations[stationID]; !ok {
+			stations[stationID] = &gobike.Station{
+				ID:        stationID,
+				Name:      trips[i].StartStationName,
+				Latitude:  trips[i].StartStationLatitude,
+				Longitude: trips[i].StartStationLongitude,
+			}
+		}
+		if _, ok := mp[stationID]; ok {
+			mp[stationID]++
+		} else {
+			mp[stationID] = 1
+		}
+	}
+	stationCounts := make([]*StationCount, len(mp))
+	i := 0
+	for id := range mp {
+		stationCounts[i] = &StationCount{
+			Station: stations[id],
+			Count:   mp[id],
+		}
+		i++
+	}
+	sort.Slice(stationCounts, func(i, j int) bool {
+		return stationCounts[i].Count > stationCounts[j].Count
+	})
+	if numStations > len(stationCounts) {
+		return stationCounts
+	}
+	return stationCounts[:numStations]
 }

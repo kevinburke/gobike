@@ -230,7 +230,13 @@ func PopularStationsLast7Days(trips []*gobike.Trip, numStations int) []*StationC
 		i++
 	}
 	sort.Slice(stationCounts, func(i, j int) bool {
-		return stationCounts[i].Count > stationCounts[j].Count
+		if stationCounts[i].Count > stationCounts[j].Count {
+			return true
+		}
+		if stationCounts[i].Count < stationCounts[j].Count {
+			return false
+		}
+		return stationCounts[i].Station.Name > stationCounts[j].Station.Name
 	})
 	if numStations > len(stationCounts) {
 		return stationCounts

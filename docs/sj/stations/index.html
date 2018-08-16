@@ -1,0 +1,608 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>GoBike Status</title>
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+  </head>
+  <body>
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <h1 class="display-4">Ford GoBike Metrics</h1>
+          <ul class="nav nav-pills flex-column flex-sm-row">
+            <li class="nav-item">
+              <a class="nav-link " href="/">Bay Area</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="/oakland/">Oakland</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="/sf/">San Francisco</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/sj/">San Jose</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="/berkeley/">Berkeley</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="/emeryville/">Emeryville</span></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Stations</h2>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Trips Last Week</th>
+                <th scope="col">Weekday Ridership</th>
+                <th scope="col">BS4A Trips</th>
+                <th scope="col">People Ride Here From</th>
+                <th scope="col">People Ride To</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.329732&mlon=-121.901782&zoom=14">San Jose Diridon Station</a></td>
+                <td>150</td>
+                <td>28.3</td>
+                <td>15</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.333988&mlon=-121.894902&zoom=14">Santa Clara St at Almaden Blvd</a> (11)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.333988&mlon=-121.894902&zoom=14">Santa Clara St at Almaden Blvd</a> (16)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.335885&mlon=-121.88566&zoom=14">San Fernando St at 4th St</a></td>
+                <td>91</td>
+                <td>14.7</td>
+                <td>64</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.329732&mlon=-121.901782&zoom=14">San Jose Diridon Station</a> (11)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.342725&mlon=-121.895617&zoom=14">Ryland Park</a> (12)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.3322326&mlon=-121.9125165&zoom=14">Julian St at The Alameda</a></td>
+                <td>89</td>
+                <td>10.3</td>
+                <td>48</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.3319323&mlon=-121.9048882&zoom=14">The Alameda at Bush St</a> (21)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.3319323&mlon=-121.9048882&zoom=14">The Alameda at Bush St</a> (29)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.3319323&mlon=-121.9048882&zoom=14">The Alameda at Bush St</a></td>
+                <td>86</td>
+                <td>11.7</td>
+                <td>42</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.3322326&mlon=-121.9125165&zoom=14">Julian St at The Alameda</a> (29)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.3322326&mlon=-121.9125165&zoom=14">Julian St at The Alameda</a> (21)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.336802&mlon=-121.8940901&zoom=14">San Pedro Square</a></td>
+                <td>85</td>
+                <td>11</td>
+                <td>18</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.3319323&mlon=-121.9048882&zoom=14">The Alameda at Bush St</a> (10)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.329732&mlon=-121.901782&zoom=14">San Jose Diridon Station</a> (11)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.342725&mlon=-121.895617&zoom=14">Ryland Park</a></td>
+                <td>81</td>
+                <td>9.7</td>
+                <td>46</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.335885&mlon=-121.88566&zoom=14">San Fernando St at 4th St</a> (12)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.329732&mlon=-121.901782&zoom=14">San Jose Diridon Station</a> (10)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.333798&mlon=-121.886943&zoom=14">Paseo De San Antonio at 2nd St</a></td>
+                <td>79</td>
+                <td>12</td>
+                <td>35</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.3259984&mlon=-121.87712&zoom=14">5th St at Virginia St</a> (20)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.333955&mlon=-121.877349&zoom=14">San Salvador St at 9th St</a> (16)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.3259984&mlon=-121.87712&zoom=14">5th St at Virginia St</a></td>
+                <td>76</td>
+                <td>12</td>
+                <td>69</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.333955&mlon=-121.877349&zoom=14">San Salvador St at 9th St</a> (11)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.333798&mlon=-121.886943&zoom=14">Paseo De San Antonio at 2nd St</a> (20)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.331415&mlon=-121.8932&zoom=14">Almaden Blvd at San Fernando St</a></td>
+                <td>58</td>
+                <td>11</td>
+                <td>14</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.3327938&mlon=-121.8759263&zoom=14">William St at 10th St</a> (10)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.329732&mlon=-121.901782&zoom=14">San Jose Diridon Station</a> (9)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.34113203547954&mlon=-121.89284384250641&zoom=14">2nd St at Julian St</a></td>
+                <td>56</td>
+                <td>7</td>
+                <td>40</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.34113203547954&mlon=-121.89284384250641&zoom=14">2nd St at Julian St</a> (7)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.3391456&mlon=-121.8841054&zoom=14">Santa Clara St at 7th St</a> (9)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.333955&mlon=-121.877349&zoom=14">San Salvador St at 9th St</a></td>
+                <td>52</td>
+                <td>9</td>
+                <td>44</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.333798&mlon=-121.886943&zoom=14">Paseo De San Antonio at 2nd St</a> (16)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.333798&mlon=-121.886943&zoom=14">Paseo De San Antonio at 2nd St</a> (12)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.3364659&mlon=-121.8766132&zoom=14">San Carlos St at 11th St</a></td>
+                <td>52</td>
+                <td>6.3</td>
+                <td>12</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.329732&mlon=-121.901782&zoom=14">San Jose Diridon Station</a> (8)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.336802&mlon=-121.8940901&zoom=14">San Pedro Square</a> (8)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.33618830029063&mlon=-121.88927650451659&zoom=14">Fountain Alley at S 2nd St</a></td>
+                <td>51</td>
+                <td>9.7</td>
+                <td>34</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.3336577&mlon=-121.9085859&zoom=14">Morrison Ave at Julian St</a> (5)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.337246&mlon=-121.8830739&zoom=14">San Fernando at 7th St</a> (8)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.337246&mlon=-121.8830739&zoom=14">San Fernando at 7th St</a></td>
+                <td>44</td>
+                <td>7.7</td>
+                <td>33</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.3259984&mlon=-121.87712&zoom=14">5th St at Virginia St</a> (15)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.333955&mlon=-121.877349&zoom=14">San Salvador St at 9th St</a> (5)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.337391&mlon=-121.886995&zoom=14">San Jose City Hall</a></td>
+                <td>41</td>
+                <td>7</td>
+                <td>15</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.337391&mlon=-121.886995&zoom=14">San Jose City Hall</a> (7)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.329732&mlon=-121.901782&zoom=14">San Jose Diridon Station</a> (7)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.33203868095132&mlon=-121.8817663192749&zoom=14">5th St at San Salvador St</a></td>
+                <td>41</td>
+                <td>6.7</td>
+                <td>19</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.336802&mlon=-121.8940901&zoom=14">San Pedro Square</a> (4)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.331415&mlon=-121.8932&zoom=14">Almaden Blvd at San Fernando St</a> (6)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.333988&mlon=-121.894902&zoom=14">Santa Clara St at Almaden Blvd</a></td>
+                <td>40</td>
+                <td>6</td>
+                <td>10</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.329732&mlon=-121.901782&zoom=14">San Jose Diridon Station</a> (16)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.329732&mlon=-121.901782&zoom=14">San Jose Diridon Station</a> (11)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.3327938&mlon=-121.8759263&zoom=14">William St at 10th St</a></td>
+                <td>36</td>
+                <td>5.3</td>
+                <td>(5 or fewer)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.329732&mlon=-121.901782&zoom=14">San Jose Diridon Station</a> (7)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.331415&mlon=-121.8932&zoom=14">Almaden Blvd at San Fernando St</a> (10)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.330165&mlon=-121.885831&zoom=14">San Salvador St at 1st St</a></td>
+                <td>34</td>
+                <td>4.7</td>
+                <td>11</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.333798&mlon=-121.886943&zoom=14">Paseo De San Antonio at 2nd St</a> (4)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.329732&mlon=-121.901782&zoom=14">San Jose Diridon Station</a> (6)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.32911866814779&mlon=-121.90457582473755&zoom=14">Cahill Park</a></td>
+                <td>33</td>
+                <td>4.7</td>
+                <td>20</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.3322326&mlon=-121.9125165&zoom=14">Julian St at The Alameda</a> (12)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.3322326&mlon=-121.9125165&zoom=14">Julian St at The Alameda</a> (8)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.3413348&mlon=-121.9031829&zoom=14">Autumn Parkway at Coleman Ave</a></td>
+                <td>32</td>
+                <td>3</td>
+                <td>12</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.3413348&mlon=-121.9031829&zoom=14">Autumn Parkway at Coleman Ave</a> (12)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.3413348&mlon=-121.9031829&zoom=14">Autumn Parkway at Coleman Ave</a> (12)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.3391456&mlon=-121.8841054&zoom=14">Santa Clara St at 7th St</a></td>
+                <td>30</td>
+                <td>4.3</td>
+                <td>20</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.34113203547954&mlon=-121.89284384250641&zoom=14">2nd St at Julian St</a> (9)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.3259984&mlon=-121.87712&zoom=14">5th St at Virginia St</a> (5)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.327581&mlon=-121.884559&zoom=14">Pierce Ave at Market St</a></td>
+                <td>30</td>
+                <td>4.7</td>
+                <td>(5 or fewer)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.336802&mlon=-121.8940901&zoom=14">San Pedro Square</a> (6)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.329732&mlon=-121.901782&zoom=14">San Jose Diridon Station</a> (6)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.3510173&mlon=-121.8959209&zoom=14">5th St at Taylor St</a></td>
+                <td>29</td>
+                <td>4</td>
+                <td>14</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.3510173&mlon=-121.8959209&zoom=14">5th St at Taylor St</a> (9)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.3510173&mlon=-121.8959209&zoom=14">5th St at Taylor St</a> (9)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.330698&mlon=-121.888979&zoom=14">San Carlos St at Market St</a></td>
+                <td>28</td>
+                <td>3</td>
+                <td>(5 or fewer)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.330698&mlon=-121.888979&zoom=14">San Carlos St at Market St</a> (9)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.330698&mlon=-121.888979&zoom=14">San Carlos St at Market St</a> (9)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.332692&mlon=-121.900084&zoom=14">SAP Center</a></td>
+                <td>28</td>
+                <td>1.3</td>
+                <td>7</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.3322326&mlon=-121.9125165&zoom=14">Julian St at The Alameda</a> (7)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.333798&mlon=-121.886943&zoom=14">Paseo De San Antonio at 2nd St</a> (5)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.339301&mlon=-121.889937&zoom=14">Saint James Park</a></td>
+                <td>27</td>
+                <td>4.7</td>
+                <td>14</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.34113203547954&mlon=-121.89284384250641&zoom=14">2nd St at Julian St</a> (5)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.34113203547954&mlon=-121.89284384250641&zoom=14">2nd St at Julian St</a> (5)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.3336577&mlon=-121.9085859&zoom=14">Morrison Ave at Julian St</a></td>
+                <td>27</td>
+                <td>4</td>
+                <td>9</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.312854042932614&mlon=-121.88294112682343&zoom=14">Tamien Station</a> (5)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.331415&mlon=-121.8932&zoom=14">Almaden Blvd at San Fernando St</a> (7)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.3383952&mlon=-121.8807965&zoom=14">9th St at San Fernando</a></td>
+                <td>27</td>
+                <td>5.3</td>
+                <td>18</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.335885&mlon=-121.88566&zoom=14">San Fernando St at 4th St</a> (7)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.335885&mlon=-121.88566&zoom=14">San Fernando St at 4th St</a> (5)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.332426301252056&mlon=-121.89034938812256&zoom=14">Market St at Park St</a></td>
+                <td>24</td>
+                <td>4.7</td>
+                <td>(5 or fewer)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.329732&mlon=-121.901782&zoom=14">San Jose Diridon Station</a> (9)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.332426301252056&mlon=-121.89034938812256&zoom=14">Market St at Park St</a> (6)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.3429973&mlon=-121.8888891&zoom=14">Julian St at 6th St</a></td>
+                <td>20</td>
+                <td>4</td>
+                <td>6</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.329732&mlon=-121.901782&zoom=14">San Jose Diridon Station</a> (6)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.335885&mlon=-121.88566&zoom=14">San Fernando St at 4th St</a> (5)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.3487586867448&mlon=-121.89479783177376&zoom=14">Jackson St at 5th St</a></td>
+                <td>19</td>
+                <td>3</td>
+                <td>(5 or fewer)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.33203868095132&mlon=-121.8817663192749&zoom=14">5th St at San Salvador St</a> (4)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.329732&mlon=-121.901782&zoom=14">San Jose Diridon Station</a> (4)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.3477319&mlon=-121.899464&zoom=14">George St at 1st St</a></td>
+                <td>19</td>
+                <td>2.7</td>
+                <td>8</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.342725&mlon=-121.895617&zoom=14">Ryland Park</a> (7)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.342725&mlon=-121.895617&zoom=14">Ryland Park</a> (10)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.3509643&mlon=-121.9020161&zoom=14">Mission St at 1st St</a></td>
+                <td>18</td>
+                <td>2.7</td>
+                <td>7</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.342725&mlon=-121.895617&zoom=14">Ryland Park</a> (9)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.342725&mlon=-121.895617&zoom=14">Ryland Park</a> (10)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.3229796&mlon=-121.8879312&zoom=14">Locust St at Grant St</a></td>
+                <td>14</td>
+                <td>2.7</td>
+                <td>8</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.330165&mlon=-121.885831&zoom=14">San Salvador St at 1st St</a> (5)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.336802&mlon=-121.8940901&zoom=14">San Pedro Square</a> (6)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.312854042932614&mlon=-121.88294112682343&zoom=14">Tamien Station</a></td>
+                <td>13</td>
+                <td>2.7</td>
+                <td>(5 or fewer)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.312854042932614&mlon=-121.88294112682343&zoom=14">Tamien Station</a> (3)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.3336577&mlon=-121.9085859&zoom=14">Morrison Ave at Julian St</a> (5)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.352601&mlon=-121.905733&zoom=14">San Pedro St at Hedding St</a></td>
+                <td>13</td>
+                <td>2</td>
+                <td>(5 or fewer)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.342725&mlon=-121.895617&zoom=14">Ryland Park</a> (6)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.3509643&mlon=-121.9020161&zoom=14">Mission St at 1st St</a> (3)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.3448821&mlon=-121.8969655&zoom=14">Empire St at 1st St</a></td>
+                <td>12</td>
+                <td>1</td>
+                <td>8</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.331415&mlon=-121.8932&zoom=14">Almaden Blvd at San Fernando St</a> (3)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.342725&mlon=-121.895617&zoom=14">Ryland Park</a> (3)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.3302641&mlon=-121.8977018&zoom=14">Delmas Ave and San Fernando St</a></td>
+                <td>11</td>
+                <td>2</td>
+                <td>(5 or fewer)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.329732&mlon=-121.901782&zoom=14">San Jose Diridon Station</a> (2)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.329732&mlon=-121.901782&zoom=14">San Jose Diridon Station</a> (3)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.3236779&mlon=-121.8741186&zoom=14">Bestor Art Park</a></td>
+                <td>10</td>
+                <td>1.7</td>
+                <td>6</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.3236779&mlon=-121.8741186&zoom=14">Bestor Art Park</a> (7)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.3236779&mlon=-121.8741186&zoom=14">Bestor Art Park</a> (7)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.32673&mlon=-121.8892731&zoom=14">Almaden Blvd at Balbach St</a></td>
+                <td>10</td>
+                <td>1.7</td>
+                <td>(5 or fewer)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.329732&mlon=-121.901782&zoom=14">San Jose Diridon Station</a> (3)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.329732&mlon=-121.901782&zoom=14">San Jose Diridon Station</a> (6)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.3184498&mlon=-121.8831724&zoom=14">Willow St at Vine St</a></td>
+                <td>7</td>
+                <td>1</td>
+                <td>(5 or fewer)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.330165&mlon=-121.885831&zoom=14">San Salvador St at 1st St</a> (2)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.330165&mlon=-121.885831&zoom=14">San Salvador St at 1st St</a> (3)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.3172979&mlon=-121.884995&zoom=14">Palm St at Willow St</a></td>
+                <td>7</td>
+                <td>1</td>
+                <td>(5 or fewer)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.331415&mlon=-121.8932&zoom=14">Almaden Blvd at San Fernando St</a> (4)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.331415&mlon=-121.8932&zoom=14">Almaden Blvd at San Fernando St</a> (4)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.322124625448566&mlon=-121.88109040260315&zoom=14">Oak St at 1st St</a></td>
+                <td>(5 or fewer)
+                </td>
+                <td>(5 or fewer)
+                </td>
+                <td>(5 or fewer)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.329732&mlon=-121.901782&zoom=14">San Jose Diridon Station</a> (2)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.3319323&mlon=-121.9048882&zoom=14">The Alameda at Bush St</a> (1)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.33004&mlon=-121.881821&zoom=14">S. 4th St at San Carlos St</a></td>
+                <td>(5 or fewer)
+                </td>
+                <td>(5 or fewer)
+                </td>
+                <td>(5 or fewer)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.333955&mlon=-121.877349&zoom=14">San Salvador St at 9th St</a> (1)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.333955&mlon=-121.877349&zoom=14">San Salvador St at 9th St</a> (1)
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+    <script type="text/javascript" src="/static/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/flot.min.js"></script>
+    <script type="text/javascript" src="/static/flot.time.min.js"></script>
+    <script>
+      var plotOptions = {
+        xaxis: { mode: "time" },
+        legend: {position: "nw"},
+        grid: {
+          hoverable: true,
+          borderWidth: 0,
+        },
+      };
+      var color = '#002267';
+      var plotTooltip = function(event, pos, item) {
+        if (item) {
+          var x = item.datapoint[0].toFixed(0);
+          var y = item.datapoint[1].toFixed(0);
+          $("#tooltip").html(y + " " + item.series.label).css({top: item.pageY+5, left: item.pageX+5}).show();
+        } else {
+          $("#tooltip").hide();
+        }
+      };
+
+      $("<div id='tooltip'></div>").css({
+        position: "absolute",
+        display: "none",
+        border: "1px solid #fdd",
+        padding: "2px",
+        "background-color": "#fee",
+        opacity: 0.80,
+      }).appendTo("body");
+      $("#placeholder").bind("plothover", plotTooltip);
+    </script>
+  </body>
+</html>

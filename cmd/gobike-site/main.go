@@ -1,10 +1,12 @@
 package main
 
 import (
+	"bytes"
 	"encoding/json"
 	"flag"
 	"fmt"
 	"html/template"
+	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
@@ -35,7 +37,12 @@ type homepageData struct {
 	AverageWeekdayTrips      string
 }
 
-func renderCity(name string, city *geo.City, tpl *template.Template, allTrips []*gobike.Trip) error {
+type stationData struct {
+	Area     string
+	Stations []*stats.StationCount
+}
+
+func renderCity(name string, city *geo.City, tpl, stationTpl *template.Template, allTrips []*gobike.Trip) error {
 	trips := make([]*gobike.Trip, 0)
 	if city == nil {
 		trips = allTrips
@@ -49,7 +56,7 @@ func renderCity(name string, city *geo.City, tpl *template.Template, allTrips []
 
 	var group errgroup.Group
 	var stationsPerWeek, tripsPerWeek, bikeTripsPerWeek, tripsPerBikePerWeek, bs4aTripsPerWeek stats.TimeSeries
-	var stationData, data, bikeData, tripPerBikeData, bs4aData []byte
+	var stationBytes, data, bikeData, tripPerBikeData, bs4aData []byte
 	var mostPopularStations, popularBS4AStations []*stats.StationCount
 	var shareOfTotalTrips, averageWeekdayTrips string
 	var tripsByDistrict [11]int
@@ -63,11 +70,16 @@ func renderCity(name string, city *geo.City, tpl *template.Template, allTrips []
 	group.Go(func() error {
 		stationsPerWeek = stats.UniqueStationsPerWeek(trips)
 		var err error
-		stationData, err = json.Marshal(stationsPerWeek)
+		stationBytes, err = json.Marshal(stationsPerWeek)
 		return err
 	})
 	group.Go(func() error {
 		mostPopularStations = stats.PopularStationsLast7Days(trips, 10)
+		return nil
+	})
+	var allStations []*stats.StationCount
+	group.Go(func() error {
+		allStations = stats.PopularStationsLast7Days(trips, 50000)
 		return nil
 	})
 	group.Go(func() error {
@@ -107,27 +119,14 @@ func renderCity(name string, city *geo.City, tpl *template.Template, allTrips []
 		return err
 	}
 
-	dir := filepath.Join("docs", name)
-	if city == nil {
-		dir = filepath.Join("docs")
-	}
-
-	if err := os.MkdirAll(dir, 0755); err != nil {
-		return err
-	}
-
-	w, err := os.Create(filepath.Join(dir, "index.html"))
-	if err != nil {
-		return err
-	}
-
 	tripsPerWeekCountf64 := tripsPerWeek[len(tripsPerWeek)-1].Data
 	bs4aTripsPerWeekCountf64 := bs4aTripsPerWeek[len(bs4aTripsPerWeek)-1].Data
-	if err := tpl.ExecuteTemplate(w, "city.html", &homepageData{
+
+	hdata := &homepageData{
 		Area:                     name,
 		TripsPerWeek:             template.JS(string(data)),
 		TripsPerWeekCount:        int64(tripsPerWeekCountf64),
-		StationsPerWeek:          template.JS(string(stationData)),
+		StationsPerWeek:          template.JS(string(stationBytes)),
 		StationsPerWeekCount:     int64(stationsPerWeek[len(stationsPerWeek)-1].Data),
 		BikesPerWeek:             template.JS(string(bikeData)),
 		BikesPerWeekCount:        int64(bikeTripsPerWeek[len(bikeTripsPerWeek)-1].Data),
@@ -141,10 +140,37 @@ func renderCity(name string, city *geo.City, tpl *template.Template, allTrips []
 		TripsByDistrict:          tripsByDistrict,
 		ShareOfTotalTrips:        shareOfTotalTrips,
 		AverageWeekdayTrips:      averageWeekdayTrips,
-	}); err != nil {
+	}
+	dir := filepath.Join("docs", name)
+	if city == nil {
+		dir = "docs"
+	}
+	if err := os.MkdirAll(dir, 0755); err != nil {
 		return err
 	}
-	if err := w.Close(); err != nil {
+	buf := new(bytes.Buffer)
+	if err := tpl.ExecuteTemplate(buf, "city.html", hdata); err != nil {
+		return err
+	}
+	if err := ioutil.WriteFile(filepath.Join(dir, "index.html"), buf.Bytes(), 0644); err != nil {
+		return err
+	}
+	if city == nil {
+		dir = filepath.Join(dir, "bayarea")
+	}
+	stationDir := filepath.Join(dir, "stations")
+	if err := os.MkdirAll(stationDir, 0755); err != nil {
+		return err
+	}
+	buf.Reset()
+	sdata := &stationData{
+		Area:     name,
+		Stations: allStations,
+	}
+	if err := stationTpl.ExecuteTemplate(buf, "stations.html", sdata); err != nil {
+		return err
+	}
+	if err := ioutil.WriteFile(filepath.Join(stationDir, "index.html"), buf.Bytes(), 0644); err != nil {
 		return err
 	}
 	return nil
@@ -171,9 +197,10 @@ func main() {
 	}
 
 	homepageTpl := template.Must(template.ParseFiles("templates/city.html"))
+	stationTpl := template.Must(template.ParseFiles("templates/stations.html"))
 
 	for name, city := range cities {
-		if err := renderCity(name, city, homepageTpl, trips); err != nil {
+		if err := renderCity(name, city, homepageTpl, stationTpl, trips); err != nil {
 			log.Fatalf("error building city %s: %s", name, err)
 		}
 	}

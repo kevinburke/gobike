@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"sort"
+	"strings"
 	"sync"
 	"time"
 
@@ -242,20 +243,40 @@ func TripsPerBikePerWeek(trips []*gobike.Trip) TimeSeries {
 	return result
 }
 
+type DestinationStation struct {
+	Station *gobike.Station
+	Count   int
+}
+
 type StationCount struct {
-	Station   *gobike.Station `json:"station"`
-	Count     int             `json:"count"`
-	BS4ACount int             `json:"bike_share_for_all_count"`
+	Station          *gobike.Station `json:"station"`
+	Count            int             `json:"count"`
+	WeekdayRidership float64         `json:"weekday_ridership"`
+	BS4ACount        int             `json:"bike_share_for_all_count"`
+	ToStation        *DestinationStation
+	FromStation      *DestinationStation
 }
 
 func (s StationCount) BS4APct() string {
-	return fmt.Sprintf("%.1f", float64(s.BS4ACount)*100/float64(s.Count))
+	return strings.TrimSuffix(fmt.Sprintf("%.1f", float64(s.BS4ACount)*100/float64(s.Count)), ".0")
+}
+
+func (s StationCount) RidershipString() string {
+	return strings.TrimSuffix(fmt.Sprintf("%.1f", float64(s.WeekdayRidership)), ".0")
+}
+
+type stationAggregate struct {
+	AllRides  [7]int
+	BS4ARides [7]int
+	Station   *gobike.Station
+
+	// Maps of station ID's to counts.
+	From map[int]int
+	To   map[int]int
 }
 
 func stationCounter(trips []*gobike.Trip, f func(t *gobike.Trip) bool) []*StationCount {
-	mp := make(map[int]int)
-	bmp := make(map[int]int)
-	stations := make(map[int]*gobike.Station)
+	agg := make(map[int]*stationAggregate)
 	for i := range trips {
 		if trips[i].Dockless() {
 			continue
@@ -264,37 +285,87 @@ func stationCounter(trips []*gobike.Trip, f func(t *gobike.Trip) bool) []*Statio
 			continue
 		}
 		stationID := trips[i].StartStationID
-		if _, ok := stations[stationID]; !ok {
-			stations[stationID] = &gobike.Station{
-				ID:        stationID,
-				Name:      trips[i].StartStationName,
-				Latitude:  trips[i].StartStationLatitude,
-				Longitude: trips[i].StartStationLongitude,
+		if _, ok := agg[stationID]; !ok {
+			agg[stationID] = &stationAggregate{
+				Station: &gobike.Station{
+					ID:        stationID,
+					Name:      trips[i].StartStationName,
+					Latitude:  trips[i].StartStationLatitude,
+					Longitude: trips[i].StartStationLongitude,
+				},
 			}
 		}
-		if _, ok := mp[stationID]; ok {
-			mp[stationID]++
-		} else {
-			mp[stationID] = 1
+		toStationID := trips[i].EndStationID
+		if _, ok := agg[toStationID]; !ok {
+			agg[toStationID] = &stationAggregate{
+				Station: &gobike.Station{
+					ID:        toStationID,
+					Name:      trips[i].EndStationName,
+					Latitude:  trips[i].EndStationLatitude,
+					Longitude: trips[i].EndStationLongitude,
+				},
+			}
 		}
+		if agg[stationID].To == nil {
+			agg[stationID].To = make(map[int]int)
+		}
+		if _, ok := agg[stationID].To[toStationID]; ok {
+			agg[stationID].To[toStationID]++
+		} else {
+			agg[stationID].To[toStationID] = 1
+		}
+		if agg[toStationID].From == nil {
+			agg[toStationID].From = make(map[int]int)
+		}
+		if _, ok := agg[toStationID].From[stationID]; ok {
+			agg[toStationID].From[stationID]++
+		} else {
+			agg[toStationID].From[stationID] = 1
+		}
+
+		agg[stationID].AllRides[trips[i].StartTime.Weekday()]++
 		if !trips[i].BikeShareForAllTrip {
 			continue
 		}
-		if _, ok := bmp[stationID]; ok {
-			bmp[stationID]++
-		} else {
-			bmp[stationID] = 1
-		}
+		agg[stationID].BS4ARides[trips[i].StartTime.Weekday()]++
 	}
-	stationCounts := make([]*StationCount, len(mp))
-	i := 0
-	for id := range mp {
-		stationCounts[i] = &StationCount{
-			Station:   stations[id],
-			Count:     mp[id],
-			BS4ACount: bmp[id],
+	stationCounts := make([]*StationCount, 0)
+	for id := range agg {
+		mpbucket := agg[id].AllRides
+		mpcount := 0
+		for j := 0; j < len(mpbucket); j++ {
+			mpcount += mpbucket[j]
 		}
-		i++
+		if mpcount == 0 {
+			continue
+		}
+		bmpbucket := agg[id].BS4ARides
+		bmpcount := 0
+		for j := 0; j < len(bmpbucket); j++ {
+			bmpcount += bmpbucket[j]
+		}
+		toStation, fromStation := new(DestinationStation), new(DestinationStation)
+		for i := range agg[id].To {
+			if agg[id].To[i] > toStation.Count || agg[id].To[i] == toStation.Count && agg[i].Station.Name > toStation.Station.Name {
+				toStation.Count = agg[id].To[i]
+				toStation.Station = agg[i].Station
+			}
+		}
+		for i := range agg[id].From {
+			if agg[id].From[i] > fromStation.Count || agg[id].From[i] == fromStation.Count && agg[i].Station.Name > fromStation.Station.Name {
+				fromStation.Count = agg[id].From[i]
+				fromStation.Station = agg[i].Station
+			}
+		}
+		sort.Ints(mpbucket[time.Monday : time.Friday+1])
+		stationCounts = append(stationCounts, &StationCount{
+			Station:          agg[id].Station,
+			Count:            mpcount,
+			WeekdayRidership: (float64(mpbucket[time.Tuesday]) + float64(mpbucket[time.Wednesday]) + float64(mpbucket[time.Thursday])) / 3,
+			BS4ACount:        bmpcount,
+			ToStation:        toStation,
+			FromStation:      fromStation,
+		})
 	}
 	return stationCounts
 }
@@ -302,10 +373,7 @@ func stationCounter(trips []*gobike.Trip, f func(t *gobike.Trip) bool) []*Statio
 func PopularStationsLast7Days(trips []*gobike.Trip, numStations int) []*StationCount {
 	weekAgo := sevenDaysBeforeDataEnd(trips)
 	stationCounts := stationCounter(trips, func(trip *gobike.Trip) bool {
-		if trip.StartTime.Before(weekAgo) {
-			return false
-		}
-		return true
+		return !trip.StartTime.Before(weekAgo)
 	})
 	sort.Slice(stationCounts, func(i, j int) bool {
 		if stationCounts[i].Count > stationCounts[j].Count {
@@ -338,10 +406,7 @@ func sevenDaysBeforeDataEnd(trips []*gobike.Trip) time.Time {
 func PopularBS4AStationsLast7Days(trips []*gobike.Trip, numStations int) []*StationCount {
 	weekAgo := sevenDaysBeforeDataEnd(trips)
 	stationCounts := stationCounter(trips, func(trip *gobike.Trip) bool {
-		if trip.StartTime.Before(weekAgo) {
-			return false
-		}
-		return true
+		return !trip.StartTime.Before(weekAgo)
 	})
 	sort.Slice(stationCounts, func(i, j int) bool {
 		if stationCounts[i].BS4ACount > stationCounts[j].BS4ACount {

@@ -1,0 +1,505 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>GoBike Status</title>
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+  </head>
+  <body>
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <h1 class="display-4">Ford GoBike Metrics</h1>
+          <ul class="nav nav-pills flex-column flex-sm-row">
+            <li class="nav-item">
+              <a class="nav-link " href="/">Bay Area</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="/oakland/">Oakland</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="/sf/">San Francisco</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="/sj/">San Jose</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/berkeley/">Berkeley</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="/emeryville/">Emeryville</span></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Stations</h2>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Trips Last Week</th>
+                <th scope="col">Weekday Ridership</th>
+                <th scope="col">BS4A Trips</th>
+                <th scope="col">People Ride Here From</th>
+                <th scope="col">People Ride To</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.8693603&mlon=-122.2543374&zoom=14">Bancroft Way at College Ave</a></td>
+                <td>332</td>
+                <td>55.3</td>
+                <td>33</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8688126&mlon=-122.258764&zoom=14">Bancroft Way at Telegraph Ave</a> (16)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8703477&mlon=-122.2677637&zoom=14">Downtown Berkeley BART</a> (140)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.8688126&mlon=-122.258764&zoom=14">Bancroft Way at Telegraph Ave</a></td>
+                <td>264</td>
+                <td>44.7</td>
+                <td>81</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.86641794050319&mlon=-122.25379943847655&zoom=14">Haste St at College Ave</a> (27)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8703477&mlon=-122.2677637&zoom=14">Downtown Berkeley BART</a> (51)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.8703477&mlon=-122.2677637&zoom=14">Downtown Berkeley BART</a></td>
+                <td>239</td>
+                <td>38</td>
+                <td>36</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8693603&mlon=-122.2543374&zoom=14">Bancroft Way at College Ave</a> (140)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8624644&mlon=-122.2647911&zoom=14">Parker St at Fulton St</a> (27)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.8524766&mlon=-122.2702132&zoom=14">Ashby BART Station</a></td>
+                <td>213</td>
+                <td>38.7</td>
+                <td>16</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8559558&mlon=-122.2597949&zoom=14">Telegraph Ave at Ashby Ave</a> (27)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.850577684047856&mlon=-122.27817535400389&zoom=14">Woolsey St at Sacramento St</a> (20)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.86641794050319&mlon=-122.25379943847655&zoom=14">Haste St at College Ave</a></td>
+                <td>201</td>
+                <td>29.7</td>
+                <td>26</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.86641794050319&mlon=-122.25379943847655&zoom=14">Haste St at College Ave</a> (6)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.84427875399067&mlon=-122.251900434494&zoom=14">Rockridge BART Station</a> (39)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.8660431&mlon=-122.2588044&zoom=14">Haste St at Telegraph Ave</a></td>
+                <td>185</td>
+                <td>28</td>
+                <td>66</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.86641794050319&mlon=-122.25379943847655&zoom=14">Haste St at College Ave</a> (22)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8703477&mlon=-122.2677637&zoom=14">Downtown Berkeley BART</a> (26)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.875111692864444&mlon=-122.26055324077606&zoom=14">Hearst Ave at Euclid Ave</a></td>
+                <td>163</td>
+                <td>27</td>
+                <td>41</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8703477&mlon=-122.2677637&zoom=14">Downtown Berkeley BART</a> (16)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8703477&mlon=-122.2677637&zoom=14">Downtown Berkeley BART</a> (44)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.8624644&mlon=-122.2647911&zoom=14">Parker St at Fulton St</a></td>
+                <td>162</td>
+                <td>26.3</td>
+                <td>38</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8703477&mlon=-122.2677637&zoom=14">Downtown Berkeley BART</a> (27)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8703477&mlon=-122.2677637&zoom=14">Downtown Berkeley BART</a> (27)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.8690599&mlon=-122.270556&zoom=14">Berkeley Civic Center</a></td>
+                <td>150</td>
+                <td>26</td>
+                <td>11</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.86012459911685&mlon=-122.2693844139576&zoom=14">Milvia St at Derby St</a> (15)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.86012459911685&mlon=-122.2693844139576&zoom=14">Milvia St at Derby St</a> (21)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.8723555&mlon=-122.2664467&zoom=14">University Ave at Oxford St</a></td>
+                <td>111</td>
+                <td>19.3</td>
+                <td>17</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8688126&mlon=-122.258764&zoom=14">Bancroft Way at Telegraph Ave</a> (18)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8624644&mlon=-122.2647911&zoom=14">Parker St at Fulton St</a> (12)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.8575672&mlon=-122.2675583&zoom=14">Oregon St at Adeline St</a></td>
+                <td>109</td>
+                <td>18</td>
+                <td>18</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8624644&mlon=-122.2647911&zoom=14">Parker St at Fulton St</a> (12)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8690599&mlon=-122.270556&zoom=14">Berkeley Civic Center</a> (10)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.8559558&mlon=-122.2597949&zoom=14">Telegraph Ave at Ashby Ave</a></td>
+                <td>108</td>
+                <td>16.3</td>
+                <td>17</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8623199&mlon=-122.258801&zoom=14">Telegraph Ave at Carleton St</a> (11)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8524766&mlon=-122.2702132&zoom=14">Ashby BART Station</a> (27)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.86012459911685&mlon=-122.2693844139576&zoom=14">Milvia St at Derby St</a></td>
+                <td>107</td>
+                <td>14.7</td>
+                <td>10</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8690599&mlon=-122.270556&zoom=14">Berkeley Civic Center</a> (21)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8524766&mlon=-122.2702132&zoom=14">Ashby BART Station</a> (20)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.8513755&mlon=-122.2525233&zoom=14">College Ave at Alcatraz Ave</a></td>
+                <td>106</td>
+                <td>15</td>
+                <td>14</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.86641794050319&mlon=-122.25379943847655&zoom=14">Haste St at College Ave</a> (8)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.84427875399067&mlon=-122.251900434494&zoom=14">Rockridge BART Station</a> (29)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.8717192&mlon=-122.2730677&zoom=14">MLK Jr Way at University Ave</a></td>
+                <td>104</td>
+                <td>16.3</td>
+                <td>21</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.87055532905745&mlon=-122.27972030639648&zoom=14">California St at University Ave</a> (12)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.87055532905745&mlon=-122.27972030639648&zoom=14">California St at University Ave</a> (13)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.8658466&mlon=-122.2674431&zoom=14">Channing Way at Shattuck Ave</a></td>
+                <td>97</td>
+                <td>14.3</td>
+                <td>16</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8660431&mlon=-122.2588044&zoom=14">Haste St at Telegraph Ave</a> (25)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8703477&mlon=-122.2677637&zoom=14">Downtown Berkeley BART</a> (10)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.8618037&mlon=-122.2535687&zoom=14">Derby St at College Ave</a></td>
+                <td>96</td>
+                <td>12.7</td>
+                <td>9</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8513755&mlon=-122.2525233&zoom=14">College Ave at Alcatraz Ave</a> (10)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.84427875399067&mlon=-122.251900434494&zoom=14">Rockridge BART Station</a> (28)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.8677892&mlon=-122.2658964&zoom=14">Fulton St at Bancroft Way</a></td>
+                <td>91</td>
+                <td>13.7</td>
+                <td>22</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8624644&mlon=-122.2647911&zoom=14">Parker St at Fulton St</a> (12)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8624644&mlon=-122.2647911&zoom=14">Parker St at Fulton St</a> (11)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.866249&mlon=-122.2993708&zoom=14">Addison St at Fourth St</a></td>
+                <td>91</td>
+                <td>10.3</td>
+                <td>6</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8740141&mlon=-122.283019&zoom=14">North Berkeley BART Station</a> (36)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8740141&mlon=-122.283019&zoom=14">North Berkeley BART Station</a> (21)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.8740141&mlon=-122.283019&zoom=14">North Berkeley BART Station</a></td>
+                <td>86</td>
+                <td>15.7</td>
+                <td>6</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.866249&mlon=-122.2993708&zoom=14">Addison St at Fourth St</a> (21)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.866249&mlon=-122.2993708&zoom=14">Addison St at Fourth St</a> (36)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.8584732&mlon=-122.2532529&zoom=14">Russell St at College Ave</a></td>
+                <td>81</td>
+                <td>13</td>
+                <td>(5 or fewer)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8513755&mlon=-122.2525233&zoom=14">College Ave at Alcatraz Ave</a> (7)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.84427875399067&mlon=-122.251900434494&zoom=14">Rockridge BART Station</a> (22)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.87055532905745&mlon=-122.27972030639648&zoom=14">California St at University Ave</a></td>
+                <td>81</td>
+                <td>12.7</td>
+                <td>10</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8717192&mlon=-122.2730677&zoom=14">MLK Jr Way at University Ave</a> (13)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8740141&mlon=-122.283019&zoom=14">North Berkeley BART Station</a> (12)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.850577684047856&mlon=-122.27817535400389&zoom=14">Woolsey St at Sacramento St</a></td>
+                <td>79</td>
+                <td>13.3</td>
+                <td>(5 or fewer)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8524766&mlon=-122.2702132&zoom=14">Ashby BART Station</a> (20)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8524766&mlon=-122.2702132&zoom=14">Ashby BART Station</a> (22)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.8534894&mlon=-122.2894154&zoom=14">Ninth St at Heinz Ave</a></td>
+                <td>70</td>
+                <td>10.3</td>
+                <td>(5 or fewer)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8524766&mlon=-122.2702132&zoom=14">Ashby BART Station</a> (18)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8524766&mlon=-122.2702132&zoom=14">Ashby BART Station</a> (9)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.88022244590679&mlon=-122.26959228515624&zoom=14">Vine St at Shattuck Ave</a></td>
+                <td>59</td>
+                <td>9</td>
+                <td>8</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8737917&mlon=-122.2686176&zoom=14">Shattuck Ave at Hearst Ave</a> (13)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8690599&mlon=-122.270556&zoom=14">Berkeley Civic Center</a> (11)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.85749021457153&mlon=-122.26157784461977&zoom=14">Ellsworth St at Russell St</a></td>
+                <td>56</td>
+                <td>7.7</td>
+                <td>(5 or fewer)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8524766&mlon=-122.2702132&zoom=14">Ashby BART Station</a> (7)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8524766&mlon=-122.2702132&zoom=14">Ashby BART Station</a> (21)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.8737917&mlon=-122.2686176&zoom=14">Shattuck Ave at Hearst Ave</a></td>
+                <td>54</td>
+                <td>7.7</td>
+                <td>7</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.875111692864444&mlon=-122.26055324077606&zoom=14">Hearst Ave at Euclid Ave</a> (10)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.88022244590679&mlon=-122.26959228515624&zoom=14">Vine St at Shattuck Ave</a> (13)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.8588682&mlon=-122.2912095&zoom=14">Ninth St at Parker St</a></td>
+                <td>52</td>
+                <td>8</td>
+                <td>(5 or fewer)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8524766&mlon=-122.2702132&zoom=14">Ashby BART Station</a> (10)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8534894&mlon=-122.2894154&zoom=14">Ninth St at Heinz Ave</a> (10)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.8628271&mlon=-122.2902305&zoom=14">Channing Way at San Pablo Ave</a></td>
+                <td>47</td>
+                <td>8</td>
+                <td>(5 or fewer)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8690599&mlon=-122.270556&zoom=14">Berkeley Civic Center</a> (10)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8690599&mlon=-122.270556&zoom=14">Berkeley Civic Center</a> (8)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.8623199&mlon=-122.258801&zoom=14">Telegraph Ave at Carleton St</a></td>
+                <td>45</td>
+                <td>6.3</td>
+                <td>12</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8660431&mlon=-122.2588044&zoom=14">Haste St at Telegraph Ave</a> (6)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8559558&mlon=-122.2597949&zoom=14">Telegraph Ave at Ashby Ave</a> (11)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.855573661828785&mlon=-122.26356536149979&zoom=14">Fulton St at Ashby Ave</a></td>
+                <td>41</td>
+                <td>7</td>
+                <td>(5 or fewer)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8524766&mlon=-122.2702132&zoom=14">Ashby BART Station</a> (9)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8524766&mlon=-122.2702132&zoom=14">Ashby BART Station</a> (15)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.876572549106854&mlon=-122.26952791213989&zoom=14">Virginia St at Shattuck Ave</a></td>
+                <td>39</td>
+                <td>5.3</td>
+                <td>9</td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8703477&mlon=-122.2677637&zoom=14">Downtown Berkeley BART</a> (6)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8703477&mlon=-122.2677637&zoom=14">Downtown Berkeley BART</a> (6)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.85578332030199&mlon=-122.28312671184538&zoom=14">San Pablo Park</a></td>
+                <td>34</td>
+                <td>5</td>
+                <td>(5 or fewer)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8524766&mlon=-122.2702132&zoom=14">Ashby BART Station</a> (6)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.85578332030199&mlon=-122.28312671184538&zoom=14">San Pablo Park</a> (5)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.849735&mlon=-122.270582&zoom=14">Harmon St at Adeline St</a></td>
+                <td>30</td>
+                <td>4.7</td>
+                <td>(5 or fewer)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.88022244590679&mlon=-122.26959228515624&zoom=14">Vine St at Shattuck Ave</a> (3)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8524766&mlon=-122.2702132&zoom=14">Ashby BART Station</a> (6)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.86906047545393&mlon=-122.29339957237242&zoom=14">10th St at University Ave</a></td>
+                <td>27</td>
+                <td>2</td>
+                <td>(5 or fewer)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8740141&mlon=-122.283019&zoom=14">North Berkeley BART Station</a> (8)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8723555&mlon=-122.2664467&zoom=14">University Ave at Oxford St</a> (3)
+                </td>
+              </tr><tr>
+                <td><a href="https://www.openstreetmap.org/?mlat=37.869966707604036&mlon=-122.28653311729431&zoom=14">West St at University Ave</a></td>
+                <td>(5 or fewer)
+                </td>
+                <td>(5 or fewer)
+                </td>
+                <td>(5 or fewer)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8737917&mlon=-122.2686176&zoom=14">Shattuck Ave at Hearst Ave</a> (1)
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat=37.8703477&mlon=-122.2677637&zoom=14">Downtown Berkeley BART</a> (1)
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+    <script type="text/javascript" src="/static/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/flot.min.js"></script>
+    <script type="text/javascript" src="/static/flot.time.min.js"></script>
+    <script>
+      var plotOptions = {
+        xaxis: { mode: "time" },
+        legend: {position: "nw"},
+        grid: {
+          hoverable: true,
+          borderWidth: 0,
+        },
+      };
+      var color = '#002267';
+      var plotTooltip = function(event, pos, item) {
+        if (item) {
+          var x = item.datapoint[0].toFixed(0);
+          var y = item.datapoint[1].toFixed(0);
+          $("#tooltip").html(y + " " + item.series.label).css({top: item.pageY+5, left: item.pageX+5}).show();
+        } else {
+          $("#tooltip").hide();
+        }
+      };
+
+      $("<div id='tooltip'></div>").css({
+        position: "absolute",
+        display: "none",
+        border: "1px solid #fdd",
+        padding: "2px",
+        "background-color": "#fee",
+        opacity: 0.80,
+      }).appendTo("body");
+      $("#placeholder").bind("plothover", plotTooltip);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>GoBike Status</title>
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+  </head>
+  <body>
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <h1 class="display-4">Ford GoBike Metrics</h1>
+          <ul class="nav nav-pills flex-column flex-sm-row">
+            <li class="nav-item">
+              <a class="nav-link {{if eq .Area "bayarea"}}active{{end}}" href="/">Bay Area</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {{if eq .Area "oakland"}}active{{end}}" href="/oakland/">Oakland</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {{if eq .Area "sf"}}active{{end}}" href="/sf/">San Francisco</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {{if eq .Area "sj"}}active{{end}}" href="/sj/">San Jose</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {{if eq .Area "berkeley"}}active{{end}}" href="/berkeley/">Berkeley</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {{if eq .Area "emeryville"}}active{{end}}" href="/emeryville/">Emeryville</span></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Stations</h2>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Trips Last Week</th>
+                <th scope="col">Weekday Ridership</th>
+                <th scope="col">BS4A Trips</th>
+                <th scope="col">People Ride Here From</th>
+                <th scope="col">People Ride To</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{ range .Stations -}}
+              <tr>
+                <td><a href="https://www.openstreetmap.org/?mlat={{ .Station.Latitude }}&mlon={{ .Station.Longitude }}&zoom=14">{{ .Station.Name }}</a></td>
+                <td>
+                {{- if lt .Count 6 -}}
+                (5 or fewer)
+                {{ else -}}
+                  {{ .Count -}}
+                {{ end -}}
+                </td>
+                <td>
+                {{- if lt .Count 6 -}}
+                (5 or fewer)
+                {{ else -}}
+                  {{ .RidershipString -}}
+                {{ end -}}
+                </td>
+                <td>
+                {{- if lt .BS4ACount 6 -}}
+                (5 or fewer)
+                {{ else -}}
+                  {{ .BS4ACount -}}
+                {{ end -}}
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat={{ .FromStation.Station.Latitude }}&mlon={{ .FromStation.Station.Longitude }}&zoom=14">{{ .FromStation.Station.Name }}</a> ({{ .FromStation.Count }})
+                </td>
+                <td>
+                  <a href="https://www.openstreetmap.org/?mlat={{ .ToStation.Station.Latitude }}&mlon={{ .ToStation.Station.Longitude }}&zoom=14">{{ .ToStation.Station.Name }}</a> ({{ .ToStation.Count }})
+                </td>
+              </tr>
+              {{- end }}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+    <script type="text/javascript" src="/static/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/flot.min.js"></script>
+    <script type="text/javascript" src="/static/flot.time.min.js"></script>
+    <script>
+      var plotOptions = {
+        xaxis: { mode: "time" },
+        legend: {position: "nw"},
+        grid: {
+          hoverable: true,
+          borderWidth: 0,
+        },
+      };
+      var color = '#002267';
+      var plotTooltip = function(event, pos, item) {
+        if (item) {
+          var x = item.datapoint[0].toFixed(0);
+          var y = item.datapoint[1].toFixed(0);
+          $("#tooltip").html(y + " " + item.series.label).css({top: item.pageY+5, left: item.pageX+5}).show();
+        } else {
+          $("#tooltip").hide();
+        }
+      };
+
+      $("<div id='tooltip'></div>").css({
+        position: "absolute",
+        display: "none",
+        border: "1px solid #fdd",
+        padding: "2px",
+        "background-color": "#fee",
+        opacity: 0.80,
+      }).appendTo("body");
+      $("#placeholder").bind("plothover", plotTooltip);
+    </script>
+  </body>
+</html>

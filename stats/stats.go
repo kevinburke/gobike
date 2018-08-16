@@ -279,14 +279,7 @@ func stationCounter(trips []*gobike.Trip, f func(t *gobike.Trip) bool) []*Statio
 }
 
 func PopularStationsLast7Days(trips []*gobike.Trip, numStations int) []*StationCount {
-	tzOnce.Do(populateTZ)
-	latestDay := time.Date(1000, time.January, 1, 0, 0, 0, 0, tz)
-	for i := 0; i < len(trips); i++ {
-		if trips[i].StartTime.After(latestDay) {
-			latestDay = trips[i].StartTime
-		}
-	}
-	weekAgo := time.Date(latestDay.Year(), latestDay.Month(), latestDay.Day()-7, 0, 0, 0, 0, tz)
+	weekAgo := sevenDaysBeforeDataEnd(trips)
 	stationCounts := stationCounter(trips, func(trip *gobike.Trip) bool {
 		if trip.StartTime.Before(weekAgo) {
 			return false
@@ -316,7 +309,9 @@ func sevenDaysBeforeDataEnd(trips []*gobike.Trip) time.Time {
 			latestDay = trips[i].StartTime
 		}
 	}
-	return time.Date(latestDay.Year(), latestDay.Month(), latestDay.Day()-7, 0, 0, 0, 0, tz)
+	// latestDay is at the end of, say, the 14th
+	// a full week is midnight on the 8th, six days.
+	return time.Date(latestDay.Year(), latestDay.Month(), latestDay.Day()-6, 0, 0, 0, 0, tz)
 }
 
 func PopularBS4AStationsLast7Days(trips []*gobike.Trip, numStations int) []*StationCount {

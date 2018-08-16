@@ -31,6 +31,8 @@ type homepageData struct {
 	PopularBS4AStations      []*stats.StationCount
 	TripsByDistrict          [11]int
 	Area                     string
+	ShareOfTotalTrips        string
+	AverageWeekdayTrips      string
 }
 
 func renderCity(name string, city *geo.City, tpl *template.Template, allTrips []*gobike.Trip) error {
@@ -49,6 +51,7 @@ func renderCity(name string, city *geo.City, tpl *template.Template, allTrips []
 	var stationsPerWeek, tripsPerWeek, bikeTripsPerWeek, tripsPerBikePerWeek, bs4aTripsPerWeek stats.TimeSeries
 	var stationData, data, bikeData, tripPerBikeData, bs4aData []byte
 	var mostPopularStations, popularBS4AStations []*stats.StationCount
+	var shareOfTotalTrips, averageWeekdayTrips string
 	var tripsByDistrict [11]int
 	if name == "sf" {
 		group.Go(func() error {
@@ -73,6 +76,11 @@ func renderCity(name string, city *geo.City, tpl *template.Template, allTrips []
 	})
 	group.Go(func() error {
 		tripsPerWeek = stats.TripsPerWeek(trips)
+		if name == "sf" {
+			averageWeekdayTripsf64 := stats.AverageWeekdayTrips(trips)
+			averageWeekdayTrips = fmt.Sprintf("%.1f", averageWeekdayTripsf64)
+			shareOfTotalTrips = fmt.Sprintf("%.2f", 100*averageWeekdayTripsf64/(4.2*1000*1000))
+		}
 		var err error
 		data, err = json.Marshal(tripsPerWeek)
 		return err
@@ -131,6 +139,8 @@ func renderCity(name string, city *geo.City, tpl *template.Template, allTrips []
 		BS4ATripsPerWeekCount:    int64(bs4aTripsPerWeekCountf64),
 		BS4ATripPct:              fmt.Sprintf("%.1f", 100*bs4aTripsPerWeekCountf64/tripsPerWeekCountf64),
 		TripsByDistrict:          tripsByDistrict,
+		ShareOfTotalTrips:        shareOfTotalTrips,
+		AverageWeekdayTrips:      averageWeekdayTrips,
 	}); err != nil {
 		return err
 	}

@@ -359,3 +359,18 @@ func TripsLastWeekPerDistrict(trips []*gobike.Trip) [11]int {
 	}
 	return counts
 }
+
+func AverageWeekdayTrips(trips []*gobike.Trip) float64 {
+	// bucket trips by weekday
+	weekAgo := sevenDaysBeforeDataEnd(trips)
+	var buckets [7]int
+	for i := range trips {
+		if trips[i].StartTime.Before(weekAgo) {
+			continue
+		}
+		buckets[trips[i].StartTime.Weekday()]++
+	}
+	sort.Ints(buckets[time.Monday : time.Friday+1])
+	// drop highest and lowest
+	return (float64(buckets[time.Tuesday]) + float64(buckets[time.Wednesday]) + float64(buckets[time.Thursday])) / 3
+}

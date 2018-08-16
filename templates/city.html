@@ -45,6 +45,23 @@
               <div id="placeholder" class="chart">
               </div>
             </div>
+            {{ if eq .Area "sf" }}
+            <div class="col-md-8">
+              <table class="table table-sm">
+                <tbody>
+                  <tr>
+                    <th scope="row">Average weekday trips</th><td>{{ .AverageWeekdayTrips }}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Total trips per day in SF (walk/bike/car/train)</th><td><a href="https://www.sfmta.com/sites/default/files/reports-and-documents/2018/01/san_francisco_transportation_trends_2.3.15.pdf#page=5">4.2 million</a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">GoBike share of total trips</th><td>{{ .ShareOfTotalTrips }}%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            {{ end }}
             <div class="col-md-12">
               <h4>Number of stations used last week: {{ .StationsPerWeekCount }}</h4>
               <div id="placeholder-2" class="chart">

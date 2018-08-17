@@ -20,6 +20,8 @@ import (
 type homepageData struct {
 	TripsPerWeek             template.JS
 	TripsPerWeekCount        int64
+	UniqueTripsPerWeek       template.JS
+	UniqueTripsPerWeekCount  int64
 	StationsPerWeek          template.JS
 	StationsPerWeekCount     int64
 	BikesPerWeek             template.JS
@@ -55,8 +57,8 @@ func renderCity(name string, city *geo.City, tpl, stationTpl *template.Template,
 	}
 
 	var group errgroup.Group
-	var stationsPerWeek, tripsPerWeek, bikeTripsPerWeek, tripsPerBikePerWeek, bs4aTripsPerWeek stats.TimeSeries
-	var stationBytes, data, bikeData, tripPerBikeData, bs4aData []byte
+	var stationsPerWeek, tripsPerWeek, uniqueTripsPerWeek, bikeTripsPerWeek, tripsPerBikePerWeek, bs4aTripsPerWeek stats.TimeSeries
+	var stationBytes, data, uniqueTripsData, bikeData, tripPerBikeData, bs4aData []byte
 	var mostPopularStations, popularBS4AStations []*stats.StationCount
 	var shareOfTotalTrips, averageWeekdayTrips string
 	var tripsByDistrict [11]int
@@ -85,6 +87,12 @@ func renderCity(name string, city *geo.City, tpl, stationTpl *template.Template,
 	group.Go(func() error {
 		popularBS4AStations = stats.PopularBS4AStationsLast7Days(trips, 10)
 		return nil
+	})
+	group.Go(func() error {
+		uniqueTripsPerWeek = stats.UniqueTripsPerWeek(trips)
+		var err error
+		uniqueTripsData, err = json.Marshal(uniqueTripsPerWeek)
+		return err
 	})
 	group.Go(func() error {
 		tripsPerWeek = stats.TripsPerWeek(trips)
@@ -120,12 +128,15 @@ func renderCity(name string, city *geo.City, tpl, stationTpl *template.Template,
 	}
 
 	tripsPerWeekCountf64 := tripsPerWeek[len(tripsPerWeek)-1].Data
+	uniqueTripsPerWeekCountf64 := uniqueTripsPerWeek[len(uniqueTripsPerWeek)-1].Data
 	bs4aTripsPerWeekCountf64 := bs4aTripsPerWeek[len(bs4aTripsPerWeek)-1].Data
 
 	hdata := &homepageData{
 		Area:                     name,
 		TripsPerWeek:             template.JS(string(data)),
 		TripsPerWeekCount:        int64(tripsPerWeekCountf64),
+		UniqueTripsPerWeek:       template.JS(string(uniqueTripsData)),
+		UniqueTripsPerWeekCount:  int64(uniqueTripsPerWeekCountf64),
 		StationsPerWeek:          template.JS(string(stationBytes)),
 		StationsPerWeekCount:     int64(stationsPerWeek[len(stationsPerWeek)-1].Data),
 		BikesPerWeek:             template.JS(string(bikeData)),

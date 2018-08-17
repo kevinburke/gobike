@@ -1,7 +1,9 @@
 package gobike
 
 import (
+	"bytes"
 	"context"
+	"crypto/sha256"
 	"encoding/csv"
 	"io"
 	"io/ioutil"
@@ -58,6 +60,26 @@ type Trip struct {
 func (t Trip) Dockless() bool {
 	return t.StartStationID == 0 || t.StartStationName == "NULL" ||
 		t.EndStationID == 0 || t.EndStationName == "NULL"
+}
+
+// Hash tries to generate the same hash for trips taken by the same person.
+func (t Trip) Hash() [sha256.Size]byte {
+	buf := new(bytes.Buffer)
+	//shour := t.StartTime.Hour() - t.StartTime.Hour()%2
+	//ehour := t.EndTime.Hour() - t.EndTime.Hour()%2
+	io.WriteString(buf, strconv.Itoa(t.StartStationID))
+	io.WriteString(buf, strconv.Itoa(t.EndStationID))
+	//io.WriteString(buf, strconv.Itoa(shour))
+	//io.WriteString(buf, strconv.Itoa(ehour))
+	io.WriteString(buf, t.UserType)
+	io.WriteString(buf, strconv.Itoa(t.MemberBirthYear))
+	io.WriteString(buf, t.MemberGender)
+	if t.BikeShareForAllTrip {
+		buf.WriteByte('t')
+	} else {
+		buf.WriteByte('f')
+	}
+	return sha256.Sum256(buf.Bytes())
 }
 
 func parseTrip(record []string) (*Trip, error) {

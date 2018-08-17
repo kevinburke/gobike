@@ -1,6 +1,7 @@
 package stats
 
 import (
+	"crypto/sha256"
 	"encoding/json"
 	"fmt"
 	"sort"
@@ -69,6 +70,48 @@ func TripsPerWeek(trips []*gobike.Trip) TimeSeries {
 			seen++
 		}
 		result = append(result, &TimeStat{Date: i, Data: float64(count)})
+		if seen >= len(mp) {
+			break
+		}
+	}
+	return result
+}
+
+func UniqueTripsPerWeek(trips []*gobike.Trip) TimeSeries {
+	weekBeforeEnd := sevenDaysBeforeDataEnd(trips)
+	lastSunday := time.Date(weekBeforeEnd.Year(), weekBeforeEnd.Month(), weekBeforeEnd.Day()+(7-int(weekBeforeEnd.Weekday())), 0, 0, 0, 0, tz)
+	mp := make(map[string]map[[sha256.Size]byte]int)
+	earliest := time.Date(3000, time.January, 1, 0, 0, 0, 0, tz)
+	for i := 0; i < len(trips); i++ {
+		start := trips[i].StartTime
+		wday := start.Weekday()
+		sunday := time.Date(start.Year(), start.Month(), start.Day()-int(wday), 0, 0, 0, 0, tz)
+		if sunday.Equal(lastSunday) || sunday.After(lastSunday) {
+			continue
+		}
+		hash := trips[i].Hash()
+		sundayFmt := sunday.Format("2006-01-02")
+		_, ok := mp[sundayFmt]
+		if !ok {
+			mp[sundayFmt] = make(map[[sha256.Size]byte]int)
+		}
+		if _, ok := mp[sundayFmt][hash]; ok {
+			mp[sundayFmt][hash] += 1
+		} else {
+			mp[sundayFmt][hash] = 1
+		}
+		if sunday.Before(earliest) {
+			earliest = sunday
+		}
+	}
+	seen := 0
+	result := make([]*TimeStat, 0)
+	for i := earliest; ; i = time.Date(i.Year(), i.Month(), i.Day()+7, 0, 0, 0, 0, tz) {
+		count, ok := mp[i.Format("2006-01-02")]
+		if ok {
+			seen++
+		}
+		result = append(result, &TimeStat{Date: i, Data: float64(len(count))})
 		if seen >= len(mp) {
 			break
 		}

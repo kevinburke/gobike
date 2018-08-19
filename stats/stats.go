@@ -3,6 +3,7 @@ package stats
 import (
 	"encoding/json"
 	"fmt"
+	"math"
 	"sort"
 	"strings"
 	"sync"
@@ -454,4 +455,43 @@ func AverageWeekdayTrips(trips []*gobike.Trip) float64 {
 	sort.Ints(buckets[time.Monday : time.Friday+1])
 	// drop highest and lowest
 	return (float64(buckets[time.Tuesday]) + float64(buckets[time.Wednesday]) + float64(buckets[time.Thursday])) / 3
+}
+
+func DistanceBucketsLastWeek(trips []*gobike.Trip, interval float64, numBuckets int) []int {
+	weekAgo := sevenDaysBeforeDataEnd(trips)
+	buckets := make([]int, numBuckets)
+	for i := 0; i < len(buckets); i++ {
+		buckets[i] = 0
+	}
+	for i := 0; i < len(trips); i++ {
+		if trips[i].StartTime.Before(weekAgo) {
+			continue
+		}
+		dist := trips[i].Distance()
+		idx := int(math.Floor(dist / interval))
+		if idx > numBuckets-1 {
+			idx = numBuckets - 1
+		}
+		buckets[idx]++
+	}
+	return buckets
+}
+
+func DurationBucketsLastWeek(trips []*gobike.Trip, interval time.Duration, numBuckets int) []int {
+	weekAgo := sevenDaysBeforeDataEnd(trips)
+	buckets := make([]int, numBuckets)
+	for i := 0; i < len(buckets); i++ {
+		buckets[i] = 0
+	}
+	for i := 0; i < len(trips); i++ {
+		if trips[i].StartTime.Before(weekAgo) {
+			continue
+		}
+		idx := int(math.Floor(float64(trips[i].Duration) / float64(interval)))
+		if idx > numBuckets-1 {
+			idx = numBuckets - 1
+		}
+		buckets[idx]++
+	}
+	return buckets
 }

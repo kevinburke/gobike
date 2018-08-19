@@ -2,6 +2,7 @@ package gobike
 
 import (
 	"bufio"
+	"encoding/csv"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -121,5 +122,21 @@ func BenchmarkLoadOfficial(b *testing.B) {
 				}
 			}
 		})
+	}
+}
+
+func TestTripDistance(t *testing.T) {
+	s := `59989,"2018-07-31 18:20:32.7230","2018-08-01 11:00:22.1890",197,"El Embarcadero at Grand Ave",37.8088479,-122.2496799,181,"Grand Ave at Webster St",37.8113768,-122.2651925,1953,"Customer",1995,"Male","No"`
+	record, err := csv.NewReader(strings.NewReader(s)).Read()
+	if err != nil {
+		panic(err)
+	}
+	trip, err := parseTrip(record)
+	if err != nil {
+		panic(err)
+	}
+	dist := trip.Distance()
+	if dist < 0.8 || dist > 0.9 {
+		t.Errorf("bad distance: %f", dist)
 	}
 }

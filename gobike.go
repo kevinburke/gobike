@@ -12,6 +12,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/golang/geo/s2"
 	"golang.org/x/sync/errgroup"
 )
 
@@ -58,6 +59,15 @@ type Trip struct {
 func (t Trip) Dockless() bool {
 	return t.StartStationID == 0 || t.StartStationName == "NULL" ||
 		t.EndStationID == 0 || t.EndStationName == "NULL"
+}
+
+const earthRadiusMiles = 3959.0
+
+func (t Trip) Distance() float64 {
+	start := s2.LatLngFromDegrees(t.StartStationLatitude, t.StartStationLongitude)
+	end := s2.LatLngFromDegrees(t.EndStationLatitude, t.EndStationLongitude)
+	dist := start.Distance(end)
+	return earthRadiusMiles * dist.Radians()
 }
 
 func parseTrip(record []string) (*Trip, error) {

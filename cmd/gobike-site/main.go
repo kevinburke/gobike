@@ -10,6 +10,8 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"strconv"
+	"time"
 
 	"github.com/kevinburke/gobike"
 	"github.com/kevinburke/gobike/geo"
@@ -35,6 +37,9 @@ type homepageData struct {
 	Area                     string
 	ShareOfTotalTrips        string
 	AverageWeekdayTrips      string
+
+	DistanceBuckets *Histogram
+	DurationBuckets *Histogram
 }
 
 type stationData struct {
@@ -115,6 +120,26 @@ func renderCity(name string, city *geo.City, tpl, stationTpl *template.Template,
 		bs4aData, err = json.Marshal(bs4aTripsPerWeek)
 		return err
 	})
+	var distanceBuckets, durationBuckets *Histogram
+	group.Go(func() error {
+		distanceBucketsArr := stats.DistanceBucketsLastWeek(trips, 0.50, 6)
+		distanceBuckets = &Histogram{
+			interval: 0.50,
+			unit:     "mi",
+			Buckets:  distanceBucketsArr,
+		}
+		return nil
+	})
+	group.Go(func() error {
+		durationBucketsArr := stats.DurationBucketsLastWeek(trips, 5*time.Minute, 8)
+		durationBuckets = &Histogram{
+			interval:   float64(5 * time.Minute),
+			isDuration: true,
+			unit:       "min",
+			Buckets:    durationBucketsArr,
+		}
+		return nil
+	})
 	if err := group.Wait(); err != nil {
 		return err
 	}
@@ -140,6 +165,8 @@ func renderCity(name string, city *geo.City, tpl, stationTpl *template.Template,
 		TripsByDistrict:          tripsByDistrict,
 		ShareOfTotalTrips:        shareOfTotalTrips,
 		AverageWeekdayTrips:      averageWeekdayTrips,
+		DistanceBuckets:          distanceBuckets,
+		DurationBuckets:          durationBuckets,
 	}
 	dir := filepath.Join("docs", name)
 	if city == nil {
@@ -174,6 +201,45 @@ func renderCity(name string, city *geo.City, tpl, stationTpl *template.Template,
 		return err
 	}
 	return nil
+}
+
+type Histogram struct {
+	interval   float64
+	isDuration bool
+	unit       string
+	Buckets    []int
+}
+
+func (b *Histogram) Distrange(i int) string {
+	interval := b.interval
+	if b.isDuration {
+		switch b.unit {
+		case "min":
+			interval = b.interval / float64(time.Minute)
+		default:
+			panic("unknown distrange unit " + b.unit)
+		}
+	}
+	s1 := strconv.FormatFloat(float64(i)*interval, 'f', -1, 64)
+	s2 := strconv.FormatFloat(float64(i+1)*interval, 'f', -1, 64)
+	if i == 0 {
+		s1 = "0"
+	}
+	if i+1 == len(b.Buckets) {
+		s2 = b.unit + " and up"
+	} else {
+		s1 = s1 + "-"
+		s2 = s2 + b.unit
+	}
+	return s1 + s2
+}
+
+func (b *Histogram) Percent(i int) string {
+	sum := 0
+	for i := 0; i < len(b.Buckets); i++ {
+		sum += b.Buckets[i]
+	}
+	return fmt.Sprintf("%.1f%%", 100*float64(b.Buckets[i])/float64(sum))
 }
 
 func main() {

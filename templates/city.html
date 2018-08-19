@@ -150,6 +150,34 @@
         </div>
       </div>
       <div class="row">
+        <div class="col-md-4">
+          <h4>Distance</h4>
+          <table class="table table-sm">
+            <tbody>
+            {{- range $index, $count := .DistanceBuckets.Buckets }}
+              <tr>
+                <th scope="row">{{ $.DistanceBuckets.Distrange $index }}</th>
+                <td>{{ $count }} ({{ $.DistanceBuckets.Percent $index }})</td>
+              </tr>
+            {{- end }}
+            </tbody>
+          </table>
+        </div>
+        <div class="col-md-4">
+          <h4>Durations</h4>
+          <table class="table table-sm">
+            <tbody>
+            {{- range $index, $count := .DurationBuckets.Buckets }}
+              <tr>
+                <th scope="row">{{ $.DurationBuckets.Distrange $index }}</th>
+                <td>{{ $count }} ({{ $.DurationBuckets.Percent $index }})</td>
+              </tr>
+            {{- end }}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row">
         <div class="col-md-8">
           <h4><a href="https://www.fordgobike.com/pricing/bikeshareforall">Bike Share For All</a> trips last week: {{ .BS4ATripsPerWeekCount }} ({{ .BS4ATripPct }}% of total)</h4>
           <div id="placeholder-5" class="chart">

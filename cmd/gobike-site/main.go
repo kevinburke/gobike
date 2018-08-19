@@ -122,20 +122,22 @@ func renderCity(name string, city *geo.City, tpl, stationTpl *template.Template,
 	})
 	var distanceBuckets, durationBuckets *Histogram
 	group.Go(func() error {
-		distanceBucketsArr := stats.DistanceBucketsLastWeek(trips, 0.50, 6)
+		distanceBucketsArr, avg := stats.DistanceBucketsLastWeek(trips, 0.50, 6)
 		distanceBuckets = &Histogram{
 			interval: 0.50,
 			unit:     "mi",
+			average:  avg,
 			Buckets:  distanceBucketsArr,
 		}
 		return nil
 	})
 	group.Go(func() error {
-		durationBucketsArr := stats.DurationBucketsLastWeek(trips, 5*time.Minute, 8)
+		durationBucketsArr, avg := stats.DurationBucketsLastWeek(trips, 5*time.Minute, 8)
 		durationBuckets = &Histogram{
 			interval:   float64(5 * time.Minute),
 			isDuration: true,
 			unit:       "min",
+			average:    avg,
 			Buckets:    durationBucketsArr,
 		}
 		return nil
@@ -207,7 +209,12 @@ type Histogram struct {
 	interval   float64
 	isDuration bool
 	unit       string
+	average    float64
 	Buckets    []int
+}
+
+func (h *Histogram) Average() string {
+	return strconv.FormatFloat(h.average, 'f', 1, 64)
 }
 
 func (b *Histogram) Distrange(i int) string {

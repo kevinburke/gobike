@@ -457,41 +457,43 @@ func AverageWeekdayTrips(trips []*gobike.Trip) float64 {
 	return (float64(buckets[time.Tuesday]) + float64(buckets[time.Wednesday]) + float64(buckets[time.Thursday])) / 3
 }
 
-func DistanceBucketsLastWeek(trips []*gobike.Trip, interval float64, numBuckets int) []int {
+func DistanceBucketsLastWeek(trips []*gobike.Trip, interval float64, numBuckets int) ([]int, float64) {
 	weekAgo := sevenDaysBeforeDataEnd(trips)
 	buckets := make([]int, numBuckets)
-	for i := 0; i < len(buckets); i++ {
-		buckets[i] = 0
-	}
+	sum := float64(0)
+	count := 0
 	for i := 0; i < len(trips); i++ {
 		if trips[i].StartTime.Before(weekAgo) {
 			continue
 		}
+		count++
 		dist := trips[i].Distance()
+		sum += dist
 		idx := int(math.Floor(dist / interval))
 		if idx > numBuckets-1 {
 			idx = numBuckets - 1
 		}
 		buckets[idx]++
 	}
-	return buckets
+	return buckets, sum / float64(count)
 }
 
-func DurationBucketsLastWeek(trips []*gobike.Trip, interval time.Duration, numBuckets int) []int {
+func DurationBucketsLastWeek(trips []*gobike.Trip, interval time.Duration, numBuckets int) ([]int, float64) {
 	weekAgo := sevenDaysBeforeDataEnd(trips)
 	buckets := make([]int, numBuckets)
-	for i := 0; i < len(buckets); i++ {
-		buckets[i] = 0
-	}
+	sum := time.Duration(0)
+	count := 0
 	for i := 0; i < len(trips); i++ {
 		if trips[i].StartTime.Before(weekAgo) {
 			continue
 		}
+		count++
+		sum += trips[i].Duration
 		idx := int(math.Floor(float64(trips[i].Duration) / float64(interval)))
 		if idx > numBuckets-1 {
 			idx = numBuckets - 1
 		}
 		buckets[idx]++
 	}
-	return buckets
+	return buckets, float64(sum) / (float64(count) * float64(time.Minute))
 }

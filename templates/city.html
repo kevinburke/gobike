@@ -74,6 +74,48 @@
               </div>
             </div>
           </div>
+          <div class="row">
+            <div class="col-md-12">
+              <h4>Bikes in circulation last week: {{ .BikesPerWeekCount }}</h4>
+              <div id="placeholder-3" class="chart">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <h4>Trips per bike last week: {{ .TripsPerBikePerWeekCount }}</h4>
+              <div id="placeholder-4" class="chart">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <h4>Average distance: {{ .DistanceBuckets.Average }} miles</h4>
+              <table class="table table-sm">
+                <tbody>
+                {{- range $index, $count := .DistanceBuckets.Buckets }}
+                  <tr>
+                    <th scope="row">{{ $.DistanceBuckets.Distrange $index }}</th>
+                    <td>{{ $count }} ({{ $.DistanceBuckets.Percent $index }})</td>
+                  </tr>
+                {{- end }}
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-6">
+              <h4>Average trip time: {{ .DurationBuckets.Average }} min</h4>
+              <table class="table table-sm">
+                <tbody>
+                {{- range $index, $count := .DurationBuckets.Buckets }}
+                  <tr>
+                    <th scope="row">{{ $.DurationBuckets.Distrange $index }}</th>
+                    <td>{{ $count }} ({{ $.DurationBuckets.Percent $index }})</td>
+                  </tr>
+                {{- end }}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
         <div class="col-md-4">
           <h4>Most Popular Stations</h4>
@@ -133,48 +175,6 @@
             </tbody>
           </table>
           {{ end }}
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-8">
-          <h4>Bikes in circulation last week: {{ .BikesPerWeekCount }}</h4>
-          <div id="placeholder-3" class="chart">
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-8">
-          <h4>Trips per bike last week: {{ .TripsPerBikePerWeekCount }}</h4>
-          <div id="placeholder-4" class="chart">
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <h4>Distance</h4>
-          <table class="table table-sm">
-            <tbody>
-            {{- range $index, $count := .DistanceBuckets.Buckets }}
-              <tr>
-                <th scope="row">{{ $.DistanceBuckets.Distrange $index }}</th>
-                <td>{{ $count }} ({{ $.DistanceBuckets.Percent $index }})</td>
-              </tr>
-            {{- end }}
-            </tbody>
-          </table>
-        </div>
-        <div class="col-md-4">
-          <h4>Durations</h4>
-          <table class="table table-sm">
-            <tbody>
-            {{- range $index, $count := .DurationBuckets.Buckets }}
-              <tr>
-                <th scope="row">{{ $.DurationBuckets.Distrange $index }}</th>
-                <td>{{ $count }} ({{ $.DurationBuckets.Percent $index }})</td>
-              </tr>
-            {{- end }}
-            </tbody>
-          </table>
         </div>
       </div>
       <div class="row">

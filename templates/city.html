@@ -40,55 +40,75 @@
       <div class="row">
         <div class="col-md-8">
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 my-2">
               <h4>Trips per week: {{ .TripsPerWeekCount }}</h4>
               <div id="placeholder" class="chart">
               </div>
             </div>
+            <div class="col-md-12 my-2">
             {{ if eq .Area "sf" }}
-            <div class="col-md-8">
               <table class="table table-sm">
                 <tbody>
                   <tr>
-                    <th scope="row">Average weekday trips</th><td>{{ .AverageWeekdayTrips }}</td>
+                    <th scope="row">Total trips per day in SF (walk/bike/car/train):</th><td><a href="https://www.sfmta.com/sites/default/files/reports-and-documents/2018/01/san_francisco_transportation_trends_2.3.15.pdf#page=5">4.2 million</a></td>
                   </tr>
                   <tr>
-                    <th scope="row">Total trips per day in SF (walk/bike/car/train)</th><td><a href="https://www.sfmta.com/sites/default/files/reports-and-documents/2018/01/san_francisco_transportation_trends_2.3.15.pdf#page=5">4.2 million</a></td>
+                    <th scope="row">Average weekday GoBike trips:</th><td>{{ .AverageWeekdayTrips }}</td>
                   </tr>
                   <tr>
-                    <th scope="row">GoBike share of total trips</th><td>{{ .ShareOfTotalTrips }}%</td>
+                    <th scope="row">Share of all trips on GoBike:</th><td>{{ .ShareOfTotalTrips }}%</td>
                   </tr>
                   <tr>
-                    <th scope="row">Private car share of total trips</th><td><a href="https://www.sfmta.com/sites/default/files/reports-and-documents/2018/01/san_francisco_transportation_trends_2.3.15.pdf#page=13">48.0%</a></td>
+                    <th scope="row">Private car share of total trips:</th><td><a href="https://www.sfmta.com/sites/default/files/reports-and-documents/2018/01/san_francisco_transportation_trends_2.3.15.pdf#page=13">48.0%</a></td>
                   </tr>
                   <tr>
-                    <th scope="row">Walking share of total trips</th><td><a href="https://www.sfmta.com/sites/default/files/reports-and-documents/2018/01/san_francisco_transportation_trends_2.3.15.pdf#page=15">23.0%</a></td>
+                    <th scope="row">Walking share of total trips:</th><td><a href="https://www.sfmta.com/sites/default/files/reports-and-documents/2018/01/san_francisco_transportation_trends_2.3.15.pdf#page=15">23.0%</a></td>
                   </tr>
                 </tbody>
               </table>
+            {{- else if ne .Area "bayarea" }}
+              <table class="table table-sm">
+                <tbody>
+                  <tr>
+                    <th scope="row">{{ .FriendlyName }} Population:</th><td>{{ .Population }}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Trips per person in SF: <sup><a href="#fn1">1</a></sup></th><td><a href="https://www.sfmta.com/sites/default/files/reports-and-documents/2018/01/san_francisco_transportation_trends_2.3.15.pdf#page=5">4.82</a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Estimated trips per day in {{ .FriendlyName }}:</th><td>{{ .EstimatedTotalTrips }}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Average weekday GoBike trips:</th><td>{{ .AverageWeekdayTrips }}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Share of all trips on GoBike:</th><td>{{ .ShareOfTotalTrips }}%</td>
+                  </tr>
+                </tbody>
+              </table>
+            {{- end }}
             </div>
-            {{ end }}
-            <div class="col-md-12">
+            <div class="col-md-12 my-2">
               <h4>Number of stations used last week: {{ .StationsPerWeekCount }}</h4>
               <div id="placeholder-2" class="chart">
               </div>
             </div>
           </div>
-          <div class="row">
+          <div class="row my-2">
             <div class="col-md-12">
               <h4>Bikes in circulation last week: {{ .BikesPerWeekCount }}</h4>
               <div id="placeholder-3" class="chart">
               </div>
             </div>
           </div>
-          <div class="row">
+          <div class="row my-2">
             <div class="col-md-12">
               <h4>Trips per bike last week: {{ .TripsPerBikePerWeekCount }}</h4>
               <div id="placeholder-4" class="chart">
               </div>
             </div>
           </div>
-          <div class="row">
+          <div class="row my-2">
             <div class="col-md-6">
               <h4>Average distance: {{ .DistanceBuckets.Average }} miles</h4>
               <table class="table table-sm">
@@ -177,6 +197,8 @@
           {{ end }}
         </div>
       </div>
+      <br />
+      <br />
       <div class="row">
         <div class="col-md-8">
           <h4><a href="https://www.fordgobike.com/pricing/bikeshareforall">Bike Share For All</a> trips last week: {{ .BS4ATripsPerWeekCount }} ({{ .BS4ATripPct }}% of total)</h4>
@@ -204,6 +226,13 @@
       <br />
       <br />
       <div class="row">
+        {{- if and (ne .Area "bayarea") (ne .Area "sf") }}
+        <div class="col-md-8">
+          <p>
+          <sup id="fn1">1</sup><small>We couldn't find trip data for {{ .FriendlyName }} so we are guessing based on 4.82 trips per person in SF. If you have better data for {{ .FriendlyName }}, <a href="https://github.com/kevinburke/gobike">please share</a>!</small>
+          </p>
+        </div>
+        {{- end }}
         <div class="col-md-8">
           <p>
             This website is not affiliated with GoBike, Motivate, the MTC,

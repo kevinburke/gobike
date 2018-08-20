@@ -55,6 +55,14 @@ func init() {
 	SFD11.Name = "SFD11"
 }
 
+var Populations = map[string]int{
+	"sf":         870887,
+	"oakland":    420005,
+	"emeryville": 11671,
+	"berkeley":   121240,
+	"sj":         1035317,
+}
+
 type City struct {
 	Name string
 

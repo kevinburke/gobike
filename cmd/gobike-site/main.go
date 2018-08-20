@@ -8,6 +8,7 @@ import (
 	"html/template"
 	"io/ioutil"
 	"log"
+	"math"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -20,6 +21,9 @@ import (
 )
 
 type homepageData struct {
+	Area         string
+	FriendlyName string
+
 	TripsPerWeek             template.JS
 	TripsPerWeekCount        int64
 	StationsPerWeek          template.JS
@@ -34,9 +38,10 @@ type homepageData struct {
 	PopularStations          []*stats.StationCount
 	PopularBS4AStations      []*stats.StationCount
 	TripsByDistrict          [11]int
-	Area                     string
+	Population               int
 	ShareOfTotalTrips        string
 	AverageWeekdayTrips      string
+	EstimatedTotalTrips      string
 
 	DistanceBuckets *Histogram
 	DurationBuckets *Histogram
@@ -63,7 +68,7 @@ func renderCity(name string, city *geo.City, tpl, stationTpl *template.Template,
 	var stationsPerWeek, tripsPerWeek, bikeTripsPerWeek, tripsPerBikePerWeek, bs4aTripsPerWeek stats.TimeSeries
 	var stationBytes, data, bikeData, tripPerBikeData, bs4aData []byte
 	var mostPopularStations, popularBS4AStations []*stats.StationCount
-	var shareOfTotalTrips, averageWeekdayTrips string
+	var shareOfTotalTrips, averageWeekdayTrips, estimatedTotalTrips string
 	var tripsByDistrict [11]int
 	if name == "sf" {
 		group.Go(func() error {
@@ -93,11 +98,11 @@ func renderCity(name string, city *geo.City, tpl, stationTpl *template.Template,
 	})
 	group.Go(func() error {
 		tripsPerWeek = stats.TripsPerWeek(trips)
-		if name == "sf" {
-			averageWeekdayTripsf64 := stats.AverageWeekdayTrips(trips)
-			averageWeekdayTrips = fmt.Sprintf("%.1f", averageWeekdayTripsf64)
-			shareOfTotalTrips = fmt.Sprintf("%.2f", 100*averageWeekdayTripsf64/(4.2*1000*1000))
-		}
+		averageWeekdayTripsf64 := stats.AverageWeekdayTrips(trips)
+		averageWeekdayTrips = fmt.Sprintf("%.1f", averageWeekdayTripsf64)
+		estimatedTotalTripsf64 := 4.82*float64(geo.Populations[name]) - math.Mod(4.82*float64(geo.Populations[name]), 1000)
+		shareOfTotalTrips = fmt.Sprintf("%.2f", 100*averageWeekdayTripsf64/estimatedTotalTripsf64)
+		estimatedTotalTrips = strconv.FormatFloat(estimatedTotalTripsf64, 'f', 0, 64)
 		var err error
 		data, err = json.Marshal(tripsPerWeek)
 		return err
@@ -149,8 +154,13 @@ func renderCity(name string, city *geo.City, tpl, stationTpl *template.Template,
 	tripsPerWeekCountf64 := tripsPerWeek[len(tripsPerWeek)-1].Data
 	bs4aTripsPerWeekCountf64 := bs4aTripsPerWeek[len(bs4aTripsPerWeek)-1].Data
 
+	var friendlyName string
+	if city != nil {
+		friendlyName = city.Name
+	}
 	hdata := &homepageData{
 		Area:                     name,
+		FriendlyName:             friendlyName,
 		TripsPerWeek:             template.JS(string(data)),
 		TripsPerWeekCount:        int64(tripsPerWeekCountf64),
 		StationsPerWeek:          template.JS(string(stationBytes)),
@@ -169,6 +179,8 @@ func renderCity(name string, city *geo.City, tpl, stationTpl *template.Template,
 		AverageWeekdayTrips:      averageWeekdayTrips,
 		DistanceBuckets:          distanceBuckets,
 		DurationBuckets:          durationBuckets,
+		Population:               geo.Populations[name],
+		EstimatedTotalTrips:      estimatedTotalTrips,
 	}
 	dir := filepath.Join("docs", name)
 	if city == nil {

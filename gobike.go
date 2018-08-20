@@ -154,6 +154,7 @@ func parseTrip(record []string) (*Trip, error) {
 	return t, nil
 }
 
+// LoadDir loads all trip CSV's in a given directory.
 func LoadDir(directory string) ([]*Trip, error) {
 	files, err := ioutil.ReadDir(directory)
 	if err != nil {

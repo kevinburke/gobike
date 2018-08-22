@@ -12,6 +12,7 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/kevinburke/gobike"
 	"github.com/kevinburke/rest"
 	"golang.org/x/sys/unix"
 )
@@ -147,11 +148,13 @@ func main() {
 	ticker := time.NewTicker(10 * time.Second)
 	buf := new(bytes.Buffer)
 	client := rest.NewClient("", "", "https://gbfs.fordgobike.com/gbfs/en")
+
 	for range ticker.C {
 		req, err := client.NewRequest("GET", "/station_status.json", nil)
 		if err != nil {
 			log.Fatal(err)
 		}
+		req.Header.Set("User-Agent", "gobike/"+gobike.Version+" (github.com/kevinburke/gobike) "+req.Header.Get("User-Agent"))
 		body := new(StationStatusResponse)
 		if err := client.Do(req, body); err != nil {
 			log.Fatal(err)

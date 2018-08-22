@@ -10,65 +10,14 @@ import (
 	"log"
 	"os"
 	"path/filepath"
-	"sort"
 	"strconv"
 	"time"
 
 	"github.com/kevinburke/gobike"
+	"github.com/kevinburke/gobike/client"
 	"github.com/kevinburke/rest"
 	"golang.org/x/sys/unix"
 )
-
-type StationStatusResponse struct {
-	LastUpdated int64              `json:"last_updated"`
-	TTL         int                `json:"ttl"`
-	Data        *StationStatusData `json:"data"`
-}
-
-type StationStatusData struct {
-	Stations []*StationStatusJSON `json:"stations"`
-}
-
-type StationStatusJSON struct {
-	StationID          string `json:"station_id"`
-	NumBikesAvailable  int    `json:"num_bikes_available"`
-	NumEBikesAvailable int    `json:"num_ebikes_available"`
-	NumBikesDisabled   int    `json:"num_bikes_disabled"`
-	NumDocksAvailable  int    `json:"num_docks_available"`
-	NumDocksDisabled   int    `json:"num_docks_disabled"`
-	LastReported       int64  `json:"last_reported"`
-	IsInstalled        int    `json:"is_installed"`
-	IsRenting          int    `json:"is_renting"`
-	IsReturning        int    `json:"is_returning"`
-}
-
-type StationStatus struct {
-	ID                 string    `json:"station_id"`
-	NumBikesAvailable  int16     `json:"num_bikes_available"`
-	NumEBikesAvailable int16     `json:"num_ebikes_available"`
-	NumBikesDisabled   int16     `json:"num_bikes_disabled"`
-	NumDocksAvailable  int16     `json:"num_docks_available"`
-	NumDocksDisabled   int16     `json:"num_docks_disabled"`
-	LastReported       time.Time `json:"last_reported"`
-	IsInstalled        bool      `json:"is_installed"`
-	IsRenting          bool      `json:"is_renting"`
-	IsReturning        bool      `json:"is_returning"`
-}
-
-func NewStationStatus(ss *StationStatusJSON) *StationStatus {
-	return &StationStatus{
-		ID:                 ss.StationID,
-		NumBikesAvailable:  int16(ss.NumBikesAvailable),
-		NumEBikesAvailable: int16(ss.NumEBikesAvailable),
-		NumBikesDisabled:   int16(ss.NumBikesDisabled),
-		NumDocksAvailable:  int16(ss.NumDocksAvailable),
-		NumDocksDisabled:   int16(ss.NumDocksDisabled),
-		LastReported:       time.Unix(ss.LastReported, 0),
-		IsInstalled:        ss.IsInstalled != 0,
-		IsRenting:          ss.IsRenting != 0,
-		IsReturning:        ss.IsReturning != 0,
-	}
-}
 
 func lock(f *os.File) error {
 	return unix.Flock(int(f.Fd()), unix.LOCK_EX)
@@ -78,7 +27,7 @@ func unlock(f *os.File) error {
 	return unix.Flock(int(f.Fd()), unix.LOCK_UN)
 }
 
-func parseLine(line []byte) (*StationStatus, error) {
+func parseLine(line []byte) (*gobike.StationStatus, error) {
 	idx := bytes.IndexByte(line, ',')
 	if idx == -1 {
 		return nil, fmt.Errorf("not enough commas: %s", string(line))
@@ -87,7 +36,7 @@ func parseLine(line []byte) (*StationStatus, error) {
 	if err != nil {
 		return nil, err
 	}
-	ss := new(StationStatus)
+	ss := new(gobike.StationStatus)
 	ss.LastReported = t
 	line = line[idx+1:]
 	idx = bytes.IndexByte(line, ',')
@@ -108,7 +57,7 @@ func parseLine(line []byte) (*StationStatus, error) {
 	return ss, nil
 }
 
-func writeStation(buf *bytes.Buffer, station *StationStatus) {
+func writeStation(buf *bytes.Buffer, station *gobike.StationStatus) {
 	buf.WriteString(station.LastReported.Format(time.RFC3339))
 	buf.WriteByte(',')
 	buf.WriteString(station.ID)
@@ -139,28 +88,6 @@ func writeStation(buf *bytes.Buffer, station *StationStatus) {
 		buf.WriteString("f")
 	}
 	buf.WriteByte('\n')
-}
-
-func getStations(ctx context.Context, client *rest.Client) ([]*StationStatus, error) {
-	req, err := client.NewRequest("GET", "/station_status.json", nil)
-	if err != nil {
-		return nil, err
-	}
-	req.Header.Set("User-Agent", "gobike/"+gobike.Version+" (github.com/kevinburke/gobike) "+req.Header.Get("User-Agent"))
-	req = req.WithContext(ctx)
-	body := new(StationStatusResponse)
-	if err := client.Do(req, body); err != nil {
-		return nil, err
-	}
-	stations := body.Data.Stations
-	stationStatuses := make([]*StationStatus, len(stations))
-	for i := 0; i < len(stations); i++ {
-		stationStatuses[i] = NewStationStatus(stations[i])
-	}
-	sort.Slice(stationStatuses, func(i, j int) bool {
-		return stationStatuses[i].LastReported.Before(stationStatuses[j].LastReported)
-	})
-	return stationStatuses, nil
 }
 
 func main() {
@@ -199,7 +126,7 @@ func main() {
 	lastReported := make(map[string]time.Time)
 	f.Seek(0, io.SeekStart)
 	bs := bufio.NewScanner(f)
-	var stationStatus *StationStatus
+	var stationStatus *gobike.StationStatus
 	for bs.Scan() {
 		stationStatus, err = parseLine(bs.Bytes())
 		if err != nil {
@@ -212,20 +139,20 @@ func main() {
 	}
 	ticker := time.NewTicker(10 * time.Second)
 	buf := new(bytes.Buffer)
-	client := rest.NewClient("", "", "https://gbfs.fordgobike.com/gbfs/en")
+	client := client.NewClient()
 	count := 0
 	logMessage := false
 
 	rest.Logger.Info("started", "version", gobike.Version, "filename", filename)
 	for range ticker.C {
-		stations, err := getStations(ctx, client)
+		response, err := client.Stations.Status(ctx)
 		if err != nil {
 			log.Fatal(err) // TODO: catch errors
 		}
-		var station *StationStatus
+		var station *gobike.StationStatus
 		var fullStations, emptyStations int
-		for i := 0; i < len(stations); i++ {
-			station = stations[i]
+		for i := 0; i < len(response.Stations); i++ {
+			station = response.Stations[i]
 			if station.NumDocksAvailable == 0 {
 				fullStations++
 			}

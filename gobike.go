@@ -220,3 +220,16 @@ func Load(rdr io.Reader) ([]*Trip, error) {
 	}
 	return trips, nil
 }
+
+type StationStatus struct {
+	ID                 string    `json:"station_id"`
+	NumBikesAvailable  int16     `json:"num_bikes_available"`
+	NumEBikesAvailable int16     `json:"num_ebikes_available"`
+	NumBikesDisabled   int16     `json:"num_bikes_disabled"`
+	NumDocksAvailable  int16     `json:"num_docks_available"`
+	NumDocksDisabled   int16     `json:"num_docks_disabled"`
+	LastReported       time.Time `json:"last_reported"`
+	IsInstalled        bool      `json:"is_installed"`
+	IsRenting          bool      `json:"is_renting"`
+	IsReturning        bool      `json:"is_returning"`
+}

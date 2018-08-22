@@ -112,10 +112,9 @@ ifndef GITHUB_TOKEN
 	@echo "Please set GITHUB_TOKEN in the environment"
 	exit 1
 endif
-	git tag $(version)
+	$(BUMP_VERSION) --version=$(version) gobike.go
 	git push origin --tags
 	mkdir -p releases/$(version)
-	# Change the binary names below to match your tool name
 	GOOS=linux GOARCH=amd64 go build -o releases/$(version)/monitor-station-capacity-linux-amd64 ./cmd/monitor-station-capacity
 	GOOS=darwin GOARCH=amd64 go build -o releases/$(version)/monitor-station-capacity-darwin-amd64 ./cmd/monitor-station-capacity
 

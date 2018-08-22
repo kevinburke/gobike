@@ -164,7 +164,12 @@ func getStations(ctx context.Context, client *rest.Client) ([]*StationStatus, er
 }
 
 func main() {
+	version := flag.Bool("version", false, "Print the version string")
 	flag.Parse()
+	if *version {
+		fmt.Fprintf(os.Stderr, "monitor-station-capacity version %s\n", gobike.Version)
+		os.Exit(1)
+	}
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 	dir := filepath.Join("data", "station-capacity")
@@ -211,6 +216,7 @@ func main() {
 	count := 0
 	logMessage := false
 
+	rest.Logger.Info("started", "version", gobike.Version, "filename", filename)
 	for range ticker.C {
 		stations, err := getStations(ctx, client)
 		if err != nil {
@@ -241,11 +247,13 @@ func main() {
 					log.Fatal(err)
 				}
 				buf.Reset()
+				oldName := f.Name()
 				filename = station.LastReported.Format("2006-01-02") + "-capacity.csv"
 				f, err = os.Create(filepath.Join(dir, filename))
 				if err != nil {
 					log.Fatal(err)
 				}
+				rest.Logger.Info("rotate file", "old", oldName, "new", filename)
 			}
 			writeStation(buf, station)
 			lastReported[station.ID] = station.LastReported

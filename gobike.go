@@ -16,7 +16,7 @@ import (
 	"golang.org/x/sync/errgroup"
 )
 
-const Version = "0.4"
+const Version = "0.5"
 
 var tz *time.Location
 var tzOnce sync.Once

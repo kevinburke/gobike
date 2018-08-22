@@ -3,12 +3,14 @@ package main
 import (
 	"bufio"
 	"bytes"
+	"context"
 	"flag"
 	"fmt"
 	"io"
 	"log"
 	"os"
 	"path/filepath"
+	"sort"
 	"strconv"
 	"time"
 
@@ -106,8 +108,65 @@ func parseLine(line []byte) (*StationStatus, error) {
 	return ss, nil
 }
 
+func writeStation(buf *bytes.Buffer, station *StationStatus) {
+	buf.WriteString(station.LastReported.Format(time.RFC3339))
+	buf.WriteByte(',')
+	buf.WriteString(station.ID)
+	buf.WriteByte(',')
+	buf.WriteString(strconv.FormatInt(int64(station.NumBikesAvailable), 10))
+	buf.WriteByte(',')
+	buf.WriteString(strconv.FormatInt(int64(station.NumEBikesAvailable), 10))
+	buf.WriteByte(',')
+	buf.WriteString(strconv.FormatInt(int64(station.NumBikesDisabled), 10))
+	buf.WriteByte(',')
+	buf.WriteString(strconv.FormatInt(int64(station.NumDocksAvailable), 10))
+	buf.WriteByte(',')
+	buf.WriteString(strconv.FormatInt(int64(station.NumDocksDisabled), 10))
+	buf.WriteByte(',')
+	if station.IsInstalled {
+		buf.WriteString("t,")
+	} else {
+		buf.WriteString("f,")
+	}
+	if station.IsRenting {
+		buf.WriteString("t,")
+	} else {
+		buf.WriteString("f,")
+	}
+	if station.IsReturning {
+		buf.WriteString("t")
+	} else {
+		buf.WriteString("f")
+	}
+	buf.WriteByte('\n')
+}
+
+func getStations(ctx context.Context, client *rest.Client) ([]*StationStatus, error) {
+	req, err := client.NewRequest("GET", "/station_status.json", nil)
+	if err != nil {
+		return nil, err
+	}
+	req.Header.Set("User-Agent", "gobike/"+gobike.Version+" (github.com/kevinburke/gobike) "+req.Header.Get("User-Agent"))
+	req = req.WithContext(ctx)
+	body := new(StationStatusResponse)
+	if err := client.Do(req, body); err != nil {
+		return nil, err
+	}
+	stations := body.Data.Stations
+	stationStatuses := make([]*StationStatus, len(stations))
+	for i := 0; i < len(stations); i++ {
+		stationStatuses[i] = NewStationStatus(stations[i])
+	}
+	sort.Slice(stationStatuses, func(i, j int) bool {
+		return stationStatuses[i].LastReported.Before(stationStatuses[j].LastReported)
+	})
+	return stationStatuses, nil
+}
+
 func main() {
 	flag.Parse()
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
 	dir := filepath.Join("data", "station-capacity")
 	if err := os.MkdirAll(dir, 0755); err != nil {
 		log.Fatal(err)
@@ -120,7 +179,8 @@ func main() {
 	if err := lock(lockfile); err != nil {
 		log.Fatal(err)
 	}
-	filename := fmt.Sprintf("%d%02d-capacity.csv", now.Year(), int(now.Month()))
+	prefix := now.Format("2006-01-02")
+	filename := prefix + "-capacity.csv"
 	f, err := os.OpenFile(filepath.Join(dir, filename), os.O_APPEND|os.O_CREATE|os.O_RDWR, 0644)
 	if err != nil {
 		log.Fatal(err)
@@ -148,55 +208,55 @@ func main() {
 	ticker := time.NewTicker(10 * time.Second)
 	buf := new(bytes.Buffer)
 	client := rest.NewClient("", "", "https://gbfs.fordgobike.com/gbfs/en")
+	count := 0
+	logMessage := false
 
 	for range ticker.C {
-		req, err := client.NewRequest("GET", "/station_status.json", nil)
+		stations, err := getStations(ctx, client)
 		if err != nil {
-			log.Fatal(err)
+			log.Fatal(err) // TODO: catch errors
 		}
-		req.Header.Set("User-Agent", "gobike/"+gobike.Version+" (github.com/kevinburke/gobike) "+req.Header.Get("User-Agent"))
-		body := new(StationStatusResponse)
-		if err := client.Do(req, body); err != nil {
-			log.Fatal(err)
-		}
-		stations := body.Data.Stations
 		var station *StationStatus
+		var fullStations, emptyStations int
 		for i := 0; i < len(stations); i++ {
-			station = NewStationStatus(stations[i])
+			station = stations[i]
+			if station.NumDocksAvailable == 0 {
+				fullStations++
+			}
+			if station.NumBikesAvailable == 0 {
+				emptyStations++
+			}
 			if station.LastReported.Equal(lastReported[station.ID]) || station.LastReported.Before(lastReported[station.ID]) {
 				continue
 			}
-			buf.WriteString(station.LastReported.Format(time.RFC3339))
-			buf.WriteByte(',')
-			buf.WriteString(station.ID)
-			buf.WriteByte(',')
-			buf.WriteString(strconv.FormatInt(int64(station.NumBikesAvailable), 10))
-			buf.WriteByte(',')
-			buf.WriteString(strconv.FormatInt(int64(station.NumEBikesAvailable), 10))
-			buf.WriteByte(',')
-			buf.WriteString(strconv.FormatInt(int64(station.NumBikesDisabled), 10))
-			buf.WriteByte(',')
-			buf.WriteString(strconv.FormatInt(int64(station.NumDocksAvailable), 10))
-			buf.WriteByte(',')
-			buf.WriteString(strconv.FormatInt(int64(station.NumDocksDisabled), 10))
-			buf.WriteByte(',')
-			if station.IsInstalled {
-				buf.WriteString("t,")
-			} else {
-				buf.WriteString("f,")
+			if station.LastReported.After(now) && station.LastReported.Format("2006-01-02") != prefix {
+				// write buf to file
+				if _, err := f.Write(buf.Bytes()); err != nil {
+					log.Fatal(err)
+				}
+				if err := f.Sync(); err != nil {
+					log.Fatal(err)
+				}
+				if err := f.Close(); err != nil {
+					log.Fatal(err)
+				}
+				buf.Reset()
+				filename = station.LastReported.Format("2006-01-02") + "-capacity.csv"
+				f, err = os.Create(filepath.Join(dir, filename))
+				if err != nil {
+					log.Fatal(err)
+				}
 			}
-			if station.IsRenting {
-				buf.WriteString("t,")
-			} else {
-				buf.WriteString("f,")
-			}
-			if station.IsReturning {
-				buf.WriteString("t")
-			} else {
-				buf.WriteString("f")
-			}
-			buf.WriteByte('\n')
+			writeStation(buf, station)
 			lastReported[station.ID] = station.LastReported
+			count++
+			if count%5000 == 0 {
+				logMessage = true
+			}
+		}
+		if logMessage {
+			rest.Logger.Info("Processing", "rows", count, "full_stations", fullStations, "empty_stations", emptyStations)
+			logMessage = false
 		}
 		if buf.Len() == 0 {
 			continue

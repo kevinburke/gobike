@@ -104,7 +104,9 @@
   input-imports = [
     "github.com/golang/geo/s2",
     "github.com/kevinburke/handlers",
+    "github.com/kevinburke/rest",
     "golang.org/x/sync/errgroup",
+    "golang.org/x/sys/unix",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1

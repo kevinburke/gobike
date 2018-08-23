@@ -180,6 +180,7 @@ func main() {
 				if err != nil {
 					log.Fatal(err)
 				}
+				prefix = station.LastReported.Format("2006-01-02")
 				rest.Logger.Info("rotate file", "old", oldName, "new", filename)
 			}
 			writeStation(buf, station)

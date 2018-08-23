@@ -44,8 +44,10 @@
             <thead>
               <tr>
                 <th scope="col">Name</th>
+                <th scope="col">Capacity</th>
                 <th scope="col">Trips Last Week</th>
                 <th scope="col">Weekday Ridership</th>
+                <th scope="col">Weekday trips/dock</th>
                 <th scope="col">BS4A Trips</th>
                 <th scope="col">People Ride Here From</th>
                 <th scope="col">People Ride To</th>
@@ -55,6 +57,7 @@
               {{ range .Stations -}}
               <tr>
                 <td><a href="https://www.openstreetmap.org/?mlat={{ .Station.Latitude }}&mlon={{ .Station.Longitude }}&zoom=14">{{ .Station.Name }}</a></td>
+                <td>{{ .Station.Capacity }}</td>
                 <td>
                 {{- if lt .Count 6 -}}
                 (5 or fewer)
@@ -67,6 +70,13 @@
                 (5 or fewer)
                 {{ else -}}
                   {{ .RidershipString -}}
+                {{ end -}}
+                </td>
+                <td>
+                {{- if lt .Count 6 -}}
+                (5 or fewer)
+                {{ else -}}
+                  {{ .RidershipPerDockString -}}
                 {{ end -}}
                 </td>
                 <td>

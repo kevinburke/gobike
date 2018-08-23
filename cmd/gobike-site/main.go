@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"flag"
 	"fmt"
@@ -15,6 +16,7 @@ import (
 	"time"
 
 	"github.com/kevinburke/gobike"
+	"github.com/kevinburke/gobike/client"
 	"github.com/kevinburke/gobike/geo"
 	"github.com/kevinburke/gobike/stats"
 	"golang.org/x/sync/errgroup"
@@ -52,7 +54,7 @@ type stationData struct {
 	Stations []*stats.StationCount
 }
 
-func renderCity(name string, city *geo.City, tpl, stationTpl *template.Template, allTrips []*gobike.Trip) error {
+func renderCity(name string, city *geo.City, tpl, stationTpl *template.Template, stations []*gobike.Station, allTrips []*gobike.Trip) error {
 	trips := make([]*gobike.Trip, 0)
 	if city == nil {
 		trips = allTrips
@@ -84,16 +86,16 @@ func renderCity(name string, city *geo.City, tpl, stationTpl *template.Template,
 		return err
 	})
 	group.Go(func() error {
-		mostPopularStations = stats.PopularStationsLast7Days(trips, 10)
+		mostPopularStations = stats.PopularStationsLast7Days(stations, trips, 10)
 		return nil
 	})
 	var allStations []*stats.StationCount
 	group.Go(func() error {
-		allStations = stats.PopularStationsLast7Days(trips, 50000)
+		allStations = stats.PopularStationsLast7Days(stations, trips, 50000)
 		return nil
 	})
 	group.Go(func() error {
-		popularBS4AStations = stats.PopularBS4AStationsLast7Days(trips, 10)
+		popularBS4AStations = stats.PopularBS4AStationsLast7Days(stations, trips, 10)
 		return nil
 	})
 	group.Go(func() error {
@@ -284,8 +286,16 @@ func main() {
 	homepageTpl := template.Must(template.ParseFiles("templates/city.html"))
 	stationTpl := template.Must(template.ParseFiles("templates/stations.html"))
 
+	c := client.NewClient()
+	c.Stations.CacheTTL = 24 * 14 * time.Hour
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+	resp, err := c.Stations.All(ctx)
+	if err != nil {
+		log.Fatal(err)
+	}
 	for name, city := range cities {
-		if err := renderCity(name, city, homepageTpl, stationTpl, trips); err != nil {
+		if err := renderCity(name, city, homepageTpl, stationTpl, resp.Stations, trips); err != nil {
 			log.Fatalf("error building city %s: %s", name, err)
 		}
 	}

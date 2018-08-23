@@ -1,8 +1,11 @@
 package gobike
 
 import (
+	"bufio"
+	"bytes"
 	"context"
 	"encoding/csv"
+	"fmt"
 	"io"
 	"io/ioutil"
 	"os"
@@ -18,6 +21,9 @@ import (
 
 const Version = "0.6"
 
+// This is not present in the public station list
+const DepotStationID = 344
+
 var tz *time.Location
 var tzOnce sync.Once
 
@@ -32,8 +38,12 @@ func populateTZ() {
 type Station struct {
 	ID        int     `json:"id"`
 	Name      string  `json:"name"`
+	ShortName string  `json:"short_name"`
 	Longitude float64 `json:"longitude"`
 	Latitude  float64 `json:"latitude"`
+	RegionID  int     `json:"region_id"`
+	Capacity  int     `json:"capacity"`
+	HasKiosk  bool    `json:"has_kiosk"`
 }
 
 type Trip struct {
@@ -232,4 +242,102 @@ type StationStatus struct {
 	IsInstalled        bool      `json:"is_installed"`
 	IsRenting          bool      `json:"is_renting"`
 	IsReturning        bool      `json:"is_returning"`
+}
+
+func parseInt16(line []byte) ([]byte, int16, error) {
+	idx := bytes.IndexByte(line, ',')
+	if idx == -1 {
+		return nil, 0, fmt.Errorf("not enough commas: %s", string(line))
+	}
+	val, err := strconv.ParseInt(string(line[:idx]), 10, 16)
+	if err != nil {
+		return nil, 0, err
+	}
+	line = line[idx+1:]
+	return line, int16(val), nil
+}
+
+func parseLine(line []byte) (*StationStatus, error) {
+	idx := bytes.IndexByte(line, ',')
+	if idx == -1 {
+		return nil, fmt.Errorf("not enough commas: %s", string(line))
+	}
+	t, err := time.Parse(time.RFC3339, string(line[:idx]))
+	if err != nil {
+		return nil, err
+	}
+	ss := new(StationStatus)
+	ss.LastReported = t
+	line = line[idx+1:]
+	idx = bytes.IndexByte(line, ',')
+	if idx == -1 {
+		return nil, fmt.Errorf("not enough commas: %s", string(line))
+	}
+	ss.ID = string(line[:idx])
+	line = line[idx+1:]
+
+	var intVal int16
+	line, intVal, err = parseInt16(line)
+	if err != nil {
+		return nil, err
+	}
+	ss.NumBikesAvailable = intVal
+
+	line, intVal, err = parseInt16(line)
+	if err != nil {
+		return nil, err
+	}
+	ss.NumEBikesAvailable = intVal
+
+	line, intVal, err = parseInt16(line)
+	if err != nil {
+		return nil, err
+	}
+	ss.NumBikesDisabled = intVal
+
+	line, intVal, err = parseInt16(line)
+	if err != nil {
+		return nil, err
+	}
+	ss.NumDocksAvailable = intVal
+
+	line, intVal, err = parseInt16(line)
+	if err != nil {
+		return nil, err
+	}
+	ss.NumDocksDisabled = intVal
+
+	ss.IsInstalled = line[0] == 't'
+	line = line[2:]
+	ss.IsRenting = line[0] == 't'
+	line = line[2:]
+	ss.IsReturning = line[0] == 't'
+	return ss, nil
+}
+
+func ForeachStationStatus(r io.Reader, f func(*StationStatus) error) error {
+	bs := bufio.NewScanner(r)
+	for bs.Scan() {
+		stationStatus, err := parseLine(bs.Bytes())
+		if err != nil {
+			return err
+		}
+		if err := f(stationStatus); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func LoadCapacity(r io.Reader) ([]*StationStatus, error) {
+	bs := bufio.NewScanner(r)
+	statuses := make([]*StationStatus, 0)
+	for bs.Scan() {
+		stationStatus, err := parseLine(bs.Bytes())
+		if err != nil {
+			return nil, err
+		}
+		statuses = append(statuses, stationStatus)
+	}
+	return statuses, nil
 }

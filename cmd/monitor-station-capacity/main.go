@@ -27,36 +27,6 @@ func unlock(f *os.File) error {
 	return unix.Flock(int(f.Fd()), unix.LOCK_UN)
 }
 
-func parseLine(line []byte) (*gobike.StationStatus, error) {
-	idx := bytes.IndexByte(line, ',')
-	if idx == -1 {
-		return nil, fmt.Errorf("not enough commas: %s", string(line))
-	}
-	t, err := time.Parse(time.RFC3339, string(line[:idx]))
-	if err != nil {
-		return nil, err
-	}
-	ss := new(gobike.StationStatus)
-	ss.LastReported = t
-	line = line[idx+1:]
-	idx = bytes.IndexByte(line, ',')
-	if idx == -1 {
-		return nil, fmt.Errorf("not enough commas: %s", string(line))
-	}
-	ss.ID = string(line[:idx])
-	line = line[idx+1:]
-	idx = bytes.IndexByte(line, ',')
-	if idx == -1 {
-		return nil, fmt.Errorf("not enough commas: %s", string(line))
-	}
-	bikesAvailable, err := strconv.ParseInt(string(line[:idx]), 10, 16)
-	if err != nil {
-		return nil, err
-	}
-	ss.NumBikesAvailable = int16(bikesAvailable)
-	return ss, nil
-}
-
 func writeStation(buf *bytes.Buffer, station *gobike.StationStatus) {
 	buf.WriteString(station.LastReported.Format(time.RFC3339))
 	buf.WriteByte(',')
@@ -125,18 +95,13 @@ func main() {
 	}()
 	lastReported := make(map[string]time.Time)
 	f.Seek(0, io.SeekStart)
-	bs := bufio.NewScanner(f)
-	var stationStatus *gobike.StationStatus
-	for bs.Scan() {
-		stationStatus, err = parseLine(bs.Bytes())
-		if err != nil {
-			log.Fatal(err)
-		}
+	gobike.ForeachStationStatus(bufio.NewReader(f), func(stationStatus *gobike.StationStatus) error {
 		if stationStatus.LastReported.Equal(lastReported[stationStatus.ID]) || stationStatus.LastReported.Before(lastReported[stationStatus.ID]) {
-			continue
+			return nil
 		}
 		lastReported[stationStatus.ID] = stationStatus.LastReported
-	}
+		return nil
+	})
 	ticker := time.NewTicker(10 * time.Second)
 	buf := new(bytes.Buffer)
 	client := client.NewClient()

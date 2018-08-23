@@ -10,6 +10,8 @@ import (
 	"github.com/kevinburke/rest"
 )
 
+const Host = "https://gbfs.fordgobike.com/gbfs/en"
+
 // Metadata about response
 type Response struct {
 	LastUpdated time.Time
@@ -28,15 +30,13 @@ type Client struct {
 	Stations *StationService
 }
 
-const Host = "https://gbfs.fordgobike.com/gbfs/en"
-
 // NewClient returns a new Client.
 func NewClient() *Client {
 	c := new(Client)
 	c.Host = Host
 	c.Client = rest.NewClient("", "", Host)
 
-	c.Stations = &StationService{c}
+	c.Stations = &StationService{client: c}
 	return c
 }
 

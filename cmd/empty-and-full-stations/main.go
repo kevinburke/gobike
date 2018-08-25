@@ -7,12 +7,18 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"sort"
 	"strconv"
 	"time"
 
 	"github.com/kevinburke/gobike"
 	"github.com/kevinburke/gobike/client"
 )
+
+type stationDuration struct {
+	Name     string
+	Duration time.Duration
+}
 
 func main() {
 	start := time.Now()
@@ -63,11 +69,29 @@ func main() {
 		stationNames[strconv.Itoa(response.Stations[i].ID)] = response.Stations[i]
 	}
 
-	for i := range empty {
-		fmt.Printf("%q: %s empty\n", stationNames[i].Name, empty[i].Round(time.Minute))
+	emptya := make([]*stationDuration, len(empty))
+	i := 0
+	for id := range empty {
+		emptya[i] = &stationDuration{stationNames[id].Name, empty[id]}
+		i++
 	}
-	for i := range full {
-		fmt.Printf("%q: %s full\n", stationNames[i].Name, full[i].Round(time.Minute))
+	sort.Slice(emptya, func(i, j int) bool {
+		return emptya[i].Duration > emptya[j].Duration
+	})
+	for i := range emptya {
+		fmt.Printf("%q: %s empty\n", emptya[i].Name, emptya[i].Duration.Round(time.Minute))
+	}
+	fulla := make([]*stationDuration, len(full))
+	i = 0
+	for id := range full {
+		fulla[i] = &stationDuration{stationNames[id].Name, full[id]}
+		i++
+	}
+	sort.Slice(fulla, func(i, j int) bool {
+		return fulla[i].Duration > fulla[j].Duration
+	})
+	for i := range fulla {
+		fmt.Printf("%q: %s full\n", fulla[i].Name, fulla[i].Duration.Round(time.Minute))
 	}
 	fmt.Println(time.Since(start))
 }

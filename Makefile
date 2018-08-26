@@ -29,7 +29,7 @@ dataset: $(GOPATH)/bin/gobike-dataset
 	$(GOPATH)/bin/gobike-dataset data/ data/trips.csv
 
 site: $(GOPATH)/bin/gobike-site
-	$(GOPATH)/bin/gobike-site data/
+	$(GOPATH)/bin/gobike-site data/ data/station-capacity
 
 data/station_information.json:
 	curl --location https://gbfs.fordgobike.com/gbfs/en/station_information.json | python -mjson.tool > data/station_information.json

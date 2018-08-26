@@ -223,6 +223,13 @@
         </div>
       </div>
       <div class="row">
+        <div class="col-md-8">
+          <h4>Stations out of service</h4>
+          <div id="placeholder-6" class="chart">
+          </div>
+        </div>
+      </div>
+      <div class="row">
         {{- if and (ne .Area "bayarea") (ne .Area "sf") }}
         <div class="col-md-8">
           <p>
@@ -253,7 +260,9 @@
     <script type="text/javascript" src="/static/flot.time.min.js"></script>
     <script>
       var plotOptions = {
-        xaxis: { mode: "time" },
+        xaxis: {
+          mode: "time",
+        },
         legend: {position: "nw"},
         grid: {
           hoverable: true,
@@ -266,11 +275,38 @@
       var bikesPerWeek = {{ .BikesPerWeek }};
       var tripsPerBikePerWeek = {{ .TripsPerBikePerWeek }};
       var bs4aTripsPerWeek = {{ .BS4ATripsPerWeek }};
+      var emptyStations = {{ .EmptyStations }};
+      var fullStations = {{ .FullStations }};
+
+      var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      var formatDate = function(d) {
+        var month = months[d.getMonth()];
+        var day = d.getDate();
+        var hour = d.getHours();
+        var minutes = d.getMinutes();
+        if (hour === 0 && minutes === 0) {
+          return month + " " + day.toString();
+        }
+        var ampm = "am";
+        if (hour == 0) {
+          hour = 12;
+          ampm = "am";
+        } else if (hour > 12) {
+          hour = hour - 12;
+          ampm = "pm";
+        }
+        return month + " " + day.toString() + " " + hour.toString() + ":" + d.getMinutes().toString().padStart(2, 0) + ampm;
+      };
       var plotTooltip = function(event, pos, item) {
         if (item) {
-          var x = item.datapoint[0].toFixed(0);
+          var x = item.datapoint[0];
           var y = item.datapoint[1].toFixed(0);
-          $("#tooltip").html(y + " " + item.series.label).css({top: item.pageY+5, left: item.pageX+5}).show();
+          var label = item.series.label;
+          if (item.datapoint[1] === 1) {
+            label = label.replace("stations", "station");
+          }
+          var d = new Date(x);
+          $("#tooltip").html(formatDate(d) + ": " + y + " " + label).css({top: item.pageY+5, left: item.pageX+5}).show();
         } else {
           $("#tooltip").hide();
         }
@@ -294,6 +330,34 @@
       $("#placeholder-4").bind("plothover", plotTooltip);
       $.plot("#placeholder-5", [{color: color, data: bs4aTripsPerWeek, label: "trips"}], plotOptions);
       $("#placeholder-5").bind("plothover", plotTooltip);
+      var stationCapacity = stationsPerWeek[stationsPerWeek.length-1][1];
+      var stationGraph = [];
+      for (var i = 0; i < emptyStations.length; i++) {
+        stationGraph.push([emptyStations[i][0], stationCapacity]);
+      }
+      opts = plotOptions;
+      opts.yaxis = {
+        max: stationCapacity + 3,
+      };
+      $.plot("#placeholder-6", [
+        {
+          color: color,
+          data: emptyStations,
+          label: "stations with no bikes",
+        },
+        {
+          color: "#c03438",
+          data: fullStations,
+          label: "stations with no parking",
+        },
+        {
+          color: "#3d9c38",
+          data: stationGraph,
+          label: "total stations",
+        }
+      ], opts);
+      $("#placeholder-6").bind("plothover", plotTooltip);
+      $("#placeholder-6").bind("plothover", plotTooltip);
     </script>
   </body>
 </html>

@@ -30,7 +30,8 @@ type TimeSeries []*TimeStat
 func (t TimeSeries) MarshalJSON() ([]byte, error) {
 	a := make([][2]float64, len(t))
 	for i := 0; i < len(t); i++ {
-		a[i][0] = float64(t[i].Date.Unix() * 1000)
+		_, offsetSeconds := t[i].Date.Zone()
+		a[i][0] = float64((t[i].Date.Unix() + int64(offsetSeconds)) * 1000)
 		a[i][1] = t[i].Data
 	}
 	return json.Marshal(a)
@@ -121,7 +122,7 @@ func BikeShareForAllTripsPerWeek(trips []*gobike.Trip) TimeSeries {
 func UniqueStationsPerWeek(trips []*gobike.Trip) TimeSeries {
 	weekBeforeEnd := sevenDaysBeforeDataEnd(trips)
 	lastSunday := time.Date(weekBeforeEnd.Year(), weekBeforeEnd.Month(), weekBeforeEnd.Day()+(7-int(weekBeforeEnd.Weekday())), 0, 0, 0, 0, tz)
-	mp := make(map[string]map[int]bool)
+	mp := make(map[string]map[string]bool)
 	earliest := time.Date(3000, time.January, 1, 0, 0, 0, 0, tz)
 	for i := 0; i < len(trips); i++ {
 		start := trips[i].StartTime
@@ -133,7 +134,7 @@ func UniqueStationsPerWeek(trips []*gobike.Trip) TimeSeries {
 		sundayfmt := sunday.Format("2006-01-02")
 		_, ok := mp[sundayfmt]
 		if !ok {
-			mp[sundayfmt] = make(map[int]bool)
+			mp[sundayfmt] = make(map[string]bool)
 		}
 		// only count start station since end station might be in a different
 		// city
@@ -278,16 +279,12 @@ type stationAggregate struct {
 	Station   *gobike.Station
 
 	// Maps of station ID's to counts.
-	From map[int]int
-	To   map[int]int
+	From map[string]int
+	To   map[string]int
 }
 
-func stationCounter(stations []*gobike.Station, trips []*gobike.Trip, f func(t *gobike.Trip) bool) []*StationCount {
-	stationMap := make(map[int]*gobike.Station)
-	for i := range stations {
-		stationMap[stations[i].ID] = stations[i]
-	}
-	agg := make(map[int]*stationAggregate)
+func stationCounter(stationMap map[string]*gobike.Station, trips []*gobike.Trip, f func(t *gobike.Trip) bool) []*StationCount {
+	agg := make(map[string]*stationAggregate)
 	for i := range trips {
 		if trips[i].Dockless() {
 			continue
@@ -299,7 +296,7 @@ func stationCounter(stations []*gobike.Station, trips []*gobike.Trip, f func(t *
 		if _, ok := agg[stationID]; !ok {
 			if _, ok := stationMap[stationID]; !ok {
 				if stationID != gobike.DepotStationID {
-					log.Printf("station id %d (%q) not present in station map", stationID, trips[i].StartStationName)
+					log.Printf("station id %s (%q) not present in station map", stationID, trips[i].StartStationName)
 				}
 				continue
 			}
@@ -311,7 +308,7 @@ func stationCounter(stations []*gobike.Station, trips []*gobike.Trip, f func(t *
 		if _, ok := agg[toStationID]; !ok {
 			if _, ok := stationMap[toStationID]; !ok {
 				if toStationID != gobike.DepotStationID {
-					log.Printf("station id %d (%q) not present in station map", toStationID, trips[i].EndStationName)
+					log.Printf("station id %s (%q) not present in station map", toStationID, trips[i].EndStationName)
 				}
 				continue
 			}
@@ -320,7 +317,7 @@ func stationCounter(stations []*gobike.Station, trips []*gobike.Trip, f func(t *
 			}
 		}
 		if agg[stationID].To == nil {
-			agg[stationID].To = make(map[int]int)
+			agg[stationID].To = make(map[string]int)
 		}
 		if _, ok := agg[stationID].To[toStationID]; ok {
 			agg[stationID].To[toStationID]++
@@ -328,7 +325,7 @@ func stationCounter(stations []*gobike.Station, trips []*gobike.Trip, f func(t *
 			agg[stationID].To[toStationID] = 1
 		}
 		if agg[toStationID].From == nil {
-			agg[toStationID].From = make(map[int]int)
+			agg[toStationID].From = make(map[string]int)
 		}
 		if _, ok := agg[toStationID].From[stationID]; ok {
 			agg[toStationID].From[stationID]++
@@ -383,9 +380,9 @@ func stationCounter(stations []*gobike.Station, trips []*gobike.Trip, f func(t *
 	return stationCounts
 }
 
-func PopularStationsLast7Days(stations []*gobike.Station, trips []*gobike.Trip, numStations int) []*StationCount {
+func PopularStationsLast7Days(stationMap map[string]*gobike.Station, trips []*gobike.Trip, numStations int) []*StationCount {
 	weekAgo := sevenDaysBeforeDataEnd(trips)
-	stationCounts := stationCounter(stations, trips, func(trip *gobike.Trip) bool {
+	stationCounts := stationCounter(stationMap, trips, func(trip *gobike.Trip) bool {
 		return !trip.StartTime.Before(weekAgo)
 	})
 	sort.Slice(stationCounts, func(i, j int) bool {
@@ -416,9 +413,9 @@ func sevenDaysBeforeDataEnd(trips []*gobike.Trip) time.Time {
 	return time.Date(latestDay.Year(), latestDay.Month(), latestDay.Day()-6, 0, 0, 0, 0, tz)
 }
 
-func PopularBS4AStationsLast7Days(stations []*gobike.Station, trips []*gobike.Trip, numStations int) []*StationCount {
+func PopularBS4AStationsLast7Days(stationMap map[string]*gobike.Station, trips []*gobike.Trip, numStations int) []*StationCount {
 	weekAgo := sevenDaysBeforeDataEnd(trips)
-	stationCounts := stationCounter(stations, trips, func(trip *gobike.Trip) bool {
+	stationCounts := stationCounter(stationMap, trips, func(trip *gobike.Trip) bool {
 		return !trip.StartTime.Before(weekAgo)
 	})
 	sort.Slice(stationCounts, func(i, j int) bool {
@@ -508,4 +505,43 @@ func DurationBucketsLastWeek(trips []*gobike.Trip, interval time.Duration, numBu
 		buckets[idx]++
 	}
 	return buckets, float64(sum) / (float64(count) * float64(time.Minute))
+}
+
+func StatusFilterOverTime(statuses map[string][]*gobike.StationStatus, f func(*gobike.StationStatus) bool, start, end time.Time, interval time.Duration) TimeSeries {
+	series := make([]*TimeStat, 0)
+	places := make(map[string]int)
+	for i := start; i.Before(end); i = i.Add(interval) {
+		count := 0
+		observed := 0
+		for id := range statuses {
+			if len(statuses[id]) == 0 {
+				continue
+			}
+			if statuses[id][len(statuses[id])-1].LastReported.Add(interval).Before(i) {
+				// we're past the end of the data we have to report
+				continue
+			}
+			if statuses[id][0].LastReported.After(i) {
+				// first status is after the interval, we need to keep iterating
+				continue
+			}
+			place := places[id]
+			if place == len(statuses[id]) {
+				continue
+			}
+			for place < len(statuses[id]) && statuses[id][place].LastReported.Before(i) {
+				place++
+			}
+			place--
+			status := statuses[id][place]
+			if f(status) {
+				count++
+			}
+			observed++
+		}
+		if observed > 0 {
+			series = append(series, &TimeStat{Date: i, Data: float64(count)})
+		}
+	}
+	return series
 }

@@ -90,14 +90,14 @@ func run() error {
 			trip.EndTime.Format(time.RFC3339),
 
 			// Start station
-			strconv.Itoa(trip.StartStationID),
+			trip.StartStationID,
 			trip.StartStationName,
 			fmt.Sprint(trip.StartStationLatitude),
 			fmt.Sprint(trip.StartStationLongitude),
 			geolocate(trip.StartStationLatitude, trip.StartStationLongitude),
 
 			// End Station
-			strconv.Itoa(trip.EndStationID),
+			trip.EndStationID,
 			trip.EndStationName,
 			fmt.Sprint(trip.EndStationLatitude),
 			fmt.Sprint(trip.EndStationLongitude),

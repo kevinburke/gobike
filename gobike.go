@@ -1,3 +1,12 @@
+// Package gobike contains tools for interacting with GoBike system data.
+//
+// GoBike provides CSV's containing trip data for download from
+// https://www.fordgobike.com/system-data. The tools here parse those files into
+// Go code.
+//
+// In addition, the binary in cmd/monitor-station-capacity produces CSV's with
+// information about system capacity over time. These CSV's can be parsed using
+// the LoadCapacity or LoadCapacityDir commands.
 package gobike
 
 import (
@@ -16,13 +25,15 @@ import (
 	"time"
 
 	"github.com/golang/geo/s2"
+	"github.com/kevinburke/gobike/geo"
 	"golang.org/x/sync/errgroup"
 )
 
 const Version = "0.6"
 
-// This is not present in the public station list
-const DepotStationID = 344
+// This station is not present in the public station list, but trips reference
+// it, so we have to match for it when iterating through trips.
+const DepotStationID = "344"
 
 var tz *time.Location
 var tzOnce sync.Once
@@ -44,6 +55,8 @@ type Station struct {
 	RegionID  int     `json:"region_id"`
 	Capacity  int     `json:"capacity"`
 	HasKiosk  bool    `json:"has_kiosk"`
+
+	City *geo.City
 }
 
 type Trip struct {
@@ -51,12 +64,12 @@ type Trip struct {
 	StartTime time.Time
 	EndTime   time.Time
 
-	StartStationID        int
+	StartStationID        string
 	StartStationName      string
 	StartStationLongitude float64
 	StartStationLatitude  float64
 
-	EndStationID        int
+	EndStationID        string
 	EndStationName      string
 	EndStationLongitude float64
 	EndStationLatitude  float64
@@ -69,8 +82,8 @@ type Trip struct {
 }
 
 func (t Trip) Dockless() bool {
-	return t.StartStationID == 0 || t.StartStationName == "NULL" ||
-		t.EndStationID == 0 || t.EndStationName == "NULL"
+	return t.StartStationID == "" || t.StartStationName == "NULL" ||
+		t.EndStationID == "" || t.EndStationName == "NULL"
 }
 
 const earthRadiusMiles = 3959.0
@@ -102,11 +115,14 @@ func parseTrip(record []string) (*Trip, error) {
 	}
 	t.EndTime = endTime
 	if record[3] != "NULL" {
-		stationID, err := strconv.Atoi(record[3])
+		// for the moment we expect station ID's to be integers. error if we get
+		// anything else back in case we have integer-dependent code elsewhere
+		// that might be corrupted.
+		_, err := strconv.Atoi(record[3])
 		if err != nil {
 			return nil, err
 		}
-		t.StartStationID = stationID
+		t.StartStationID = record[3]
 	}
 	t.StartStationName = record[4]
 	slat, err := strconv.ParseFloat(record[5], 64)
@@ -120,11 +136,14 @@ func parseTrip(record []string) (*Trip, error) {
 	}
 	t.StartStationLongitude = slng
 	if record[7] != "NULL" {
-		stationID, err := strconv.Atoi(record[7])
+		// for the moment we expect station ID's to be integers. error if we get
+		// anything else back in case we have integer-dependent code elsewhere
+		// that might be corrupted.
+		_, err := strconv.Atoi(record[7])
 		if err != nil {
 			return nil, err
 		}
-		t.EndStationID = stationID
+		t.EndStationID = record[7]
 	}
 	t.EndStationName = record[8]
 	elat, err := strconv.ParseFloat(record[9], 64)
@@ -177,16 +196,20 @@ func LoadDir(directory string) ([]*Trip, error) {
 	trips := make([]*Trip, 0)
 	var mu sync.Mutex
 	for _, file := range files {
+		file := file
 		if !strings.HasSuffix(file.Name(), "-fordgobike-tripdata.csv") {
 			continue
 		}
-		file := file
 		group.Go(func() error {
 			f, err := os.Open(filepath.Join(directory, file.Name()))
 			if err != nil {
 				return err
 			}
-			fileTrips, err := Load(f)
+			deadline, ok := errctx.Deadline()
+			if ok {
+				f.SetDeadline(deadline)
+			}
+			fileTrips, err := Load(bufio.NewReader(f))
 			if err != nil {
 				return err
 			}
@@ -257,6 +280,8 @@ func parseInt16(line []byte) ([]byte, int16, error) {
 	return line, int16(val), nil
 }
 
+var rentingReturningInstalled = []byte{'t', ',', 't', ',', 't', ','}
+
 func parseLine(line []byte) (*StationStatus, error) {
 	idx := bytes.IndexByte(line, ',')
 	if idx == -1 {
@@ -267,7 +292,7 @@ func parseLine(line []byte) (*StationStatus, error) {
 		return nil, err
 	}
 	ss := new(StationStatus)
-	ss.LastReported = t
+	ss.LastReported = t.In(tz)
 	line = line[idx+1:]
 	idx = bytes.IndexByte(line, ',')
 	if idx == -1 {
@@ -306,16 +331,22 @@ func parseLine(line []byte) (*StationStatus, error) {
 		return nil, err
 	}
 	ss.NumDocksDisabled = intVal
-
-	ss.IsInstalled = line[0] == 't'
-	line = line[2:]
-	ss.IsRenting = line[0] == 't'
-	line = line[2:]
-	ss.IsReturning = line[0] == 't'
+	if bytes.Equal(line[:6], rentingReturningInstalled) {
+		ss.IsInstalled = true
+		ss.IsRenting = true
+		ss.IsReturning = true
+	} else {
+		ss.IsInstalled = line[0] == 't'
+		line = line[2:]
+		ss.IsRenting = line[0] == 't'
+		line = line[2:]
+		ss.IsReturning = line[0] == 't'
+	}
 	return ss, nil
 }
 
 func ForeachStationStatus(r io.Reader, f func(*StationStatus) error) error {
+	tzOnce.Do(populateTZ)
 	bs := bufio.NewScanner(r)
 	for bs.Scan() {
 		stationStatus, err := parseLine(bs.Bytes())
@@ -330,6 +361,7 @@ func ForeachStationStatus(r io.Reader, f func(*StationStatus) error) error {
 }
 
 func LoadCapacity(r io.Reader) ([]*StationStatus, error) {
+	tzOnce.Do(populateTZ)
 	bs := bufio.NewScanner(r)
 	statuses := make([]*StationStatus, 0)
 	for bs.Scan() {
@@ -338,6 +370,47 @@ func LoadCapacity(r io.Reader) ([]*StationStatus, error) {
 			return nil, err
 		}
 		statuses = append(statuses, stationStatus)
+	}
+	return statuses, nil
+}
+
+func LoadCapacityDir(directory string) ([]*StationStatus, error) {
+	files, err := ioutil.ReadDir(directory)
+	if err != nil {
+		return nil, err
+	}
+	group, errctx := errgroup.WithContext(context.Background())
+	statuses := make([]*StationStatus, 0)
+	var mu sync.Mutex
+	for _, file := range files {
+		file := file
+		if !strings.HasSuffix(file.Name(), "-capacity.csv") {
+			continue
+		}
+		group.Go(func() error {
+			f, err := os.Open(filepath.Join(directory, file.Name()))
+			if err != nil {
+				return err
+			}
+			deadline, ok := errctx.Deadline()
+			if ok {
+				f.SetDeadline(deadline)
+			}
+			fileStatuses, err := LoadCapacity(bufio.NewReader(f))
+			if err != nil {
+				return err
+			}
+			if err := f.Close(); err != nil {
+				return err
+			}
+			mu.Lock()
+			defer mu.Unlock()
+			statuses = append(statuses, fileStatuses...)
+			return nil
+		})
+	}
+	if err := group.Wait(); err != nil {
+		return nil, err
 	}
 	return statuses, nil
 }

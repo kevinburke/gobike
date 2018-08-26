@@ -1,6 +1,6 @@
 /testdata/201*
 /certs
 /releases
-/data/station-capacity
+/data/station-capacity*
 /data/trips.csv
 /data/*fordgobike-tripdata.csv

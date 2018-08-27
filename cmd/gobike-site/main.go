@@ -373,16 +373,28 @@ func main() {
 	stationMap := gobike.StationMap(resp.Stations)
 	tripsPerCity := make(map[string][]*gobike.Trip)
 	tripsPerCity["bayarea"] = trips
+	unknownStations := make(map[string]string)
 	for i := range trips {
-		for slug, city := range cities {
-			if city != nil && city.ContainsPoint(trips[i].StartStationLatitude, trips[i].StartStationLongitude) {
-				if tripsPerCity[slug] == nil {
-					tripsPerCity[slug] = make([]*gobike.Trip, 0, 1000)
+		station, ok := stationMap[trips[i].StartStationID]
+		var slug string
+		if ok {
+			slug = station.City.Slug
+		} else {
+			slug, ok = unknownStations[trips[i].StartStationID]
+			if !ok {
+				// geocode and put in stations
+				for citySlug, city := range cities {
+					if city != nil && city.ContainsPoint(trips[i].StartStationLatitude, trips[i].StartStationLongitude) {
+						unknownStations[trips[i].StartStationID] = citySlug
+						slug = citySlug
+					}
 				}
-				tripsPerCity[slug] = append(tripsPerCity[slug], trips[i])
-				continue
 			}
 		}
+		if tripsPerCity[slug] == nil {
+			tripsPerCity[slug] = make([]*gobike.Trip, 0, 1000)
+		}
+		tripsPerCity[slug] = append(tripsPerCity[slug], trips[i])
 	}
 	for slug, city := range cities {
 		fmt.Fprintf(w, "render %s\n", slug)

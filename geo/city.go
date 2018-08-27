@@ -38,10 +38,15 @@ import (
 
 func init() {
 	Berkeley.Name = "Berkeley"
+	Berkeley.Slug = "berkeley"
 	Emeryville.Name = "Emeryville"
+	Emeryville.Slug = "emeryville"
 	Oakland.Name = "Oakland"
+	Oakland.Slug = "oakland"
 	SF.Name = "San Francisco"
+	SF.Slug = "sf"
 	SanJose.Name = "San Jose"
+	SanJose.Slug = "sj"
 	SFD1.Name = "SFD1"
 	SFD2.Name = "SFD2"
 	SFD3.Name = "SFD3"
@@ -65,6 +70,7 @@ var Populations = map[string]int{
 
 type City struct {
 	Name string
+	Slug string
 
 	once   sync.Once
 	poly   *s2.Polygon

@@ -1,5 +1,5 @@
 {
-    "last_updated": 1535374109,
+    "last_updated": 1535413651,
     "ttl": 10,
     "data": {
         "stations": [
@@ -314,7 +314,7 @@
                     "KEY",
                     "CREDITCARD"
                 ],
-                "capacity": 0,
+                "capacity": 39,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=21",
                 "eightd_has_key_dispenser": false,
                 "has_kiosk": true
@@ -474,7 +474,7 @@
                     "KEY",
                     "CREDITCARD"
                 ],
-                "capacity": 27,
+                "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=31",
                 "eightd_has_key_dispenser": false,
                 "has_kiosk": true
@@ -810,7 +810,7 @@
                     "KEY",
                     "CREDITCARD"
                 ],
-                "capacity": 31,
+                "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=60",
                 "eightd_has_key_dispenser": false,
                 "has_kiosk": true
@@ -3338,7 +3338,7 @@
                     "KEY",
                     "CREDITCARD"
                 ],
-                "capacity": 21,
+                "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=239",
                 "eightd_has_key_dispenser": false,
                 "has_kiosk": true

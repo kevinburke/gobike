@@ -269,6 +269,9 @@ func (s StationCount) RidershipString() string {
 }
 
 func (s StationCount) RidershipPerDockString() string {
+	if s.Station.Capacity == 0 {
+		return ""
+	}
 	avg := s.WeekdayRidership / float64(s.Station.Capacity)
 	return strings.TrimSuffix(fmt.Sprintf("%.1f", avg), ".0")
 }
@@ -549,6 +552,7 @@ func StatusFilterOverTime(statuses map[string][]*gobike.StationStatus, f func(*g
 			if place == len(statuses[id]) {
 				continue
 			}
+			count := 0
 			for place < len(statuses[id]) && statuses[id][place].LastReported.Before(i) {
 				place++
 			}
@@ -562,6 +566,7 @@ func StatusFilterOverTime(statuses map[string][]*gobike.StationStatus, f func(*g
 			if f(status) {
 				count++
 			}
+			places[id] = place
 			observed++
 		}
 		if observed > 0 {

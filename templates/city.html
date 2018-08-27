@@ -221,8 +221,6 @@
           </table>
           </p>
         </div>
-      </div>
-      <div class="row">
         <div class="col-md-8">
           <h4>Stations out of service</h4>
           <div id="placeholder-6" class="chart">
@@ -344,6 +342,7 @@
         max: stationCapacity + 3,
         min: 0,
       };
+      opts.legend.position = "sw";
       $.plot("#placeholder-6", [
         {
           color: "#3d9c38",

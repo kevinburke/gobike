@@ -7,6 +7,7 @@ import (
 	"flag"
 	"fmt"
 	"html/template"
+	"io"
 	"io/ioutil"
 	"log"
 	"math"
@@ -22,6 +23,7 @@ import (
 	"github.com/kevinburke/gobike/geo"
 	"github.com/kevinburke/gobike/stats"
 	"github.com/kevinburke/semaphore"
+	tss "github.com/kevinburke/tss/lib"
 	"golang.org/x/sync/errgroup"
 )
 
@@ -88,18 +90,7 @@ func full(city *geo.City, stationMap map[string]*gobike.Station) func(ss *gobike
 	}
 }
 
-func renderCity(name string, city *geo.City, tpl, stationTpl *template.Template, stationMap map[string]*gobike.Station, allTrips []*gobike.Trip, statuses map[string][]*gobike.StationStatus) error {
-	trips := make([]*gobike.Trip, 0)
-	if city == nil {
-		trips = allTrips
-	} else {
-		for i := range allTrips {
-			if city.ContainsPoint(allTrips[i].StartStationLatitude, allTrips[i].StartStationLongitude) {
-				trips = append(trips, allTrips[i])
-			}
-		}
-	}
-
+func renderCity(w io.Writer, name string, city *geo.City, tpl, stationTpl *template.Template, stationMap map[string]*gobike.Station, trips []*gobike.Trip, statuses map[string][]*gobike.StationStatus) error {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 	group, errctx := errgroup.WithContext(ctx)
@@ -121,6 +112,7 @@ func renderCity(name string, city *geo.City, tpl, stationTpl *template.Template,
 		panic(err)
 	}
 	now := time.Now().In(tz)
+	fmt.Fprintf(w, "collecting stats\n")
 	group.Go(func() error {
 		sem.AcquireContext(errctx)
 		defer sem.Release()
@@ -231,6 +223,7 @@ func renderCity(name string, city *geo.City, tpl, stationTpl *template.Template,
 	if err := group.Wait(); err != nil {
 		return err
 	}
+	fmt.Fprintf(w, "done collecting stats\n")
 
 	tripsPerWeekCountf64 := tripsPerWeek[len(tripsPerWeek)-1].Data
 	bs4aTripsPerWeekCountf64 := bs4aTripsPerWeek[len(bs4aTripsPerWeek)-1].Data
@@ -348,6 +341,7 @@ func (b *Histogram) Percent(i int) string {
 func main() {
 	flag.Parse()
 
+	w := tss.NewWriter(os.Stdout, time.Time{})
 	group := errgroup.Group{}
 	var trips []*gobike.Trip
 	var statuses []*gobike.StationStatus
@@ -364,6 +358,7 @@ func main() {
 	if err := group.Wait(); err != nil {
 		log.Fatal(err)
 	}
+	fmt.Fprintf(w, "loaded data\n")
 	if len(trips) == 0 {
 		log.Fatalf("no trips")
 	}
@@ -394,6 +389,7 @@ func main() {
 	homepageTpl := template.Must(template.ParseFiles("templates/city.html"))
 	stationTpl := template.Must(template.ParseFiles("templates/stations.html"))
 
+	fmt.Fprintf(w, "get stations\n")
 	c := client.NewClient()
 	c.Stations.CacheTTL = 24 * 14 * time.Hour
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
@@ -403,17 +399,33 @@ func main() {
 		log.Fatal(err)
 	}
 	stationMap := make(map[string]*gobike.Station, len(resp.Stations))
+	fmt.Fprintf(w, "station contains point\n")
 	for i := range resp.Stations {
 		for _, city := range cities {
 			if city != nil && city.ContainsPoint(resp.Stations[i].Latitude, resp.Stations[i].Longitude) {
 				resp.Stations[i].City = city
+				continue
 			}
 		}
 		stationMap[strconv.Itoa(resp.Stations[i].ID)] = resp.Stations[i]
 	}
-	for name, city := range cities {
-		if err := renderCity(name, city, homepageTpl, stationTpl, stationMap, trips, byStation); err != nil {
-			log.Fatalf("error building city %s: %s", name, err)
+	tripsPerCity := make(map[string][]*gobike.Trip)
+	tripsPerCity["bayarea"] = trips
+	for i := range trips {
+		for slug, city := range cities {
+			if city != nil && city.ContainsPoint(trips[i].StartStationLatitude, trips[i].StartStationLongitude) {
+				if tripsPerCity[slug] == nil {
+					tripsPerCity[slug] = make([]*gobike.Trip, 0, 1000)
+				}
+				tripsPerCity[slug] = append(tripsPerCity[slug], trips[i])
+				continue
+			}
+		}
+	}
+	for slug, city := range cities {
+		fmt.Fprintf(w, "render %s\n", slug)
+		if err := renderCity(w, slug, city, homepageTpl, stationTpl, stationMap, tripsPerCity[slug], byStation); err != nil {
+			log.Fatalf("error building city %s: %s", slug, err)
 		}
 	}
 }

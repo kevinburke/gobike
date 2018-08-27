@@ -552,7 +552,6 @@ func StatusFilterOverTime(statuses map[string][]*gobike.StationStatus, f func(*g
 			if place == len(statuses[id]) {
 				continue
 			}
-			count := 0
 			for place < len(statuses[id]) && statuses[id][place].LastReported.Before(i) {
 				place++
 			}

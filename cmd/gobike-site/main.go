@@ -115,14 +115,12 @@ func renderCity(w io.Writer, name string, city *geo.City, tpl, stationTpl *templ
 		emptyStations = stats.StatusFilterOverTime(statuses, empty(city, stationMap), now.Add(-7*24*time.Hour), now, stationCapacityInterval)
 		var err error
 		emptyStationData, err = json.Marshal(emptyStations)
-		fmt.Fprintln(w, "empty stations done")
 		return err
 	})
 	group.Go(func() error {
 		fullStations = stats.StatusFilterOverTime(statuses, full(city, stationMap), now.Add(-7*24*time.Hour), now, stationCapacityInterval)
 		var err error
 		fullStationData, err = json.Marshal(fullStations)
-		fmt.Fprintln(w, "full stations done")
 		return err
 	})
 
@@ -130,23 +128,19 @@ func renderCity(w io.Writer, name string, city *geo.City, tpl, stationTpl *templ
 		stationsPerWeek = stats.UniqueStationsPerWeek(trips)
 		var err error
 		stationBytes, err = json.Marshal(stationsPerWeek)
-		fmt.Fprintln(w, "unique stations done")
 		return err
 	})
 	group.Go(func() error {
 		mostPopularStations = stats.PopularStationsLast7Days(stationMap, trips, 10)
-		fmt.Fprintln(w, "most popular stations done")
 		return nil
 	})
 	var allStations []*stats.StationCount
 	group.Go(func() error {
 		allStations = stats.PopularStationsLast7Days(stationMap, trips, 50000)
-		fmt.Fprintln(w, "last 7 days popular stations done")
 		return nil
 	})
 	group.Go(func() error {
 		popularBS4AStations = stats.PopularBS4AStationsLast7Days(stationMap, trips, 10)
-		fmt.Fprintln(w, "last 7 days bs4a popular stations done")
 		return nil
 	})
 	group.Go(func() error {
@@ -158,28 +152,24 @@ func renderCity(w io.Writer, name string, city *geo.City, tpl, stationTpl *templ
 		estimatedTotalTrips = strconv.FormatFloat(estimatedTotalTripsf64, 'f', 0, 64)
 		var err error
 		data, err = json.Marshal(tripsPerWeek)
-		fmt.Fprintln(w, "trips per week stats done")
 		return err
 	})
 	group.Go(func() error {
 		bikeTripsPerWeek = stats.UniqueBikesPerWeek(trips)
 		var err error
 		bikeData, err = json.Marshal(bikeTripsPerWeek)
-		fmt.Fprintln(w, "unique bikes per week done")
 		return err
 	})
 	group.Go(func() error {
 		tripsPerBikePerWeek = stats.TripsPerBikePerWeek(trips)
 		var err error
 		tripPerBikeData, err = json.Marshal(tripsPerBikePerWeek)
-		fmt.Fprintln(w, "trips per bike per week")
 		return err
 	})
 	group.Go(func() error {
 		bs4aTripsPerWeek = stats.BikeShareForAllTripsPerWeek(trips)
 		var err error
 		bs4aData, err = json.Marshal(bs4aTripsPerWeek)
-		fmt.Fprintln(w, "bs4a trips done")
 		return err
 	})
 	var distanceBuckets, durationBuckets *Histogram
@@ -191,7 +181,6 @@ func renderCity(w io.Writer, name string, city *geo.City, tpl, stationTpl *templ
 			average:  avg,
 			Buckets:  distanceBucketsArr,
 		}
-		fmt.Fprintln(w, "distance buckets last week")
 		return nil
 	})
 	group.Go(func() error {
@@ -203,13 +192,11 @@ func renderCity(w io.Writer, name string, city *geo.City, tpl, stationTpl *templ
 			average:    avg,
 			Buckets:    durationBucketsArr,
 		}
-		fmt.Fprintln(w, "duration buckets last week")
 		return nil
 	})
 	if err := group.Wait(); err != nil {
 		return err
 	}
-	fmt.Fprintf(w, "done collecting stats\n")
 
 	tripsPerWeekCountf64 := tripsPerWeek[len(tripsPerWeek)-1].Data
 	bs4aTripsPerWeekCountf64 := bs4aTripsPerWeek[len(bs4aTripsPerWeek)-1].Data

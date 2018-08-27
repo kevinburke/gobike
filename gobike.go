@@ -374,6 +374,14 @@ func LoadCapacity(r io.Reader) ([]*StationStatus, error) {
 	return statuses, nil
 }
 
+func StationMap(stations []*Station) map[string]*Station {
+	stationMap := make(map[string]*Station, len(stations))
+	for i := range stations {
+		stationMap[strconv.Itoa(stations[i].ID)] = stations[i]
+	}
+	return stationMap
+}
+
 func LoadCapacityDir(directory string) ([]*StationStatus, error) {
 	files, err := ioutil.ReadDir(directory)
 	if err != nil {

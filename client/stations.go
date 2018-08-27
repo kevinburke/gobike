@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"github.com/kevinburke/gobike"
+	"github.com/kevinburke/gobike/geo"
 )
 
 type StationService struct {
@@ -114,6 +115,14 @@ func buildStations(body *stationResponse) (*StationResponse, error) {
 	sort.Slice(stations, func(i, j int) bool {
 		return stations[i].ID < stations[j].ID
 	})
+	for i := range stations {
+		for _, city := range cities {
+			if city != nil && city.ContainsPoint(stations[i].Latitude, stations[i].Longitude) {
+				stations[i].City = city
+				break
+			}
+		}
+	}
 	return &StationResponse{
 		Response: Response{
 			LastUpdated: time.Unix(body.LastUpdated, 0),
@@ -162,6 +171,15 @@ type stationJSON struct {
 type StationResponse struct {
 	Response
 	Stations []*gobike.Station
+}
+
+var cities = map[string]*geo.City{
+	"bayarea":    nil,
+	"berkeley":   geo.Berkeley,
+	"emeryville": geo.Emeryville,
+	"sf":         geo.SF,
+	"oakland":    geo.Oakland,
+	"sj":         geo.SanJose,
 }
 
 func (s *StationService) Status(ctx context.Context) (*StationStatusResponse, error) {

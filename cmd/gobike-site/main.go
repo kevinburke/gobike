@@ -13,8 +13,6 @@ import (
 	"math"
 	"os"
 	"path/filepath"
-	"runtime"
-	"sort"
 	"strconv"
 	"time"
 
@@ -22,7 +20,6 @@ import (
 	"github.com/kevinburke/gobike/client"
 	"github.com/kevinburke/gobike/geo"
 	"github.com/kevinburke/gobike/stats"
-	"github.com/kevinburke/semaphore"
 	tss "github.com/kevinburke/tss/lib"
 	"golang.org/x/sync/errgroup"
 )
@@ -90,10 +87,13 @@ func full(city *geo.City, stationMap map[string]*gobike.Station) func(ss *gobike
 	}
 }
 
+const stationCapacityInterval = 20 * time.Minute
+
 func renderCity(w io.Writer, name string, city *geo.City, tpl, stationTpl *template.Template, stationMap map[string]*gobike.Station, trips []*gobike.Trip, statuses map[string][]*gobike.StationStatus) error {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 	group, errctx := errgroup.WithContext(ctx)
+	_ = errctx
 	var stationsPerWeek, tripsPerWeek, bikeTripsPerWeek, tripsPerBikePerWeek, bs4aTripsPerWeek, emptyStations, fullStations stats.TimeSeries
 	var stationBytes, data, bikeData, tripPerBikeData, bs4aData, emptyStationData, fullStationData []byte
 	var mostPopularStations, popularBS4AStations []*stats.StationCount
@@ -105,8 +105,6 @@ func renderCity(w io.Writer, name string, city *geo.City, tpl, stationTpl *templ
 			return nil
 		})
 	}
-	sem := semaphore.New(runtime.NumCPU() * 2)
-
 	tz, err := time.LoadLocation("America/Los_Angeles")
 	if err != nil {
 		panic(err)
@@ -114,52 +112,44 @@ func renderCity(w io.Writer, name string, city *geo.City, tpl, stationTpl *templ
 	now := time.Now().In(tz)
 	fmt.Fprintf(w, "collecting stats\n")
 	group.Go(func() error {
-		sem.AcquireContext(errctx)
-		defer sem.Release()
-		emptyStations = stats.StatusFilterOverTime(statuses, empty(city, stationMap), now.Add(-7*24*time.Hour), now, 15*time.Minute)
+		emptyStations = stats.StatusFilterOverTime(statuses, empty(city, stationMap), now.Add(-7*24*time.Hour), now, stationCapacityInterval)
 		var err error
 		emptyStationData, err = json.Marshal(emptyStations)
+		fmt.Fprintln(w, "empty stations done")
 		return err
 	})
 	group.Go(func() error {
-		sem.AcquireContext(errctx)
-		defer sem.Release()
-		fullStations = stats.StatusFilterOverTime(statuses, full(city, stationMap), now.Add(-7*24*time.Hour), now, 15*time.Minute)
+		fullStations = stats.StatusFilterOverTime(statuses, full(city, stationMap), now.Add(-7*24*time.Hour), now, stationCapacityInterval)
 		var err error
 		fullStationData, err = json.Marshal(fullStations)
+		fmt.Fprintln(w, "full stations done")
 		return err
 	})
 
 	group.Go(func() error {
-		sem.AcquireContext(errctx)
-		defer sem.Release()
 		stationsPerWeek = stats.UniqueStationsPerWeek(trips)
 		var err error
 		stationBytes, err = json.Marshal(stationsPerWeek)
+		fmt.Fprintln(w, "unique stations done")
 		return err
 	})
 	group.Go(func() error {
-		sem.AcquireContext(errctx)
-		defer sem.Release()
 		mostPopularStations = stats.PopularStationsLast7Days(stationMap, trips, 10)
+		fmt.Fprintln(w, "most popular stations done")
 		return nil
 	})
 	var allStations []*stats.StationCount
 	group.Go(func() error {
-		sem.AcquireContext(errctx)
-		defer sem.Release()
 		allStations = stats.PopularStationsLast7Days(stationMap, trips, 50000)
+		fmt.Fprintln(w, "last 7 days popular stations done")
 		return nil
 	})
 	group.Go(func() error {
-		sem.AcquireContext(errctx)
-		defer sem.Release()
 		popularBS4AStations = stats.PopularBS4AStationsLast7Days(stationMap, trips, 10)
+		fmt.Fprintln(w, "last 7 days bs4a popular stations done")
 		return nil
 	})
 	group.Go(func() error {
-		sem.AcquireContext(errctx)
-		defer sem.Release()
 		tripsPerWeek = stats.TripsPerWeek(trips)
 		averageWeekdayTripsf64 := stats.AverageWeekdayTrips(trips)
 		averageWeekdayTrips = fmt.Sprintf("%.1f", averageWeekdayTripsf64)
@@ -168,36 +158,32 @@ func renderCity(w io.Writer, name string, city *geo.City, tpl, stationTpl *templ
 		estimatedTotalTrips = strconv.FormatFloat(estimatedTotalTripsf64, 'f', 0, 64)
 		var err error
 		data, err = json.Marshal(tripsPerWeek)
+		fmt.Fprintln(w, "trips per week stats done")
 		return err
 	})
 	group.Go(func() error {
-		sem.AcquireContext(errctx)
-		defer sem.Release()
 		bikeTripsPerWeek = stats.UniqueBikesPerWeek(trips)
 		var err error
 		bikeData, err = json.Marshal(bikeTripsPerWeek)
+		fmt.Fprintln(w, "unique bikes per week done")
 		return err
 	})
 	group.Go(func() error {
-		sem.AcquireContext(errctx)
-		defer sem.Release()
 		tripsPerBikePerWeek = stats.TripsPerBikePerWeek(trips)
 		var err error
 		tripPerBikeData, err = json.Marshal(tripsPerBikePerWeek)
+		fmt.Fprintln(w, "trips per bike per week")
 		return err
 	})
 	group.Go(func() error {
-		sem.AcquireContext(errctx)
-		defer sem.Release()
 		bs4aTripsPerWeek = stats.BikeShareForAllTripsPerWeek(trips)
 		var err error
 		bs4aData, err = json.Marshal(bs4aTripsPerWeek)
+		fmt.Fprintln(w, "bs4a trips done")
 		return err
 	})
 	var distanceBuckets, durationBuckets *Histogram
 	group.Go(func() error {
-		sem.AcquireContext(errctx)
-		defer sem.Release()
 		distanceBucketsArr, avg := stats.DistanceBucketsLastWeek(trips, 0.50, 6)
 		distanceBuckets = &Histogram{
 			interval: 0.50,
@@ -205,11 +191,10 @@ func renderCity(w io.Writer, name string, city *geo.City, tpl, stationTpl *templ
 			average:  avg,
 			Buckets:  distanceBucketsArr,
 		}
+		fmt.Fprintln(w, "distance buckets last week")
 		return nil
 	})
 	group.Go(func() error {
-		sem.AcquireContext(errctx)
-		defer sem.Release()
 		durationBucketsArr, avg := stats.DurationBucketsLastWeek(trips, 5*time.Minute, 8)
 		durationBuckets = &Histogram{
 			interval:   float64(5 * time.Minute),
@@ -218,6 +203,7 @@ func renderCity(w io.Writer, name string, city *geo.City, tpl, stationTpl *templ
 			average:    avg,
 			Buckets:    durationBucketsArr,
 		}
+		fmt.Fprintln(w, "duration buckets last week")
 		return nil
 	})
 	if err := group.Wait(); err != nil {
@@ -338,6 +324,15 @@ func (b *Histogram) Percent(i int) string {
 	return fmt.Sprintf("%.1f%%", 100*float64(b.Buckets[i])/float64(sum))
 }
 
+var cities = map[string]*geo.City{
+	"bayarea":    nil,
+	"berkeley":   geo.Berkeley,
+	"emeryville": geo.Emeryville,
+	"sf":         geo.SF,
+	"oakland":    geo.Oakland,
+	"sj":         geo.SanJose,
+}
+
 func main() {
 	flag.Parse()
 
@@ -362,30 +357,7 @@ func main() {
 	if len(trips) == 0 {
 		log.Fatalf("no trips")
 	}
-	byStation := make(map[string][]*gobike.StationStatus)
-	for i := range statuses {
-		ss := statuses[i]
-		if _, ok := byStation[ss.ID]; !ok {
-			byStation[ss.ID] = make([]*gobike.StationStatus, 0)
-		}
-		byStation[ss.ID] = append(byStation[ss.ID], ss)
-	}
-
-	for id := range byStation {
-		sort.Slice(byStation[id], func(i, j int) bool {
-			return byStation[id][i].LastReported.Before(byStation[id][j].LastReported)
-		})
-	}
-
-	cities := map[string]*geo.City{
-		"bayarea":    nil,
-		"berkeley":   geo.Berkeley,
-		"emeryville": geo.Emeryville,
-		"sf":         geo.SF,
-		"oakland":    geo.Oakland,
-		"sj":         geo.SanJose,
-	}
-
+	byStation := stats.StatusMap(statuses)
 	homepageTpl := template.Must(template.ParseFiles("templates/city.html"))
 	stationTpl := template.Must(template.ParseFiles("templates/stations.html"))
 
@@ -398,17 +370,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	stationMap := make(map[string]*gobike.Station, len(resp.Stations))
-	fmt.Fprintf(w, "station contains point\n")
-	for i := range resp.Stations {
-		for _, city := range cities {
-			if city != nil && city.ContainsPoint(resp.Stations[i].Latitude, resp.Stations[i].Longitude) {
-				resp.Stations[i].City = city
-				continue
-			}
-		}
-		stationMap[strconv.Itoa(resp.Stations[i].ID)] = resp.Stations[i]
-	}
+	stationMap := gobike.StationMap(resp.Stations)
 	tripsPerCity := make(map[string][]*gobike.Trip)
 	tripsPerCity["bayarea"] = trips
 	for i := range trips {

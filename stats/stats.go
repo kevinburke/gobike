@@ -507,6 +507,26 @@ func DurationBucketsLastWeek(trips []*gobike.Trip, interval time.Duration, numBu
 	return buckets, float64(sum) / (float64(count) * float64(time.Minute))
 }
 
+// StatusMap takes an unsorted list of statuses and returns a map of statuses by
+// station, sorted in increasing order.
+func StatusMap(statuses []*gobike.StationStatus) map[string][]*gobike.StationStatus {
+	byStation := make(map[string][]*gobike.StationStatus)
+	for i := range statuses {
+		ss := statuses[i]
+		if _, ok := byStation[ss.ID]; !ok {
+			byStation[ss.ID] = make([]*gobike.StationStatus, 0)
+		}
+		byStation[ss.ID] = append(byStation[ss.ID], ss)
+	}
+
+	for id := range byStation {
+		sort.Slice(byStation[id], func(i, j int) bool {
+			return byStation[id][i].LastReported.Before(byStation[id][j].LastReported)
+		})
+	}
+	return byStation
+}
+
 func StatusFilterOverTime(statuses map[string][]*gobike.StationStatus, f func(*gobike.StationStatus) bool, start, end time.Time, interval time.Duration) TimeSeries {
 	series := make([]*TimeStat, 0)
 	places := make(map[string]int)
@@ -532,7 +552,12 @@ func StatusFilterOverTime(statuses map[string][]*gobike.StationStatus, f func(*g
 			for place < len(statuses[id]) && statuses[id][place].LastReported.Before(i) {
 				place++
 			}
-			place--
+			if place > 0 {
+				place--
+			}
+			if place >= len(statuses[id]) || place < 0 {
+				fmt.Println("id", id, "place", place, "len", len(statuses[id]), "first", statuses[id][0].LastReported, "i", i)
+			}
 			status := statuses[id][place]
 			if f(status) {
 				count++

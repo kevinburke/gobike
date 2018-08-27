@@ -332,31 +332,35 @@
       $("#placeholder-5").bind("plothover", plotTooltip);
       var stationCapacity = stationsPerWeek[stationsPerWeek.length-1][1];
       var stationGraph = [];
+      var emptyStationReverse = [];
+      var fullStationReverse = [];
       for (var i = 0; i < emptyStations.length; i++) {
         stationGraph.push([emptyStations[i][0], stationCapacity]);
+        emptyStationReverse.push([emptyStations[i][0], stationCapacity - emptyStations[i][1]]);
+        fullStationReverse.push([fullStations[i][0], stationCapacity - fullStations[i][1]]);
       }
       opts = plotOptions;
       opts.yaxis = {
         max: stationCapacity + 3,
+        min: 0,
       };
       $.plot("#placeholder-6", [
-        {
-          color: color,
-          data: emptyStations,
-          label: "stations with no bikes",
-        },
-        {
-          color: "#c03438",
-          data: fullStations,
-          label: "stations with no parking",
-        },
         {
           color: "#3d9c38",
           data: stationGraph,
           label: "total stations",
-        }
+        },
+        {
+          color: color,
+          data: emptyStationReverse,
+          label: "stations with bikes",
+        },
+        {
+          color: "#c03438",
+          data: fullStationReverse,
+          label: "stations with parking",
+        },
       ], opts);
-      $("#placeholder-6").bind("plothover", plotTooltip);
       $("#placeholder-6").bind("plothover", plotTooltip);
     </script>
   </body>

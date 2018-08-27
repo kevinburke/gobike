@@ -1,5 +1,5 @@
 {
-    "last_updated": 1535088604,
+    "last_updated": 1535349864,
     "ttl": 10,
     "data": {
         "stations": [
@@ -11,8 +11,8 @@
                 "lon": -122.42624402046204,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=74",
@@ -39,8 +39,8 @@
                 "lon": -122.40490436553954,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 35,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=3",
@@ -55,8 +55,8 @@
                 "lon": -122.4089150084319,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 35,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=4",
@@ -71,8 +71,8 @@
                 "lon": -122.40844488143921,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 35,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=5",
@@ -87,8 +87,8 @@
                 "lon": -122.403234,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=6",
@@ -103,8 +103,8 @@
                 "lon": -122.27173805236816,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 35,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=7",
@@ -119,8 +119,8 @@
                 "lon": -122.398525,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=8",
@@ -135,8 +135,8 @@
                 "lon": -122.40086898207666,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=9",
@@ -151,8 +151,8 @@
                 "lon": -122.4047702550888,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 31,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=10",
@@ -167,8 +167,8 @@
                 "lon": -122.398436,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 35,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=11",
@@ -183,8 +183,8 @@
                 "lon": -122.402923,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=13",
@@ -199,8 +199,8 @@
                 "lon": -122.39997,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 31,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=14",
@@ -215,8 +215,8 @@
                 "lon": -122.394203,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 38,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=15",
@@ -231,8 +231,8 @@
                 "lon": -122.39443,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=16",
@@ -247,8 +247,8 @@
                 "lon": -122.397086,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=17",
@@ -263,8 +263,8 @@
                 "lon": -122.26017236709595,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 11,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=18",
@@ -279,8 +279,8 @@
                 "lon": -122.403452,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 35,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=19",
@@ -295,8 +295,8 @@
                 "lon": -122.399051,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=20",
@@ -311,10 +311,10 @@
                 "lon": -122.400811,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
-                "capacity": 39,
+                "capacity": 0,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=21",
                 "eightd_has_key_dispenser": false,
                 "has_kiosk": true
@@ -327,8 +327,8 @@
                 "lon": -122.394643,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=22",
@@ -343,8 +343,8 @@
                 "lon": -122.391034,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=23",
@@ -359,8 +359,8 @@
                 "lon": -122.3904285,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=24",
@@ -375,8 +375,8 @@
                 "lon": -122.39740490913391,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=25",
@@ -391,8 +391,8 @@
                 "lon": -122.39438,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=26",
@@ -407,8 +407,8 @@
                 "lon": -122.3918648,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=27",
@@ -423,8 +423,8 @@
                 "lon": -122.38809792330358,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=28",
@@ -439,8 +439,8 @@
                 "lon": -122.43944585323335,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=29",
@@ -455,8 +455,8 @@
                 "lon": -122.395282,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=30",
@@ -471,8 +471,8 @@
                 "lon": -122.43455886840819,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=31",
@@ -487,8 +487,8 @@
                 "lon": -122.4154077,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=33",
@@ -503,8 +503,8 @@
                 "lon": -122.412408,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=34",
@@ -519,8 +519,8 @@
                 "lon": -121.90457582473755,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=35",
@@ -535,8 +535,8 @@
                 "lon": -122.39887,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 31,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=36",
@@ -551,8 +551,8 @@
                 "lon": -122.39593561749642,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 43,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=37",
@@ -567,8 +567,8 @@
                 "lon": -122.4368608,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=39",
@@ -583,8 +583,8 @@
                 "lon": -122.41874,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 31,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=41",
@@ -599,8 +599,8 @@
                 "lon": -122.41823,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=42",
@@ -615,8 +615,8 @@
                 "lon": -122.4159292,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 31,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=43",
@@ -631,8 +631,8 @@
                 "lon": -122.4117382,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 31,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=44",
@@ -647,8 +647,8 @@
                 "lon": -122.24237322807312,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=46",
@@ -663,8 +663,8 @@
                 "lon": -122.39974915981291,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 31,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=47",
@@ -679,8 +679,8 @@
                 "lon": -122.3949894,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 30,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=49",
@@ -695,8 +695,8 @@
                 "lon": -122.390288,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 39,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=50",
@@ -711,8 +711,8 @@
                 "lon": -122.4418376,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=52",
@@ -727,8 +727,8 @@
                 "lon": -122.4377775,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=53",
@@ -743,8 +743,8 @@
                 "lon": -122.4295585,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=55",
@@ -759,8 +759,8 @@
                 "lon": -122.42731690406801,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=56",
@@ -775,8 +775,8 @@
                 "lon": -122.417385,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 31,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=58",
@@ -791,8 +791,8 @@
                 "lon": -122.418954,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=59",
@@ -807,8 +807,8 @@
                 "lon": -122.4094493687153,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 31,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=60",
@@ -823,8 +823,8 @@
                 "lon": -122.4113061,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=61",
@@ -839,8 +839,8 @@
                 "lon": -122.40643188357353,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=62",
@@ -855,8 +855,8 @@
                 "lon": -122.40257500673577,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=63",
@@ -871,8 +871,8 @@
                 "lon": -122.3990176,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=64",
@@ -887,8 +887,8 @@
                 "lon": -122.39274082710836,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 39,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=66",
@@ -903,8 +903,8 @@
                 "lon": -122.3955263,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=67",
@@ -919,8 +919,8 @@
                 "lon": -122.44429260492325,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=70",
@@ -935,8 +935,8 @@
                 "lon": -122.4390777,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=71",
@@ -951,8 +951,8 @@
                 "lon": -122.4356498,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=72",
@@ -967,8 +967,8 @@
                 "lon": -122.4337079,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=73",
@@ -983,8 +983,8 @@
                 "lon": -122.42123901844025,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 35,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=75",
@@ -999,8 +999,8 @@
                 "lon": -122.42242321372034,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=76",
@@ -1015,8 +1015,8 @@
                 "lon": -122.4160402,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=77",
@@ -1031,8 +1031,8 @@
                 "lon": -122.4116467,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=78",
@@ -1047,8 +1047,8 @@
                 "lon": -122.4036725,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=79",
@@ -1063,8 +1063,8 @@
                 "lon": -122.39738,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 31,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=80",
@@ -1079,8 +1079,8 @@
                 "lon": -122.39317,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 35,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=81",
@@ -1095,8 +1095,8 @@
                 "lon": -122.4338119,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=84",
@@ -1111,8 +1111,8 @@
                 "lon": -122.4291557,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=85",
@@ -1127,8 +1127,8 @@
                 "lon": -122.4268256,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=86",
@@ -1143,8 +1143,8 @@
                 "lon": -122.415674,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=87",
@@ -1159,8 +1159,8 @@
                 "lon": -122.4117258,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=88",
@@ -1175,8 +1175,8 @@
                 "lon": -122.40764558315276,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=89",
@@ -1191,8 +1191,8 @@
                 "lon": -122.402717,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=90",
@@ -1207,8 +1207,8 @@
                 "lon": -122.39843755960464,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=91",
@@ -1223,8 +1223,8 @@
                 "lon": -122.39302754402159,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=92",
@@ -1239,8 +1239,8 @@
                 "lon": -122.3911984,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=93",
@@ -1255,8 +1255,8 @@
                 "lon": -122.4310597,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=95",
@@ -1271,8 +1271,8 @@
                 "lon": -122.4266136,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=96",
@@ -1287,8 +1287,8 @@
                 "lon": -122.4201102,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=97",
@@ -1303,8 +1303,8 @@
                 "lon": -122.4218661,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=98",
@@ -1319,8 +1319,8 @@
                 "lon": -122.4154425,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=99",
@@ -1335,8 +1335,8 @@
                 "lon": -122.410662,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=100",
@@ -1351,8 +1351,8 @@
                 "lon": -122.40567684173583,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=101",
@@ -1367,8 +1367,8 @@
                 "lon": -122.3995794,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=102",
@@ -1383,8 +1383,8 @@
                 "lon": -122.39083349704742,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 35,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=104",
@@ -1399,8 +1399,8 @@
                 "lon": -122.4318042,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=105",
@@ -1415,8 +1415,8 @@
                 "lon": -122.4306746,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=106",
@@ -1431,8 +1431,8 @@
                 "lon": -122.4264968,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=107",
@@ -1447,8 +1447,8 @@
                 "lon": -122.41995692253113,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 11,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=108",
@@ -1463,8 +1463,8 @@
                 "lon": -122.4219039,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=109",
@@ -1479,8 +1479,8 @@
                 "lon": -122.4152042,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=110",
@@ -1495,8 +1495,8 @@
                 "lon": -122.4130036,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=112",
@@ -1511,8 +1511,8 @@
                 "lon": -122.410345,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=113",
@@ -1527,8 +1527,8 @@
                 "lon": -122.4025701,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=114",
@@ -1543,8 +1543,8 @@
                 "lon": -122.3987734,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=115",
@@ -1559,8 +1559,8 @@
                 "lon": -122.3947713,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 31,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=116",
@@ -1575,8 +1575,8 @@
                 "lon": -122.4369431,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=118",
@@ -1591,8 +1591,8 @@
                 "lon": -122.4326417,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=119",
@@ -1607,8 +1607,8 @@
                 "lon": -122.4264353,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=120",
@@ -1623,8 +1623,8 @@
                 "lon": -122.4213392,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=121",
@@ -1639,8 +1639,8 @@
                 "lon": -122.418892,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=122",
@@ -1655,8 +1655,8 @@
                 "lon": -122.4148171,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=123",
@@ -1671,8 +1671,8 @@
                 "lon": -122.410807,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=124",
@@ -1687,8 +1687,8 @@
                 "lon": -122.409851,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=125",
@@ -1703,8 +1703,8 @@
                 "lon": -122.3906477,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 31,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=126",
@@ -1719,8 +1719,8 @@
                 "lon": -122.421025,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=127",
@@ -1735,8 +1735,8 @@
                 "lon": -122.412544,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=129",
@@ -1751,8 +1751,8 @@
                 "lon": -122.3920565843582,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 31,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=130",
@@ -1767,8 +1767,8 @@
                 "lon": -122.4266139,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=132",
@@ -1783,8 +1783,8 @@
                 "lon": -122.4209752,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=133",
@@ -1799,8 +1799,8 @@
                 "lon": -122.4206278,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=134",
@@ -1815,8 +1815,8 @@
                 "lon": -122.4339496,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=137",
@@ -1831,8 +1831,8 @@
                 "lon": -122.4274114,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=138",
@@ -1847,8 +1847,8 @@
                 "lon": -122.4119009,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=139",
@@ -1863,8 +1863,8 @@
                 "lon": -122.4249863,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=140",
@@ -1879,8 +1879,8 @@
                 "lon": -122.4202187,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=141",
@@ -1895,8 +1895,8 @@
                 "lon": -122.4114029,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=144",
@@ -1911,8 +1911,8 @@
                 "lon": -122.4268059,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=145",
@@ -1927,8 +1927,8 @@
                 "lon": -122.4231805,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=146",
@@ -1943,8 +1943,8 @@
                 "lon": -122.4214722,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=147",
@@ -1959,8 +1959,8 @@
                 "lon": -122.2876102,
                 "region_id": 13,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=148",
@@ -1975,8 +1975,8 @@
                 "lon": -122.2856333,
                 "region_id": 13,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=149",
@@ -1991,8 +1991,8 @@
                 "lon": -122.2782669,
                 "region_id": 13,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=150",
@@ -2007,8 +2007,8 @@
                 "lon": -122.2871801,
                 "region_id": 13,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=151",
@@ -2023,8 +2023,8 @@
                 "lon": -122.28105068206787,
                 "region_id": 13,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=152",
@@ -2039,8 +2039,8 @@
                 "lon": -122.2913604,
                 "region_id": 13,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=153",
@@ -2055,8 +2055,8 @@
                 "lon": -122.2880451,
                 "region_id": 13,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=154",
@@ -2071,8 +2071,8 @@
                 "lon": -122.29352831840515,
                 "region_id": 13,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=155",
@@ -2087,8 +2087,8 @@
                 "lon": -122.2886647,
                 "region_id": 13,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=156",
@@ -2103,8 +2103,8 @@
                 "lon": -122.2913761,
                 "region_id": 13,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=157",
@@ -2119,8 +2119,8 @@
                 "lon": -122.2634901,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=158",
@@ -2135,8 +2135,8 @@
                 "lon": -122.2782444,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=159",
@@ -2151,8 +2151,8 @@
                 "lon": -122.2948365,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=160",
@@ -2167,8 +2167,8 @@
                 "lon": -122.2720799,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=162",
@@ -2183,8 +2183,8 @@
                 "lon": -122.2653199,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=163",
@@ -2199,8 +2199,8 @@
                 "lon": -122.27484405040741,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=164",
@@ -2215,8 +2215,8 @@
                 "lon": -122.2525233,
                 "region_id": 14,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=166",
@@ -2231,8 +2231,8 @@
                 "lon": -122.2521599,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=167",
@@ -2247,8 +2247,8 @@
                 "lon": -122.26556897163393,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=168",
@@ -2263,8 +2263,8 @@
                 "lon": -122.2653043,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=169",
@@ -2279,8 +2279,8 @@
                 "lon": -122.261351,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=170",
@@ -2295,8 +2295,8 @@
                 "lon": -122.251900434494,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 25,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=171",
@@ -2311,8 +2311,8 @@
                 "lon": -122.2515349,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=172",
@@ -2327,8 +2327,8 @@
                 "lon": -122.2644881,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=173",
@@ -2343,8 +2343,8 @@
                 "lon": -122.2640037,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=174",
@@ -2359,8 +2359,8 @@
                 "lon": -122.2623663,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=175",
@@ -2375,8 +2375,8 @@
                 "lon": -122.26631462574005,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 31,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=176",
@@ -2391,8 +2391,8 @@
                 "lon": -122.2651002,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=177",
@@ -2407,8 +2407,8 @@
                 "lon": -122.2619284,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=178",
@@ -2423,8 +2423,8 @@
                 "lon": -122.26788640022278,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=179",
@@ -2439,8 +2439,8 @@
                 "lon": -122.2687726,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=180",
@@ -2455,8 +2455,8 @@
                 "lon": -122.2651925,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=181",
@@ -2471,8 +2471,8 @@
                 "lon": -122.2682473,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 35,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=182",
@@ -2487,8 +2487,8 @@
                 "lon": -122.2699271,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=183",
@@ -2503,8 +2503,8 @@
                 "lon": -122.2626418,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=186",
@@ -2519,8 +2519,8 @@
                 "lon": -122.279352,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=187",
@@ -2535,8 +2535,8 @@
                 "lon": -122.267738,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=188",
@@ -2551,8 +2551,8 @@
                 "lon": -122.2717561,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=189",
@@ -2567,8 +2567,8 @@
                 "lon": -122.2709501,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=190",
@@ -2583,8 +2583,8 @@
                 "lon": -122.2739367,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=191",
@@ -2599,8 +2599,8 @@
                 "lon": -122.2717955,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=192",
@@ -2615,8 +2615,8 @@
                 "lon": -122.2472152,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=193",
@@ -2631,8 +2631,8 @@
                 "lon": -122.2432677,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=194",
@@ -2647,8 +2647,8 @@
                 "lon": -122.26077854633331,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=195",
@@ -2663,8 +2663,8 @@
                 "lon": -122.25646018981932,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=196",
@@ -2679,8 +2679,8 @@
                 "lon": -122.2496799,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=197",
@@ -2695,8 +2695,8 @@
                 "lon": -122.26449608802795,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 31,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=198",
@@ -2711,8 +2711,8 @@
                 "lon": -122.25381016731262,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=200",
@@ -2727,8 +2727,8 @@
                 "lon": -122.2629973,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=201",
@@ -2743,8 +2743,8 @@
                 "lon": -122.2748943,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=202",
@@ -2759,8 +2759,8 @@
                 "lon": -122.27396965026855,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=203",
@@ -2775,8 +2775,8 @@
                 "lon": -122.2618225,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=204",
@@ -2791,8 +2791,8 @@
                 "lon": -122.258732,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=205",
@@ -2807,8 +2807,8 @@
                 "lon": -122.2512714,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=206",
@@ -2823,8 +2823,8 @@
                 "lon": -122.2516207,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=207",
@@ -2839,8 +2839,8 @@
                 "lon": -121.881821,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=208",
@@ -2855,8 +2855,8 @@
                 "lon": -122.2674183,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=209",
@@ -2871,8 +2871,8 @@
                 "lon": -122.25622415542603,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=210",
@@ -2887,8 +2887,8 @@
                 "lon": -122.2567156,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=211",
@@ -2903,8 +2903,8 @@
                 "lon": -122.2604787,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 31,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=212",
@@ -2919,8 +2919,8 @@
                 "lon": -122.2811926,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=213",
@@ -2935,8 +2935,8 @@
                 "lon": -122.2757325,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=214",
@@ -2951,8 +2951,8 @@
                 "lon": -122.2663179,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=215",
@@ -2967,8 +2967,8 @@
                 "lon": -122.2756976,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=216",
@@ -2983,8 +2983,8 @@
                 "lon": -122.2717615,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=217",
@@ -2999,8 +2999,8 @@
                 "lon": -122.2851712,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=218",
@@ -3015,8 +3015,8 @@
                 "lon": -122.2801923,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=219",
@@ -3031,8 +3031,8 @@
                 "lon": -122.2734217,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=220",
@@ -3047,8 +3047,8 @@
                 "lon": -122.2538745,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=221",
@@ -3063,8 +3063,8 @@
                 "lon": -122.2487796,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=222",
@@ -3079,8 +3079,8 @@
                 "lon": -122.42009103298186,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=223",
@@ -3095,8 +3095,8 @@
                 "lon": -122.2389151,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=224",
@@ -3111,8 +3111,8 @@
                 "lon": -122.2343822,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=225",
@@ -3127,8 +3127,8 @@
                 "lon": -122.2329915,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=226",
@@ -3143,8 +3143,8 @@
                 "lon": -122.2226033,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=227",
@@ -3159,8 +3159,8 @@
                 "lon": -122.2177284,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=228",
@@ -3175,8 +3175,8 @@
                 "lon": -122.2130372,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=229",
@@ -3191,8 +3191,8 @@
                 "lon": -122.2914153,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=230",
@@ -3207,8 +3207,8 @@
                 "lon": -122.28328227996825,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=231",
@@ -3223,8 +3223,8 @@
                 "lon": -122.2760402,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=232",
@@ -3239,8 +3239,8 @@
                 "lon": -122.2555549,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=233",
@@ -3255,8 +3255,8 @@
                 "lon": -122.225771,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=234",
@@ -3271,8 +3271,8 @@
                 "lon": -122.2893702,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=235",
@@ -3287,8 +3287,8 @@
                 "lon": -122.282497,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=236",
@@ -3303,8 +3303,8 @@
                 "lon": -122.2244982,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=237",
@@ -3319,8 +3319,8 @@
                 "lon": -122.2730677,
                 "region_id": 14,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=238",
@@ -3335,8 +3335,8 @@
                 "lon": -122.258764,
                 "region_id": 14,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=239",
@@ -3351,8 +3351,8 @@
                 "lon": -122.2588044,
                 "region_id": 14,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=240",
@@ -3367,8 +3367,8 @@
                 "lon": -122.2702132,
                 "region_id": 14,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=241",
@@ -3383,8 +3383,8 @@
                 "lon": -122.2693844139576,
                 "region_id": 14,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=242",
@@ -3399,8 +3399,8 @@
                 "lon": -122.2543374,
                 "region_id": 14,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 30,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=243",
@@ -3415,8 +3415,8 @@
                 "lon": -122.2686176,
                 "region_id": 14,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=244",
@@ -3431,8 +3431,8 @@
                 "lon": -122.2677637,
                 "region_id": 14,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 31,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=245",
@@ -3447,8 +3447,8 @@
                 "lon": -122.270556,
                 "region_id": 14,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=246",
@@ -3463,8 +3463,8 @@
                 "lon": -122.2658964,
                 "region_id": 14,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=247",
@@ -3479,8 +3479,8 @@
                 "lon": -122.2597949,
                 "region_id": 14,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=248",
@@ -3495,8 +3495,8 @@
                 "lon": -122.2532529,
                 "region_id": 14,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=249",
@@ -3511,8 +3511,8 @@
                 "lon": -122.283019,
                 "region_id": 14,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=250",
@@ -3527,8 +3527,8 @@
                 "lon": -122.27972030639648,
                 "region_id": 14,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=251",
@@ -3543,8 +3543,8 @@
                 "lon": -122.2674431,
                 "region_id": 14,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=252",
@@ -3559,8 +3559,8 @@
                 "lon": -122.25379943847655,
                 "region_id": 14,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=253",
@@ -3575,8 +3575,8 @@
                 "lon": -122.26959228515624,
                 "region_id": 14,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=254",
@@ -3591,8 +3591,8 @@
                 "lon": -122.26952791213989,
                 "region_id": 14,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=255",
@@ -3607,8 +3607,8 @@
                 "lon": -122.26055324077606,
                 "region_id": 14,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=256",
@@ -3623,8 +3623,8 @@
                 "lon": -122.29967594146727,
                 "region_id": 14,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=257",
@@ -3639,8 +3639,8 @@
                 "lon": -122.2664467,
                 "region_id": 14,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=258",
@@ -3655,8 +3655,8 @@
                 "lon": -122.2993708,
                 "region_id": 14,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=259",
@@ -3671,8 +3671,8 @@
                 "lon": -122.28653311729431,
                 "region_id": 14,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=262",
@@ -3687,8 +3687,8 @@
                 "lon": -122.2902305,
                 "region_id": 14,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=263",
@@ -3703,8 +3703,8 @@
                 "lon": -122.2912095,
                 "region_id": 14,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=265",
@@ -3719,8 +3719,8 @@
                 "lon": -122.2647911,
                 "region_id": 14,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=266",
@@ -3735,8 +3735,8 @@
                 "lon": -122.2535687,
                 "region_id": 14,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=267",
@@ -3751,8 +3751,8 @@
                 "lon": -122.26157784461977,
                 "region_id": 14,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=268",
@@ -3767,8 +3767,8 @@
                 "lon": -122.258801,
                 "region_id": 14,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=269",
@@ -3783,8 +3783,8 @@
                 "lon": -122.2894154,
                 "region_id": 14,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=270",
@@ -3799,8 +3799,8 @@
                 "lon": -122.28312671184538,
                 "region_id": 14,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=271",
@@ -3815,8 +3815,8 @@
                 "lon": -122.27817535400389,
                 "region_id": 14,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 14,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=272",
@@ -3831,8 +3831,8 @@
                 "lon": -122.26356536149979,
                 "region_id": 14,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=273",
@@ -3847,8 +3847,8 @@
                 "lon": -122.2675583,
                 "region_id": 14,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 20,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=274",
@@ -3863,8 +3863,8 @@
                 "lon": -121.8888891,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=275",
@@ -3879,8 +3879,8 @@
                 "lon": -121.9125165,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=276",
@@ -3895,8 +3895,8 @@
                 "lon": -121.9085859,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=277",
@@ -3911,8 +3911,8 @@
                 "lon": -121.9048882,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=278",
@@ -3927,8 +3927,8 @@
                 "lon": -121.8841054,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=279",
@@ -3943,8 +3943,8 @@
                 "lon": -121.8830739,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=280",
@@ -3959,8 +3959,8 @@
                 "lon": -121.8807965,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=281",
@@ -3975,8 +3975,8 @@
                 "lon": -121.89034938812256,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=282",
@@ -3991,8 +3991,8 @@
                 "lon": -121.8977018,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=283",
@@ -4007,8 +4007,8 @@
                 "lon": -122.40087568759917,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=284",
@@ -4023,8 +4023,8 @@
                 "lon": -122.43115782737732,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=285",
@@ -4039,8 +4039,8 @@
                 "lon": -121.8766132,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=286",
@@ -4055,8 +4055,8 @@
                 "lon": -121.8892731,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=287",
@@ -4071,8 +4071,8 @@
                 "lon": -121.9020161,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=288",
@@ -4087,8 +4087,8 @@
                 "lon": -121.8959209,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=289",
@@ -4103,8 +4103,8 @@
                 "lon": -121.899464,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=290",
@@ -4119,8 +4119,8 @@
                 "lon": -121.9031829,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=291",
@@ -4135,8 +4135,8 @@
                 "lon": -121.8969655,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=292",
@@ -4151,8 +4151,8 @@
                 "lon": -121.884559,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=294",
@@ -4167,8 +4167,8 @@
                 "lon": -121.8759263,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=295",
@@ -4183,8 +4183,8 @@
                 "lon": -121.87712,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=296",
@@ -4199,8 +4199,8 @@
                 "lon": -121.8879312,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=297",
@@ -4215,8 +4215,8 @@
                 "lon": -121.88109040260315,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=298",
@@ -4231,8 +4231,8 @@
                 "lon": -121.8741186,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=299",
@@ -4247,8 +4247,8 @@
                 "lon": -121.884995,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=300",
@@ -4263,8 +4263,8 @@
                 "lon": -121.8831724,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=301",
@@ -4279,8 +4279,8 @@
                 "lon": -121.88294112682343,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=302",
@@ -4295,8 +4295,8 @@
                 "lon": -121.905733,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=303",
@@ -4311,8 +4311,8 @@
                 "lon": -121.89479783177376,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=304",
@@ -4327,8 +4327,8 @@
                 "lon": -121.895617,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=305",
@@ -4343,8 +4343,8 @@
                 "lon": -121.889937,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=306",
@@ -4359,8 +4359,8 @@
                 "lon": -121.900084,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=307",
@@ -4375,8 +4375,8 @@
                 "lon": -121.8940901,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=308",
@@ -4391,8 +4391,8 @@
                 "lon": -121.886995,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=309",
@@ -4407,8 +4407,8 @@
                 "lon": -121.88566,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=310",
@@ -4423,8 +4423,8 @@
                 "lon": -121.886943,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=311",
@@ -4439,8 +4439,8 @@
                 "lon": -121.901782,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 35,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=312",
@@ -4455,8 +4455,8 @@
                 "lon": -121.8932,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=313",
@@ -4471,8 +4471,8 @@
                 "lon": -121.894902,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 11,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=314",
@@ -4487,8 +4487,8 @@
                 "lon": -122.272968,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=315",
@@ -4503,8 +4503,8 @@
                 "lon": -121.885831,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=316",
@@ -4519,8 +4519,8 @@
                 "lon": -121.877349,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=317",
@@ -4535,8 +4535,8 @@
                 "lon": -121.888979,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=318",
@@ -4551,8 +4551,8 @@
                 "lon": -122.40307085237873,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 31,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=321",
@@ -4567,8 +4567,8 @@
                 "lon": -122.40595042705534,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=323",
@@ -4583,8 +4583,8 @@
                 "lon": -122.40853071212767,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=324",
@@ -4599,8 +4599,8 @@
                 "lon": -121.8817663192749,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=327",
@@ -4615,8 +4615,8 @@
                 "lon": -122.4073773622513,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=336",
@@ -4631,8 +4631,8 @@
                 "lon": -122.26658821105957,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=337",
@@ -4647,8 +4647,8 @@
                 "lon": -122.27057933807373,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=338",
@@ -4663,8 +4663,8 @@
                 "lon": -122.26643800735472,
                 "region_id": 12,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=339",
@@ -4679,8 +4679,8 @@
                 "lon": -122.270582,
                 "region_id": 14,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=340",
@@ -4695,8 +4695,8 @@
                 "lon": -121.88927650451659,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=341",
@@ -4711,8 +4711,8 @@
                 "lon": -122.39357203245163,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=343",
@@ -4727,8 +4727,8 @@
                 "lon": -122.39829540252686,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 27,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=345",
@@ -4743,8 +4743,8 @@
                 "lon": -122.40436390042304,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=347",
@@ -4759,8 +4759,8 @@
                 "lon": -122.40566611289978,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 31,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=349",
@@ -4775,8 +4775,8 @@
                 "lon": -122.40578681230545,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 31,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=350",
@@ -4791,8 +4791,8 @@
                 "lon": -122.29339957237242,
                 "region_id": 14,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=351",
@@ -4807,8 +4807,8 @@
                 "lon": -122.38879501819609,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 31,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=355",
@@ -4823,8 +4823,8 @@
                 "lon": -122.42228507995605,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 19,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=356",
@@ -4839,8 +4839,8 @@
                 "lon": -121.89284384250641,
                 "region_id": 5,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=357",
@@ -4854,8 +4854,8 @@
                 "lat": 37.72925213437005,
                 "lon": -122.39237844943999,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 0,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=358",
@@ -4869,8 +4869,8 @@
                 "lat": 37.73016750815088,
                 "lon": -122.39896327257156,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 0,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=359",
@@ -4884,8 +4884,8 @@
                 "lat": 37.73857187126725,
                 "lon": -122.38961778581141,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 0,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=360",
@@ -4899,8 +4899,8 @@
                 "lat": 37.739853017984125,
                 "lon": -122.38565549254417,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 0,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=361",
@@ -4914,8 +4914,8 @@
                 "lat": 37.7317266935217,
                 "lon": -122.3900556564331,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 0,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=362",
@@ -4930,8 +4930,8 @@
                 "lon": -122.3982846736908,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 35,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=363",
@@ -4946,8 +4946,8 @@
                 "lon": -122.38994032144547,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 15,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=364",
@@ -4962,8 +4962,8 @@
                 "lon": -122.43194639682768,
                 "region_id": 3,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 23,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=365",
@@ -4977,8 +4977,8 @@
                 "lat": 37.78543382786823,
                 "lon": -122.41962164640428,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 0,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=368",
@@ -4992,8 +4992,8 @@
                 "lat": 37.78734902316596,
                 "lon": -122.41665109992026,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 0,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=369",
@@ -5007,8 +5007,8 @@
                 "lat": 37.7873267660624,
                 "lon": -122.41327822208405,
                 "rental_methods": [
-                    "KEY",
-                    "CREDITCARD"
+                    "CREDITCARD",
+                    "KEY"
                 ],
                 "capacity": 0,
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=370",

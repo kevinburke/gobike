@@ -6,6 +6,7 @@ import (
 	"log"
 	"math"
 	"sort"
+	"strconv"
 	"strings"
 	"sync"
 	"time"
@@ -252,12 +253,14 @@ type DestinationStation struct {
 }
 
 type StationCount struct {
-	Station          *gobike.Station `json:"station"`
-	Count            int             `json:"count"`
-	WeekdayRidership float64         `json:"weekday_ridership"`
-	BS4ACount        int             `json:"bike_share_for_all_count"`
-	ToStation        *DestinationStation
-	FromStation      *DestinationStation
+	Station           *gobike.Station `json:"station"`
+	Count             int             `json:"count"`
+	WeekdayRidership  float64
+	WeekdayHoursEmpty float64
+	WeekdayHoursFull  float64
+	BS4ACount         int `json:"bike_share_for_all_count"`
+	ToStation         *DestinationStation
+	FromStation       *DestinationStation
 }
 
 func (s StationCount) BS4APct() string {
@@ -274,6 +277,20 @@ func (s StationCount) RidershipPerDockString() string {
 	}
 	avg := s.WeekdayRidership / float64(s.Station.Capacity)
 	return strings.TrimSuffix(fmt.Sprintf("%.1f", avg), ".0")
+}
+
+func (s StationCount) WeekdayHoursEmptyString() string {
+	if s.WeekdayHoursEmpty < 0.1 {
+		return ""
+	}
+	return strings.TrimSuffix(fmt.Sprintf("%.1f", s.WeekdayHoursEmpty), ".0")
+}
+
+func (s StationCount) WeekdayHoursFullString() string {
+	if s.WeekdayHoursFull < 0.1 {
+		return ""
+	}
+	return strings.TrimSuffix(fmt.Sprintf("%.1f", s.WeekdayHoursFull), ".0")
 }
 
 type stationAggregate struct {
@@ -383,7 +400,7 @@ func stationCounter(stationMap map[string]*gobike.Station, trips []*gobike.Trip,
 	return stationCounts
 }
 
-func PopularStationsLast7Days(stationMap map[string]*gobike.Station, trips []*gobike.Trip, numStations int) []*StationCount {
+func PopularStationsLast7Days(stationMap map[string]*gobike.Station, trips []*gobike.Trip, statuses map[string][]*gobike.StationStatus, numStations int) []*StationCount {
 	weekAgo := sevenDaysBeforeDataEnd(trips)
 	stationCounts := stationCounter(stationMap, trips, func(trip *gobike.Trip) bool {
 		return !trip.StartTime.Before(weekAgo)
@@ -397,10 +414,43 @@ func PopularStationsLast7Days(stationMap map[string]*gobike.Station, trips []*go
 		}
 		return stationCounts[i].Station.Name > stationCounts[j].Station.Name
 	})
+	var counts []*StationCount
 	if numStations > len(stationCounts) {
-		return stationCounts
+		counts = stationCounts
+	} else {
+		counts = stationCounts[:numStations]
 	}
-	return stationCounts[:numStations]
+	for i := range counts {
+		id := strconv.Itoa(counts[i].Station.ID)
+		stationStatuses := statuses[id]
+		var empty, full [7]time.Duration
+		for j := 0; j < len(stationStatuses); j++ {
+			status := stationStatuses[j]
+			weekday := status.LastReported.Weekday()
+			if status.NumBikesAvailable == 0 {
+				if j < len(stationStatuses)-1 {
+					dur := stationStatuses[j+1].LastReported.Sub(status.LastReported)
+					empty[weekday] = empty[weekday] + dur
+				}
+			}
+			if status.NumDocksAvailable == 0 {
+				if j < len(stationStatuses)-1 {
+					dur := stationStatuses[j+1].LastReported.Sub(status.LastReported)
+					full[weekday] = full[weekday] + dur
+				}
+			}
+		}
+		sort.Slice(empty[time.Monday:time.Friday+1], func(i, j int) bool {
+			return empty[i] < empty[j]
+		})
+		sort.Slice(full[time.Monday:time.Friday+1], func(i, j int) bool {
+			return full[i] < full[j]
+		})
+		// drop highest and lowest
+		counts[i].WeekdayHoursEmpty = (float64(empty[time.Tuesday]) + float64(empty[time.Wednesday]) + float64(empty[time.Thursday])) / float64(3*time.Hour)
+		counts[i].WeekdayHoursFull = (float64(full[time.Tuesday]) + float64(full[time.Wednesday]) + float64(full[time.Thursday])) / float64(3*time.Hour)
+	}
+	return counts
 }
 
 func sevenDaysBeforeDataEnd(trips []*gobike.Trip) time.Time {

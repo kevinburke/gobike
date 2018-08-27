@@ -48,6 +48,8 @@
                 <th scope="col">Trips Last Week</th>
                 <th scope="col">Weekday Ridership</th>
                 <th scope="col">Weekday trips/dock</th>
+                <th scope="col">Avg hours/day empty</th>
+                <th scope="col">Avg hours/day full</th>
                 <th scope="col">BS4A Trips</th>
                 <th scope="col">People Ride Here From</th>
                 <th scope="col">People Ride To</th>
@@ -79,6 +81,8 @@
                   {{ .RidershipPerDockString -}}
                 {{ end -}}
                 </td>
+                <td>{{ .WeekdayHoursEmptyString }}</td>
+                <td>{{ .WeekdayHoursFullString }}</td>
                 <td>
                 {{- if lt .BS4ACount 6 -}}
                 (5 or fewer)

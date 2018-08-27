@@ -132,12 +132,12 @@ func renderCity(w io.Writer, name string, city *geo.City, tpl, stationTpl *templ
 		return err
 	})
 	group.Go(func() error {
-		mostPopularStations = stats.PopularStationsLast7Days(stationMap, trips, 10)
+		mostPopularStations = stats.PopularStationsLast7Days(stationMap, trips, statuses, 10)
 		return nil
 	})
 	var allStations []*stats.StationCount
 	group.Go(func() error {
-		allStations = stats.PopularStationsLast7Days(stationMap, trips, 50000)
+		allStations = stats.PopularStationsLast7Days(stationMap, trips, statuses, 50000)
 		return nil
 	})
 	group.Go(func() error {

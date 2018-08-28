@@ -73,7 +73,7 @@ func main() {
 	if err := os.MkdirAll(dir, 0755); err != nil {
 		log.Fatal(err)
 	}
-	now := time.Now()
+	now := time.Now().UTC()
 	lockfile, err := os.Create(filepath.Join(dir, "capacity.lock"))
 	if err != nil {
 		log.Fatal(err)

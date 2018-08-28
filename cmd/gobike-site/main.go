@@ -207,8 +207,9 @@ func renderCity(w io.Writer, name string, city *geo.City, tpl, stationTpl *templ
 		friendlyName = city.Name
 	}
 	hdata := &homepageData{
-		Area:                     name,
-		FriendlyName:             friendlyName,
+		Area:         name,
+		FriendlyName: friendlyName,
+
 		TripsPerWeek:             template.JS(string(data)),
 		TripsPerWeekCount:        int64(tripsPerWeekCountf64),
 		StationsPerWeek:          template.JS(string(stationBytes)),

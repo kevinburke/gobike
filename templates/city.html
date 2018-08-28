@@ -275,11 +275,13 @@
       var fullStations = {{ .FullStations }};
 
       var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      // treating this date as a UTC date makes the display work. not sure why,
+      // but other options didn't.
       var formatDate = function(d) {
-        var month = months[d.getMonth()];
-        var day = d.getDate();
-        var hour = d.getHours();
-        var minutes = d.getMinutes();
+        var month = months[d.getUTCMonth()];
+        var day = d.getUTCDate();
+        var hour = d.getUTCHours();
+        var minutes = d.getUTCMinutes();
         if (hour === 0 && minutes === 0) {
           return month + " " + day.toString();
         }
@@ -291,7 +293,7 @@
           hour = hour - 12;
           ampm = "pm";
         }
-        return month + " " + day.toString() + " " + hour.toString() + ":" + d.getMinutes().toString().padStart(2, 0) + ampm;
+        return month + " " + day.toString() + " " + hour.toString() + ":" + minutes.toString().padStart(2, 0) + ampm;
       };
       var plotTooltip = function(event, pos, item) {
         if (item) {

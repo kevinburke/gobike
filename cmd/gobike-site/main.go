@@ -94,6 +94,8 @@ func full(city *geo.City, stationMap map[string]*gobike.Station) func(ss *gobike
 
 const stationCapacityInterval = 20 * time.Minute
 
+var printer *message.Printer
+
 func renderCity(w io.Writer, name string, city *geo.City, tpl, stationTpl *template.Template, stationMap map[string]*gobike.Station, trips []*gobike.Trip, statuses map[string][]*gobike.StationStatus) error {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
@@ -217,7 +219,6 @@ func renderCity(w io.Writer, name string, city *geo.City, tpl, stationTpl *templ
 	if city != nil {
 		friendlyName = city.Name
 	}
-	printer := message.NewPrinter(language.English)
 	hdata := &homepageData{
 		Area:         name,
 		FriendlyName: friendlyName,
@@ -247,7 +248,7 @@ func renderCity(w io.Writer, name string, city *geo.City, tpl, stationTpl *templ
 		FullStations:  template.JS(string(fullStationData)),
 
 		RunRate:       template.JS(string(runRateData)),
-		LatestRunRate: printer.Sprintf("%.2f", runRate[len(runRate)-1].Data/100),
+		LatestRunRate: printer.Sprintf("%.0f", runRate[len(runRate)-1].Data/100),
 	}
 	dir := filepath.Join("docs", name)
 	if city == nil {
@@ -341,6 +342,7 @@ func main() {
 	flag.Parse()
 
 	w := tss.NewWriter(os.Stdout, time.Time{})
+	printer = message.NewPrinter(language.English)
 	group := errgroup.Group{}
 	var trips []*gobike.Trip
 	var statuses []*gobike.StationStatus

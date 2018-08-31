@@ -93,7 +93,7 @@ func Revenue(trips []*gobike.Trip) TimeSeries {
 	for i := range mp {
 		result[len(mp)-i-1] = &TimeStat{
 			Date: now.Add(-1 * 30 * 24 * time.Hour * time.Duration(i)),
-			Data: float64(mp[i]),
+			Data: math.Round(float64(mp[i])/100000) * 100000, // don't assume precision
 		}
 	}
 	return result

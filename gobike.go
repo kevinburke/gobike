@@ -86,15 +86,17 @@ type Trip struct {
 // using credit cards, and we can't guess.
 const SingleRidePriceCents = 219
 
+const EstimatedTripsPerSubscriberPerYear = 120
+
 // EstimatedBikeShareForAllSingleRideRevenueCents estimates the per-trip revenue
 // from a Bike Share For All ride. The program costs $5 per year and we estimate
-// the average user makes 100 trips per year.
-const EstimatedBikeShareForAllSingleRideRevenueCents int = 500 / 100
+// the average user makes 120 trips per year.
+const EstimatedBikeShareForAllSingleRideRevenueCents int = 500 / EstimatedTripsPerSubscriberPerYear
 
 // A subscription costs $15 per month ($180 per year) or $145 per year if
 // prepaid. We estimate half of subscribers choose each subscription type, and
-// the average subscriber makes 100 trips per year.
-const EstimatedSubscriberSingleRideRevenueCents int = 162 / 100
+// the average subscriber makes 120 trips per year.
+const EstimatedSubscriberSingleRideRevenueCents int = 16250 / EstimatedTripsPerSubscriberPerYear
 
 // Revenue provides an estimate of the revenue from the trip. This is
 // approximate since we don't know how many trips are taken by the average

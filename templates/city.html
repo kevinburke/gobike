@@ -94,6 +94,11 @@
               <div id="placeholder-2" class="chart">
               </div>
             </div>
+            <div class="col-md-12 my-3">
+              <h4>Run rate: ${{ .LatestRunRate }} last 30 days</h4>
+              <div id="placeholder-7" class="chart">
+              </div>
+            </div>
           </div>
           <div class="row my-3">
             <div class="col-md-12">
@@ -273,6 +278,10 @@
       var bs4aTripsPerWeek = {{ .BS4ATripsPerWeek }};
       var emptyStations = {{ .EmptyStations }};
       var fullStations = {{ .FullStations }};
+      var runRate = {{ .RunRate }};
+      for (var i = 0; i < runRate.length; i++) {
+        runRate[i][1] = runRate[i][1] / 100;
+      }
 
       var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
       // treating this date as a UTC date makes the display work. not sure why,
@@ -301,10 +310,14 @@
       var plotTooltip = function(event, pos, item) {
         if (item) {
           var x = item.datapoint[0];
-          var y = item.datapoint[1].toFixed(0);
           var label = item.series.label;
           if (item.datapoint[1] === 1) {
             label = label.replace("stations", "station");
+          }
+          var y = item.datapoint[1].toFixed(0);
+          if (label === "dollars") {
+            y = '$' + y
+            label = '';
           }
           var d = new Date(x);
           $("#tooltip").html(formatDate(d) + ": " + y + " " + label).css({top: item.pageY+5, left: item.pageX+5}).show();
@@ -331,6 +344,8 @@
       $("#placeholder-4").bind("plothover", plotTooltip);
       $.plot("#placeholder-5", [{color: color, data: bs4aTripsPerWeek, label: "trips"}], plotOptions);
       $("#placeholder-5").bind("plothover", plotTooltip);
+      $.plot("#placeholder-7", [{color: color, data: runRate, label: "dollars"}], plotOptions);
+      $("#placeholder-7").bind("plothover", plotTooltip);
       var stationCapacity = stationsPerWeek[stationsPerWeek.length-1][1];
       var stationGraph = [];
       var emptyStationReverse = [];

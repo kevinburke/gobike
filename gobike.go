@@ -81,6 +81,38 @@ type Trip struct {
 	BikeShareForAllTrip bool
 }
 
+// SingleRidePriceCents is the price of a single ride in cents ($2.19). Include
+// the credit card processing fee since it seems like most trips are paid for
+// using credit cards, and we can't guess.
+const SingleRidePriceCents = 219
+
+// EstimatedBikeShareForAllSingleRideRevenueCents estimates the per-trip revenue
+// from a Bike Share For All ride. The program costs $5 per year and we estimate
+// the average user makes 100 trips per year.
+const EstimatedBikeShareForAllSingleRideRevenueCents int = 500 / 100
+
+// A subscription costs $15 per month ($180 per year) or $145 per year if
+// prepaid. We estimate half of subscribers choose each subscription type, and
+// the average subscriber makes 100 trips per year.
+const EstimatedSubscriberSingleRideRevenueCents int = 162 / 100
+
+// Revenue provides an estimate of the revenue from the trip. This is
+// approximate since we don't know how many trips are taken by the average
+// subscriber.
+func (t Trip) RevenueCents() int {
+	switch t.UserType {
+	case "Customer":
+		return SingleRidePriceCents
+	case "Subscriber":
+		if t.BikeShareForAllTrip {
+			return EstimatedBikeShareForAllSingleRideRevenueCents
+		}
+		return EstimatedSubscriberSingleRideRevenueCents
+	default:
+		panic("unknown user type " + t.UserType)
+	}
+}
+
 func (t Trip) Dockless() bool {
 	return t.StartStationID == "" || t.StartStationName == "NULL" ||
 		t.EndStationID == "" || t.EndStationName == "NULL"

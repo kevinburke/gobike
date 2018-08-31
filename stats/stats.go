@@ -80,6 +80,25 @@ func TripsPerWeek(trips []*gobike.Trip) TimeSeries {
 	return result
 }
 
+func Revenue(trips []*gobike.Trip) TimeSeries {
+	now := sevenDaysBeforeDataEnd(trips).Add(7 * 24 * time.Hour)
+	mp := make(map[int]int)
+	for i := range trips {
+		dur := now.Sub(trips[i].StartTime)
+		bucket := int(math.Floor(float64(dur) / float64(30*24*time.Hour)))
+		mp[bucket] = mp[bucket] + trips[i].RevenueCents()
+	}
+	result := make([]*TimeStat, len(mp))
+	// this is not a great approach but stick with it until it breaks.
+	for i := range mp {
+		result[len(mp)-i-1] = &TimeStat{
+			Date: now.Add(-1 * 30 * 24 * time.Hour * time.Duration(i)),
+			Data: float64(mp[i]),
+		}
+	}
+	return result
+}
+
 func BikeShareForAllTripsPerWeek(trips []*gobike.Trip) TimeSeries {
 	weekBeforeEnd := sevenDaysBeforeDataEnd(trips)
 	lastSunday := time.Date(weekBeforeEnd.Year(), weekBeforeEnd.Month(), weekBeforeEnd.Day()+(7-int(weekBeforeEnd.Weekday())), 0, 0, 0, 0, tz)

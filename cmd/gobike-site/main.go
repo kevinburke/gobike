@@ -22,6 +22,8 @@ import (
 	"github.com/kevinburke/gobike/stats"
 	tss "github.com/kevinburke/tss/lib"
 	"golang.org/x/sync/errgroup"
+	"golang.org/x/text/language"
+	"golang.org/x/text/message"
 )
 
 type homepageData struct {
@@ -49,6 +51,9 @@ type homepageData struct {
 	ShareOfTotalTrips   string
 	AverageWeekdayTrips string
 	EstimatedTotalTrips string
+
+	RunRate       template.JS
+	LatestRunRate string
 
 	DistanceBuckets *Histogram
 	DurationBuckets *Histogram
@@ -94,8 +99,8 @@ func renderCity(w io.Writer, name string, city *geo.City, tpl, stationTpl *templ
 	defer cancel()
 	group, errctx := errgroup.WithContext(ctx)
 	_ = errctx
-	var stationsPerWeek, tripsPerWeek, bikeTripsPerWeek, tripsPerBikePerWeek, bs4aTripsPerWeek, emptyStations, fullStations stats.TimeSeries
-	var stationBytes, data, bikeData, tripPerBikeData, bs4aData, emptyStationData, fullStationData []byte
+	var stationsPerWeek, tripsPerWeek, bikeTripsPerWeek, tripsPerBikePerWeek, bs4aTripsPerWeek, emptyStations, fullStations, runRate stats.TimeSeries
+	var stationBytes, data, bikeData, tripPerBikeData, bs4aData, emptyStationData, fullStationData, runRateData []byte
 	var mostPopularStations, popularBS4AStations []*stats.StationCount
 	var shareOfTotalTrips, averageWeekdayTrips, estimatedTotalTrips string
 	var tripsByDistrict [11]int
@@ -111,7 +116,7 @@ func renderCity(w io.Writer, name string, city *geo.City, tpl, stationTpl *templ
 	}
 	now := time.Now().In(tz)
 	nowRounded := time.Date(now.Year(), now.Month(), now.Day(), now.Hour(), now.Minute()-now.Minute()%20, 0, 0, tz)
-	fmt.Fprintf(w, "collecting stats\n")
+	fmt.Fprintln(w, "collecting stats")
 	group.Go(func() error {
 		emptyStations = stats.StatusFilterOverTime(statuses, empty(city, stationMap), nowRounded.Add(-7*24*time.Hour), nowRounded, stationCapacityInterval)
 		var err error
@@ -134,6 +139,12 @@ func renderCity(w io.Writer, name string, city *geo.City, tpl, stationTpl *templ
 	group.Go(func() error {
 		mostPopularStations = stats.PopularStationsLast7Days(stationMap, trips, statuses, 10)
 		return nil
+	})
+	group.Go(func() error {
+		runRate = stats.Revenue(trips)
+		var err error
+		runRateData, err = json.Marshal(runRate)
+		return err
 	})
 	var allStations []*stats.StationCount
 	group.Go(func() error {
@@ -206,6 +217,7 @@ func renderCity(w io.Writer, name string, city *geo.City, tpl, stationTpl *templ
 	if city != nil {
 		friendlyName = city.Name
 	}
+	printer := message.NewPrinter(language.English)
 	hdata := &homepageData{
 		Area:         name,
 		FriendlyName: friendlyName,
@@ -233,6 +245,9 @@ func renderCity(w io.Writer, name string, city *geo.City, tpl, stationTpl *templ
 
 		EmptyStations: template.JS(string(emptyStationData)),
 		FullStations:  template.JS(string(fullStationData)),
+
+		RunRate:       template.JS(string(runRateData)),
+		LatestRunRate: printer.Sprintf("%.2f", runRate[len(runRate)-1].Data/100),
 	}
 	dir := filepath.Join("docs", name)
 	if city == nil {

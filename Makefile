@@ -32,7 +32,7 @@ site: $(GOPATH)/bin/gobike-site
 	$(GOPATH)/bin/gobike-site data/ data/station-capacity
 
 data/station_information.json:
-	curl --location https://gbfs.fordgobike.com/gbfs/en/station_information.json | python -mjson.tool > data/station_information.json
+	go run cmd/download-station-data/main.go > data/station_information.json
 
 polygons: geo/berkeley.go geo/sanfrancisco.go geo/oakland.go geo/emeryville.go geo/sanjose.go
 

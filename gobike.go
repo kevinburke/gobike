@@ -47,14 +47,17 @@ func populateTZ() {
 }
 
 type Station struct {
-	ID        int     `json:"id"`
-	Name      string  `json:"name"`
-	ShortName string  `json:"short_name"`
-	Longitude float64 `json:"longitude"`
-	Latitude  float64 `json:"latitude"`
-	RegionID  int     `json:"region_id"`
-	Capacity  int     `json:"capacity"`
-	HasKiosk  bool    `json:"has_kiosk"`
+	ID              int      `json:"id"`
+	Name            string   `json:"name"`
+	ShortName       string   `json:"short_name"`
+	Longitude       float64  `json:"longitude"`
+	Latitude        float64  `json:"latitude"`
+	RegionID        int      `json:"region_id"`
+	Capacity        int      `json:"capacity"`
+	HasKiosk        bool     `json:"has_kiosk"`
+	RentalMethods   []string `json:"rental_methods"`
+	RentalURL       string   `json:"rental_url"`
+	HasKeyDispenser bool     `json:"eightd_has_key_dispenser"`
 
 	City *geo.City
 }

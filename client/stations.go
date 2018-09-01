@@ -101,15 +101,19 @@ func buildStations(body *stationResponse) (*StationResponse, error) {
 		if err != nil {
 			return nil, err
 		}
+		sort.Strings(stationJSONs[i].RentalMethods)
 		stations[i] = &gobike.Station{
-			ID:        id,
-			Name:      stationJSONs[i].Name,
-			ShortName: stationJSONs[i].ShortName,
-			Latitude:  stationJSONs[i].Latitude,
-			Longitude: stationJSONs[i].Longitude,
-			RegionID:  stationJSONs[i].RegionID,
-			Capacity:  stationJSONs[i].Capacity,
-			HasKiosk:  stationJSONs[i].HasKiosk,
+			ID:              id,
+			Name:            stationJSONs[i].Name,
+			ShortName:       stationJSONs[i].ShortName,
+			Latitude:        stationJSONs[i].Latitude,
+			Longitude:       stationJSONs[i].Longitude,
+			RegionID:        stationJSONs[i].RegionID,
+			Capacity:        stationJSONs[i].Capacity,
+			HasKiosk:        stationJSONs[i].HasKiosk,
+			RentalMethods:   stationJSONs[i].RentalMethods,
+			RentalURL:       stationJSONs[i].RentalURL,
+			HasKeyDispenser: stationJSONs[i].HasKeyDispenser,
 		}
 	}
 	sort.Slice(stations, func(i, j int) bool {
@@ -158,19 +162,50 @@ type stationData struct {
 }
 
 type stationJSON struct {
-	ID        string  `json:"station_id"`
-	Name      string  `json:"name"`
-	ShortName string  `json:"short_name"`
-	Latitude  float64 `json:"lat"`
-	Longitude float64 `json:"lon"`
-	RegionID  int     `json:"region_id"`
-	Capacity  int     `json:"capacity"`
-	HasKiosk  bool    `json:"has_kiosk"`
+	ID              string   `json:"station_id"`
+	Name            string   `json:"name"`
+	ShortName       string   `json:"short_name"`
+	Latitude        float64  `json:"lat"`
+	Longitude       float64  `json:"lon"`
+	RegionID        int      `json:"region_id"`
+	Capacity        int      `json:"capacity"`
+	HasKiosk        bool     `json:"has_kiosk"`
+	RentalMethods   []string `json:"rental_methods"`
+	RentalURL       string   `json:"rental_url"`
+	HasKeyDispenser bool     `json:"eightd_has_key_dispenser"`
 }
 
 type StationResponse struct {
 	Response
 	Stations []*gobike.Station
+}
+
+func (sr *StationResponse) MarshalJSON() ([]byte, error) {
+	sr2 := &stationResponse{
+		response: response{
+			LastUpdated: sr.LastUpdated.Unix(),
+			TTL:         sr.TTL,
+		},
+		Data: &stationData{
+			Stations: make([]*stationJSON, len(sr.Stations)),
+		},
+	}
+	for i := range sr.Stations {
+		sr2.Data.Stations[i] = &stationJSON{
+			ID:              strconv.Itoa(sr.Stations[i].ID),
+			Name:            sr.Stations[i].Name,
+			ShortName:       sr.Stations[i].ShortName,
+			Latitude:        sr.Stations[i].Latitude,
+			Longitude:       sr.Stations[i].Longitude,
+			RegionID:        sr.Stations[i].RegionID,
+			Capacity:        sr.Stations[i].Capacity,
+			HasKiosk:        sr.Stations[i].HasKiosk,
+			RentalMethods:   sr.Stations[i].RentalMethods,
+			RentalURL:       sr.Stations[i].RentalURL,
+			HasKeyDispenser: sr.Stations[i].HasKeyDispenser,
+		}
+	}
+	return json.Marshal(sr2)
 }
 
 var cities = map[string]*geo.City{

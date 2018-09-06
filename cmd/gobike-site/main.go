@@ -68,6 +68,9 @@ func empty(city *geo.City, stationMap map[string]*gobike.Station) func(ss *gobik
 	return func(ss *gobike.StationStatus) bool {
 		station := stationMap[ss.ID]
 		// yuck pointer comparison
+		if station == nil {
+			panic(fmt.Sprintln("nil station", ss.ID, ss.NumDocksAvailable, ss.IsRenting))
+		}
 		if city != nil && station.City != city {
 			return false
 		}
@@ -82,6 +85,9 @@ func full(city *geo.City, stationMap map[string]*gobike.Station) func(ss *gobike
 	return func(ss *gobike.StationStatus) bool {
 		station := stationMap[ss.ID]
 		// yuck pointer comparison
+		if station == nil {
+			panic(fmt.Sprintln("nil station", ss.ID, ss.NumDocksAvailable, ss.IsRenting))
+		}
 		if city != nil && station.City != city {
 			return false
 		}

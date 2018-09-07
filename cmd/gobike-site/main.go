@@ -126,13 +126,13 @@ func renderCity(w io.Writer, name string, city *geo.City, tpl, stationTpl *templ
 	nowRounded := time.Date(now.Year(), now.Month(), now.Day(), now.Hour(), now.Minute()-now.Minute()%20, 0, 0, tz)
 	fmt.Fprintln(w, "collecting stats")
 	group.Go(func() error {
-		emptyStations = stats.StatusFilterOverTime(statuses, empty(city, stationMap), nowRounded.Add(-7*24*time.Hour), nowRounded, stationCapacityInterval)
+		emptyStations = stats.StatusFilterOverTime(statuses, empty(city, stationMap), nowRounded.Add(-3*24*time.Hour), nowRounded, stationCapacityInterval)
 		var err error
 		emptyStationData, err = json.Marshal(emptyStations)
 		return err
 	})
 	group.Go(func() error {
-		fullStations = stats.StatusFilterOverTime(statuses, full(city, stationMap), nowRounded.Add(-7*24*time.Hour), nowRounded, stationCapacityInterval)
+		fullStations = stats.StatusFilterOverTime(statuses, full(city, stationMap), nowRounded.Add(-3*24*time.Hour), nowRounded, stationCapacityInterval)
 		var err error
 		fullStationData, err = json.Marshal(fullStations)
 		return err

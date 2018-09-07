@@ -1,5 +1,5 @@
 {
-    "last_updated": 1536265891,
+    "last_updated": 1536354729,
     "ttl": 10,
     "data": {
         "stations": [
@@ -634,7 +634,7 @@
                 "lat": 37.78095459960753,
                 "lon": -122.39974915981291,
                 "region_id": 3,
-                "capacity": 29,
+                "capacity": 31,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",

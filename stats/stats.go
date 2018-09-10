@@ -55,8 +55,53 @@ func TripsPerWeek(trips []*gobike.Trip) TimeSeries {
 		if sunday.Equal(lastSunday) || sunday.After(lastSunday) {
 			continue
 		}
-		_, ok := mp[sunday.Format("2006-01-02")]
+		if _, ok := mp[sunday.Format("2006-01-02")]; ok {
+			mp[sunday.Format("2006-01-02")] += 1
+		} else {
+			mp[sunday.Format("2006-01-02")] = 1
+		}
+		if sunday.Before(earliest) {
+			earliest = sunday
+		}
+	}
+	seen := 0
+	result := make([]*TimeStat, 0)
+	for i := earliest; ; i = time.Date(i.Year(), i.Month(), i.Day()+7, 0, 0, 0, 0, tz) {
+		count, ok := mp[i.Format("2006-01-02")]
 		if ok {
+			seen++
+		}
+		result = append(result, &TimeStat{Date: i, Data: float64(count)})
+		if seen >= len(mp) {
+			break
+		}
+	}
+	return result
+}
+
+func MovesPerWeek(trips []*gobike.Trip) TimeSeries {
+	weekBeforeEnd := sevenDaysBeforeDataEnd(trips)
+	lastSunday := time.Date(weekBeforeEnd.Year(), weekBeforeEnd.Month(), weekBeforeEnd.Day()+(7-int(weekBeforeEnd.Weekday())), 0, 0, 0, 0, tz)
+	mp := make(map[string]int)
+	stationEnd := make(map[int64]string)
+	earliest := time.Date(3000, time.January, 1, 0, 0, 0, 0, tz)
+	for i := 0; i < len(trips); i++ {
+		lastTripEnd, ok := stationEnd[trips[i].BikeID]
+		// cached old trip end - set new one now to avoid branching
+		stationEnd[trips[i].BikeID] = trips[i].EndStationID
+		if !ok {
+			continue
+		}
+		if trips[i].StartStationID == lastTripEnd {
+			continue
+		}
+		start := trips[i].StartTime
+		wday := start.Weekday()
+		sunday := time.Date(start.Year(), start.Month(), start.Day()-int(wday), 0, 0, 0, 0, tz)
+		if sunday.Equal(lastSunday) || sunday.After(lastSunday) {
+			continue
+		}
+		if _, ok := mp[sunday.Format("2006-01-02")]; ok {
 			mp[sunday.Format("2006-01-02")] += 1
 		} else {
 			mp[sunday.Format("2006-01-02")] = 1

@@ -19,6 +19,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"sort"
 	"strconv"
 	"strings"
 	"sync"
@@ -256,13 +257,15 @@ func LoadDir(directory string) ([]*Trip, error) {
 			mu.Lock()
 			defer mu.Unlock()
 			trips = append(trips, fileTrips...)
-			_ = errctx
 			return nil
 		})
 	}
 	if err := group.Wait(); err != nil {
 		return nil, err
 	}
+	sort.Slice(trips, func(i, j int) bool {
+		return trips[i].StartTime.Before(trips[j].StartTime)
+	})
 	return trips, nil
 }
 

@@ -42,6 +42,9 @@ type homepageData struct {
 	BS4ATripsPerWeekCount    int64
 	BS4ATripPct              string
 
+	MovesPerWeek      template.JS
+	MovesPerWeekCount int64
+
 	EmptyStations, FullStations template.JS
 
 	PopularStations     []*stats.StationCount
@@ -107,8 +110,8 @@ func renderCity(w io.Writer, name string, city *geo.City, tpl, stationTpl *templ
 	defer cancel()
 	group, errctx := errgroup.WithContext(ctx)
 	_ = errctx
-	var stationsPerWeek, tripsPerWeek, bikeTripsPerWeek, tripsPerBikePerWeek, bs4aTripsPerWeek, emptyStations, fullStations, runRate stats.TimeSeries
-	var stationBytes, data, bikeData, tripPerBikeData, bs4aData, emptyStationData, fullStationData, runRateData []byte
+	var stationsPerWeek, tripsPerWeek, bikeTripsPerWeek, tripsPerBikePerWeek, bs4aTripsPerWeek, emptyStations, fullStations, runRate, moves stats.TimeSeries
+	var stationBytes, data, bikeData, tripPerBikeData, bs4aData, emptyStationData, fullStationData, runRateData, moveData []byte
 	var mostPopularStations, popularBS4AStations []*stats.StationCount
 	var shareOfTotalTrips, averageWeekdayTrips, estimatedTotalTrips string
 	var tripsByDistrict [11]int
@@ -129,6 +132,12 @@ func renderCity(w io.Writer, name string, city *geo.City, tpl, stationTpl *templ
 		emptyStations = stats.StatusFilterOverTime(statuses, empty(city, stationMap), nowRounded.Add(-3*24*time.Hour), nowRounded, stationCapacityInterval)
 		var err error
 		emptyStationData, err = json.Marshal(emptyStations)
+		return err
+	})
+	group.Go(func() error {
+		moves = stats.MovesPerWeek(trips)
+		var err error
+		moveData, err = json.Marshal(moves)
 		return err
 	})
 	group.Go(func() error {
@@ -242,13 +251,17 @@ func renderCity(w io.Writer, name string, city *geo.City, tpl, stationTpl *templ
 		BS4ATripsPerWeek:         template.JS(string(bs4aData)),
 		BS4ATripsPerWeekCount:    int64(bs4aTripsPerWeekCountf64),
 		BS4ATripPct:              fmt.Sprintf("%.1f", 100*bs4aTripsPerWeekCountf64/tripsPerWeekCountf64),
-		TripsByDistrict:          tripsByDistrict,
-		ShareOfTotalTrips:        shareOfTotalTrips,
-		AverageWeekdayTrips:      averageWeekdayTrips,
-		DistanceBuckets:          distanceBuckets,
-		DurationBuckets:          durationBuckets,
-		Population:               geo.Populations[name],
-		EstimatedTotalTrips:      estimatedTotalTrips,
+
+		MovesPerWeek:      template.JS(moveData),
+		MovesPerWeekCount: int64(moves[len(moves)-1].Data),
+
+		TripsByDistrict:     tripsByDistrict,
+		ShareOfTotalTrips:   shareOfTotalTrips,
+		AverageWeekdayTrips: averageWeekdayTrips,
+		DistanceBuckets:     distanceBuckets,
+		DurationBuckets:     durationBuckets,
+		Population:          geo.Populations[name],
+		EstimatedTotalTrips: estimatedTotalTrips,
 
 		EmptyStations: template.JS(string(emptyStationData)),
 		FullStations:  template.JS(string(fullStationData)),

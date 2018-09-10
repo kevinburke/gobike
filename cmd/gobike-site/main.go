@@ -166,6 +166,11 @@ func renderCity(w io.Writer, name string, city *geo.City, tpl, stationTpl *templ
 	var allStations []*stats.StationCount
 	group.Go(func() error {
 		allStations = stats.PopularStationsLast7Days(stationMap, trips, statuses, 50000)
+		for i := 0; i < len(allStations); i++ {
+			if allStations[i].Station.ID == 372 {
+				fmt.Println(allStations[i].Station.Name)
+			}
+		}
 		return nil
 	})
 	group.Go(func() error {

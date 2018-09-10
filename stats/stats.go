@@ -641,6 +641,9 @@ func StatusMap(statuses []*gobike.StationStatus) map[string][]*gobike.StationSta
 	byStation := make(map[string][]*gobike.StationStatus)
 	for i := range statuses {
 		ss := statuses[i]
+		if ss.ID == "347" {
+			ss.ID = "136" // san bruno ave and 23rd st.
+		}
 		if _, ok := byStation[ss.ID]; !ok {
 			byStation[ss.ID] = make([]*gobike.StationStatus, 0)
 		}

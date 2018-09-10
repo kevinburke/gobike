@@ -153,6 +153,9 @@ func parseTrip(record []string) (*Trip, error) {
 	}
 	t.EndTime = endTime
 	if record[3] != "NULL" {
+		if record[3] == "347" {
+			record[3] = "136" // san bruno ave and 23rd st.
+		}
 		// for the moment we expect station ID's to be integers. error if we get
 		// anything else back in case we have integer-dependent code elsewhere
 		// that might be corrupted.
@@ -174,6 +177,9 @@ func parseTrip(record []string) (*Trip, error) {
 	}
 	t.StartStationLongitude = slng
 	if record[7] != "NULL" {
+		if record[7] == "347" {
+			record[7] = "136" // san bruno ave and 23rd st.
+		}
 		// for the moment we expect station ID's to be integers. error if we get
 		// anything else back in case we have integer-dependent code elsewhere
 		// that might be corrupted.

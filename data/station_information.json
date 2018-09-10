@@ -1,5 +1,5 @@
 {
-    "last_updated": 1536354729,
+    "last_updated": 1536620578,
     "ttl": 10,
     "data": {
         "stations": [
@@ -1793,6 +1793,22 @@
                     "KEY"
                 ],
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=134",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "136",
+                "name": "23rd St at San Bruno Ave",
+                "short_name": "SF-Q26",
+                "lat": 37.7544356,
+                "lon": -122.4043639,
+                "region_id": 3,
+                "capacity": 15,
+                "has_kiosk": true,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=136",
                 "eightd_has_key_dispenser": false
             },
             {
@@ -4724,22 +4740,6 @@
                 "eightd_has_key_dispenser": false
             },
             {
-                "station_id": "347",
-                "name": "23rd St and San Bruno Ave",
-                "short_name": "SF - Q26",
-                "lat": 37.75443563479177,
-                "lon": -122.40436390042304,
-                "region_id": 3,
-                "capacity": 15,
-                "has_kiosk": true,
-                "rental_methods": [
-                    "CREDITCARD",
-                    "KEY"
-                ],
-                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=347",
-                "eightd_has_key_dispenser": false
-            },
-            {
                 "station_id": "349",
                 "name": "Howard St at Mary St",
                 "short_name": "SF-I26-",
@@ -5033,7 +5033,7 @@
                 "short_name": "OK-K7",
                 "lat": 37.804036784023594,
                 "lon": -122.26240932941435,
-                "region_id": 0,
+                "region_id": 12,
                 "capacity": 19,
                 "has_kiosk": true,
                 "rental_methods": [

@@ -1,5 +1,5 @@
 {
-    "last_updated": 1536620578,
+    "last_updated": 1536860609,
     "ttl": 10,
     "data": {
         "stations": [
@@ -3045,10 +3045,10 @@
             },
             {
                 "station_id": "221",
-                "name": "E 12th St at 6th Ave",
+                "name": "6th Ave at E 12th St (Temporary Location)",
                 "short_name": "OK-L10",
-                "lat": 37.7943532,
-                "lon": -122.2538745,
+                "lat": 37.794396,
+                "lon": -122.253842,
                 "region_id": 12,
                 "capacity": 15,
                 "has_kiosk": true,
@@ -3237,10 +3237,10 @@
             },
             {
                 "station_id": "233",
-                "name": "E 12th St at 4th Ave",
+                "name": "4th Ave at E 12th St (Temporary Location)",
                 "short_name": "OK-L9",
-                "lat": 37.7958125,
-                "lon": -122.2555549,
+                "lat": 37.795913,
+                "lon": -122.255547,
                 "region_id": 12,
                 "capacity": 19,
                 "has_kiosk": true,
@@ -5041,6 +5041,22 @@
                     "KEY"
                 ],
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=372",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "373",
+                "name": "Potrero del Sol Park (25th St at Utah St)",
+                "short_name": "SF-R26",
+                "lat": 37.75179164525661,
+                "lon": -122.40521550178528,
+                "region_id": 0,
+                "capacity": 0,
+                "has_kiosk": false,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=373",
                 "eightd_has_key_dispenser": false
             }
         ]

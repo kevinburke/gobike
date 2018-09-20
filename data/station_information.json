@@ -1,5 +1,5 @@
 {
-    "last_updated": 1537309585,
+    "last_updated": 1537481714,
     "ttl": 10,
     "data": {
         "stations": [
@@ -1258,7 +1258,7 @@
                 "lat": 37.7662102,
                 "lon": -122.4266136,
                 "region_id": 3,
-                "capacity": 16,
+                "capacity": 19,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -2789,7 +2789,7 @@
             },
             {
                 "station_id": "205",
-                "name": "Miles Ave at Cavour St (Temporary Location)",
+                "name": "Miles Ave at Cavour St",
                 "short_name": "OK-C4",
                 "lat": 37.8388,
                 "lon": -122.258732,
@@ -2901,10 +2901,10 @@
             },
             {
                 "station_id": "212",
-                "name": "Mosswood Park",
+                "name": "Webster St at MacArthur Blvd (Temporary Location)",
                 "short_name": "OK-G5",
-                "lat": 37.8249311,
-                "lon": -122.2604787,
+                "lat": 37.825008,
+                "lon": -122.261649,
                 "region_id": 12,
                 "capacity": 31,
                 "has_kiosk": true,
@@ -4841,9 +4841,9 @@
                 "short_name": "SF-Y29",
                 "lat": 37.72925213437005,
                 "lon": -122.39237844943999,
-                "region_id": 0,
-                "capacity": 0,
-                "has_kiosk": false,
+                "region_id": 3,
+                "capacity": 15,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
@@ -4857,9 +4857,9 @@
                 "short_name": "SF-Y27",
                 "lat": 37.73016750815088,
                 "lon": -122.39896327257156,
-                "region_id": 0,
+                "region_id": 3,
                 "capacity": 0,
-                "has_kiosk": false,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
@@ -4873,9 +4873,9 @@
                 "short_name": "SF-V29",
                 "lat": 37.73857187126725,
                 "lon": -122.38961778581141,
-                "region_id": 0,
+                "region_id": 3,
                 "capacity": 0,
-                "has_kiosk": false,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
@@ -4889,7 +4889,7 @@
                 "short_name": "SF-V30",
                 "lat": 37.739853017984125,
                 "lon": -122.38565549254417,
-                "region_id": 0,
+                "region_id": 3,
                 "capacity": 0,
                 "has_kiosk": false,
                 "rental_methods": [
@@ -4905,9 +4905,9 @@
                 "short_name": "SF-X30",
                 "lat": 37.7317266935217,
                 "lon": -122.3900556564331,
-                "region_id": 0,
-                "capacity": 0,
-                "has_kiosk": false,
+                "region_id": 3,
+                "capacity": 19,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"

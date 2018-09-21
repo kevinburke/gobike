@@ -517,12 +517,6 @@ func PopularStationsLast7Days(stationMap map[string]*gobike.Station, trips []*go
 		})
 		// drop highest and lowest
 		counts[i].WeekdayHoursEmpty = (float64(empty[time.Tuesday]) + float64(empty[time.Wednesday]) + float64(empty[time.Thursday])) / float64(3*time.Hour)
-		if counts[i].WeekdayHoursEmpty > 20 {
-			fmt.Printf("empty: %#v\n", empty)
-			fmt.Printf("wd hrs empty: %#v\n", counts[i].WeekdayHoursEmpty)
-			fmt.Printf("full: %#v\n", full)
-			fmt.Printf("wd hrs full: %#v\n", counts[i].WeekdayHoursFull)
-		}
 		counts[i].WeekdayHoursFull = (float64(full[time.Tuesday]) + float64(full[time.Wednesday]) + float64(full[time.Thursday])) / float64(3*time.Hour)
 	}
 	return counts

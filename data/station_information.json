@@ -1,5 +1,5 @@
 {
-    "last_updated": 1537481714,
+    "last_updated": 1537570905,
     "ttl": 10,
     "data": {
         "stations": [
@@ -2842,7 +2842,7 @@
                 "lat": 37.329964,
                 "lon": -121.881922,
                 "region_id": 5,
-                "capacity": 19,
+                "capacity": 8,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -3082,7 +3082,7 @@
                 "lat": 37.7647652154977,
                 "lon": -122.42009103298186,
                 "region_id": 3,
-                "capacity": 19,
+                "capacity": 11,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -3415,8 +3415,8 @@
                 "station_id": "244",
                 "name": "Shattuck Ave at Hearst Ave",
                 "short_name": "BK-C7",
-                "lat": 37.8737917,
-                "lon": -122.2686176,
+                "lat": 37.87374820090019,
+                "lon": -122.26864814758301,
                 "region_id": 14,
                 "capacity": 23,
                 "has_kiosk": true,
@@ -3511,8 +3511,8 @@
                 "station_id": "250",
                 "name": "North Berkeley BART Station",
                 "short_name": "BK-C5",
-                "lat": 37.8740141,
-                "lon": -122.283019,
+                "lat": 37.873558,
+                "lon": -122.283093,
                 "region_id": 14,
                 "capacity": 27,
                 "has_kiosk": true,
@@ -4858,7 +4858,7 @@
                 "lat": 37.73016750815088,
                 "lon": -122.39896327257156,
                 "region_id": 3,
-                "capacity": 0,
+                "capacity": 15,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -4874,7 +4874,7 @@
                 "lat": 37.73857187126725,
                 "lon": -122.38961778581141,
                 "region_id": 3,
-                "capacity": 0,
+                "capacity": 19,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -4890,8 +4890,8 @@
                 "lat": 37.739853017984125,
                 "lon": -122.38565549254417,
                 "region_id": 3,
-                "capacity": 0,
-                "has_kiosk": false,
+                "capacity": 19,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"

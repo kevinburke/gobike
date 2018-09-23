@@ -1,5 +1,5 @@
 {
-    "last_updated": 1537570905,
+    "last_updated": 1537737444,
     "ttl": 10,
     "data": {
         "stations": [
@@ -5057,6 +5057,22 @@
                     "KEY"
                 ],
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=373",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "374",
+                "name": "Viva Calle SJ",
+                "short_name": "Viva Calle SJ",
+                "lat": 37.26331,
+                "lon": -121.833332,
+                "region_id": 0,
+                "capacity": 1,
+                "has_kiosk": true,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=374",
                 "eightd_has_key_dispenser": false
             }
         ]

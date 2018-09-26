@@ -30,7 +30,7 @@ import (
 	"golang.org/x/sync/errgroup"
 )
 
-const Version = "0.6"
+const Version = "0.7"
 
 // This station is not present in the public station list, but trips reference
 // it, so we have to match for it when iterating through trips.

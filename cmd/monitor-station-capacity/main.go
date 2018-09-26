@@ -127,7 +127,7 @@ func main() {
 			if station.LastReported.Equal(lastReported[station.ID]) || station.LastReported.Before(lastReported[station.ID]) {
 				continue
 			}
-			if station.LastReported.After(now) && station.LastReported.Format("2006-01-02") != prefix {
+			if station.LastReported.After(now) && station.LastReported.Format("2006-01-02") > prefix {
 				// write buf to file
 				if _, err := f.Write(buf.Bytes()); err != nil {
 					log.Fatal(err)

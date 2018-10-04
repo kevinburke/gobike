@@ -1,5 +1,5 @@
 {
-    "last_updated": 1537737444,
+    "last_updated": 1538670951,
     "ttl": 10,
     "data": {
         "stations": [
@@ -1018,7 +1018,7 @@
                 "lat": 37.7737172,
                 "lon": -122.4116467,
                 "region_id": 3,
-                "capacity": 27,
+                "capacity": 19,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -1338,7 +1338,7 @@
                 "lat": 37.766629,
                 "lon": -122.407706,
                 "region_id": 3,
-                "capacity": 27,
+                "capacity": 23,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -5060,19 +5060,51 @@
                 "eightd_has_key_dispenser": false
             },
             {
-                "station_id": "374",
-                "name": "Viva Calle SJ",
-                "short_name": "Viva Calle SJ",
-                "lat": 37.26331,
-                "lon": -121.833332,
+                "station_id": "375",
+                "name": "Grove St at Masonic Ave",
+                "short_name": "SF-J16",
+                "lat": 37.77483629413345,
+                "lon": -122.44654566049576,
                 "region_id": 0,
-                "capacity": 1,
-                "has_kiosk": true,
+                "capacity": 0,
+                "has_kiosk": false,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
                 ],
-                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=374",
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=375",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "376",
+                "name": "Illinois St at 20th St",
+                "short_name": "SF-O30-2",
+                "lat": 37.76045755543481,
+                "lon": -122.38753974437712,
+                "region_id": 0,
+                "capacity": 0,
+                "has_kiosk": false,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=376",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "377",
+                "name": "Fell St at Stanyan St",
+                "short_name": "SF-K15-",
+                "lat": 37.77188508012015,
+                "lon": -122.45383322238922,
+                "region_id": 0,
+                "capacity": 0,
+                "has_kiosk": false,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=377",
                 "eightd_has_key_dispenser": false
             }
         ]

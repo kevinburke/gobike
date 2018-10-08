@@ -451,6 +451,9 @@ func stationCounter(stationMap map[string]*gobike.Station, trips []*gobike.Trip,
 				fromStation.Station = agg[i].Station
 			}
 		}
+		//if fromStation.Station == nil {
+		//panic(fmt.Sprintf("nil fromStation: " + agg[id].Station.Name))
+		//}
 		sort.Ints(mpbucket[time.Monday : time.Friday+1])
 		stationCounts = append(stationCounts, &StationCount{
 			Station:          agg[id].Station,

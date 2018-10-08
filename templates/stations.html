@@ -91,10 +91,18 @@
                 {{ end -}}
                 </td>
                 <td>
+                  {{ if .FromStation.Station }}
                   <a href="https://www.openstreetmap.org/?mlat={{ .FromStation.Station.Latitude }}&mlon={{ .FromStation.Station.Longitude }}&zoom=14">{{ .FromStation.Station.Name }}</a> ({{ .FromStation.Count }})
+                  {{ else }}
+                  No trips
+                  {{ end }}
                 </td>
                 <td>
-                  <a href="https://www.openstreetmap.org/?mlat={{ .ToStation.Station.Latitude }}&mlon={{ .ToStation.Station.Longitude }}&zoom=14">{{ .ToStation.Station.Name }}</a> ({{ .ToStation.Count }})
+                  {{ if .ToStation.Station }}
+                    <a href="https://www.openstreetmap.org/?mlat={{ .ToStation.Station.Latitude }}&mlon={{ .ToStation.Station.Longitude }}&zoom=14">{{ .ToStation.Station.Name }}</a> ({{ .ToStation.Count }})
+                  {{ else }}
+                  No trips
+                  {{ end }}
                 </td>
               </tr>
               {{- end }}

@@ -1,5 +1,5 @@
 {
-    "last_updated": 1539622966,
+    "last_updated": 1541401694,
     "ttl": 10,
     "data": {
         "stations": [
@@ -154,7 +154,7 @@
                 "lat": 37.794231,
                 "lon": -122.402923,
                 "region_id": 3,
-                "capacity": 19,
+                "capacity": 23,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -1050,7 +1050,7 @@
                 "lat": 37.7753058,
                 "lon": -122.39738,
                 "region_id": 3,
-                "capacity": 31,
+                "capacity": 27,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -1735,8 +1735,8 @@
                 "station_id": "130",
                 "name": "22nd St Caltrain Station",
                 "short_name": "SF-P30",
-                "lat": 37.75736899005735,
-                "lon": -122.3920565843582,
+                "lat": 37.75771842163036,
+                "lon": -122.39181250333785,
                 "region_id": 3,
                 "capacity": 31,
                 "has_kiosk": true,
@@ -2613,10 +2613,10 @@
             },
             {
                 "station_id": "192",
-                "name": "MLK Jr Way at 36th St (Temporary Location)",
+                "name": "37th St at West St",
                 "short_name": "OK-G3",
-                "lat": 37.825793986440324,
-                "lon": -122.26939916610718,
+                "lat": 37.82669558640968,
+                "lon": -122.27179706096648,
                 "region_id": 12,
                 "capacity": 23,
                 "has_kiosk": true,
@@ -2682,7 +2682,7 @@
                 "lat": 37.80889393398715,
                 "lon": -122.25646018981932,
                 "region_id": 12,
-                "capacity": 18,
+                "capacity": 23,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -2858,7 +2858,7 @@
                 "lat": 37.329964,
                 "lon": -121.881922,
                 "region_id": 5,
-                "capacity": 8,
+                "capacity": 4,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -3111,8 +3111,8 @@
                 "station_id": "224",
                 "name": "21st Ave at International Blvd",
                 "short_name": "OK-L13",
-                "lat": 37.7851566,
-                "lon": -122.2389151,
+                "lat": 37.78485466229441,
+                "lon": -122.23930478096008,
                 "region_id": 12,
                 "capacity": 15,
                 "has_kiosk": true,
@@ -3431,8 +3431,8 @@
                 "station_id": "244",
                 "name": "Shattuck Ave at Hearst Ave",
                 "short_name": "BK-C7",
-                "lat": 37.87374820090019,
-                "lon": -122.26864814758301,
+                "lat": 37.87367621459825,
+                "lon": -122.26848721504211,
                 "region_id": 14,
                 "capacity": 23,
                 "has_kiosk": true,
@@ -3450,7 +3450,7 @@
                 "lat": 37.870139,
                 "lon": -122.268422,
                 "region_id": 14,
-                "capacity": 25,
+                "capacity": 29,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -4292,22 +4292,6 @@
                 "eightd_has_key_dispenser": false
             },
             {
-                "station_id": "302",
-                "name": "Tamien Station",
-                "short_name": "SJ-R8",
-                "lat": 37.312854042932614,
-                "lon": -121.88294112682343,
-                "region_id": 5,
-                "capacity": 23,
-                "has_kiosk": true,
-                "rental_methods": [
-                    "CREDITCARD",
-                    "KEY"
-                ],
-                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=302",
-                "eightd_has_key_dispenser": false
-            },
-            {
                 "station_id": "303",
                 "name": "San Pedro St at Hedding St",
                 "short_name": "SJ-H9",
@@ -4969,9 +4953,9 @@
                 "short_name": "SF-G23",
                 "lat": 37.78543382786823,
                 "lon": -122.41962164640428,
-                "region_id": 0,
-                "capacity": 0,
-                "has_kiosk": false,
+                "region_id": 3,
+                "capacity": 27,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
@@ -4985,9 +4969,9 @@
                 "short_name": "SF-G24",
                 "lat": 37.78734902316596,
                 "lon": -122.41665109992026,
-                "region_id": 0,
-                "capacity": 0,
-                "has_kiosk": false,
+                "region_id": 3,
+                "capacity": 27,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
@@ -5001,9 +4985,9 @@
                 "short_name": "SF-G25",
                 "lat": 37.7873267660624,
                 "lon": -122.41327822208405,
-                "region_id": 0,
-                "capacity": 0,
-                "has_kiosk": false,
+                "region_id": 3,
+                "capacity": 19,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
@@ -5017,7 +5001,7 @@
                 "short_name": "SF-B25",
                 "lat": 37.80274615250053,
                 "lon": -122.41357862949373,
-                "region_id": 0,
+                "region_id": 3,
                 "capacity": 19,
                 "has_kiosk": true,
                 "rental_methods": [
@@ -5049,9 +5033,9 @@
                 "short_name": "SF-R26",
                 "lat": 37.75179164525661,
                 "lon": -122.40521550178528,
-                "region_id": 0,
-                "capacity": 0,
-                "has_kiosk": false,
+                "region_id": 3,
+                "capacity": 23,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
@@ -5065,9 +5049,9 @@
                 "short_name": "SF-J16",
                 "lat": 37.77483629413345,
                 "lon": -122.44654566049576,
-                "region_id": 0,
-                "capacity": 0,
-                "has_kiosk": false,
+                "region_id": 3,
+                "capacity": 31,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
@@ -5111,11 +5095,11 @@
                 "station_id": "378",
                 "name": "Empire St at 7th St",
                 "short_name": "SJ-J11",
-                "lat": 37.3477524949147,
-                "lon": -121.89076513051987,
-                "region_id": 0,
-                "capacity": 0,
-                "has_kiosk": false,
+                "lat": 37.34774456553247,
+                "lon": -121.89079999923706,
+                "region_id": 5,
+                "capacity": 31,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
@@ -5137,6 +5121,38 @@
                     "KEY"
                 ],
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=379",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "380",
+                "name": "Masonic Ave at Turk St",
+                "short_name": "SF-I16",
+                "lat": 37.77918657582862,
+                "lon": -122.44732618331908,
+                "region_id": 0,
+                "capacity": 0,
+                "has_kiosk": false,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=380",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "381",
+                "name": "20th St at Dolores St",
+                "short_name": "SF-P21",
+                "lat": 37.758238424179275,
+                "lon": -122.42609381675719,
+                "region_id": 0,
+                "capacity": 0,
+                "has_kiosk": false,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=381",
                 "eightd_has_key_dispenser": false
             }
         ]

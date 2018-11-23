@@ -1,5 +1,5 @@
 {
-    "last_updated": 1541649233,
+    "last_updated": 1543000016,
     "ttl": 10,
     "data": {
         "stations": [
@@ -586,7 +586,7 @@
                 "lat": 37.7787677,
                 "lon": -122.4159292,
                 "region_id": 3,
-                "capacity": 31,
+                "capacity": 21,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -890,7 +890,7 @@
                 "lat": 37.77331087889723,
                 "lon": -122.44429260492325,
                 "region_id": 3,
-                "capacity": 21,
+                "capacity": 31,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -1041,22 +1041,6 @@
                     "KEY"
                 ],
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=79",
-                "eightd_has_key_dispenser": false
-            },
-            {
-                "station_id": "80",
-                "name": "5th St at Bluxome St",
-                "short_name": "SF-K28",
-                "lat": 37.775817885905454,
-                "lon": -122.39788234233856,
-                "region_id": 3,
-                "capacity": 27,
-                "has_kiosk": true,
-                "rental_methods": [
-                    "CREDITCARD",
-                    "KEY"
-                ],
-                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=80",
                 "eightd_has_key_dispenser": false
             },
             {
@@ -1242,7 +1226,7 @@
                 "lat": 37.7662185,
                 "lon": -122.4310597,
                 "region_id": 3,
-                "capacity": 25,
+                "capacity": 27,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -3269,10 +3253,10 @@
             },
             {
                 "station_id": "234",
-                "name": "Fruitvale Ave at International Blvd",
+                "name": "Farnam St at Fruitvale Ave",
                 "short_name": "OK-M16",
-                "lat": 37.7776818,
-                "lon": -122.225771,
+                "lat": 37.778058,
+                "lon": -122.2254,
                 "region_id": 12,
                 "capacity": 19,
                 "has_kiosk": true,
@@ -4836,6 +4820,22 @@
                 "eightd_has_key_dispenser": false
             },
             {
+                "station_id": "358",
+                "name": "Williams Ave at 3rd St",
+                "short_name": "SF-Y29",
+                "lat": 37.729278651730276,
+                "lon": -122.39289611577988,
+                "region_id": 3,
+                "capacity": 19,
+                "has_kiosk": true,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=358",
+                "eightd_has_key_dispenser": false
+            },
+            {
                 "station_id": "359",
                 "name": "Williams Ave at Apollo St",
                 "short_name": "SF-Y27",
@@ -5079,10 +5079,10 @@
                 "station_id": "377",
                 "name": "Fell St at Stanyan St",
                 "short_name": "SF-K15-",
-                "lat": 37.77188508012015,
-                "lon": -122.45383322238922,
-                "region_id": 0,
-                "capacity": 0,
+                "lat": 37.771916882623145,
+                "lon": -122.45370447635652,
+                "region_id": 3,
+                "capacity": 19,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -5108,22 +5108,6 @@
                 "eightd_has_key_dispenser": false
             },
             {
-                "station_id": "379",
-                "name": "Octavia St at Page St",
-                "short_name": "SF-J22-",
-                "lat": 37.77377624518589,
-                "lon": -122.42375493049622,
-                "region_id": 0,
-                "capacity": 0,
-                "has_kiosk": false,
-                "rental_methods": [
-                    "CREDITCARD",
-                    "KEY"
-                ],
-                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=379",
-                "eightd_has_key_dispenser": false
-            },
-            {
                 "station_id": "380",
                 "name": "Masonic Ave at Turk St",
                 "short_name": "SF-I16",
@@ -5145,6 +5129,22 @@
                 "short_name": "SF-P21",
                 "lat": 37.758238424179275,
                 "lon": -122.42609381675719,
+                "region_id": 3,
+                "capacity": 27,
+                "has_kiosk": true,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=381",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "383",
+                "name": "Golden Gate Ave at Franklin St",
+                "short_name": "SF-I22",
+                "lat": 37.7807871267462,
+                "lon": -122.4219337105751,
                 "region_id": 0,
                 "capacity": 0,
                 "has_kiosk": false,
@@ -5152,7 +5152,7 @@
                     "CREDITCARD",
                     "KEY"
                 ],
-                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=381",
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=383",
                 "eightd_has_key_dispenser": false
             }
         ]

@@ -316,7 +316,7 @@ type StationStatus struct {
 func parseInt16(line []byte) ([]byte, int16, error) {
 	idx := bytes.IndexByte(line, ',')
 	if idx == -1 {
-		return nil, 0, fmt.Errorf("not enough commas: %s", string(line))
+		return nil, 0, fmt.Errorf("not enough commas: %q", string(line))
 	}
 	val, err := strconv.ParseInt(string(line[:idx]), 10, 16)
 	if err != nil {
@@ -331,7 +331,7 @@ var rentingReturningInstalled = []byte{'t', ',', 't', ',', 't', ','}
 func parseLine(line []byte) (*StationStatus, error) {
 	idx := bytes.IndexByte(line, ',')
 	if idx == -1 {
-		return nil, fmt.Errorf("not enough commas: %s", string(line))
+		return nil, fmt.Errorf("not enough commas: %q", string(line))
 	}
 	t, err := time.Parse(time.RFC3339, string(line[:idx]))
 	if err != nil {
@@ -342,7 +342,7 @@ func parseLine(line []byte) (*StationStatus, error) {
 	line = line[idx+1:]
 	idx = bytes.IndexByte(line, ',')
 	if idx == -1 {
-		return nil, fmt.Errorf("not enough commas: %s", string(line))
+		return nil, fmt.Errorf("not enough commas: %q", string(line))
 	}
 	ss.ID = string(line[:idx])
 	line = line[idx+1:]
@@ -411,8 +411,10 @@ func LoadCapacity(r io.Reader) ([]*StationStatus, error) {
 	bs := bufio.NewScanner(r)
 	statuses := make([]*StationStatus, 0)
 	for bs.Scan() {
-		stationStatus, err := parseLine(bs.Bytes())
+		bits := bs.Bytes()
+		stationStatus, err := parseLine(bits)
 		if err != nil {
+			fmt.Println(string(bits))
 			return nil, err
 		}
 		statuses = append(statuses, stationStatus)

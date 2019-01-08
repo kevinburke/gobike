@@ -1,5 +1,5 @@
 {
-    "last_updated": 1543000016,
+    "last_updated": 1546987968,
     "ttl": 10,
     "data": {
         "stations": [
@@ -586,7 +586,7 @@
                 "lat": 37.7787677,
                 "lon": -122.4159292,
                 "region_id": 3,
-                "capacity": 21,
+                "capacity": 31,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -1317,10 +1317,10 @@
             },
             {
                 "station_id": "101",
-                "name": "Potrero Ave at 15th St (Temporary Location)",
+                "name": "15th St at Potrero Ave",
                 "short_name": "SF-M26",
-                "lat": 37.766629,
-                "lon": -122.407706,
+                "lat": 37.767078504583665,
+                "lon": -122.40735858678818,
                 "region_id": 3,
                 "capacity": 23,
                 "has_kiosk": true,
@@ -1729,6 +1729,22 @@
                     "KEY"
                 ],
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=130",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "131",
+                "name": "22nd St at Dolores St",
+                "short_name": "SF-Q21-1",
+                "lat": 37.75500026037814,
+                "lon": -122.42572769522668,
+                "region_id": 3,
+                "capacity": 0,
+                "has_kiosk": false,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=131",
                 "eightd_has_key_dispenser": false
             },
             {
@@ -2298,7 +2314,7 @@
                 "lat": 37.84427875399067,
                 "lon": -122.251900434494,
                 "region_id": 12,
-                "capacity": 25,
+                "capacity": 24,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -2843,7 +2859,7 @@
                 "lon": -121.881922,
                 "region_id": 5,
                 "capacity": 4,
-                "has_kiosk": true,
+                "has_kiosk": false,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
@@ -2901,10 +2917,10 @@
             },
             {
                 "station_id": "212",
-                "name": "Webster St at MacArthur Blvd (Temporary Location)",
+                "name": "Mosswood Park",
                 "short_name": "OK-G5",
-                "lat": 37.825008,
-                "lon": -122.261649,
+                "lat": 37.824892529951114,
+                "lon": -122.26043654610294,
                 "region_id": 12,
                 "capacity": 31,
                 "has_kiosk": true,
@@ -3809,22 +3825,6 @@
                     "KEY"
                 ],
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=271",
-                "eightd_has_key_dispenser": false
-            },
-            {
-                "station_id": "272",
-                "name": "Woolsey St at Sacramento St",
-                "short_name": "BK-H5",
-                "lat": 37.850577684047856,
-                "lon": -122.27817535400389,
-                "region_id": 14,
-                "capacity": 14,
-                "has_kiosk": true,
-                "rental_methods": [
-                    "CREDITCARD",
-                    "KEY"
-                ],
-                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=272",
                 "eightd_has_key_dispenser": false
             },
             {
@@ -4772,6 +4772,22 @@
                 "eightd_has_key_dispenser": false
             },
             {
+                "station_id": "353",
+                "name": "Ingalls St at Palou Ave",
+                "short_name": "SF-Y31",
+                "lat": 37.729666864796656,
+                "lon": -122.38355398178099,
+                "region_id": 0,
+                "capacity": 0,
+                "has_kiosk": false,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=353",
+                "eightd_has_key_dispenser": false
+            },
+            {
                 "station_id": "355",
                 "name": "23rd St at Tennessee St",
                 "short_name": "SF-Q30",
@@ -5111,11 +5127,11 @@
                 "station_id": "380",
                 "name": "Masonic Ave at Turk St",
                 "short_name": "SF-I16",
-                "lat": 37.77918657582862,
-                "lon": -122.44732618331908,
-                "region_id": 0,
-                "capacity": 0,
-                "has_kiosk": false,
+                "lat": 37.779046658472055,
+                "lon": -122.44729131460188,
+                "region_id": 3,
+                "capacity": 23,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
@@ -5146,13 +5162,45 @@
                 "lat": 37.7807871267462,
                 "lon": -122.4219337105751,
                 "region_id": 0,
+                "capacity": 31,
+                "has_kiosk": true,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=383",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "384",
+                "name": "Jackson St at Polk St",
+                "short_name": "SF-E23",
+                "lat": 37.79416044174933,
+                "lon": -122.42156758904456,
+                "region_id": 0,
                 "capacity": 0,
                 "has_kiosk": false,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
                 ],
-                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=383",
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=384",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "385",
+                "name": "Woolsey St at Sacramento St",
+                "short_name": "BK-I5",
+                "lat": 37.8505777,
+                "lon": -122.2781754,
+                "region_id": 14,
+                "capacity": 14,
+                "has_kiosk": true,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=385",
                 "eightd_has_key_dispenser": false
             }
         ]

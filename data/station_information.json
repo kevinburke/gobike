@@ -1,5 +1,5 @@
 {
-    "last_updated": 1546987968,
+    "last_updated": 1547862329,
     "ttl": 10,
     "data": {
         "stations": [
@@ -522,7 +522,7 @@
                 "lat": 37.78499972833808,
                 "lon": -122.39593561749642,
                 "region_id": 3,
-                "capacity": 43,
+                "capacity": 35,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -1044,6 +1044,22 @@
                 "eightd_has_key_dispenser": false
             },
             {
+                "station_id": "80",
+                "name": "Townsend St at 5th St",
+                "short_name": "SF-K28",
+                "lat": 37.77523486860597,
+                "lon": -122.39743709564209,
+                "region_id": 3,
+                "capacity": 35,
+                "has_kiosk": true,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=80",
+                "eightd_has_key_dispenser": false
+            },
+            {
                 "station_id": "81",
                 "name": "Berry St at 4th St",
                 "short_name": "SF-K29-1",
@@ -1274,7 +1290,7 @@
                 "lat": 37.765052,
                 "lon": -122.4218661,
                 "region_id": 3,
-                "capacity": 23,
+                "capacity": 3,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -1322,7 +1338,7 @@
                 "lat": 37.767078504583665,
                 "lon": -122.40735858678818,
                 "region_id": 3,
-                "capacity": 23,
+                "capacity": 27,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -1738,8 +1754,8 @@
                 "lat": 37.75500026037814,
                 "lon": -122.42572769522668,
                 "region_id": 3,
-                "capacity": 0,
-                "has_kiosk": false,
+                "capacity": 23,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
@@ -2858,7 +2874,7 @@
                 "lat": 37.329964,
                 "lon": -121.881922,
                 "region_id": 5,
-                "capacity": 4,
+                "capacity": 1,
                 "has_kiosk": false,
                 "rental_methods": [
                     "CREDITCARD",
@@ -4933,12 +4949,12 @@
             },
             {
                 "station_id": "364",
-                "name": "Mission Rock St at 3rd St",
+                "name": "China Basin St at 3rd St",
                 "short_name": "SF-K30-2",
-                "lat": 37.77288579232439,
-                "lon": -122.38994032144547,
+                "lat": 37.7719996,
+                "lon": -122.3899698,
                 "region_id": 3,
-                "capacity": 15,
+                "capacity": 31,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -5161,7 +5177,7 @@
                 "short_name": "SF-I22",
                 "lat": 37.7807871267462,
                 "lon": -122.4219337105751,
-                "region_id": 0,
+                "region_id": 3,
                 "capacity": 31,
                 "has_kiosk": true,
                 "rental_methods": [
@@ -5201,6 +5217,54 @@
                     "KEY"
                 ],
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=385",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "387",
+                "name": "Randall St at Chenery St",
+                "short_name": "SF-U21",
+                "lat": 37.73981271734901,
+                "lon": -122.42552250623703,
+                "region_id": 0,
+                "capacity": 0,
+                "has_kiosk": false,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=387",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "388",
+                "name": "Backesto Park (Jackson St at 13th St)",
+                "short_name": "SJ-J12-2",
+                "lat": 37.35288682729121,
+                "lon": -121.88604980707169,
+                "region_id": 0,
+                "capacity": 0,
+                "has_kiosk": false,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=388",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "389",
+                "name": "Taylor St at 9th St",
+                "short_name": "SJ-I11",
+                "lat": 37.35306166133104,
+                "lon": -121.89193725585936,
+                "region_id": 0,
+                "capacity": 0,
+                "has_kiosk": false,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=389",
                 "eightd_has_key_dispenser": false
             }
         ]

@@ -85,6 +85,15 @@ type Trip struct {
 	BikeShareForAllTrip bool
 }
 
+func (t Trip) AvgSpeed() float64 {
+	dist := t.Distance()
+	time := float64(t.EndTime.Sub(t.StartTime)) / float64(time.Hour)
+	if time == 0 {
+		return 0
+	}
+	return dist / time
+}
+
 // SingleRidePriceCents is the price of a single ride in cents ($2.19). Include
 // the credit card processing fee since it seems like most trips are paid for
 // using credit cards, and we can't guess.
@@ -126,6 +135,7 @@ func (t Trip) Dockless() bool {
 
 const earthRadiusMiles = 3959.0
 
+// Distance returns distance in miles.
 func (t Trip) Distance() float64 {
 	start := s2.LatLngFromDegrees(t.StartStationLatitude, t.StartStationLongitude)
 	end := s2.LatLngFromDegrees(t.EndStationLatitude, t.EndStationLongitude)

@@ -382,6 +382,9 @@ func parseLine(line []byte) (*StationStatus, error) {
 		ss.IsRenting = true
 		ss.IsReturning = true
 	} else {
+		if len(line) < 5 {
+			return nil, fmt.Errorf("invalid line: %q", line)
+		}
 		ss.IsInstalled = line[0] == 't'
 		line = line[2:]
 		ss.IsRenting = line[0] == 't'

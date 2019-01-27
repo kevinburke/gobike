@@ -1,5 +1,5 @@
 {
-    "last_updated": 1547862329,
+    "last_updated": 1548571966,
     "ttl": 10,
     "data": {
         "stations": [
@@ -708,6 +708,22 @@
                 "eightd_has_key_dispenser": false
             },
             {
+                "station_id": "54",
+                "name": "Alamo Square (Steiner St at Fulton St)",
+                "short_name": "SF-J19",
+                "lat": 37.77754677017323,
+                "lon": -122.43327409029006,
+                "region_id": 3,
+                "capacity": 0,
+                "has_kiosk": false,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=54",
+                "eightd_has_key_dispenser": false
+            },
+            {
                 "station_id": "55",
                 "name": "Webster St at Grove St",
                 "short_name": "SF-J20",
@@ -1210,7 +1226,7 @@
                 "lat": 37.772300631747626,
                 "lon": -122.39302754402159,
                 "region_id": 3,
-                "capacity": 23,
+                "capacity": 25,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -3882,7 +3898,7 @@
                 "lat": 37.3429973,
                 "lon": -121.8888891,
                 "region_id": 5,
-                "capacity": 15,
+                "capacity": 16,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -5217,6 +5233,22 @@
                     "KEY"
                 ],
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=385",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "386",
+                "name": "24th St at Bartlett St",
+                "short_name": "SF-Q23-3",
+                "lat": 37.75209703166926,
+                "lon": -122.41971552371979,
+                "region_id": 0,
+                "capacity": 0,
+                "has_kiosk": false,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=386",
                 "eightd_has_key_dispenser": false
             },
             {

@@ -46,6 +46,7 @@ func main() {
 			bikes[trip.BikeID] = append(bikes[trip.BikeID], trip.AvgSpeed())
 		} else {
 			bikes[trip.BikeID] = make([]float64, 1)
+			// TODO: weight longer trips more
 			bikes[trip.BikeID][0] = trip.AvgSpeed()
 		}
 	}

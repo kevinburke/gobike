@@ -1,5 +1,5 @@
 {
-    "last_updated": 1548571966,
+    "last_updated": 1549917264,
     "ttl": 10,
     "data": {
         "stations": [
@@ -714,8 +714,8 @@
                 "lat": 37.77754677017323,
                 "lon": -122.43327409029006,
                 "region_id": 3,
-                "capacity": 0,
-                "has_kiosk": false,
+                "capacity": 23,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
@@ -1306,7 +1306,7 @@
                 "lat": 37.765052,
                 "lon": -122.4218661,
                 "region_id": 3,
-                "capacity": 3,
+                "capacity": 23,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -3898,7 +3898,7 @@
                 "lat": 37.3429973,
                 "lon": -121.8888891,
                 "region_id": 5,
-                "capacity": 16,
+                "capacity": 15,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -3973,10 +3973,10 @@
             },
             {
                 "station_id": "280",
-                "name": "6th St at San Fernando St (Temporary Location)",
+                "name": "San Fernando St at 7th St",
                 "short_name": "SJ-M11-2",
-                "lat": 37.337038,
-                "lon": -121.884125,
+                "lat": 37.3371223728942,
+                "lon": -121.88321471214294,
                 "region_id": 5,
                 "capacity": 23,
                 "has_kiosk": true,
@@ -5241,9 +5241,9 @@
                 "short_name": "SF-Q23-3",
                 "lat": 37.75209703166926,
                 "lon": -122.41971552371979,
-                "region_id": 0,
-                "capacity": 0,
-                "has_kiosk": false,
+                "region_id": 3,
+                "capacity": 16,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
@@ -5274,8 +5274,8 @@
                 "lat": 37.35288682729121,
                 "lon": -121.88604980707169,
                 "region_id": 0,
-                "capacity": 0,
-                "has_kiosk": false,
+                "capacity": 15,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
@@ -5291,12 +5291,28 @@
                 "lon": -121.89193725585936,
                 "region_id": 0,
                 "capacity": 0,
-                "has_kiosk": false,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
                 ],
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=389",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "390",
+                "name": "Indiana St at Cesar Chavez St",
+                "short_name": "SF-S29",
+                "lat": 37.75024560720096,
+                "lon": -122.39040702581404,
+                "region_id": 0,
+                "capacity": 0,
+                "has_kiosk": false,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=390",
                 "eightd_has_key_dispenser": false
             }
         ]

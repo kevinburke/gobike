@@ -1,5 +1,5 @@
 {
-    "last_updated": 1549917264,
+    "last_updated": 1551729989,
     "ttl": 10,
     "data": {
         "stations": [
@@ -522,7 +522,7 @@
                 "lat": 37.78499972833808,
                 "lon": -122.39593561749642,
                 "region_id": 3,
-                "capacity": 35,
+                "capacity": 12,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -673,6 +673,22 @@
                     "KEY"
                 ],
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=50",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "51",
+                "name": "Parker Ave at McAllister St",
+                "short_name": "SF-J15",
+                "lat": 37.77610091264586,
+                "lon": -122.4530929327011,
+                "region_id": 3,
+                "capacity": 27,
+                "has_kiosk": true,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=51",
                 "eightd_has_key_dispenser": false
             },
             {
@@ -1751,8 +1767,8 @@
                 "station_id": "130",
                 "name": "22nd St Caltrain Station",
                 "short_name": "SF-P30",
-                "lat": 37.75771842163036,
-                "lon": -122.39181250333785,
+                "lat": 37.75728840784085,
+                "lon": -122.39205121994019,
                 "region_id": 3,
                 "capacity": 31,
                 "has_kiosk": true,
@@ -2890,7 +2906,7 @@
                 "lat": 37.329964,
                 "lon": -121.881922,
                 "region_id": 5,
-                "capacity": 1,
+                "capacity": 0,
                 "has_kiosk": false,
                 "rental_methods": [
                     "CREDITCARD",
@@ -3386,7 +3402,7 @@
                 "lat": 37.8688126,
                 "lon": -122.258764,
                 "region_id": 14,
-                "capacity": 23,
+                "capacity": 21,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -4743,8 +4759,8 @@
                 "station_id": "345",
                 "name": "Hubbell St at 16th St",
                 "short_name": "SF-M28",
-                "lat": 37.76647421515012,
-                "lon": -122.39829540252686,
+                "lat": 37.766482696439496,
+                "lon": -122.39827930927277,
                 "region_id": 3,
                 "capacity": 27,
                 "has_kiosk": true,
@@ -4804,19 +4820,19 @@
                 "eightd_has_key_dispenser": false
             },
             {
-                "station_id": "353",
-                "name": "Ingalls St at Palou Ave",
-                "short_name": "SF-Y31",
-                "lat": 37.729666864796656,
-                "lon": -122.38355398178099,
+                "station_id": "352",
+                "name": "Goettingen St at Bacon St",
+                "short_name": "SF-Y25",
+                "lat": 37.72694296622841,
+                "lon": -122.40659952163695,
                 "region_id": 0,
                 "capacity": 0,
-                "has_kiosk": false,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
                 ],
-                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=353",
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=352",
                 "eightd_has_key_dispenser": false
             },
             {
@@ -5239,8 +5255,8 @@
                 "station_id": "386",
                 "name": "24th St at Bartlett St",
                 "short_name": "SF-Q23-3",
-                "lat": 37.75209703166926,
-                "lon": -122.41971552371979,
+                "lat": 37.752104984423575,
+                "lon": -122.41972357034683,
                 "region_id": 3,
                 "capacity": 16,
                 "has_kiosk": true,
@@ -5273,7 +5289,7 @@
                 "short_name": "SJ-J12-2",
                 "lat": 37.35288682729121,
                 "lon": -121.88604980707169,
-                "region_id": 0,
+                "region_id": 5,
                 "capacity": 15,
                 "has_kiosk": true,
                 "rental_methods": [
@@ -5289,8 +5305,8 @@
                 "short_name": "SJ-I11",
                 "lat": 37.35306166133104,
                 "lon": -121.89193725585936,
-                "region_id": 0,
-                "capacity": 0,
+                "region_id": 5,
+                "capacity": 23,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -5306,13 +5322,173 @@
                 "lat": 37.75024560720096,
                 "lon": -122.39040702581404,
                 "region_id": 0,
+                "capacity": 3,
+                "has_kiosk": true,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=390",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "391",
+                "name": "1st St at Younger Ave",
+                "short_name": "SJ-G10",
+                "lat": 37.355029582252904,
+                "lon": -121.90443634986876,
+                "region_id": 0,
+                "capacity": 0,
+                "has_kiosk": true,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=391",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "392",
+                "name": "Sonora Ave at 1st St",
+                "short_name": "SJ-E9",
+                "lat": 37.364060462258806,
+                "lon": -121.9117319583893,
+                "region_id": 0,
                 "capacity": 0,
                 "has_kiosk": false,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
                 ],
-                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=390",
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=392",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "393",
+                "name": "Asbury St at The Alameda",
+                "short_name": "SJ-I5",
+                "lat": 37.33800951785354,
+                "lon": -121.91942721605302,
+                "region_id": 0,
+                "capacity": 0,
+                "has_kiosk": false,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=393",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "394",
+                "name": "10th St at Empire St",
+                "short_name": "SJ-J12-1",
+                "lat": 37.349426308788004,
+                "lon": -121.8876188993454,
+                "region_id": 0,
+                "capacity": 0,
+                "has_kiosk": false,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=394",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "395",
+                "name": "Kerley Dr at Rosemary St",
+                "short_name": "SJ-F10",
+                "lat": 37.360854155253826,
+                "lon": -121.90683424472809,
+                "region_id": 0,
+                "capacity": 0,
+                "has_kiosk": true,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=395",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "396",
+                "name": "Metro Dr at Technology Dr",
+                "short_name": "SJ-C9",
+                "lat": 37.36767805240811,
+                "lon": -121.9187942147255,
+                "region_id": 0,
+                "capacity": 0,
+                "has_kiosk": false,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=396",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "397",
+                "name": "Gish Rd at 1st St",
+                "short_name": "SJ-E10",
+                "lat": 37.36186680025918,
+                "lon": -121.90931528806688,
+                "region_id": 0,
+                "capacity": 0,
+                "has_kiosk": false,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=397",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "398",
+                "name": "Leavenworth St at Broadway",
+                "short_name": "SF-D24",
+                "lat": 37.796470691622936,
+                "lon": -122.4168576300144,
+                "region_id": 3,
+                "capacity": 19,
+                "has_kiosk": true,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=398",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "399",
+                "name": "Bay St at Fillmore St",
+                "short_name": "SF-B19",
+                "lat": 37.802635949749025,
+                "lon": -122.4362888932228,
+                "region_id": 0,
+                "capacity": 0,
+                "has_kiosk": true,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=399",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "400",
+                "name": "Buchanan St at North Point St",
+                "short_name": "SF-A20",
+                "lat": 37.80427201985148,
+                "lon": -122.43353694677353,
+                "region_id": 0,
+                "capacity": 3,
+                "has_kiosk": true,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=400",
                 "eightd_has_key_dispenser": false
             }
         ]

@@ -112,7 +112,8 @@ func main() {
 	for range ticker.C {
 		response, err := client.Stations.Status(ctx)
 		if err != nil {
-			log.Fatal(err) // TODO: catch errors
+			log.Print("error fetching status: %v\n", err)
+			continue
 		}
 		var station *gobike.StationStatus
 		var fullStations, emptyStations int

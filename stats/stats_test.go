@@ -42,6 +42,7 @@ func empty(city *geo.City, stationMap map[string]*gobike.Station) func(ss *gobik
 var tsSink TimeSeries
 
 func BenchmarkStatusFilterOverTime(b *testing.B) {
+	b.Skip("testdata is not currently valid")
 	tzOnce.Do(populateTZ)
 	statuses, err := gobike.LoadCapacityDir("testdata")
 	if err != nil {

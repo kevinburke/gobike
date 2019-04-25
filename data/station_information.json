@@ -1,5 +1,5 @@
 {
-    "last_updated": 1555359803,
+    "last_updated": 1556152437,
     "ttl": 10,
     "data": {
         "stations": [
@@ -2698,7 +2698,7 @@
                 "lat": 37.8110807,
                 "lon": -122.2432677,
                 "region_id": 12,
-                "capacity": 6,
+                "capacity": 15,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -4474,7 +4474,7 @@
                 "lat": 37.329732,
                 "lon": -121.901782,
                 "region_id": 5,
-                "capacity": 32,
+                "capacity": 35,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -5129,9 +5129,9 @@
                 "short_name": "SF-O30-2",
                 "lat": 37.76045755543481,
                 "lon": -122.38753974437712,
-                "region_id": 0,
-                "capacity": 0,
-                "has_kiosk": false,
+                "region_id": 3,
+                "capacity": 23,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
@@ -5545,9 +5545,9 @@
                 "short_name": "SJ-M14",
                 "lat": 37.345758795303155,
                 "lon": -121.87067806720735,
-                "region_id": 0,
-                "capacity": 0,
-                "has_kiosk": false,
+                "region_id": 5,
+                "capacity": 19,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
@@ -5705,9 +5705,9 @@
                 "short_name": "SJ-P7",
                 "lat": 37.31975695999228,
                 "lon": -121.89299941062927,
-                "region_id": 0,
-                "capacity": 0,
-                "has_kiosk": false,
+                "region_id": 5,
+                "capacity": 19,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
@@ -5721,9 +5721,9 @@
                 "short_name": "SJ-N6",
                 "lat": 37.321181834267314,
                 "lon": -121.9030898809433,
-                "region_id": 0,
-                "capacity": 0,
-                "has_kiosk": false,
+                "region_id": 5,
+                "capacity": 23,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
@@ -5737,9 +5737,9 @@
                 "short_name": "SJ-M5",
                 "lat": 37.32601084794081,
                 "lon": -121.91232740879057,
-                "region_id": 0,
-                "capacity": 0,
-                "has_kiosk": false,
+                "region_id": 5,
+                "capacity": 23,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
@@ -5753,9 +5753,9 @@
                 "short_name": "SJ-L13",
                 "lat": 37.34398467798214,
                 "lon": -121.87438488006593,
-                "region_id": 0,
-                "capacity": 0,
-                "has_kiosk": false,
+                "region_id": 5,
+                "capacity": 19,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"

@@ -38,6 +38,16 @@
       </div>
       <div class="row">
         <div class="col-md-8">
+          {{ if eq .Area "sf" }}
+          <div class="row">
+            <div class="col-12">
+              <p>
+              <br />
+              &nbsp;&nbsp;&nbsp; RIP <a href="https://www.sfexaminer.com/news/death-of-bicyclist-prompts-outpouring-of-grief-renewed-calls-for-protected-bike-lanes/">Tess Rothstein</a>. <a href="mailto:MTABoard@sfmta.com">Contact the MTA Board</a> to ask for protected bike lanes in San Francisco.
+              </p>
+            </div>
+          </div>
+          {{ end }}
           <div class="row">
             <div class="col-md-12 my-3">
               <h4>Trips per week: {{ .TripsPerWeekCount }}</h4>

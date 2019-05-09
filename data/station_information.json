@@ -1,5 +1,5 @@
 {
-    "last_updated": 1556152437,
+    "last_updated": 1557415561,
     "ttl": 10,
     "data": {
         "stations": [
@@ -4234,7 +4234,7 @@
                 "lat": 37.3259984,
                 "lon": -121.87712,
                 "region_id": 5,
-                "capacity": 27,
+                "capacity": 14,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -4533,10 +4533,10 @@
             },
             {
                 "station_id": "316",
-                "name": "San Salvador St at 1st St",
+                "name": "1st St at San Carlos Ave",
                 "short_name": "SJ-N10-2",
-                "lat": 37.330165,
-                "lon": -121.885831,
+                "lat": 37.33116799422201,
+                "lon": -121.88693761825562,
                 "region_id": 5,
                 "capacity": 19,
                 "has_kiosk": true,
@@ -4778,7 +4778,7 @@
                 "lat": 37.78100971717512,
                 "lon": -122.40566611289978,
                 "region_id": 3,
-                "capacity": 19,
+                "capacity": 28,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -5673,9 +5673,9 @@
                 "short_name": "SF-AA15",
                 "lat": 37.720554988720636,
                 "lon": -122.4477231502533,
-                "region_id": 0,
-                "capacity": 0,
-                "has_kiosk": false,
+                "region_id": 3,
+                "capacity": 19,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
@@ -5769,6 +5769,22 @@
                 "short_name": "SF-F23",
                 "lat": 37.78819690783405,
                 "lon": -122.42037266492844,
+                "region_id": 3,
+                "capacity": 21,
+                "has_kiosk": true,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=419",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "421",
+                "name": "23rd St at Taylor St",
+                "short_name": "SJ-I14",
+                "lat": 37.3600013909666,
+                "lon": -121.87877833843231,
                 "region_id": 0,
                 "capacity": 0,
                 "has_kiosk": false,
@@ -5776,7 +5792,55 @@
                     "CREDITCARD",
                     "KEY"
                 ],
-                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=419",
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=421",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "422",
+                "name": "Stockton Ave at Lenzen Ave",
+                "short_name": "SJ-J6",
+                "lat": 37.33677476275722,
+                "lon": -121.90914899110793,
+                "region_id": 0,
+                "capacity": 0,
+                "has_kiosk": false,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=422",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "423",
+                "name": "South San Jose State (7th St at Humboldt St)",
+                "short_name": "SJ-R11",
+                "lat": 37.32031582108647,
+                "lon": -121.87009871006012,
+                "region_id": 0,
+                "capacity": 0,
+                "has_kiosk": false,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=423",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "424",
+                "name": "Greenwich St at Webster St",
+                "short_name": "SF-C20",
+                "lat": 37.799207926286,
+                "lon": -122.43412166833876,
+                "region_id": 3,
+                "capacity": 19,
+                "has_kiosk": true,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=424",
                 "eightd_has_key_dispenser": false
             }
         ]

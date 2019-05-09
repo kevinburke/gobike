@@ -16,16 +16,7 @@ import (
 	"github.com/kevinburke/gobike"
 	"github.com/kevinburke/gobike/client"
 	"github.com/kevinburke/rest"
-	"golang.org/x/sys/unix"
 )
-
-func lock(f *os.File) error {
-	return unix.Flock(int(f.Fd()), unix.LOCK_EX)
-}
-
-func unlock(f *os.File) error {
-	return unix.Flock(int(f.Fd()), unix.LOCK_UN)
-}
 
 func writeStation(buf *bytes.Buffer, station *gobike.StationStatus) {
 	buf.WriteString(station.LastReported.Format(time.RFC3339))

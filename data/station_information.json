@@ -1,5 +1,5 @@
 {
-    "last_updated": 1557415561,
+    "last_updated": 1558214609,
     "ttl": 10,
     "data": {
         "stations": [
@@ -343,8 +343,8 @@
                 "station_id": "25",
                 "name": "Howard St at 2nd St",
                 "short_name": "SF-G28-1",
-                "lat": 37.787521780456245,
-                "lon": -122.39740490913391,
+                "lat": 37.78692825678771,
+                "lon": -122.39811301231384,
                 "region_id": 3,
                 "capacity": 19,
                 "has_kiosk": true,
@@ -4234,7 +4234,7 @@
                 "lat": 37.3259984,
                 "lon": -121.87712,
                 "region_id": 5,
-                "capacity": 14,
+                "capacity": 27,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -5785,9 +5785,9 @@
                 "short_name": "SJ-I14",
                 "lat": 37.3600013909666,
                 "lon": -121.87877833843231,
-                "region_id": 0,
-                "capacity": 0,
-                "has_kiosk": false,
+                "region_id": 5,
+                "capacity": 19,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
@@ -5801,9 +5801,9 @@
                 "short_name": "SJ-J6",
                 "lat": 37.33677476275722,
                 "lon": -121.90914899110793,
-                "region_id": 0,
-                "capacity": 0,
-                "has_kiosk": false,
+                "region_id": 5,
+                "capacity": 23,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
@@ -5817,9 +5817,9 @@
                 "short_name": "SJ-R11",
                 "lat": 37.32031582108647,
                 "lon": -121.87009871006012,
-                "region_id": 0,
-                "capacity": 0,
-                "has_kiosk": false,
+                "region_id": 5,
+                "capacity": 31,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
@@ -5841,6 +5841,54 @@
                     "KEY"
                 ],
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=424",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "425",
+                "name": "Bird Ave at Willow St",
+                "short_name": "SJ-Q5",
+                "lat": 37.31128394611736,
+                "lon": -121.89632534980774,
+                "region_id": 0,
+                "capacity": 0,
+                "has_kiosk": false,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=425",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "426",
+                "name": "San Carlos St at Meridian Ave",
+                "short_name": "SJ-M4",
+                "lat": 37.3233446905968,
+                "lon": -121.91349685192107,
+                "region_id": 5,
+                "capacity": 19,
+                "has_kiosk": true,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=426",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "427",
+                "name": "Auzerais Ave at Lincoln Ave",
+                "short_name": "SJ-N5-2",
+                "lat": 37.32096853145443,
+                "lon": -121.90829604864119,
+                "region_id": 5,
+                "capacity": 27,
+                "has_kiosk": true,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=427",
                 "eightd_has_key_dispenser": false
             }
         ]

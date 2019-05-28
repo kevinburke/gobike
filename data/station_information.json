@@ -1,5 +1,5 @@
 {
-    "last_updated": 1558214609,
+    "last_updated": 1559013217,
     "ttl": 10,
     "data": {
         "stations": [
@@ -5849,9 +5849,9 @@
                 "short_name": "SJ-Q5",
                 "lat": 37.31128394611736,
                 "lon": -121.89632534980774,
-                "region_id": 0,
-                "capacity": 0,
-                "has_kiosk": false,
+                "region_id": 5,
+                "capacity": 19,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
@@ -5889,6 +5889,150 @@
                     "KEY"
                 ],
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=427",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "429",
+                "name": "Prototype Lab LBSNYC Headquarters",
+                "short_name": "Prototype LBSNYC Motivate Headquarters",
+                "lat": 40.7508472,
+                "lon": -73.9972672,
+                "region_id": 0,
+                "capacity": 2,
+                "has_kiosk": true,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=429",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "431",
+                "name": "Judson Ave at Gennessee St",
+                "short_name": "SF-X14",
+                "lat": 37.728281592452824,
+                "lon": -122.4506950378418,
+                "region_id": 0,
+                "capacity": 0,
+                "has_kiosk": false,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=431",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "432",
+                "name": "Quesada Ave at 3rd St",
+                "short_name": "SF-X29",
+                "lat": 37.73309280990925,
+                "lon": -122.39097297191618,
+                "region_id": 0,
+                "capacity": 0,
+                "has_kiosk": false,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=432",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "433",
+                "name": "Gennessee St at Monterey Blvd",
+                "short_name": "SF-W14",
+                "lat": 37.7316566899845,
+                "lon": -122.45112150907515,
+                "region_id": 0,
+                "capacity": 0,
+                "has_kiosk": false,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=433",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "434",
+                "name": "Carroll St at 3rd St",
+                "short_name": "SF-Z28",
+                "lat": 37.725375194135154,
+                "lon": -122.39401996135712,
+                "region_id": 0,
+                "capacity": 0,
+                "has_kiosk": false,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=434",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "435",
+                "name": "Jennings St at Revere Ave",
+                "short_name": "SF-Y30",
+                "lat": 37.72939320661727,
+                "lon": -122.38653659820555,
+                "region_id": 0,
+                "capacity": 0,
+                "has_kiosk": false,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=435",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "436",
+                "name": "McKinnon Ave at 3rd St",
+                "short_name": "SF-W29",
+                "lat": 37.73629587217104,
+                "lon": -122.38996982574461,
+                "region_id": 0,
+                "capacity": 0,
+                "has_kiosk": false,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=436",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "437",
+                "name": "Evans Ave at Mendell St",
+                "short_name": "SF-V31",
+                "lat": 37.740177543351436,
+                "lon": -122.38373637199402,
+                "region_id": 0,
+                "capacity": 0,
+                "has_kiosk": false,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=437",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "438",
+                "name": "Oakdale Ave at Phelps St",
+                "short_name": "SF-V28",
+                "lat": 37.7368516211844,
+                "lon": -122.3942506313324,
+                "region_id": 0,
+                "capacity": 0,
+                "has_kiosk": false,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=438",
                 "eightd_has_key_dispenser": false
             }
         ]

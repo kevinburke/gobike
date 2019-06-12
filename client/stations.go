@@ -102,13 +102,21 @@ func buildStations(body *stationResponse) (*StationResponse, error) {
 			return nil, err
 		}
 		sort.Strings(stationJSONs[i].RentalMethods)
+		if stationJSONs[i].RegionID == "" {
+			// no great answer about what to do here.
+			stationJSONs[i].RegionID = "-1"
+		}
+		regionID, err := strconv.Atoi(stationJSONs[i].RegionID)
+		if err != nil {
+			return nil, err
+		}
 		stations[i] = &gobike.Station{
 			ID:              id,
 			Name:            stationJSONs[i].Name,
 			ShortName:       stationJSONs[i].ShortName,
 			Latitude:        stationJSONs[i].Latitude,
 			Longitude:       stationJSONs[i].Longitude,
-			RegionID:        stationJSONs[i].RegionID,
+			RegionID:        regionID,
 			Capacity:        stationJSONs[i].Capacity,
 			HasKiosk:        stationJSONs[i].HasKiosk,
 			RentalMethods:   stationJSONs[i].RentalMethods,
@@ -167,7 +175,7 @@ type stationJSON struct {
 	ShortName       string   `json:"short_name"`
 	Latitude        float64  `json:"lat"`
 	Longitude       float64  `json:"lon"`
-	RegionID        int      `json:"region_id"`
+	RegionID        string   `json:"region_id"`
 	Capacity        int      `json:"capacity"`
 	HasKiosk        bool     `json:"has_kiosk"`
 	RentalMethods   []string `json:"rental_methods"`
@@ -197,7 +205,7 @@ func (sr *StationResponse) MarshalJSON() ([]byte, error) {
 			ShortName:       sr.Stations[i].ShortName,
 			Latitude:        sr.Stations[i].Latitude,
 			Longitude:       sr.Stations[i].Longitude,
-			RegionID:        sr.Stations[i].RegionID,
+			RegionID:        strconv.Itoa(sr.Stations[i].RegionID),
 			Capacity:        sr.Stations[i].Capacity,
 			HasKiosk:        sr.Stations[i].HasKiosk,
 			RentalMethods:   sr.Stations[i].RentalMethods,

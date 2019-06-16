@@ -1,5 +1,5 @@
 {
-    "last_updated": 1560313213,
+    "last_updated": 1560720859,
     "ttl": 300,
     "data": {
         "stations": [
@@ -666,7 +666,7 @@
                 "lat": 37.780526,
                 "lon": -122.390288,
                 "region_id": "3",
-                "capacity": 39,
+                "capacity": 0,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -1767,8 +1767,8 @@
                 "station_id": "130",
                 "name": "22nd St Caltrain Station",
                 "short_name": "SF-P30",
-                "lat": 37.75728840784085,
-                "lon": -122.39205121994019,
+                "lat": 37.75770404149008,
+                "lon": -122.39188492298126,
                 "region_id": "3",
                 "capacity": 31,
                 "has_kiosk": true,
@@ -1994,7 +1994,7 @@
                 "lat": 37.7423139,
                 "lon": -122.4231805,
                 "region_id": "3",
-                "capacity": 15,
+                "capacity": 0,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -5191,8 +5191,8 @@
                 "station_id": "381",
                 "name": "20th St at Dolores St",
                 "short_name": "SF-P21",
-                "lat": 37.758238424179275,
-                "lon": -122.42609381675719,
+                "lat": 37.75823842417928,
+                "lon": -122.4260938167572,
                 "region_id": "3",
                 "capacity": 27,
                 "has_kiosk": true,

@@ -17,7 +17,7 @@ race-test: lint
 
 lint: | $(STATICCHECK)
 	go vet -composites=false ./...
-	go list ./... | grep -v vendor | xargs $(STATICCHECK) --ignore='github.com/kevinburke/gobike/geo.go:U1000'
+	go list ./... | grep -v vendor | xargs $(STATICCHECK)
 
 bench: | $(BENCHSTAT)
 	go list ./... | grep -v vendor | xargs go test -benchtime=2s -bench=. -run='^$$' 2>&1 | $(BENCHSTAT) /dev/stdin

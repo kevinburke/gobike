@@ -59,6 +59,22 @@
   version = "2.1"
 
 [[projects]]
+  branch = "master"
+  digest = "1:f9e9e525a27d706188202ba68368992045e323f5ef225536b54715d10ed40b07"
+  name = "github.com/kevinburke/semaphore"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "8b4e8dc01d0f76c50601c31d4df7bbca1d7322b3"
+
+[[projects]]
+  digest = "1:8fa98d67d114aca6ff8ff36fa8e237ca13a0b45526e9b95d027f16965af39bf2"
+  name = "github.com/kevinburke/tss"
+  packages = ["lib"]
+  pruneopts = "UT"
+  revision = "e42123b20e56eb603f26a364a49a98c4ea0c2a8b"
+  version = "0.5"
+
+[[projects]]
   digest = "1:c658e84ad3916da105a761660dcaeb01e63416c8ec7bc62256a9b411a05fcd67"
   name = "github.com/mattn/go-colorable"
   packages = ["."]
@@ -98,6 +114,29 @@
   pruneopts = "UT"
   revision = "98c5dad5d1a0e8a73845ecc8897d0bd56586511d"
 
+[[projects]]
+  digest = "1:137714ae7838cec8b48918205cb3cd96b17afebaa715e35a8213e6e0cc739d56"
+  name = "golang.org/x/text"
+  packages = [
+    "feature/plural",
+    "internal",
+    "internal/catmsg",
+    "internal/format",
+    "internal/gen",
+    "internal/language",
+    "internal/language/compact",
+    "internal/number",
+    "internal/stringset",
+    "internal/tag",
+    "language",
+    "message",
+    "message/catalog",
+    "unicode/cldr",
+  ]
+  pruneopts = "UT"
+  revision = "342b2e1fbaa52c93f31447ad2c6abc048c63e475"
+  version = "v0.3.2"
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
@@ -105,8 +144,12 @@
     "github.com/golang/geo/s2",
     "github.com/kevinburke/handlers",
     "github.com/kevinburke/rest",
+    "github.com/kevinburke/semaphore",
+    "github.com/kevinburke/tss/lib",
     "golang.org/x/sync/errgroup",
     "golang.org/x/sys/unix",
+    "golang.org/x/text/language",
+    "golang.org/x/text/message",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1

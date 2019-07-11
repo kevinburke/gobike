@@ -27,6 +27,7 @@ import (
 
 	"github.com/golang/geo/s2"
 	"github.com/kevinburke/gobike/geo"
+	"github.com/kevinburke/semaphore"
 	"golang.org/x/sync/errgroup"
 )
 
@@ -239,12 +240,15 @@ func LoadDir(directory string) ([]*Trip, error) {
 
 	trips := make([]*Trip, 0)
 	var mu sync.Mutex
+	sem := semaphore.New(10)
 	for _, file := range files {
 		file := file
 		if !strings.HasSuffix(file.Name(), "-fordgobike-tripdata.csv") {
 			continue
 		}
 		group.Go(func() error {
+			sem.AcquireContext(errctx)
+			defer sem.Release()
 			f, err := os.Open(filepath.Join(directory, file.Name()))
 			if err != nil {
 				return err
@@ -441,12 +445,15 @@ func LoadCapacityDir(directory string) ([]*StationStatus, error) {
 	group, errctx := errgroup.WithContext(context.Background())
 	statuses := make([]*StationStatus, 0)
 	var mu sync.Mutex
+	sem := semaphore.New(10)
 	for _, file := range files {
 		file := file
 		if !strings.HasSuffix(file.Name(), "-capacity.csv") {
 			continue
 		}
 		group.Go(func() error {
+			sem.AcquireContext(errctx)
+			defer sem.Release()
 			f, err := os.Open(filepath.Join(directory, file.Name()))
 			if err != nil {
 				return err

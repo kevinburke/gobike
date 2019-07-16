@@ -228,9 +228,9 @@ func parseTrip(record []string) (*Trip, error) {
 	}
 	t.MemberGender = record[14]
 
-	if len(record) == 16 {
+	if len(record) >= 16 {
 		switch record[15] {
-		case "No":
+		case "No", "":
 			t.BikeShareForAllTrip = false
 		case "Yes":
 			t.BikeShareForAllTrip = true

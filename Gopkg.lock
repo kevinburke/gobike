@@ -67,12 +67,12 @@
   revision = "8b4e8dc01d0f76c50601c31d4df7bbca1d7322b3"
 
 [[projects]]
-  digest = "1:8fa98d67d114aca6ff8ff36fa8e237ca13a0b45526e9b95d027f16965af39bf2"
+  digest = "1:3e73979b390394de9ad71c231f814d93af22774780bcaafb16ce7b8d86d95107"
   name = "github.com/kevinburke/tss"
   packages = ["lib"]
   pruneopts = "UT"
-  revision = "e42123b20e56eb603f26a364a49a98c4ea0c2a8b"
-  version = "0.5"
+  revision = "94d6a55451bbb0eba76f9269d25a83d13983481a"
+  version = "1.1"
 
 [[projects]]
   digest = "1:c658e84ad3916da105a761660dcaeb01e63416c8ec7bc62256a9b411a05fcd67"

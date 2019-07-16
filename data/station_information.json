@@ -1,5 +1,5 @@
 {
-    "last_updated": 1560720859,
+    "last_updated": 1563300375,
     "ttl": 300,
     "data": {
         "stations": [
@@ -666,7 +666,7 @@
                 "lat": 37.780526,
                 "lon": -122.390288,
                 "region_id": "3",
-                "capacity": 0,
+                "capacity": 39,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -1994,7 +1994,7 @@
                 "lat": 37.7423139,
                 "lon": -122.4231805,
                 "region_id": "3",
-                "capacity": 0,
+                "capacity": 15,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -2901,13 +2901,13 @@
             },
             {
                 "station_id": "208",
-                "name": "William St at 4th St (Temporary Location)",
+                "name": "4th St at San Carlos St",
                 "short_name": "SJ-N10-1",
-                "lat": 37.329964,
-                "lon": -121.881922,
+                "lat": 37.33279952386071,
+                "lon": -121.88385039567946,
                 "region_id": "5",
-                "capacity": 0,
-                "has_kiosk": false,
+                "capacity": 19,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
@@ -4278,7 +4278,7 @@
             {
                 "station_id": "299",
                 "name": "Bestor Art Park",
-                "short_name": "SJ-Q10",
+                "short_name": "SJ-Q11",
                 "lat": 37.3236779,
                 "lon": -121.8741186,
                 "region_id": "5",
@@ -5882,7 +5882,7 @@
                 "lat": 37.32096853145443,
                 "lon": -121.90829604864119,
                 "region_id": "5",
-                "capacity": 27,
+                "capacity": 18,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -6057,9 +6057,9 @@
                 "short_name": "SF-M15",
                 "lat": 37.765910207223854,
                 "lon": -122.44925737380981,
-                "region_id": "-1",
-                "capacity": 0,
-                "has_kiosk": false,
+                "region_id": "3",
+                "capacity": 23,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
@@ -6081,6 +6081,70 @@
                     "KEY"
                 ],
                 "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=441",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "442",
+                "name": "Newbury Park Dr at King Rd",
+                "short_name": "SJ-H17",
+                "lat": 37.3655356585599,
+                "lon": -121.86796635389327,
+                "region_id": "-1",
+                "capacity": 0,
+                "has_kiosk": false,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=442",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "443",
+                "name": "3rd St at Keyes St",
+                "short_name": "SJ-Q10",
+                "lat": 37.32086614588923,
+                "lon": -121.87627851963045,
+                "region_id": "5",
+                "capacity": 23,
+                "has_kiosk": true,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=443",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "444",
+                "name": "Mercado Way at Sierra Rd",
+                "short_name": "SJ-G15",
+                "lat": 37.37111641335901,
+                "lon": -121.88133180141449,
+                "region_id": "-1",
+                "capacity": 0,
+                "has_kiosk": false,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=444",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "445",
+                "name": "Natoma St at New Montgomery St",
+                "short_name": "SF-G28-2",
+                "lat": 37.78655306258097,
+                "lon": -122.39960700273514,
+                "region_id": "-1",
+                "capacity": 0,
+                "has_kiosk": false,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=445",
                 "eightd_has_key_dispenser": false
             }
         ]

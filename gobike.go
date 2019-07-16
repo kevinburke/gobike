@@ -36,6 +36,11 @@ const Version = "0.12"
 // This station is not present in the public station list, but trips reference
 // it, so we have to match for it when iterating through trips.
 const DepotStationID = "344"
+const UnknownStation = "408"
+
+func InternalStation(id string) bool {
+	return id == DepotStationID || id == UnknownStation
+}
 
 var tz *time.Location
 var tzOnce sync.Once
@@ -138,6 +143,9 @@ func parseTrip(record []string) (*Trip, error) {
 	// "duration_sec","start_time","end_time","start_station_id","start_station_name","start_station_latitude","start_station_longitude","end_station_id","end_station_name","end_station_latitude","end_station_longitude","bike_id","user_type","member_birth_year","member_gender","bike_share_for_all_trip"
 	tzOnce.Do(populateTZ)
 	t := new(Trip)
+	if record[0] == "" {
+		return nil, fmt.Errorf("invalid record 0 in line, cannot get time: %v", record)
+	}
 	sec, err := strconv.Atoi(record[0])
 	if err != nil {
 		return nil, err
@@ -153,13 +161,17 @@ func parseTrip(record []string) (*Trip, error) {
 		return nil, err
 	}
 	t.EndTime = endTime
-	if record[3] != "NULL" {
+	// TODO handle dockless bike case.
+	if record[3] != "NULL" && record[3] != "" {
 		if record[3] == "347" {
 			record[3] = "136" // san bruno ave and 23rd st.
 		}
 		// for the moment we expect station ID's to be integers. error if we get
 		// anything else back in case we have integer-dependent code elsewhere
 		// that might be corrupted.
+		if record[3] == "" {
+			return nil, fmt.Errorf("invalid station id in line: %q", strings.Join(record, ", "))
+		}
 		_, err := strconv.Atoi(record[3])
 		if err != nil {
 			return nil, err
@@ -177,7 +189,7 @@ func parseTrip(record []string) (*Trip, error) {
 		return nil, err
 	}
 	t.StartStationLongitude = slng
-	if record[7] != "NULL" {
+	if record[7] != "NULL" && record[7] != "" {
 		if record[7] == "347" {
 			record[7] = "136" // san bruno ave and 23rd st.
 		}
@@ -247,7 +259,12 @@ func LoadDir(directory string) ([]*Trip, error) {
 			continue
 		}
 		group.Go(func() error {
-			sem.AcquireContext(errctx)
+			for {
+				ok := sem.AcquireContext(errctx)
+				if ok {
+					break
+				}
+			}
 			defer sem.Release()
 			f, err := os.Open(filepath.Join(directory, file.Name()))
 			if err != nil {

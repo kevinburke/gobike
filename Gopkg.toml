@@ -7,6 +7,10 @@
   version = "0.39.0"
 
 [[constraint]]
+  name = "github.com/kevinburke/semaphore"
+  version = "1.0"
+
+[[constraint]]
   name = "github.com/kevinburke/tss"
   version = "1.1"
 

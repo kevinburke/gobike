@@ -1,5 +1,5 @@
 {
-    "last_updated": 1563300375,
+    "last_updated": 1565412528,
     "ttl": 300,
     "data": {
         "stations": [
@@ -3317,7 +3317,7 @@
             },
             {
                 "station_id": "234",
-                "name": "Farnam St at Fruitvale Ave",
+                "name": "Fruitvale Ave at International Blvd",
                 "short_name": "OK-M16",
                 "lat": 37.778058,
                 "lon": -122.2254,
@@ -4730,7 +4730,7 @@
                 "lat": 37.33618830029063,
                 "lon": -121.88927650451659,
                 "region_id": "5",
-                "capacity": 15,
+                "capacity": 11,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -5012,6 +5012,22 @@
                 "eightd_has_key_dispenser": false
             },
             {
+                "station_id": "367",
+                "name": "Outside Lands (Temporary Station)",
+                "short_name": "Outside Lands (Temporary Station)",
+                "lat": 37.771104,
+                "lon": -122.473658,
+                "region_id": "-1",
+                "capacity": 11,
+                "has_kiosk": true,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=367",
+                "eightd_has_key_dispenser": false
+            },
+            {
                 "station_id": "368",
                 "name": "Myrtle St at Polk St",
                 "short_name": "SF-G23",
@@ -5143,8 +5159,8 @@
                 "station_id": "377",
                 "name": "Fell St at Stanyan St",
                 "short_name": "SF-K15-",
-                "lat": 37.771916882623145,
-                "lon": -122.45370447635652,
+                "lat": 37.7719511,
+                "lon": -122.4537048,
                 "region_id": "3",
                 "capacity": 19,
                 "has_kiosk": true,
@@ -5882,7 +5898,7 @@
                 "lat": 37.32096853145443,
                 "lon": -121.90829604864119,
                 "region_id": "5",
-                "capacity": 18,
+                "capacity": 27,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -6137,6 +6153,22 @@
                 "short_name": "SF-G28-2",
                 "lat": 37.78655306258097,
                 "lon": -122.39960700273514,
+                "region_id": "3",
+                "capacity": 21,
+                "has_kiosk": true,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=445",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "446",
+                "name": "Mint St at Mission St",
+                "short_name": "SF-H26-2",
+                "lat": 37.78227952975499,
+                "lon": -122.40731298923492,
                 "region_id": "-1",
                 "capacity": 0,
                 "has_kiosk": false,
@@ -6144,7 +6176,7 @@
                     "CREDITCARD",
                     "KEY"
                 ],
-                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=445",
+                "rental_url": "http://app.fordgobike.com/Z6gL/SiFlGfIOTF?station_id=446",
                 "eightd_has_key_dispenser": false
             }
         ]

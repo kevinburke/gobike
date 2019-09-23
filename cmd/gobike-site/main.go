@@ -365,10 +365,23 @@ var cities = map[string]*geo.City{
 }
 
 func main() {
+	// check out loadStationsFromDisk
+	// localStationFile := flag.String("local-station-file", "", "Use local station file instead of retrieving stations over HTTP")
 	flag.Parse()
 
 	w := tss.NewWriter(os.Stdout, time.Time{})
 	printer = message.NewPrinter(language.English)
+	fmt.Fprintf(w, "get stations\n")
+	var stations []*gobike.Station
+	c := client.NewClient()
+	c.Stations.CacheTTL = 24 * 14 * time.Hour
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+	resp, err := c.Stations.All(ctx)
+	if err != nil {
+		log.Fatal(err)
+	}
+	stations = resp.Stations
 	group := errgroup.Group{}
 	var trips []*gobike.Trip
 	var statuses []*gobike.StationStatus
@@ -393,16 +406,7 @@ func main() {
 	homepageTpl := template.Must(template.ParseFiles("templates/city.html"))
 	stationTpl := template.Must(template.ParseFiles("templates/stations.html"))
 
-	fmt.Fprintf(w, "get stations\n")
-	c := client.NewClient()
-	c.Stations.CacheTTL = 24 * 14 * time.Hour
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	defer cancel()
-	resp, err := c.Stations.All(ctx)
-	if err != nil {
-		log.Fatal(err)
-	}
-	stationMap := gobike.StationMap(resp.Stations)
+	stationMap := gobike.StationMap(stations)
 	tripsPerCity := make(map[string][]*gobike.Trip)
 	tripsPerCity["bayarea"] = trips
 	unknownStations := make(map[string]string)

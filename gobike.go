@@ -139,8 +139,11 @@ func (t Trip) Distance() float64 {
 	return earthRadiusMiles * dist.Radians()
 }
 
-func parseTrip(record []string) (*Trip, error) {
+func parseTrip(record []string, newFormat bool) (*Trip, error) {
+	// Old:
 	// "duration_sec","start_time","end_time","start_station_id","start_station_name","start_station_latitude","start_station_longitude","end_station_id","end_station_name","end_station_latitude","end_station_longitude","bike_id","user_type","member_birth_year","member_gender","bike_share_for_all_trip"
+	// New:
+	// duration_sec;start_time;end_time;start_station_id;start_station_name;start_station_latitude;start_station_longitude;end_station_id;end_station_name;end_station_latitude;end_station_longitude;bike_id;user_type;bike_share_for_all_trip;rental_access_method
 	tzOnce.Do(populateTZ)
 	t := new(Trip)
 	if record[0] == "" {
@@ -148,7 +151,7 @@ func parseTrip(record []string) (*Trip, error) {
 	}
 	sec, err := strconv.Atoi(record[0])
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("could not parse seconds field (column 0): %w", err)
 	}
 	t.Duration = time.Duration(sec) * time.Second
 	startTime, err := time.ParseInLocation("2006-01-02 15:04:05", record[1], tz)
@@ -174,7 +177,7 @@ func parseTrip(record []string) (*Trip, error) {
 		}
 		_, err := strconv.Atoi(record[3])
 		if err != nil {
-			return nil, err
+			return nil, fmt.Errorf("could not parse start station ID as an integer: %w", err)
 		}
 		t.StartStationID = record[3]
 	}
@@ -198,7 +201,7 @@ func parseTrip(record []string) (*Trip, error) {
 		// that might be corrupted.
 		_, err := strconv.Atoi(record[7])
 		if err != nil {
-			return nil, err
+			return nil, fmt.Errorf("could not parse end station ID as an integer: %w", err)
 		}
 		t.EndStationID = record[7]
 	}
@@ -220,13 +223,26 @@ func parseTrip(record []string) (*Trip, error) {
 	t.BikeID = id
 	t.UserType = record[12]
 	if record[13] != "" {
-		birthYear, err := strconv.Atoi(record[13])
-		if err != nil {
-			return nil, err
+		if newFormat {
+			switch record[13] {
+			case "No", "":
+				t.BikeShareForAllTrip = false
+			case "Yes":
+				t.BikeShareForAllTrip = true
+			default:
+				panic("unknown bike_share_for_all_trip record 13 " + record[13])
+			}
+		} else {
+			birthYear, err := strconv.Atoi(record[13])
+			if err != nil {
+				return nil, fmt.Errorf("could not parse member birth year (column 13) as an integer: %w", err)
+			}
+			t.MemberBirthYear = birthYear
 		}
-		t.MemberBirthYear = birthYear
 	}
-	t.MemberGender = record[14]
+	if newFormat {
+		t.MemberGender = record[14]
+	}
 
 	if len(record) >= 16 {
 		switch record[15] {
@@ -296,8 +312,27 @@ func LoadDir(directory string) ([]*Trip, error) {
 	return trips, nil
 }
 
-func Load(rdr io.Reader) ([]*Trip, error) {
+type PeekReader interface {
+	Read(p []byte) (int, error)
+	Peek(n int) ([]byte, error)
+}
+
+func Load(rdr PeekReader) ([]*Trip, error) {
+	peek, err := rdr.Peek(200)
+	if err != nil {
+		return nil, err
+	}
+	var delimiter rune
+	if bytes.Count(peek, []byte{';'}) > 5 {
+		delimiter = ';'
+	} else if bytes.Count(peek, []byte{','}) > 5 {
+		delimiter = ','
+	} else {
+		return nil, fmt.Errorf("cannot determine delimiter from peek(can handle commas or semicolons): %q", string(peek))
+	}
 	r := csv.NewReader(rdr)
+	newFormat := delimiter == ';'
+	r.Comma = delimiter
 	r.ReuseRecord = true
 	trips := make([]*Trip, 0)
 	for i := 0; ; i++ {
@@ -312,7 +347,7 @@ func Load(rdr io.Reader) ([]*Trip, error) {
 			// header row
 			continue
 		}
-		t, err := parseTrip(record)
+		t, err := parseTrip(record, newFormat)
 		if err != nil {
 			return nil, err
 		}

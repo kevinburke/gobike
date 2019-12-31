@@ -1,0 +1,2 @@
+duration_sec;start_time;end_time;start_station_id;start_station_name;start_station_latitude;start_station_longitude;end_station_id;end_station_name;end_station_latitude;end_station_longitude;bike_id;user_type;bike_share_for_all_trip;rental_access_method
+707;2019-11-30 23:54:47.2970;2019-12-01 00:06:34.3780;30;San Francisco Caltrain (Townsend St at 4th St);37.776598;-122.395282;4;Cyril Magnin St at Ellis St;37.7858806269;-122.4089150084;12077;Customer;No;

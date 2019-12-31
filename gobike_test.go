@@ -11,17 +11,23 @@ import (
 )
 
 func TestLoad(t *testing.T) {
-	f, err := os.Open(filepath.Join("testdata", "golden.csv"))
-	if err != nil {
-		t.Fatal(err)
+	files := []string{
+		"golden.csv",
+		"semicolons.csv",
 	}
-	defer f.Close()
-	trips, err := Load(f)
-	if err != nil {
-		t.Fatal(err)
-	}
-	if len(trips) == 0 {
-		t.Fatal("expected to see non-zero trips, got 0")
+	for i := range files {
+		f, err := os.Open(filepath.Join("testdata", files[i]))
+		if err != nil {
+			t.Fatal(err)
+		}
+		defer f.Close()
+		trips, err := Load(bufio.NewReader(f))
+		if err != nil {
+			t.Fatal(err)
+		}
+		if len(trips) == 0 {
+			t.Fatal("expected to see non-zero trips, got 0")
+		}
 	}
 }
 
@@ -79,7 +85,7 @@ func TestLoadOfficial(t *testing.T) {
 				t.Fatal(err)
 			}
 			defer f.Close()
-			trips, err := Load(f)
+			trips, err := Load(bufio.NewReader(f))
 			if err != nil {
 				t.Fatal(err)
 			}

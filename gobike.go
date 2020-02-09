@@ -14,6 +14,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/csv"
+	"errors"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -372,7 +373,7 @@ type StationStatus struct {
 func parseInt16(line []byte) ([]byte, int16, error) {
 	idx := bytes.IndexByte(line, ',')
 	if idx == -1 {
-		return nil, 0, fmt.Errorf("not enough commas: %q", string(line))
+		return nil, 0, fmt.Errorf("not enough commas in line: %q", string(line))
 	}
 	val, err := strconv.ParseInt(string(line[:idx]), 10, 16)
 	if err != nil {
@@ -398,7 +399,7 @@ func parseLine(line []byte) (*StationStatus, error) {
 	line = line[idx+1:]
 	idx = bytes.IndexByte(line, ',')
 	if idx == -1 {
-		return nil, fmt.Errorf("not enough commas: %q", string(line))
+		return nil, fmt.Errorf("only found one comma in line: %q", string(line))
 	}
 	ss.ID = string(line[:idx])
 	line = line[idx+1:]
@@ -473,8 +474,7 @@ func LoadCapacity(r io.Reader) ([]*StationStatus, error) {
 		bits := bs.Bytes()
 		stationStatus, err := parseLine(bits)
 		if err != nil {
-			fmt.Println(string(bits))
-			return nil, err
+			return nil, fmt.Errorf("error parsing line %q: %w", string(bits), err)
 		}
 		statuses = append(statuses, stationStatus)
 	}
@@ -504,7 +504,9 @@ func LoadCapacityDir(directory string) ([]*StationStatus, error) {
 			continue
 		}
 		group.Go(func() error {
-			sem.AcquireContext(errctx)
+			if acquired := sem.AcquireContext(errctx); !acquired {
+				return errors.New("did not acquire thread before timeout")
+			}
 			defer sem.Release()
 			f, err := os.Open(filepath.Join(directory, file.Name()))
 			if err != nil {
@@ -516,7 +518,7 @@ func LoadCapacityDir(directory string) ([]*StationStatus, error) {
 			}
 			fileStatuses, err := LoadCapacity(bufio.NewReader(f))
 			if err != nil {
-				return err
+				return fmt.Errorf("could not load file %q: %w", f.Name(), err)
 			}
 			if err := f.Close(); err != nil {
 				return err

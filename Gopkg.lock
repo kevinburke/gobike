@@ -59,12 +59,12 @@
   version = "2.1"
 
 [[projects]]
+  branch = "master"
   digest = "1:696d670dc1768c81e60e30fe758de6db1546f82e17391de50e0f2a53e6c1e2dd"
   name = "github.com/kevinburke/semaphore"
   packages = ["."]
   pruneopts = "UT"
   revision = "5c0f24b0593d38f84f84df633ed1c22fde3f3e91"
-  version = "1.0"
 
 [[projects]]
   digest = "1:3e73979b390394de9ad71c231f814d93af22774780bcaafb16ce7b8d86d95107"

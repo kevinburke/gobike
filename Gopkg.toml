@@ -8,7 +8,7 @@
 
 [[constraint]]
   name = "github.com/kevinburke/semaphore"
-  version = "1.0"
+  branch = "master"
 
 [[constraint]]
   name = "github.com/kevinburke/tss"

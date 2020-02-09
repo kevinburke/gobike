@@ -1,5 +1,5 @@
 {
-    "last_updated": 1577757333,
+    "last_updated": 1581281967,
     "ttl": 300,
     "data": {
         "stations": [
@@ -42,7 +42,7 @@
                 "lat": 37.783899357084934,
                 "lon": -122.40844488143921,
                 "region_id": "3",
-                "capacity": 35,
+                "capacity": 34,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -213,12 +213,12 @@
             },
             {
                 "station_id": "16",
-                "name": "Steuart St at Market St",
+                "name": "Market St at Steuart St",
                 "short_name": "SF-E29-2",
-                "lat": 37.79413,
-                "lon": -122.39443,
+                "lat": 37.79449744600207,
+                "lon": -122.39483803510664,
                 "region_id": "3",
-                "capacity": 23,
+                "capacity": 25,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -906,7 +906,7 @@
                 "lat": 37.7767539,
                 "lon": -122.3990176,
                 "region_id": "3",
-                "capacity": 7,
+                "capacity": 3,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -1786,7 +1786,7 @@
                 "lat": 37.75770404149008,
                 "lon": -122.39188492298126,
                 "region_id": "3",
-                "capacity": 31,
+                "capacity": 35,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -2250,7 +2250,7 @@
                 "lat": 37.7973195,
                 "lon": -122.2653199,
                 "region_id": "12",
-                "capacity": 0,
+                "capacity": 27,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -3157,12 +3157,12 @@
             },
             {
                 "station_id": "224",
-                "name": "21st Ave at International Blvd",
+                "name": "21st St at 5th Ave",
                 "short_name": "OK-L13",
-                "lat": 37.78485466229441,
-                "lon": -122.23930478096008,
+                "lat": 37.800459411713945,
+                "lon": -122.24745869636536,
                 "region_id": "12",
-                "capacity": 15,
+                "capacity": 23,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -3239,10 +3239,10 @@
                 "station_id": "229",
                 "name": "Foothill Blvd at 42nd Ave",
                 "short_name": "OK-L18",
-                "lat": 37.7757452,
-                "lon": -122.2130372,
+                "lat": 37.774234188195955,
+                "lon": -122.21248269081116,
                 "region_id": "12",
-                "capacity": 15,
+                "capacity": 19,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -3450,7 +3450,7 @@
                 "lat": 37.86012459911685,
                 "lon": -122.2693844139576,
                 "region_id": "14",
-                "capacity": 8,
+                "capacity": 23,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -4026,7 +4026,7 @@
                 "lat": 37.332426301252056,
                 "lon": -121.89034938812256,
                 "region_id": "5",
-                "capacity": 0,
+                "capacity": 19,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -4778,7 +4778,7 @@
                 "lat": 37.78100971717512,
                 "lon": -122.40566611289978,
                 "region_id": "3",
-                "capacity": 28,
+                "capacity": 4,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -6138,8 +6138,8 @@
                 "lat": 37.76393402521409,
                 "lon": -122.47065067291258,
                 "region_id": "3",
-                "capacity": 0,
-                "has_kiosk": false,
+                "capacity": 27,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
@@ -6154,8 +6154,8 @@
                 "lat": 37.76409093429919,
                 "lon": -122.46737837791443,
                 "region_id": "3",
-                "capacity": 0,
-                "has_kiosk": false,
+                "capacity": 23,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
@@ -6234,8 +6234,8 @@
                 "lat": 37.76343361023245,
                 "lon": -122.46406316757202,
                 "region_id": "3",
-                "capacity": 0,
-                "has_kiosk": false,
+                "capacity": 27,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
@@ -6874,8 +6874,8 @@
                 "lat": 37.77230334819668,
                 "lon": -122.41979598999023,
                 "region_id": "-1",
-                "capacity": 0,
-                "has_kiosk": false,
+                "capacity": 22,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
@@ -6890,8 +6890,8 @@
                 "lat": 37.80219785244911,
                 "lon": -122.40177154541014,
                 "region_id": "-1",
-                "capacity": 0,
-                "has_kiosk": false,
+                "capacity": 31,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
@@ -6986,8 +6986,72 @@
                 "lat": 37.78243851977672,
                 "lon": -122.4653774499893,
                 "region_id": "-1",
-                "capacity": 0,
-                "has_kiosk": false,
+                "capacity": 24,
+                "has_kiosk": true,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "508",
+                "name": "St. Joseph's Ave at Geary Blvd",
+                "short_name": "SF-H17",
+                "lat": 37.782476,
+                "lon": -122.442534,
+                "region_id": "-1",
+                "capacity": 27,
+                "has_kiosk": true,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "509",
+                "name": "Evans Ave at Newhall St",
+                "short_name": "SF-U30",
+                "lat": 37.742232,
+                "lon": -122.386843,
+                "region_id": "-1",
+                "capacity": 19,
+                "has_kiosk": true,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "510",
+                "name": "Post St at Webster St",
+                "short_name": "SF-G20",
+                "lat": 37.785394,
+                "lon": -122.431821,
+                "region_id": "-1",
+                "capacity": 31,
+                "has_kiosk": true,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "511",
+                "name": "Anza St at Collins St",
+                "short_name": "SF-H15",
+                "lat": 37.78068,
+                "lon": -122.450012,
+                "region_id": "-1",
+                "capacity": 29,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"

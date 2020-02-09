@@ -1,3 +1,5 @@
+.PHONY: vendor
+
 SHELL = /bin/bash -o pipefail
 
 WATCH_TARGETS = $(shell find ./server/static ./server/templates -type f)
@@ -127,3 +129,6 @@ endif
 
 	$(RELEASE) upload --user kevinburke --repo gobike --tag $(version) --name gobike-site-linux-amd64 --file releases/$(version)/gobike-site-linux-amd64 || true
 	$(RELEASE) upload --user kevinburke --repo gobike --tag $(version) --name gobike-site-darwin-amd64 --file releases/$(version)/gobike-site-darwin-amd64 || true
+
+vendor:
+	dep ensure

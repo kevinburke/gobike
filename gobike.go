@@ -193,6 +193,7 @@ func parseTrip(record []string, newFormat bool) (*Trip, error) {
 		return nil, err
 	}
 	t.StartStationLongitude = slng
+	// 7: end station id
 	if record[7] != "NULL" && record[7] != "" {
 		if record[7] == "347" {
 			record[7] = "136" // san bruno ave and 23rd st.
@@ -206,6 +207,7 @@ func parseTrip(record []string, newFormat bool) (*Trip, error) {
 		}
 		t.EndStationID = record[7]
 	}
+	// 8: end station name
 	t.EndStationName = record[8]
 	elat, err := strconv.ParseFloat(record[9], 64)
 	if err != nil {
@@ -298,10 +300,7 @@ func LoadDir(directory string) ([]*Trip, error) {
 			}
 			newFormat := false
 			if ymd.Year() >= 2020 || (ymd.Year() == 2019 && (ymd.Month() == time.May || ymd.Month() == time.June || ymd.Month() >= time.October)) {
-				fmt.Println("ymd", ymd.String(), "using new format")
 				newFormat = true
-			} else {
-				fmt.Println("ymd", ymd.String(), "using old format")
 			}
 			fileTrips, err := Load(bufio.NewReader(f), newFormat)
 			if err != nil {

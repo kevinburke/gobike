@@ -61,10 +61,10 @@ func init() {
 }
 
 var Populations = map[string]int{
-	"sf":         870887,
-	"oakland":    420005,
-	"emeryville": 11671,
-	"berkeley":   121240,
+	"sf":         884363,
+	"oakland":    425195,
+	"emeryville": 11758,
+	"berkeley":   122324,
 	"sj":         1035317,
 }
 

@@ -73,7 +73,6 @@ func empty(city *geo.City, stationMap map[string]*gobike.Station) func(ss *gobik
 		// yuck pointer comparison
 		if station == nil {
 			return true
-			panic(fmt.Sprintln("nil station", ss.ID, ss.NumDocksAvailable, ss.IsRenting))
 		}
 		if city != nil && station.City != city {
 			return false
@@ -91,7 +90,6 @@ func full(city *geo.City, stationMap map[string]*gobike.Station) func(ss *gobike
 		// yuck pointer comparison
 		if station == nil {
 			return false
-			panic(fmt.Sprintln("nil station", ss.ID, ss.NumDocksAvailable, ss.IsRenting))
 		}
 		if city != nil && station.City != city {
 			return false
@@ -183,7 +181,11 @@ func renderCity(w io.Writer, name string, city *geo.City, tpl, stationTpl *templ
 		tripsPerWeek = stats.TripsPerWeek(trips)
 		averageWeekdayTripsf64 := stats.AverageWeekdayTrips(trips)
 		averageWeekdayTrips = fmt.Sprintf("%.1f", averageWeekdayTripsf64)
-		estimatedTotalTripsf64 := 4.82*float64(geo.Populations[name]) - math.Mod(4.82*float64(geo.Populations[name]), 1000)
+		// SF has 4.46 million trips per day
+		// avg trips per person / day = 4.46 million / (SF population) * other population
+		estimatedTotalTripsf64 := float64(4.46*1000*1000) / float64(geo.Populations["sf"]) * float64(geo.Populations[name])
+		// round to nearest 10000 to avoid fake precision
+		estimatedTotalTripsf64 = estimatedTotalTripsf64 - math.Mod(estimatedTotalTripsf64, 10000)
 		shareOfTotalTrips = fmt.Sprintf("%.2f", 100*averageWeekdayTripsf64/estimatedTotalTripsf64)
 		estimatedTotalTrips = strconv.FormatFloat(estimatedTotalTripsf64, 'f', 0, 64)
 		var err error
@@ -421,7 +423,9 @@ func main() {
 				// geocode and put in stations
 				for citySlug, city := range cities {
 					if city != nil && city.ContainsPoint(trips[i].StartStationLatitude, trips[i].StartStationLongitude) {
-						unknownStations[trips[i].StartStationID] = citySlug
+						if trips[i].StartStationID != "" {
+							unknownStations[trips[i].StartStationID] = citySlug
+						}
 						slug = citySlug
 					}
 				}

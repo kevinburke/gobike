@@ -224,24 +224,23 @@ func parseTrip(record []string, newFormat bool) (*Trip, error) {
 	t.BikeID = id
 	t.UserType = record[12]
 	if record[13] != "" {
-		if newFormat {
-			switch record[13] {
-			case "No", "":
-				t.BikeShareForAllTrip = false
-			case "Yes":
-				t.BikeShareForAllTrip = true
-			default:
-				panic("unknown bike_share_for_all_trip record 13 " + record[13])
-			}
-		} else {
+		switch record[13] {
+		case "No", "":
+			t.BikeShareForAllTrip = false
+		case "Yes":
+			t.BikeShareForAllTrip = true
+		default:
 			birthYear, err := strconv.Atoi(record[13])
 			if err != nil {
-				return nil, fmt.Errorf("could not parse member birth year (column 13) as an integer: %w", err)
+				return nil, fmt.Errorf("could not parse column 13 (%q) as member birth year or bikeshare for all trip: %w", record[13], err)
+			}
+			if birthYear < 1850 || birthYear > 2030 {
+				return nil, fmt.Errorf("could not parse column 13 (%q) as member birth year, too large or small of an integer", record[13])
 			}
 			t.MemberBirthYear = birthYear
 		}
 	}
-	if newFormat {
+	if newFormat && len(record) > 14 {
 		t.MemberGender = record[14]
 	}
 
@@ -272,7 +271,8 @@ func LoadDir(directory string) ([]*Trip, error) {
 	sem := semaphore.New(10)
 	for _, file := range files {
 		file := file
-		if !strings.HasSuffix(file.Name(), "-fordgobike-tripdata.csv") {
+		if !strings.HasSuffix(file.Name(), "-fordgobike-tripdata.csv") &&
+			!strings.HasSuffix(file.Name(), "-baywheels-tripdata.csv") {
 			continue
 		}
 		group.Go(func() error {
@@ -291,9 +291,21 @@ func LoadDir(directory string) ([]*Trip, error) {
 			if ok {
 				f.SetDeadline(deadline)
 			}
-			fileTrips, err := Load(bufio.NewReader(f))
+			ymdpart := filepath.Base(f.Name())[:6]
+			ymd, err := time.Parse("200601", ymdpart)
 			if err != nil {
 				return err
+			}
+			newFormat := false
+			if ymd.Year() >= 2020 || (ymd.Year() == 2019 && (ymd.Month() == time.May || ymd.Month() == time.June || ymd.Month() >= time.October)) {
+				fmt.Println("ymd", ymd.String(), "using new format")
+				newFormat = true
+			} else {
+				fmt.Println("ymd", ymd.String(), "using old format")
+			}
+			fileTrips, err := Load(bufio.NewReader(f), newFormat)
+			if err != nil {
+				return fmt.Errorf("error parsing file %q: %w", f.Name(), err)
 			}
 			if err := f.Close(); err != nil {
 				return err
@@ -318,22 +330,9 @@ type PeekReader interface {
 	Peek(n int) ([]byte, error)
 }
 
-func Load(rdr PeekReader) ([]*Trip, error) {
-	peek, err := rdr.Peek(200)
-	if err != nil {
-		return nil, err
-	}
-	var delimiter rune
-	if bytes.Count(peek, []byte{';'}) > 5 {
-		delimiter = ';'
-	} else if bytes.Count(peek, []byte{','}) > 5 {
-		delimiter = ','
-	} else {
-		return nil, fmt.Errorf("cannot determine delimiter from peek(can handle commas or semicolons): %q", string(peek))
-	}
+func Load(rdr PeekReader, newFormat bool) ([]*Trip, error) {
 	r := csv.NewReader(rdr)
-	newFormat := delimiter == ';'
-	r.Comma = delimiter
+	r.FieldsPerRecord = -1
 	r.ReuseRecord = true
 	trips := make([]*Trip, 0)
 	for i := 0; ; i++ {
@@ -350,7 +349,7 @@ func Load(rdr PeekReader) ([]*Trip, error) {
 		}
 		t, err := parseTrip(record, newFormat)
 		if err != nil {
-			return nil, err
+			return nil, fmt.Errorf("error parsing trip (%q) with new format %t: %w", record, newFormat, err)
 		}
 		trips = append(trips, t)
 	}

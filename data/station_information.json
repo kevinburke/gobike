@@ -1,5 +1,5 @@
 {
-    "last_updated": 1581281967,
+    "last_updated": 1583255246,
     "ttl": 300,
     "data": {
         "stations": [
@@ -42,7 +42,7 @@
                 "lat": 37.783899357084934,
                 "lon": -122.40844488143921,
                 "region_id": "3",
-                "capacity": 34,
+                "capacity": 35,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -3237,10 +3237,10 @@
             },
             {
                 "station_id": "229",
-                "name": "Foothill Blvd at 42nd Ave",
-                "short_name": "OK-L18",
-                "lat": 37.774234188195955,
-                "lon": -122.21248269081116,
+                "name": "Bond St at High St",
+                "short_name": "OK-L19",
+                "lat": 37.774152564302355,
+                "lon": -122.21239820122717,
                 "region_id": "12",
                 "capacity": 19,
                 "has_kiosk": true,
@@ -4773,12 +4773,12 @@
             },
             {
                 "station_id": "349",
-                "name": "Howard St at Mary St",
+                "name": "Howard St at 6th St",
                 "short_name": "SF-I26-",
-                "lat": 37.78100971717512,
-                "lon": -122.40566611289978,
+                "lat": 37.780304,
+                "lon": -122.406609,
                 "region_id": "3",
-                "capacity": 4,
+                "capacity": 27,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -6311,8 +6311,8 @@
                 "station_id": "462",
                 "name": "Cruise Terminal at Pier 27",
                 "short_name": "SF-B28",
-                "lat": 37.80422327735408,
-                "lon": -122.40164279937743,
+                "lat": 37.804648,
+                "lon": -122.402087,
                 "region_id": "3",
                 "capacity": 23,
                 "has_kiosk": true,
@@ -7052,6 +7052,102 @@
                 "region_id": "-1",
                 "capacity": 29,
                 "has_kiosk": true,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "512",
+                "name": "Divisadero St at Clay St",
+                "short_name": "SF-E18",
+                "lat": 37.789688,
+                "lon": -122.440688,
+                "region_id": "-1",
+                "capacity": 19,
+                "has_kiosk": true,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "513",
+                "name": "Alameda St at Henry Adams St",
+                "short_name": "SF-M26-2",
+                "lat": 37.768566,
+                "lon": -122.404075,
+                "region_id": "-1",
+                "capacity": 0,
+                "has_kiosk": false,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "514",
+                "name": "Laurel St at California St",
+                "short_name": "SF-F16",
+                "lat": 37.786692,
+                "lon": -122.450081,
+                "region_id": "-1",
+                "capacity": 0,
+                "has_kiosk": false,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "515",
+                "name": "18th Ave at California St",
+                "short_name": "SF-F9",
+                "lat": 37.785111,
+                "lon": -122.477667,
+                "region_id": "-1",
+                "capacity": 0,
+                "has_kiosk": false,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "516",
+                "name": "Clement St at 32nd Avenue",
+                "short_name": "SF-G5",
+                "lat": 37.781722,
+                "lon": -122.492844,
+                "region_id": "-1",
+                "capacity": 0,
+                "has_kiosk": false,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "517",
+                "name": "Spruce St at California St",
+                "short_name": "SF-F15",
+                "lat": 37.786653,
+                "lon": -122.453369,
+                "region_id": "-1",
+                "capacity": 0,
+                "has_kiosk": false,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"

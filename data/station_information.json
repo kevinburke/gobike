@@ -1,5 +1,5 @@
 {
-    "last_updated": 1583255246,
+    "last_updated": 1584846994,
     "ttl": 300,
     "data": {
         "stations": [
@@ -42,7 +42,7 @@
                 "lat": 37.783899357084934,
                 "lon": -122.40844488143921,
                 "region_id": "3",
-                "capacity": 35,
+                "capacity": 33,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -3082,7 +3082,7 @@
                 "lat": 37.8098236,
                 "lon": -122.2801923,
                 "region_id": "12",
-                "capacity": 19,
+                "capacity": 18,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -3847,8 +3847,8 @@
                 "station_id": "270",
                 "name": "Ninth St at Heinz Ave",
                 "short_name": "BK-H3",
-                "lat": 37.8534894,
-                "lon": -122.2894154,
+                "lat": 37.8539069616438,
+                "lon": -122.2896981239319,
                 "region_id": "14",
                 "capacity": 15,
                 "has_kiosk": true,
@@ -5018,7 +5018,7 @@
                 "lat": 37.78543382786823,
                 "lon": -122.41962164640428,
                 "region_id": "3",
-                "capacity": 27,
+                "capacity": 26,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -6378,7 +6378,7 @@
                 "lat": 37.78238578812408,
                 "lon": -122.39134311676027,
                 "region_id": "3",
-                "capacity": 15,
+                "capacity": 35,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -6826,8 +6826,8 @@
                 "lat": 37.79762790889688,
                 "lon": -122.423534989357,
                 "region_id": "-1",
-                "capacity": 0,
-                "has_kiosk": false,
+                "capacity": 23,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
@@ -7079,11 +7079,11 @@
                 "station_id": "513",
                 "name": "Alameda St at Henry Adams St",
                 "short_name": "SF-M26-2",
-                "lat": 37.768566,
-                "lon": -122.404075,
+                "lat": 37.768545741184596,
+                "lon": -122.40440279245377,
                 "region_id": "-1",
-                "capacity": 0,
-                "has_kiosk": false,
+                "capacity": 27,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
@@ -7098,8 +7098,8 @@
                 "lat": 37.786692,
                 "lon": -122.450081,
                 "region_id": "-1",
-                "capacity": 0,
-                "has_kiosk": false,
+                "capacity": 23,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
@@ -7114,8 +7114,8 @@
                 "lat": 37.785111,
                 "lon": -122.477667,
                 "region_id": "-1",
-                "capacity": 0,
-                "has_kiosk": false,
+                "capacity": 23,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
@@ -7130,8 +7130,8 @@
                 "lat": 37.781722,
                 "lon": -122.492844,
                 "region_id": "-1",
-                "capacity": 0,
-                "has_kiosk": false,
+                "capacity": 23,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
@@ -7143,11 +7143,75 @@
                 "station_id": "517",
                 "name": "Spruce St at California St",
                 "short_name": "SF-F15",
-                "lat": 37.786653,
-                "lon": -122.453369,
+                "lat": 37.78657849953654,
+                "lon": -122.45342284440996,
+                "region_id": "-1",
+                "capacity": 24,
+                "has_kiosk": true,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "518",
+                "name": "22nd St at Potrero Ave",
+                "short_name": "SF-P26",
+                "lat": 37.756808,
+                "lon": -122.405943,
+                "region_id": "-1",
+                "capacity": 15,
+                "has_kiosk": true,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "519",
+                "name": "Townsend St at 6th St",
+                "short_name": "SF-K28-3",
+                "lat": 37.773238,
+                "lon": -122.399998,
                 "region_id": "-1",
                 "capacity": 0,
                 "has_kiosk": false,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "520",
+                "name": "23rd Ave at Clement St",
+                "short_name": "SF-G7",
+                "lat": 37.78199,
+                "lon": -122.482807,
+                "region_id": "-1",
+                "capacity": 19,
+                "has_kiosk": true,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "521",
+                "name": "48th Ave at Cabrillo St",
+                "short_name": "SF-J1",
+                "lat": 37.772954,
+                "lon": -122.509071,
+                "region_id": "-1",
+                "capacity": 23,
+                "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"

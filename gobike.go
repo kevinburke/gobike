@@ -231,6 +231,8 @@ func parseTrip(record []string, newFormat bool) (*Trip, error) {
 			t.BikeShareForAllTrip = false
 		case "Yes":
 			t.BikeShareForAllTrip = true
+		case "app", "clipper":
+			// not sure how to handle this...
 		default:
 			birthYear, err := strconv.Atoi(record[13])
 			if err != nil {

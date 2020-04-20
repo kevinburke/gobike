@@ -1,5 +1,5 @@
 {
-    "last_updated": 1584846994,
+    "last_updated": 1587342962,
     "ttl": 300,
     "data": {
         "stations": [
@@ -42,7 +42,7 @@
                 "lat": 37.783899357084934,
                 "lon": -122.40844488143921,
                 "region_id": "3",
-                "capacity": 33,
+                "capacity": 35,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -661,12 +661,12 @@
             },
             {
                 "station_id": "47",
-                "name": "4th St at Harrison St",
+                "name": "Clara St at 4th St",
                 "short_name": "SF-I28",
-                "lat": 37.78095459960753,
-                "lon": -122.39974915981291,
+                "lat": 37.78067477132274,
+                "lon": -122.40081131458284,
                 "region_id": "3",
-                "capacity": 31,
+                "capacity": 19,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -3114,7 +3114,7 @@
                 "lat": 37.794396,
                 "lon": -122.253842,
                 "region_id": "12",
-                "capacity": 15,
+                "capacity": 0,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -4597,7 +4597,7 @@
             },
             {
                 "station_id": "323",
-                "name": "Broadway at Kearny",
+                "name": "Broadway at Kearny St",
                 "short_name": "SF-C26",
                 "lat": 37.79801364395978,
                 "lon": -122.40595042705534,
@@ -5018,7 +5018,7 @@
                 "lat": 37.78543382786823,
                 "lon": -122.41962164640428,
                 "region_id": "3",
-                "capacity": 26,
+                "capacity": 27,
                 "has_kiosk": true,
                 "rental_methods": [
                     "CREDITCARD",
@@ -6793,7 +6793,7 @@
                 "short_name": "SJ-M6-2",
                 "lat": 37.326282324105776,
                 "lon": -121.9049111008644,
-                "region_id": "-1",
+                "region_id": "5",
                 "capacity": 19,
                 "has_kiosk": true,
                 "rental_methods": [
@@ -6809,7 +6809,7 @@
                 "short_name": "SJ-L11",
                 "lat": 37.343208488473465,
                 "lon": -121.88438951969147,
-                "region_id": "-1",
+                "region_id": "5",
                 "capacity": 19,
                 "has_kiosk": true,
                 "rental_methods": [
@@ -6821,11 +6821,11 @@
             },
             {
                 "station_id": "496",
-                "name": "Green St at Van Ness St",
+                "name": "Green St at Van Ness Ave",
                 "short_name": "SF-C22",
                 "lat": 37.79762790889688,
                 "lon": -122.423534989357,
-                "region_id": "-1",
+                "region_id": "3",
                 "capacity": 23,
                 "has_kiosk": true,
                 "rental_methods": [
@@ -6873,7 +6873,7 @@
                 "short_name": "SF-K23",
                 "lat": 37.77230334819668,
                 "lon": -122.41979598999023,
-                "region_id": "-1",
+                "region_id": "3",
                 "capacity": 22,
                 "has_kiosk": true,
                 "rental_methods": [
@@ -6889,7 +6889,7 @@
                 "short_name": "SF-B28-2",
                 "lat": 37.80219785244911,
                 "lon": -122.40177154541014,
-                "region_id": "-1",
+                "region_id": "3",
                 "capacity": 31,
                 "has_kiosk": true,
                 "rental_methods": [
@@ -6985,7 +6985,7 @@
                 "short_name": "SF-G12",
                 "lat": 37.78243851977672,
                 "lon": -122.4653774499893,
-                "region_id": "-1",
+                "region_id": "3",
                 "capacity": 24,
                 "has_kiosk": true,
                 "rental_methods": [
@@ -7001,7 +7001,7 @@
                 "short_name": "SF-H17",
                 "lat": 37.782476,
                 "lon": -122.442534,
-                "region_id": "-1",
+                "region_id": "3",
                 "capacity": 27,
                 "has_kiosk": true,
                 "rental_methods": [
@@ -7017,7 +7017,7 @@
                 "short_name": "SF-U30",
                 "lat": 37.742232,
                 "lon": -122.386843,
-                "region_id": "-1",
+                "region_id": "3",
                 "capacity": 19,
                 "has_kiosk": true,
                 "rental_methods": [
@@ -7033,7 +7033,7 @@
                 "short_name": "SF-G20",
                 "lat": 37.785394,
                 "lon": -122.431821,
-                "region_id": "-1",
+                "region_id": "3",
                 "capacity": 31,
                 "has_kiosk": true,
                 "rental_methods": [
@@ -7049,7 +7049,7 @@
                 "short_name": "SF-H15",
                 "lat": 37.78068,
                 "lon": -122.450012,
-                "region_id": "-1",
+                "region_id": "3",
                 "capacity": 29,
                 "has_kiosk": true,
                 "rental_methods": [
@@ -7065,7 +7065,7 @@
                 "short_name": "SF-E18",
                 "lat": 37.789688,
                 "lon": -122.440688,
-                "region_id": "-1",
+                "region_id": "3",
                 "capacity": 19,
                 "has_kiosk": true,
                 "rental_methods": [
@@ -7081,7 +7081,7 @@
                 "short_name": "SF-M26-2",
                 "lat": 37.768545741184596,
                 "lon": -122.40440279245377,
-                "region_id": "-1",
+                "region_id": "3",
                 "capacity": 27,
                 "has_kiosk": true,
                 "rental_methods": [
@@ -7097,7 +7097,7 @@
                 "short_name": "SF-F16",
                 "lat": 37.786692,
                 "lon": -122.450081,
-                "region_id": "-1",
+                "region_id": "3",
                 "capacity": 23,
                 "has_kiosk": true,
                 "rental_methods": [
@@ -7113,7 +7113,7 @@
                 "short_name": "SF-F9",
                 "lat": 37.785111,
                 "lon": -122.477667,
-                "region_id": "-1",
+                "region_id": "3",
                 "capacity": 23,
                 "has_kiosk": true,
                 "rental_methods": [
@@ -7125,11 +7125,11 @@
             },
             {
                 "station_id": "516",
-                "name": "Clement St at 32nd Avenue",
+                "name": "Clement St at 32nd Ave",
                 "short_name": "SF-G5",
                 "lat": 37.781722,
                 "lon": -122.492844,
-                "region_id": "-1",
+                "region_id": "3",
                 "capacity": 23,
                 "has_kiosk": true,
                 "rental_methods": [
@@ -7145,7 +7145,7 @@
                 "short_name": "SF-F15",
                 "lat": 37.78657849953654,
                 "lon": -122.45342284440996,
-                "region_id": "-1",
+                "region_id": "3",
                 "capacity": 24,
                 "has_kiosk": true,
                 "rental_methods": [
@@ -7161,7 +7161,7 @@
                 "short_name": "SF-P26",
                 "lat": 37.756808,
                 "lon": -122.405943,
-                "region_id": "-1",
+                "region_id": "3",
                 "capacity": 15,
                 "has_kiosk": true,
                 "rental_methods": [
@@ -7193,7 +7193,7 @@
                 "short_name": "SF-G7",
                 "lat": 37.78199,
                 "lon": -122.482807,
-                "region_id": "-1",
+                "region_id": "3",
                 "capacity": 19,
                 "has_kiosk": true,
                 "rental_methods": [
@@ -7209,9 +7209,57 @@
                 "short_name": "SF-J1",
                 "lat": 37.772954,
                 "lon": -122.509071,
-                "region_id": "-1",
+                "region_id": "3",
                 "capacity": 23,
                 "has_kiosk": true,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "523",
+                "name": "Lafayette Park (Laguna St at Washington St)",
+                "short_name": "SF-E21",
+                "lat": 37.791966,
+                "lon": -122.429315,
+                "region_id": "-1",
+                "capacity": 0,
+                "has_kiosk": false,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "524",
+                "name": "34th Ave at Balboa St",
+                "short_name": "SF-J5",
+                "lat": 37.77575,
+                "lon": -122.494052,
+                "region_id": "3",
+                "capacity": 0,
+                "has_kiosk": false,
+                "rental_methods": [
+                    "CREDITCARD",
+                    "KEY"
+                ],
+                "rental_url": "",
+                "eightd_has_key_dispenser": false
+            },
+            {
+                "station_id": "525",
+                "name": "21st Ave at Geary Blvd",
+                "short_name": "SF-G8",
+                "lat": 37.780111,
+                "lon": -122.480389,
+                "region_id": "3",
+                "capacity": 0,
+                "has_kiosk": false,
                 "rental_methods": [
                     "CREDITCARD",
                     "KEY"
